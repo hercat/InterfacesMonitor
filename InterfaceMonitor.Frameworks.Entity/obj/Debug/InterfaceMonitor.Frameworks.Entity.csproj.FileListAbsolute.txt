@@ -1,0 +1,4 @@
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Entity\bin\Debug\InterfaceMonitor.Frameworks.Entity.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Entity\bin\Debug\InterfaceMonitor.Frameworks.Entity.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Entity\obj\Debug\InterfaceMonitor.Frameworks.Entity.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Entity\obj\Debug\InterfaceMonitor.Frameworks.Entity.pdb
