@@ -33,7 +33,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// <summary>
         /// 邮箱
         /// </summary>
-        public string Email { get; set; }
+        public string Email { get; set; }        
         /// <summary>
         /// 备注信息
         /// </summary>
