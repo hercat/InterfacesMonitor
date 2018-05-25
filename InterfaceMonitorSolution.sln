@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceMonitor.Frameworks
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceMonitor.Frameworks.Utility", "InterfaceMonitor.Frameworks.Utility\InterfaceMonitor.Frameworks.Utility.csproj", "{F1957244-EBE3-404E-A705-7F4987583EC2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{3F0E4BBE-EC7D-4670-86BD-E94EAD6CAA21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyUIWebApplication", "EasyUIWebApplication\EasyUIWebApplication.csproj", "{69A869E1-C535-4C62-A6D7-5B4EB5020CD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{F1957244-EBE3-404E-A705-7F4987583EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1957244-EBE3-404E-A705-7F4987583EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1957244-EBE3-404E-A705-7F4987583EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A869E1-C535-4C62-A6D7-5B4EB5020CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A869E1-C535-4C62-A6D7-5B4EB5020CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A869E1-C535-4C62-A6D7-5B4EB5020CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A869E1-C535-4C62-A6D7-5B4EB5020CD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69A869E1-C535-4C62-A6D7-5B4EB5020CD0} = {3F0E4BBE-EC7D-4670-86BD-E94EAD6CAA21}
 	EndGlobalSection
 EndGlobal
