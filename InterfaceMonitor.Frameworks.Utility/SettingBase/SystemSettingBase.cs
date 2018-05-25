@@ -26,7 +26,7 @@ namespace InterfaceMonitor.Frameworks.Utility
         /// </summary>
         private SystemSettingBase() { }
 
-        #region
+        #region 公有属性
         /// <summary>
         /// 定义一个公有属性成员作为该类的全局访问点
         /// </summary>
@@ -44,6 +44,7 @@ namespace InterfaceMonitor.Frameworks.Utility
         }
         #endregion
 
+        #region 公共方法
         /// <summary>
         /// 定义一个公共方法作为该类的全局访问点
         /// </summary>
@@ -63,6 +64,7 @@ namespace InterfaceMonitor.Frameworks.Utility
             }
             return _instance;
         }
+        #endregion
 
         #region MySql数据库配置信息
         private MySqlSettings _sysMySqlDB = new MySqlSettings();
@@ -73,5 +75,13 @@ namespace InterfaceMonitor.Frameworks.Utility
         }
         #endregion
 
+        #region Mongodb数据库配置信息
+        private MongoSettings _sysMongodb = new MongoSettings();
+        public MongoSettings SysMongodb
+        {
+            get { return _sysMongodb; }
+            set { this._sysMongodb = value; }
+        }
+        #endregion
     }
 }
