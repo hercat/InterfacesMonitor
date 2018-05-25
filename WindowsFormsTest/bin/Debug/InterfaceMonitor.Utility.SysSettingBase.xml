@@ -5,7 +5,7 @@
   <SysMySqlDB>
     <Server>localhost</Server>
     <Database>test</Database>
-    <User>root</User>
+    <Uid>root</Uid>
     <Password>1qazxsw2</Password>
   </SysMySqlDB>
 </SystemSettingBase>

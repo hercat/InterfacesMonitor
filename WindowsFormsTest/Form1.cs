@@ -48,7 +48,7 @@ namespace WindowsFormsTest
         {
             SystemSettingBase.CreateInstance().SysMySqlDB.Server = "localhost";
             SystemSettingBase.CreateInstance().SysMySqlDB.Database = "test";
-            SystemSettingBase.CreateInstance().SysMySqlDB.User = "root";
+            SystemSettingBase.CreateInstance().SysMySqlDB.Uid = "root";
             SystemSettingBase.CreateInstance().SysMySqlDB.Password = "1qazxsw2";
         }
     }

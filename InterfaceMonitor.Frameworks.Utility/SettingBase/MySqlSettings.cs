@@ -34,11 +34,11 @@ namespace InterfaceMonitor.Frameworks.Utility
         /// <summary>
         /// 用户名
         /// </summary>
-        private string _user;
-        public string User
+        private string _uid;
+        public string Uid
         {
-            get { return _user; }
-            set { this._user = value; }
+            get { return _uid; }
+            set { this._uid = value; }
         }
         /// <summary>
         /// 密码
@@ -59,7 +59,7 @@ namespace InterfaceMonitor.Frameworks.Utility
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("Server={0};", this.Server);
                 sb.AppendFormat("Database={0};", this.Database);
-                sb.AppendFormat("Uid={0};", this.User);
+                sb.AppendFormat("Uid={0};", this.Uid);
                 sb.AppendFormat("Pwd={0}", this.Password);
                 return sb.ToString();
             }
