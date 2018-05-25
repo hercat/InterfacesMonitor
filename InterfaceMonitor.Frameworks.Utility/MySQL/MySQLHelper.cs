@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
+using MySql.Data;
 
 namespace InterfaceMonitor.Frameworks.Utility
 {
@@ -15,6 +16,6 @@ namespace InterfaceMonitor.Frameworks.Utility
     /// </summary>
     public class MySQLHelper
     {
-
+        
     }
 }

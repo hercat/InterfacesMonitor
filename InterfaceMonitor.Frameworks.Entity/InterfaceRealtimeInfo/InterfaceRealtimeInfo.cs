@@ -26,10 +26,18 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// 服务器地址
         /// </summary>
         public string ServerAddress { get; set; }
+        ///// <summary>
+        ///// 当前返回时间
+        ///// </summary>
+        //public int ReturnTimeout { get; set; }
         /// <summary>
-        /// 当前返回时间
+        /// 状态码
         /// </summary>
-        public int ReturnTimeout { get; set; }
+        public int StateCode { get; set; }
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime UpdateTime { get; set; }
         /// <summary>
         /// AllParse
         /// </summary>
@@ -43,8 +51,12 @@ namespace InterfaceMonitor.Frameworks.Entity
                 ApplicationName = dr[EnumInterfaceRealtimeInfo.ApplicationName.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.ServerAddress.ToString()))
                 ServerAddress = dr[EnumInterfaceRealtimeInfo.ServerAddress.ToString()].ToString();
-            if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.ReturnTimeout.ToString()))
-                ReturnTimeout = Int32.Parse(dr[EnumInterfaceRealtimeInfo.ReturnTimeout.ToString()].ToString());
+            //if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.ReturnTimeout.ToString()))
+            //    ReturnTimeout = Int32.Parse(dr[EnumInterfaceRealtimeInfo.ReturnTimeout.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.StateCode.ToString()))
+                StateCode = Int32.Parse(dr[EnumInterfaceRealtimeInfo.StateCode.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.UpdateTime.ToString()))
+                UpdateTime = DateTime.Parse(dr[EnumInterfaceRealtimeInfo.UpdateTime.ToString()].ToString());
             return true;
         }
     }
@@ -56,6 +68,8 @@ namespace InterfaceMonitor.Frameworks.Entity
         InterfaceName,
         ApplicationName,
         ServerAddress,
-        ReturnTimeout
+        //ReturnTimeout,
+        StateCode,
+        UpdateTime
     }
 }
