@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationInterfaceRelation\ApplicationInterfaceRelation.cs" />
     <Compile Include="ApplicationSysInfo\ApplicationSysInfo.cs" />
     <Compile Include="ChargesInfo\ChargesInfo.cs" />
     <Compile Include="InterfaceBaseInfo\InterfaceBaseInfo.cs" />

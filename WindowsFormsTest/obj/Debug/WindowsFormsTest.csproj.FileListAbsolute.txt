@@ -1,0 +1,12 @@
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\WindowsFormsTest.exe.config
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\WindowsFormsTest.exe
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\WindowsFormsTest.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\InterfaceMonitor.Frameworks.Utility.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\MySql.Data.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\InterfaceMonitor.Frameworks.Utility.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.csprojResolveAssemblyReference.cache
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.Form1.resources
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.Properties.Resources.resources
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.csproj.GenerateResource.Cache
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.exe
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.pdb
