@@ -50,7 +50,7 @@ namespace InterfaceMonitor.Frameworks.Utility
         /// <returns></returns>
         public static SystemSettingBase CreateInstance()
         {
-            if (null == _instance)
+            if (_instance == null)
             {
                 lock (locker)
                 {
