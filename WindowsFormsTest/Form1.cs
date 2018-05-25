@@ -34,5 +34,22 @@ namespace WindowsFormsTest
         {
             _connectionString = "server=localhost;Database=test;Uid=root;Pwd=*******";
         }
+        /// <summary>
+        /// 系统配置生成测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GetMySqlConfig();
+            SystemSettingBase.CreateInstance().Save();
+        }
+        private void GetMySqlConfig()
+        {
+            SystemSettingBase.CreateInstance().SysMySqlDB.Server = "localhost";
+            SystemSettingBase.CreateInstance().SysMySqlDB.Database = "test";
+            SystemSettingBase.CreateInstance().SysMySqlDB.User = "root";
+            SystemSettingBase.CreateInstance().SysMySqlDB.Password = "1qazxsw2";
+        }
     }
 }

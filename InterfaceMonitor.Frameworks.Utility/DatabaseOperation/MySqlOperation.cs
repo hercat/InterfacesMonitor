@@ -37,7 +37,7 @@ namespace InterfaceMonitor.Frameworks.Utility
                 return;
             else if (connection.State == ConnectionState.Broken)
             {
-                connection.Clone();
+                connection.Close();
                 connection.Open();
             }
             else
@@ -51,7 +51,7 @@ namespace InterfaceMonitor.Frameworks.Utility
             if (connection.State == ConnectionState.Closed)
                 return;
             else
-                connection.Clone();
+                connection.Close();
         }
         /// <summary>
         /// 开始事务处理

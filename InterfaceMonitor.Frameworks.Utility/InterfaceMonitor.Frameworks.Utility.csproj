@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,8 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseOperation\DatabaseOperation.cs" />
-    <Compile Include="MySQL\MySqlOperation.cs" />
+    <Compile Include="DatabaseOperation\MySqlOperation.cs" />
+    <Compile Include="SettingBase\MySqlSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingBase\SettingBase.cs" />
+    <Compile Include="SettingBase\SystemSettingBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
