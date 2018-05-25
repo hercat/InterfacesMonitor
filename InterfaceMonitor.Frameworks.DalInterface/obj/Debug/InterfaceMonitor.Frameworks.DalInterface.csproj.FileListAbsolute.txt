@@ -1,0 +1,7 @@
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.DalInterface\bin\Debug\InterfaceMonitor.Frameworks.DalInterface.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.DalInterface\bin\Debug\InterfaceMonitor.Frameworks.DalInterface.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.DalInterface\bin\Debug\InterfaceMonitor.Frameworks.Entity.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.DalInterface\bin\Debug\InterfaceMonitor.Frameworks.Entity.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.DalInterface\obj\Debug\InterfaceMonitor.Frameworks.DalInterface.csprojResolveAssemblyReference.cache
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.DalInterface\obj\Debug\InterfaceMonitor.Frameworks.DalInterface.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.DalInterface\obj\Debug\InterfaceMonitor.Frameworks.DalInterface.pdb

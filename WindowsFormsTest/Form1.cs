@@ -44,12 +44,28 @@ namespace WindowsFormsTest
             GetMySqlConfig();
             SystemSettingBase.CreateInstance().Save();
         }
+        /// <summary>
+        /// 
+        /// </summary>
         private void GetMySqlConfig()
         {
             SystemSettingBase.CreateInstance().SysMySqlDB.Server = "localhost";
             SystemSettingBase.CreateInstance().SysMySqlDB.Database = "test";
             SystemSettingBase.CreateInstance().SysMySqlDB.Uid = "root";
             SystemSettingBase.CreateInstance().SysMySqlDB.Password = "1qazxsw2";
+        }
+        /// <summary>
+        /// 加载配置文件测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SystemSettingBase sysSettings = SystemSettingBase.CreateInstance();
+            string server = sysSettings.SysMySqlDB.Server;
+            string database = sysSettings.SysMySqlDB.Database;
+            string uid = sysSettings.SysMySqlDB.Uid;
+            string pwd = sysSettings.SysMySqlDB.Password;
         }
     }
 }

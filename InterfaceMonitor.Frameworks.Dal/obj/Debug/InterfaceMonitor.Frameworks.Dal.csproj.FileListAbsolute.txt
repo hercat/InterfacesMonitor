@@ -1,0 +1,12 @@
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.Dal.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.Dal.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.DalInterface.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.Entity.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.Utility.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\MySql.Data.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.DalInterface.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.Entity.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\InterfaceMonitor.Frameworks.Utility.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\obj\Debug\InterfaceMonitor.Frameworks.Dal.csprojResolveAssemblyReference.cache
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\obj\Debug\InterfaceMonitor.Frameworks.Dal.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\obj\Debug\InterfaceMonitor.Frameworks.Dal.pdb
