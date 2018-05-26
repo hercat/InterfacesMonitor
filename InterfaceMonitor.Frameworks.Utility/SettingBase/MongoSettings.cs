@@ -58,5 +58,19 @@ namespace InterfaceMonitor.Frameworks.Utility
             get { return _mongoPwd; }
             set { this._mongoPwd = value; }
         }
+        /// <summary>
+        /// mongodb数据库连接字符串
+        /// </summary>
+        public string MongodbConnString
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("mongodb://");
+                if(!string.IsNullOrEmpty(MongoUser)&&!string.IsNullOrEmpty(MongoPwd))
+                sb.AppendFormat("{0}:{1}", MongoIP, MongoPort);
+                return sb.ToString();
+            }
+        }
     }
 }
