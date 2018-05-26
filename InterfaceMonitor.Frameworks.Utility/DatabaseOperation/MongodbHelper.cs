@@ -60,5 +60,6 @@ namespace InterfaceMonitor.Frameworks.Utility
         {
             return MongoServer.Create(mongodbConnString);
         }
+
     }
 }

@@ -10,3 +10,5 @@ C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\Windows
 C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.csproj.GenerateResource.Cache
 C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.exe
 C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\obj\Debug\WindowsFormsTest.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\MongoDB.Driver.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\MongoDB.Bson.dll
