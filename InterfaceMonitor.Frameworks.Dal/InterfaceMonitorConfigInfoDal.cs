@@ -10,7 +10,7 @@ namespace InterfaceMonitor.Frameworks.Dal
 {
     public class InterfaceMonitorConfigInfoDal : IInterfaceConfigInfo
     {
-        public void SaveInterfaceConfig(InterfaceConfigInfo entity)
+        public void SaveInterfaceConfigInfo(InterfaceConfigInfo entity)
         {
 
         }

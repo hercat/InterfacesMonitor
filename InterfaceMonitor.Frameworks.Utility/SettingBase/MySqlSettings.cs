@@ -57,10 +57,14 @@ namespace InterfaceMonitor.Frameworks.Utility
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("Server={0};", this.Server);
-                sb.AppendFormat("Database={0};", this.Database);
-                sb.AppendFormat("Uid={0};", this.Uid);
-                sb.AppendFormat("Pwd={0}", this.Password);
+                if (!string.IsNullOrEmpty(Server))
+                    sb.AppendFormat("Server={0};", this.Server);
+                if (!string.IsNullOrEmpty(Database))
+                    sb.AppendFormat("Database={0};", this.Database);
+                if (!string.IsNullOrEmpty(Uid))
+                    sb.AppendFormat("Uid={0};", this.Uid);
+                if (!string.IsNullOrEmpty(Password))
+                    sb.AppendFormat("Pwd={0}", this.Password);
                 return sb.ToString();
             }
         }
