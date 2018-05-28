@@ -8,8 +8,11 @@ using InterfaceMonitor.Frameworks.DalInterface;
 
 namespace InterfaceMonitor.Frameworks.Dal
 {
-    public class InterfaceMonitorConfigInfoDal : IInterfaceMonitorConfigInfo
+    public class InterfaceMonitorConfigInfoDal : IInterfaceConfigInfo
     {
+        public void SaveInterfaceConfig(InterfaceConfigInfo entity)
+        {
 
+        }
     }
 }
