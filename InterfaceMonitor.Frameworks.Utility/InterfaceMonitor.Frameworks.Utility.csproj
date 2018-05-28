@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfigManager\AppConfigManager.cs" />
     <Compile Include="DatabaseOperation\DatabaseOperation.cs" />
     <Compile Include="DatabaseOperation\MySqlOperation.cs" />
     <Compile Include="DatabaseOperation\MongodbHelper.cs" />

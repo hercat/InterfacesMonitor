@@ -10,3 +10,5 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bi
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\obj\Debug\InterfaceMonitor.Frameworks.Dal.csprojResolveAssemblyReference.cache
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\obj\Debug\InterfaceMonitor.Frameworks.Dal.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\obj\Debug\InterfaceMonitor.Frameworks.Dal.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\MongoDB.Driver.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Dal\bin\Debug\MongoDB.Bson.dll

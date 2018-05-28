@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace InterfaceMonitor.Frameworks.Logical
 {
@@ -13,6 +9,13 @@ namespace InterfaceMonitor.Frameworks.Logical
     /// </summary>
     public class DbConnOperation
     {
-
+        /// <summary>
+        /// 创建Mysql数据库连接
+        /// </summary>
+        /// <returns></returns>
+        public static IDbConnection CreateConnection()
+        {
+            return DataProvider.DbConnDP.CreateDbConn(InterfaceMonitor.Frameworks.Entity.ConnString.MySqldb);
+        }
     }
 }
