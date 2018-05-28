@@ -9,6 +9,6 @@ namespace InterfaceMonitor.Frameworks.DalInterface
 {
     public interface IInterfaceConfigInfo
     {
-        void SaveInterfaceConfigInfo(InterfaceConfigInfo entity);
+        void AddOrUpdateInterfaceConfigInfo(InterfaceConfigInfo entity);
     }
 }

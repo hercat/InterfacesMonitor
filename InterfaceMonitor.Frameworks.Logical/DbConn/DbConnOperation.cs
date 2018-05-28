@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace InterfaceMonitor.Frameworks.Logical
 {
-    public class Class1
+    /// <summary>
+    /// Description:
+    /// Author:WUWEI
+    /// Date:2018/05/28
+    /// </summary>
+    public class DbConnOperation
     {
 
     }
