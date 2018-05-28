@@ -70,5 +70,64 @@ namespace InterfaceMonitor.Frameworks.Dal
             cmd.CommandText = string.Format(sql, id);
             cmd.ExecuteNonQuery();
         }
+        /// <summary>
+        /// 根据Id编号获取接口配置信息
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public InterfaceConfigInfo GetInterfaceConfigInfoById(IDbCommand icmd,Guid id)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description
+                            from interfaceconfiginfo
+                            where Id = '{0}'";
+            cmd.CommandText = string.Format(sql, id);
+            InterfaceConfigInfo entity = null;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                entity = new InterfaceConfigInfo();
+                entity.AllParse(dt.Rows[0]);
+            }
+            return entity;
+        }
+        /// <summary>
+        /// 获取接口配置信息列表
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="fields"></param>
+        /// <param name="whereCondition"></param>
+        /// <returns></returns>
+        public List<InterfaceConfigInfo> GetInterfaceConfigInfoList(IDbCommand icmd, string fields, string whereCondition)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(fields))
+                sb.AppendFormat("select {0} from interfaceconfiginfo ", fields);
+            if (!string.IsNullOrEmpty(whereCondition))
+                sb.Append(whereCondition);
+            cmd.CommandText = sb.ToString();
+            List<InterfaceConfigInfo> list = new List<InterfaceConfigInfo>();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                InterfaceConfigInfo obj = null;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    obj = new InterfaceConfigInfo();
+                    obj.AllParse(dr);
+                    if (null != obj)
+                        list.Add(obj);
+                }
+            }
+            return list;
+        }
     }
 }

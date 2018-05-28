@@ -85,19 +85,19 @@ namespace WindowsFormsTest
         private void button5_Click(object sender, EventArgs e)
         {
             #region 接口配置添加测试
-            //InterfaceConfigInfo entity = new InterfaceConfigInfo();
-            //entity.Id = Guid.NewGuid();
-            //entity.InterfaceName = "InterfaceMonitor.Frameworks.Logical.InterfaceConfigInfoOperation";
-            //entity.ApplicationName = "测试接口";
-            //entity.ServerAddress = "192.168.1.100";
-            //entity.ServerUser = "test";
-            //entity.UserPwd = "test123";
-            //entity.PersonOfChargeName = "json";
-            //entity.PersonOfChargePhone = "13812345678";
-            //entity.ConnectedTimeout = 200;
-            //entity.DocumentHelpPath = "../root/test.pdf";
-            //entity.Description = "不拉不拉不拉";
-            //InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity, ModifierType.Add);
+            InterfaceConfigInfo entity = new InterfaceConfigInfo();
+            entity.Id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
+            entity.InterfaceName = "InterfaceMonitor.Frameworks.Logical.InterfaceConfigInfoOperation";
+            entity.ApplicationName = "测试接口";
+            entity.ServerAddress = "192.168.1.100";
+            entity.ServerUser = "test";
+            entity.UserPwd = "test123";
+            entity.PersonOfChargeName = "json";
+            entity.PersonOfChargePhone = "13812345678";
+            entity.ConnectedTimeout = 200;
+            entity.DocumentHelpPath = "../root/test.pdf";
+            entity.Description = "不拉不拉不拉";
+            InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity, ModifierType.Add);
             #endregion
 
             #region 接口配置更新测试
@@ -125,6 +125,27 @@ namespace WindowsFormsTest
         {
             Guid id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
             InterfaceConfigInfoOperation.DeleteInterfaceConfigInfoById(id);
+        }
+        /// <summary>
+        /// 根据Id编号获取接口配置信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Guid id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
+            InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(id);
+        }
+        /// <summary>
+        /// 获取接口配置信息列表测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string fields = "Id,InterfaceName,ApplicationName,ServerAddress";
+            string whereCondition = "where PersonInChargePhone = '13812345678'";
+            List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoList(fields, whereCondition);
         }
     }
 }
