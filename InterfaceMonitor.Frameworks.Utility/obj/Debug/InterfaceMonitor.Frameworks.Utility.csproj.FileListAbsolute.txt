@@ -2,9 +2,9 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utilit
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\bin\Debug\InterfaceMonitor.Frameworks.Utility.pdb
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\bin\Debug\MySql.Data.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\bin\Debug\MySql.Data.Entity.dll
-C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\obj\Debug\InterfaceMonitor.Frameworks.Utility.csprojResolveAssemblyReference.cache
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\obj\Debug\InterfaceMonitor.Frameworks.Utility.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\obj\Debug\InterfaceMonitor.Frameworks.Utility.pdb
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\bin\Debug\MongoDB.Bson.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\bin\Debug\MongoDB.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\bin\Debug\MongoDB.Driver.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Utility\obj\Debug\InterfaceMonitor.Frameworks.Utility.csprojResolveAssemblyReference.cache

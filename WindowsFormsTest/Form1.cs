@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterfaceMonitor.Frameworks.Utility;
+using InterfaceMonitor.Frameworks.Entity;
+using InterfaceMonitor.Frameworks.Logical;
 
 namespace WindowsFormsTest
 {
     public partial class Form1 : Form
-    {
+    {       
         private static string _connectionString;
         public Form1()
         {
@@ -33,6 +35,8 @@ namespace WindowsFormsTest
         private void Form1_Load(object sender, EventArgs e)
         {
             _connectionString = "server=localhost;Database=test;Uid=root;Pwd=*******";
+            SystemSettingBase settings = SystemSettingBase.CreateInstance();
+            ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
         }
         /// <summary>
         /// 系统配置生成测试
@@ -52,7 +56,7 @@ namespace WindowsFormsTest
             SystemSettingBase.CreateInstance().SysMySqlDB.Server = "localhost";
             SystemSettingBase.CreateInstance().SysMySqlDB.Database = "test";
             SystemSettingBase.CreateInstance().SysMySqlDB.Uid = "root";
-            SystemSettingBase.CreateInstance().SysMySqlDB.Password = "1qazxsw2";
+            SystemSettingBase.CreateInstance().SysMySqlDB.Password = "jianglin";
         }
         /// <summary>
         /// 加载配置文件测试
@@ -66,6 +70,11 @@ namespace WindowsFormsTest
             string database = sysSettings.SysMySqlDB.Database;
             string uid = sysSettings.SysMySqlDB.Uid;
             string pwd = sysSettings.SysMySqlDB.Password;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            IDbConnection conn = DbConnOperation.CreateConnection();
         }
     }
 }

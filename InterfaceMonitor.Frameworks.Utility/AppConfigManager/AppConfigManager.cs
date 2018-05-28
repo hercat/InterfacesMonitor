@@ -21,8 +21,8 @@ namespace InterfaceMonitor.Frameworks.Utility
                 if (_dicDataProvider == null || _dicDataProvider.Count == 0)
                 {
                     _dicDataProvider = new Dictionary<string, string>();
-                    _dicDataProvider.Add("DbConnDP", "InterfaceMonitor.Frameworks.DalInterface.IDbConn");
-                    _dicDataProvider.Add("DbInterfaceConfigInfoDP", "InterfaceMonitor.Frameworks.DalInterface.IInterfaceConfigInfo");
+                    _dicDataProvider.Add("DbConnDP", "InterfaceMonitor.Frameworks.Dal.DbConnDal");
+                    _dicDataProvider.Add("DbInterfaceConfigInfoDP", "InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal");
                 }
                 return _dicDataProvider;
             }

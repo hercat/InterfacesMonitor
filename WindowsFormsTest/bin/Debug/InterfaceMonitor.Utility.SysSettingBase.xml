@@ -6,6 +6,7 @@
     <Server>localhost</Server>
     <Database>test</Database>
     <Uid>root</Uid>
-    <Password>1qazxsw2</Password>
+    <Password>jianglin</Password>
   </SysMySqlDB>
+  <SysMongodb />
 </SystemSettingBase>

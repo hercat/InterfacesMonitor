@@ -80,6 +80,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.DalInterface\InterfaceMonitor.Frameworks.DalInterface.csproj">
+      <Project>{fecaef8f-29c0-4ecf-9435-7ac998d253e9}</Project>
+      <Name>InterfaceMonitor.Frameworks.DalInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Dal\InterfaceMonitor.Frameworks.Dal.csproj">
+      <Project>{9dcbb59f-0be6-42f8-a7e1-e6b0e8a81cee}</Project>
+      <Name>InterfaceMonitor.Frameworks.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Entity\InterfaceMonitor.Frameworks.Entity.csproj">
+      <Project>{52dbdbe1-8805-42db-9b3a-2ded7638433b}</Project>
+      <Name>InterfaceMonitor.Frameworks.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Logical\InterfaceMonitor.Frameworks.Logical.csproj">
+      <Project>{580a2a97-d9df-47bd-afbd-56e2bbe21ab8}</Project>
+      <Name>InterfaceMonitor.Frameworks.Logical</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfaceMonitor.Frameworks.Utility\InterfaceMonitor.Frameworks.Utility.csproj">
       <Project>{f1957244-ebe3-404e-a705-7f4987583ec2}</Project>
       <Name>InterfaceMonitor.Frameworks.Utility</Name>
