@@ -19,7 +19,7 @@ namespace InterfaceMonitor.Frameworks.Dal
     public class InterfaceConfigInfoDal : IInterfaceConfigInfo
     {
         /// <summary>
-        /// 接口配置信息新增或修改方法
+        /// 接口配置信息数据新增或修改方法
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="mode"></param>
@@ -54,6 +54,20 @@ namespace InterfaceMonitor.Frameworks.Dal
                 cmd.CommandText = string.Format(sql, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.ServerUser, entity.UserPwd, entity.PersonOfChargeName, entity.PersonOfChargePhone,
                     entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.Id);
             }
+            cmd.ExecuteNonQuery();
+        }
+        /// <summary>
+        /// 接口配置信息数据删除方法
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="id"></param>
+        public void DeleteInterfaceConfigInfoById(IDbCommand icmd, Guid id)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"delete from interfaceconfiginfo where Id = '{0}'";
+            cmd.CommandText = string.Format(sql, id);
             cmd.ExecuteNonQuery();
         }
     }

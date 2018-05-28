@@ -116,5 +116,15 @@ namespace WindowsFormsTest
             //InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity2, ModifierType.Update);
             #endregion
         }
+        /// <summary>
+        /// 接口配置信息删除测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Guid id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
+            InterfaceConfigInfoOperation.DeleteInterfaceConfigInfoById(id);
+        }
     }
 }
