@@ -84,19 +84,37 @@ namespace WindowsFormsTest
         /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
-            InterfaceConfigInfo entity = new InterfaceConfigInfo();
-            entity.Id = Guid.NewGuid();
-            entity.InterfaceName = "InterfaceMonitor.Frameworks.Logical.InterfaceConfigInfoOperation";
-            entity.ApplicationName = "测试接口";
-            entity.ServerAddress = "192.168.1.100";
-            entity.ServerUser = "test";
-            entity.UserPwd = "test123";
-            entity.PersonOfChargeName = "json";
-            entity.PersonOfChargePhone = "13812345678";
-            entity.ConnectedTimeout = 200;
-            entity.DocumentHelpPath = "../root/test.pdf";
-            entity.Description = "不拉不拉不拉";
-            InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity, ModifierType.Add);
+            #region 接口配置添加测试
+            //InterfaceConfigInfo entity = new InterfaceConfigInfo();
+            //entity.Id = Guid.NewGuid();
+            //entity.InterfaceName = "InterfaceMonitor.Frameworks.Logical.InterfaceConfigInfoOperation";
+            //entity.ApplicationName = "测试接口";
+            //entity.ServerAddress = "192.168.1.100";
+            //entity.ServerUser = "test";
+            //entity.UserPwd = "test123";
+            //entity.PersonOfChargeName = "json";
+            //entity.PersonOfChargePhone = "13812345678";
+            //entity.ConnectedTimeout = 200;
+            //entity.DocumentHelpPath = "../root/test.pdf";
+            //entity.Description = "不拉不拉不拉";
+            //InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity, ModifierType.Add);
+            #endregion
+
+            #region 接口配置更新测试
+            //InterfaceConfigInfo entity2 = new InterfaceConfigInfo();
+            //entity2.Id = new Guid("BB71F8EB-1C7C-4E88-8FA5-EC76FF9F5189");
+            //entity2.InterfaceName = "InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal";
+            //entity2.ApplicationName = "测试接口2";
+            //entity2.ServerAddress = "192.168.1.80";
+            //entity2.ServerUser = "test";
+            //entity2.UserPwd = "test123";
+            //entity2.PersonOfChargeName = "json";
+            //entity2.PersonOfChargePhone = "13812345678";
+            //entity2.ConnectedTimeout = 200;
+            //entity2.DocumentHelpPath = "../root/test2.pdf";
+            //entity2.Description = "不拉不拉不拉呜呜呜呜";
+            //InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity2, ModifierType.Update);
+            #endregion
         }
     }
 }
