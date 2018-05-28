@@ -54,8 +54,9 @@ namespace WindowsFormsTest
         private void GetMySqlConfig()
         {
             SystemSettingBase.CreateInstance().SysMySqlDB.Server = "localhost";
-            SystemSettingBase.CreateInstance().SysMySqlDB.Database = "test";
+            SystemSettingBase.CreateInstance().SysMySqlDB.Database = "InterfaceMonitorDB";
             SystemSettingBase.CreateInstance().SysMySqlDB.Uid = "root";
+            SystemSettingBase.CreateInstance().SysMySqlDB.CharSet = "utf8";
             SystemSettingBase.CreateInstance().SysMySqlDB.Password = "jianglin";
         }
         /// <summary>
@@ -75,6 +76,27 @@ namespace WindowsFormsTest
         private void button4_Click(object sender, EventArgs e)
         {
             IDbConnection conn = DbConnOperation.CreateConnection();
+        }
+        /// <summary>
+        /// 接口配置信息添加测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click(object sender, EventArgs e)
+        {
+            InterfaceConfigInfo entity = new InterfaceConfigInfo();
+            entity.Id = Guid.NewGuid();
+            entity.InterfaceName = "InterfaceMonitor.Frameworks.Logical.InterfaceConfigInfoOperation";
+            entity.ApplicationName = "测试接口";
+            entity.ServerAddress = "192.168.1.100";
+            entity.ServerUser = "test";
+            entity.UserPwd = "test123";
+            entity.PersonOfChargeName = "json";
+            entity.PersonOfChargePhone = "13812345678";
+            entity.ConnectedTimeout = 200;
+            entity.DocumentHelpPath = "../root/test.pdf";
+            entity.Description = "不拉不拉不拉";
+            InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity, ModifierType.Add);
         }
     }
 }

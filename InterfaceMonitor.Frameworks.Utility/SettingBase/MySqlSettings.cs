@@ -50,6 +50,15 @@ namespace InterfaceMonitor.Frameworks.Utility
             set { this._password = value; }
         }
         /// <summary>
+        /// 字符集(有效的设置字符集可避免程序客户端和数据库字符集差异所引起的中文乱码问题)
+        /// </summary>
+        private string _charset;
+        public string CharSet
+        {
+            get { return _charset; }
+            set { this._charset = value; }
+        }
+        /// <summary>
         /// 数据库连接字符串
         /// </summary>
         public string ConnectionString
@@ -61,6 +70,8 @@ namespace InterfaceMonitor.Frameworks.Utility
                     sb.AppendFormat("Server={0};", this.Server);
                 if (!string.IsNullOrEmpty(Database))
                     sb.AppendFormat("Database={0};", this.Database);
+                if (!string.IsNullOrEmpty(CharSet))
+                    sb.AppendFormat("Charset={0};", CharSet);
                 if (!string.IsNullOrEmpty(Uid))
                     sb.AppendFormat("Uid={0};", this.Uid);
                 if (!string.IsNullOrEmpty(Password))

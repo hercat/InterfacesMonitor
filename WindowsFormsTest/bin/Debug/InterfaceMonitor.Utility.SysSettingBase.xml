@@ -4,9 +4,10 @@
   <FormatVersion>1.0.0.0</FormatVersion>
   <SysMySqlDB>
     <Server>localhost</Server>
-    <Database>test</Database>
+    <Database>InterfaceMonitorDB</Database>
     <Uid>root</Uid>
     <Password>jianglin</Password>
+    <CharSet>utf8</CharSet>
   </SysMySqlDB>
   <SysMongodb />
 </SystemSettingBase>
