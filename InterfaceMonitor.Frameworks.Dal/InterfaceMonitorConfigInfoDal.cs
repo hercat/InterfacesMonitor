@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InterfaceMonitor.Frameworks.Entity;
+using InterfaceMonitor.Frameworks.DalInterface;
 
-namespace InterfaceMonitor.Frameworks.DalInterface
+namespace InterfaceMonitor.Frameworks.Dal
 {
-    public interface IInterfaceMonitorConfigInfo
+    public class InterfaceMonitorConfigInfoDal : IInterfaceMonitorConfigInfo
     {
-        
+
     }
 }
