@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DbConnDal\DbConnDal.cs" />
     <Compile Include="InterfaceConfigInfoDal\InterfaceConfigInfoDal.cs" />
+    <Compile Include="InterfaceRealtimeInfo\InterfaceRealtimeInfoDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

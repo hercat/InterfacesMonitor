@@ -65,5 +65,25 @@ namespace InterfaceMonitor.Frameworks.Logical
         }
         #endregion
 
+        #region 接口实时状态数据提供对象
+        private static IInterfaceRealtimeInfo _dbInterfaceRealtimeDP;
+        public static IInterfaceRealtimeInfo DbInterfaceRealtimeDP
+        {
+            get
+            {
+                if (_dbInterfaceRealtimeDP == null)
+                {
+                    string dpname = "DbInterfaceRealtimeDP";
+                    string dllname, assname;
+                    if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
+                    {
+                        //后续增加日志处理
+                    }
+                    _dbInterfaceRealtimeDP = (IInterfaceRealtimeInfo)Assembly.Load(assname).CreateInstance(dllname);
+                }
+                return _dbInterfaceRealtimeDP;
+            }
+        }
+        #endregion
     }
 }

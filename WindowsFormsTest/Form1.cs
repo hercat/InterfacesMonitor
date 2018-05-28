@@ -147,5 +147,32 @@ namespace WindowsFormsTest
             string whereCondition = "where PersonInChargePhone = '13812345678'";
             List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoList(fields, whereCondition);
         }
+        /// <summary>
+        /// 接口实时状态添加测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button9_Click(object sender, EventArgs e)
+        {
+            InterfaceRealtimeInfo entity = new InterfaceRealtimeInfo();
+            entity.Id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
+            entity.InterfaceName = "InterfaceMonitor.Frameworks.Logical.InterfaceConfigInfoOperation";
+            entity.ApplicationName = "测试接口";
+            entity.ServerAddress = "192.168.1.100";
+            entity.StateCode = 200;
+            entity.UpdateTime = DateTime.Now;
+            InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(entity, ModifierType.Add);
+        }
+        /// <summary>
+        /// 获取接口实时状态列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string field = "Id,InterfaceName,ApplicationName,ServerAddress";
+            string whereCondition = "where StateCode = 200";
+            List<InterfaceRealtimeInfo> list = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoList(field, whereCondition);
+        }
     }
 }

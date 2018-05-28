@@ -23,6 +23,7 @@ namespace InterfaceMonitor.Frameworks.Utility
                     _dicDataProvider = new Dictionary<string, string>();
                     _dicDataProvider.Add("DbConnDP", "InterfaceMonitor.Frameworks.Dal.DbConnDal");
                     _dicDataProvider.Add("DbInterfaceConfigInfoDP", "InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal");
+                    _dicDataProvider.Add("DbInterfaceRealtimeDP", "InterfaceMonitor.Frameworks.Dal.InterfaceRealtimeInfoDal");
                 }
                 return _dicDataProvider;
             }

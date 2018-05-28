@@ -15,6 +15,10 @@ namespace InterfaceMonitor.Frameworks.Entity
     public class InterfaceRealtimeInfo
     {
         /// <summary>
+        /// 编号
+        /// </summary>
+        public Guid Id { get; set; }
+        /// <summary>
         /// 接口名
         /// </summary>
         public string InterfaceName { get; set; }
@@ -45,6 +49,8 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// <returns></returns>
         public bool AllParse(DataRow dr)
         {
+            if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.Id.ToString()))
+                Id = new Guid(dr[EnumInterfaceRealtimeInfo.Id.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.InterfaceName.ToString()))
                 InterfaceName = dr[EnumInterfaceRealtimeInfo.InterfaceName.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.ApplicationName.ToString()))
@@ -65,6 +71,7 @@ namespace InterfaceMonitor.Frameworks.Entity
     /// </summary>
     public enum EnumInterfaceRealtimeInfo
     {
+        Id,
         InterfaceName,
         ApplicationName,
         ServerAddress,
