@@ -85,5 +85,26 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
         }
         #endregion
+
+        #region 接口异常日志信息数据提供对象
+        private static IInterfaceExceptionlog _dbInterfaceExceptionlogDP;
+        public static IInterfaceExceptionlog DbInterfaceExceptionlogDP
+        {
+            get
+            {
+                if (_dbInterfaceExceptionlogDP == null)
+                {
+                    string dpname = "DbInterfaceExceptionlogDP";
+                    string dllname, assname;
+                    if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
+                    {
+                        //后续增加日志处理
+                    }
+                    _dbInterfaceExceptionlogDP = (IInterfaceExceptionlog)Assembly.Load(assname).CreateInstance(dllname);
+                }
+                return _dbInterfaceExceptionlogDP;
+            }
+        }
+        #endregion
     }
 }
