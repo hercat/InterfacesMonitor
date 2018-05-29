@@ -241,5 +241,16 @@ namespace WindowsFormsTest
             InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfo("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "测试接口2", "192.168.1.80", 100);
             InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfoWithException("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "测试接口2", "192.168.1.80", 80, "InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal尝试连接失败，请重试！");
         }
+        /// <summary>
+        /// 分页测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button17_Click(object sender, EventArgs e)
+        {
+            List<InterfaceConfigInfo> configs = InterfaceConfigInfoOperation.GetInterfaceConfigInfoPageList("Id,InterfaceName,ApplicationName,ServerAddress", "where UserPwd = 'test123'", 1, 2);
+            List<InterfaceExceptionlog> logs = InterfaceExceptionlogOperation.GetInterfaceExceptionlogPageList("Id,ConfigId,StateCode,ExceptionInfo,CreateTime", "where StateCode = 500", 1, 3);
+            List<InterfaceRealtimeInfo> realtimes = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoPageList("Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime", "where ApplicationName like '%测试接口%'", 1, 2);
+        }
     }
 }
