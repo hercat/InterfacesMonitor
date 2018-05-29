@@ -16,5 +16,6 @@ namespace InterfaceMonitor.Frameworks.DalInterface
     public interface IInterfaceExceptionlog
     {
         void AddInterfaceExceptionlogInfo(IDbCommand idbcmd,InterfaceExceptionlog info);
+        List<InterfaceExceptionlog> GetInterfaceExceptionlogList(IDbCommand idbcmd, string fields, string whereCondition);
     }
 }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\IDbConn.cs" />
+    <Compile Include="InterfaceExceptionlog\IInterfaceExceptionlog.cs" />
     <Compile Include="InterfaceRealtimeInfo\IInterfaceRealtimeInfo.cs" />
     <Compile Include="InterfaceConfigInfo\IInterfaceConfigInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

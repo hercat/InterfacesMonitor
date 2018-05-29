@@ -27,10 +27,44 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"insert into interfaceexceptionlog(Id,ConfigId,StateCode,ExceptionInfo,CreateTime)
-                            values('{0}','{1}',{2},'{3}','{4}')";
-            cmd.CommandText = string.Format(sql, info.Id, info.ConfigId, info.StateCode, info.ExceptionInfo, info.CreateTime);
+            string sql = @"insert into interfaceexceptionlog(ConfigId,StateCode,ExceptionInfo,CreateTime)
+                            values('{0}',{1},'{2}','{3}')";
+            cmd.CommandText = string.Format(sql, info.ConfigId, info.StateCode, info.ExceptionInfo, info.CreateTime);
             cmd.ExecuteNonQuery();
+        }
+        /// <summary>
+        /// 获取接口异常日志信息列表
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="fields">字段名</param>
+        /// <param name="whereCondition">筛选条件</param>
+        /// <returns></returns>
+        public List<InterfaceExceptionlog> GetInterfaceExceptionlogList(IDbCommand icmd, string fields, string whereCondition)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(fields))
+                sb.AppendFormat("select {0} from interfaceexceptionlog ", fields);
+            if (!string.IsNullOrEmpty(whereCondition))
+                sb.AppendFormat(whereCondition);
+            cmd.CommandText = sb.ToString();
+            List<InterfaceExceptionlog> list = new List<InterfaceExceptionlog>();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                InterfaceExceptionlog obj = null;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    obj = new InterfaceExceptionlog();
+                    obj.AllParse(dr);
+                    if (null != obj)
+                        list.Add(obj);
+                }
+            }
+            return list;
         }
     }
 }

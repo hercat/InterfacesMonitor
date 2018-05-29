@@ -194,5 +194,30 @@ namespace WindowsFormsTest
             Guid id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
             InterfaceRealtimeInfo info = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(id);
         }
+        /// <summary>
+        /// 新增接口异常日志信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button13_Click(object sender, EventArgs e)
+        {
+            InterfaceExceptionlog log = new InterfaceExceptionlog();
+            log.ConfigId = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
+            log.StateCode = 500;
+            log.ExceptionInfo = "接口连接异常，尝试连接多次超时，不拉不拉不拉不拉";
+            log.CreateTime = DateTime.Now;
+            InterfaceExceptionlogOperation.AddInterfaceExceptionlogInfo(log);
+        }
+        /// <summary>
+        /// 获取接口遗产日志信息列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button14_Click(object sender, EventArgs e)
+        {
+            string fields = "Id,ConfigId,StateCode,ExceptionInfo,CreateTime";
+            string whereCndition = "where StateCode = 500";
+            List<InterfaceExceptionlog> list = InterfaceExceptionlogOperation.GetInterfaceExceptionlogList(fields, whereCndition);
+        }
     }
 }
