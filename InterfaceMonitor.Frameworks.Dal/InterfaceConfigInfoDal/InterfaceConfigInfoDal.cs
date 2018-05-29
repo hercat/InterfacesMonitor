@@ -32,10 +32,10 @@ namespace InterfaceMonitor.Frameworks.Dal
             {                
                 string sql = @"insert into interfaceconfiginfo(Id,InterfaceName,ApplicationName,ServerAddress,
                                 ServerUser,UserPwd,PersonInChargeName,PersonInChargePhone,ConnectedTimeout,
-                                DocumentHelpPath,Description)
-                            values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')";
+                                DocumentHelpPath,Description,CreateTime)
+                            values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}','{11}')";
                 cmd.CommandText = string.Format(sql, entity.Id, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.ServerUser, entity.UserPwd, entity.PersonOfChargeName, entity.PersonOfChargePhone,
-                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description);
+                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.CreateTime);
             }
             else if (mode == ModifierType.Update)
             {
@@ -49,10 +49,11 @@ namespace InterfaceMonitor.Frameworks.Dal
                                 PersonInChargePhone = '{6}',
                                 ConnectedTimeout = {7},
                                 DocumentHelpPath = '{8}',
-                                Description = '{9}'
-                                where Id = '{10}'";
+                                Description = '{9}',
+                                CreateTime = '{10}'
+                                where Id = '{11}'";
                 cmd.CommandText = string.Format(sql, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.ServerUser, entity.UserPwd, entity.PersonOfChargeName, entity.PersonOfChargePhone,
-                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.Id);
+                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.CreateTime, entity.Id);
             }
             cmd.ExecuteNonQuery();
         }
@@ -81,7 +82,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime
                             from interfaceconfiginfo
                             where Id = '{0}'";
             cmd.CommandText = string.Format(sql, id);

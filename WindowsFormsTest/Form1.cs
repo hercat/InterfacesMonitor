@@ -97,6 +97,7 @@ namespace WindowsFormsTest
             entity.ConnectedTimeout = 200;
             entity.DocumentHelpPath = "../root/test.pdf";
             entity.Description = "不拉不拉不拉";
+            entity.CreateTime = DateTime.Now;
             InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity, ModifierType.Add);
             #endregion
 
@@ -113,6 +114,7 @@ namespace WindowsFormsTest
             //entity2.ConnectedTimeout = 200;
             //entity2.DocumentHelpPath = "../root/test2.pdf";
             //entity2.Description = "不拉不拉不拉呜呜呜呜";
+            //entity.CreateTime = DateTime.Now;
             //InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(entity2, ModifierType.Update);
             #endregion
         }

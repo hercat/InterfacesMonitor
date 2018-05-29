@@ -59,6 +59,10 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public string Description { get; set; }
         /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+        /// <summary>
         /// AllParse
         /// </summary>
         /// <param name="dr"></param>
@@ -87,6 +91,8 @@ namespace InterfaceMonitor.Frameworks.Entity
                 DocumentHelpPath = dr[EnumInterfaceConfigInfo.DocumentHelpPath.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.Description.ToString()))
                 Description = dr[EnumInterfaceConfigInfo.Description.ToString()].ToString();
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.CreateTime.ToString()))
+                CreateTime = DateTime.Parse(dr[EnumInterfaceConfigInfo.CreateTime.ToString()].ToString());
             return true;
         }
     }
@@ -105,6 +111,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         PersonInChargePhone,
         ConnectedTimeout,
         DocumentHelpPath,
-        Description
+        Description,
+        CreateTime
     }
 }
