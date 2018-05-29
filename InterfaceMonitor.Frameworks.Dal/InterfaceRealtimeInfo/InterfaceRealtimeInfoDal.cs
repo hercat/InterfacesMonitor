@@ -28,9 +28,23 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"insert into interfacerealtimeinfo(Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime)
+            if (mode == ModifierType.Add)
+            {
+                string sql = @"insert into interfacerealtimeinfo(Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime)
                             values('{0}','{1}','{2}','{3}',{4},'{5}')";
-            cmd.CommandText = string.Format(sql, entity.Id, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.StateCode, entity.UpdateTime);
+                cmd.CommandText = string.Format(sql, entity.Id, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.StateCode, entity.UpdateTime);
+            }
+            else if (mode == ModifierType.Update)
+            {
+                string sql = @"update interfacerealtimeinfo
+                                set InterfaceName = '{0}',
+                                ApplicationName = '{1}',
+                                ServerAddress = '{2}',
+                                StateCode = {3},
+                                UpdateTime = '{4}'
+                                where Id = '{5}'";
+                cmd.CommandText = string.Format(sql, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.StateCode, entity.UpdateTime, entity.Id);
+            }
             cmd.ExecuteNonQuery();
         }
         /// <summary>
@@ -91,6 +105,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             cmd.CommandText = string.Format(sql, interfaceName, applicationName, server);
             InterfaceRealtimeInfo info = null;
             DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
             if (dt.Rows.Count > 0)
             {
                 info = new InterfaceRealtimeInfo();

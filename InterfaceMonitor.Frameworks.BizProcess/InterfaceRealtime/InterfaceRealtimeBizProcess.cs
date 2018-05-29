@@ -25,9 +25,12 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         public static void UpdateInterfaceRealtimeInfo(string interfaceName, string applicationName, string server, int stateCode)
         {
             InterfaceRealtimeInfo info = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(interfaceName, applicationName, server);
-            info.StateCode = stateCode;
-            info.UpdateTime = DateTime.Now;
-            InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(info, ModifierType.Update);
+            if (null != info)
+            {
+                info.StateCode = stateCode;
+                info.UpdateTime = DateTime.Now;
+                InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(info, ModifierType.Update);
+            }
         }
         /// <summary>
         /// 更新接口实时状态信息、接口异常日志信息业务逻辑
@@ -41,15 +44,21 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         {
             InterfaceRealtimeInfo realtime = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(interfaceName, applicationName, server);
             InterfaceConfigInfo config = InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server);
-            realtime.StateCode = stateCode;
-            realtime.UpdateTime = DateTime.Now;
-            InterfaceExceptionlog log = new InterfaceExceptionlog();
-            log.ConfigId = config.Id;
-            log.StateCode = stateCode;
-            log.ExceptionInfo = exceptionInfo;
-            log.CreateTime = DateTime.Now;
-            InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Update);
-            InterfaceExceptionlogOperation.AddInterfaceExceptionlogInfo(log);
+            if (null != realtime)
+            {
+                realtime.StateCode = stateCode;
+                realtime.UpdateTime = DateTime.Now;
+                InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Update);
+            }
+            if (!string.IsNullOrEmpty(exceptionInfo))
+            {
+                InterfaceExceptionlog log = new InterfaceExceptionlog();
+                log.ConfigId = config.Id;
+                log.StateCode = stateCode;
+                log.ExceptionInfo = exceptionInfo;
+                log.CreateTime = DateTime.Now;
+                InterfaceExceptionlogOperation.AddInterfaceExceptionlogInfo(log);
+            }            
         }
     }
 }

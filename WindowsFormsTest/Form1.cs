@@ -235,5 +235,11 @@ namespace WindowsFormsTest
         {
             InterfaceConfigInitBizProcess.SaveInterfaceInitial("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", "test3", "test123", "WUWEI", "13812345678", 0, "./test/test3.pdf", "添加描述测试内容");
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfo("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "测试接口2", "192.168.1.80", 100);
+            InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfoWithException("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "测试接口2", "192.168.1.80", 80, "InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal尝试连接失败，请重试！");
+        }
     }
 }
