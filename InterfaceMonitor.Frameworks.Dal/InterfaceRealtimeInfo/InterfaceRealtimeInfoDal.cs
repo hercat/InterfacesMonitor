@@ -146,6 +146,44 @@ namespace InterfaceMonitor.Frameworks.Dal
                 }
             }
             return list;
-        }        
+        }
+        /// <summary>
+        /// 获取实时状态信息列表（带分页）
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="fields"></param>
+        /// <param name="whereCondition"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<InterfaceRealtimeInfo> GetInterfaceRealtimeInfoPageList(IDbCommand icmd, string fields, string whereCondition, int pageIndex, int pageSize)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            StringBuilder sb = new StringBuilder();
+            int startIndex = (pageIndex - 1) * pageSize;//计算页面开始下标值
+            if (!string.IsNullOrEmpty(fields))
+                sb.AppendFormat("select {0} from interfacerealtimeinfo ", fields);
+            if (!string.IsNullOrEmpty(whereCondition))
+                sb.AppendFormat("{0} ", whereCondition);
+            sb.AppendFormat("limit {0},{1}", startIndex, pageSize);
+            cmd.CommandText = sb.ToString();
+            List<InterfaceRealtimeInfo> list = new List<InterfaceRealtimeInfo>();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                InterfaceRealtimeInfo obj = null;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    obj = new InterfaceRealtimeInfo();
+                    obj.AllParse(dr);
+                    if (null != obj)
+                        list.Add(obj);
+                }
+            }
+            return list;
+        }
     }
 }

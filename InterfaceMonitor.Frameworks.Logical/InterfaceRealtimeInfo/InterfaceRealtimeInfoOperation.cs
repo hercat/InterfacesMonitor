@@ -183,5 +183,42 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
             return list;
         }
+        /// <summary>
+        /// 获取实时状态信息列表(带分页)
+        /// </summary>
+        /// <param name="fields">字段名</param>
+        /// <param name="whereCondition">sql筛选条件</param>
+        /// <param name="pageIndex">页面下标</param>
+        /// <param name="pageSize">页面大小</param>
+        /// <returns></returns>
+        public static List<InterfaceRealtimeInfo> GetInterfaceRealtimeInfoPageList(string fields, string whereCondition, int pageIndex, int pageSize)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            List<InterfaceRealtimeInfo> list = new List<InterfaceRealtimeInfo>();
+            try
+            {
+                IInterfaceRealtimeInfo dp = DataProvider.DbInterfaceRealtimeDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                list = dp.GetInterfaceRealtimeInfoPageList(cmd, fields, whereCondition, pageIndex, pageSize);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return list;
+        }
     }
 }
