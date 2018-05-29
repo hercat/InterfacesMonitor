@@ -111,6 +111,42 @@ namespace InterfaceMonitor.Frameworks.Logical
             return entity;
         }
         /// <summary>
+        /// 根据接口名、应用系统名和服务器地址获取配置信息
+        /// </summary>
+        /// <param name="interfaceName">接口名</param>
+        /// <param name="applicationName">应用系统名</param>
+        /// <param name="server">服务器地址</param>
+        /// <returns></returns>
+        public static InterfaceConfigInfo GetInterfaceConfigInfo(string interfaceName, string applicationName, string server)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            InterfaceConfigInfo info = null;
+            try
+            {
+                IInterfaceConfigInfo dp = DataProvider.DbInterfaceConfigDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                info = dp.GetInterfaceConfigInfo(cmd, interfaceName, applicationName, server);
+                trans.Commit();               
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return info;
+        }
+        /// <summary>
         /// 获取接口配置信息列表
         /// </summary>
         /// <param name="fields">字段</param>

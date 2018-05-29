@@ -136,8 +136,12 @@ namespace WindowsFormsTest
         /// <param name="e"></param>
         private void button7_Click(object sender, EventArgs e)
         {
+            #region 根据Id获取接口配置信息
             Guid id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
             InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(id);
+            #endregion
+            //根据接口名、应用系统名和服务器地址获取接口配置信息
+            InterfaceConfigInfo info2 = InterfaceConfigInfoOperation.GetInterfaceConfigInfo("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "测试接口2", "192.168.1.80");
         }
         /// <summary>
         /// 获取接口配置信息列表测试

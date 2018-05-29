@@ -97,6 +97,34 @@ namespace InterfaceMonitor.Frameworks.Dal
             return entity;
         }
         /// <summary>
+        /// 根据接口名、应用系统名和服务器地址获取配置信息
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="interfaceName"></param>
+        /// <param name="applicationName"></param>
+        /// <param name="server"></param>
+        /// <returns></returns>
+        public InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand icmd, string interfaceName, string applicationName, string server)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,
+                            PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime
+                            from interfaceconfiginfo
+                            where InterfaceName = '{0}' and ApplicationName = '{1}' and ServerAddress = '{2}'";
+            cmd.CommandText = string.Format(sql, interfaceName, applicationName, server);
+            InterfaceConfigInfo info = null;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                info = new InterfaceConfigInfo();
+                info.AllParse(dt.Rows[0]);
+            }
+            return info;
+        }
+        /// <summary>
         /// 获取接口配置信息列表
         /// </summary>
         /// <param name="icmd"></param>
