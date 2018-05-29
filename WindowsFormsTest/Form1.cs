@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using InterfaceMonitor.Frameworks.Utility;
 using InterfaceMonitor.Frameworks.Entity;
 using InterfaceMonitor.Frameworks.Logical;
+using InterfaceMonitor.Frameworks.BizProcess;
 
 namespace WindowsFormsTest
 {
@@ -220,6 +221,15 @@ namespace WindowsFormsTest
             string fields = "Id,ConfigId,StateCode,ExceptionInfo,CreateTime";
             string whereCndition = "where StateCode = 500";
             List<InterfaceExceptionlog> list = InterfaceExceptionlogOperation.GetInterfaceExceptionlogList(fields, whereCndition);
+        }
+        /// <summary>
+        /// 接口初始化方法测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button15_Click(object sender, EventArgs e)
+        {
+            InterfaceConfigInitBizProcess.SaveInterfaceInitial("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", "test3", "test123", "WUWEI", "13812345678", 0, "./test/test3.pdf", "添加描述测试内容");
         }
     }
 }

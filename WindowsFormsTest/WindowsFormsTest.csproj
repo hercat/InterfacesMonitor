@@ -80,6 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.BizProcess\InterfaceMonitor.Frameworks.BizProcess.csproj">
+      <Project>{01435ebb-4a93-4feb-b3df-c9a5090f7f5e}</Project>
+      <Name>InterfaceMonitor.Frameworks.BizProcess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfaceMonitor.Frameworks.DalInterface\InterfaceMonitor.Frameworks.DalInterface.csproj">
       <Project>{fecaef8f-29c0-4ecf-9435-7ac998d253e9}</Project>
       <Name>InterfaceMonitor.Frameworks.DalInterface</Name>

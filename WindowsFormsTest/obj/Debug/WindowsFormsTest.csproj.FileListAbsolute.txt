@@ -20,3 +20,5 @@ C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\Interfa
 C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\InterfaceMonitor.Frameworks.Logical.pdb
 C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\InterfaceMonitor.Frameworks.Dal.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\InterfaceMonitor.Frameworks.Dal.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\InterfaceMonitor.Frameworks.BizProcess.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\WindowsFormsTest\bin\Debug\InterfaceMonitor.Frameworks.BizProcess.pdb

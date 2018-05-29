@@ -8,8 +8,26 @@ using InterfaceMonitor.Frameworks.Logical;
 
 namespace InterfaceMonitor.Frameworks.BizProcess
 {
+    /// <summary>
+    /// Description:接口配置相关业务封装处理方法类
+    /// Author:WUWEI
+    /// Date:2017/05/29
+    /// </summary>
     public class InterfaceConfigInitBizProcess
     {
+        /// <summary>
+        /// 接口初始化业务逻辑方法
+        /// </summary>
+        /// <param name="interfaceName">接口名</param>
+        /// <param name="applicationName">应用系统名</param>
+        /// <param name="server">服务器地址</param>
+        /// <param name="user">用户名</param>
+        /// <param name="userPwd">密码</param>
+        /// <param name="charger">负责人</param>
+        /// <param name="phone">负责人联系号码</param>
+        /// <param name="timeout">超时时间</param>
+        /// <param name="path">帮助文档存放路径</param>
+        /// <param name="descript">描述</param>
         public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript)
         {
             InterfaceConfigInfo config = new InterfaceConfigInfo();
