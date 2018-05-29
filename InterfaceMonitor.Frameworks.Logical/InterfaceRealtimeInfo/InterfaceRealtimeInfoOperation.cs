@@ -80,10 +80,44 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
         }
         /// <summary>
+        /// 根据Id编号获取接口实时状态信息
+        /// </summary>
+        /// <param name="id">编号</param>
+        /// <returns></returns>
+        public static InterfaceRealtimeInfo GetInterfaceRealtimeInfo(Guid id)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            InterfaceRealtimeInfo info = null;
+            try
+            {
+                IInterfaceRealtimeInfo dp = DataProvider.DbInterfaceRealtimeDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                info = dp.GetInterfaceRealtimeInfo(cmd, id);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return info;
+        }
+        /// <summary>
         /// 获取实时状态信息列表
         /// </summary>
-        /// <param name="fields"></param>
-        /// <param name="whereCondition"></param>
+        /// <param name="fields">字段</param>
+        /// <param name="whereCondition">where语句</param>
         /// <returns></returns>
         public static List<InterfaceRealtimeInfo> GetInterfaceRealtimeInfoList(string fields, string whereCondition)
         {

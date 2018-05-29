@@ -48,6 +48,31 @@ namespace InterfaceMonitor.Frameworks.Dal
             cmd.ExecuteNonQuery();
         }
         /// <summary>
+        /// 根据Id获取实时状态信息
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public InterfaceRealtimeInfo GetInterfaceRealtimeInfo(IDbCommand icmd, Guid id)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime 
+                            from interfacerealtimeinfo
+                            where Id = '{0}'";
+            cmd.CommandText = string.Format(sql, id);
+            InterfaceRealtimeInfo info = null;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                info = new InterfaceRealtimeInfo();
+                info.AllParse(dt.Rows[0]);
+            }
+            return info;
+        }
+        /// <summary>
         /// 获取实时状态信息列表
         /// </summary>
         /// <param name="icmd"></param>

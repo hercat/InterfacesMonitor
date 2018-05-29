@@ -184,5 +184,15 @@ namespace WindowsFormsTest
             Guid id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
             InterfaceRealtimeInfoOperation.DeleteInterfaceRealtimeInfoById(id);
         }
+        /// <summary>
+        /// 根据Id获取
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Guid id = new Guid("ad6fb4e4-96c0-4e15-a072-dd921bcac243");
+            InterfaceRealtimeInfo info = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(id);
+        }
     }
 }
