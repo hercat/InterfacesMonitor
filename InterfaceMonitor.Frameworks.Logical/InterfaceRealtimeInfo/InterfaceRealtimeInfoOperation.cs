@@ -114,6 +114,41 @@ namespace InterfaceMonitor.Frameworks.Logical
             return info;
         }
         /// <summary>
+        /// 根据接口名、应用系统名和服务器地址获取接口实时状态信息
+        /// </summary>
+        /// <param name="interfaceName">接口名</param>
+        /// <param name="applicationName">应用系统名</param>
+        /// <param name="server">服务器地址</param>
+        /// <returns></returns>
+        public static InterfaceRealtimeInfo GetInterfaceRealtimeInfo(string interfaceName, string applicationName, string server)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            InterfaceRealtimeInfo info = null;
+            try
+            {
+                IInterfaceRealtimeInfo dp = DataProvider.DbInterfaceRealtimeDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                info = dp.GetInterfaceRealtimeInfo(cmd, interfaceName, applicationName, server);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return info;
+        }
+        /// <summary>
         /// 获取实时状态信息列表
         /// </summary>
         /// <param name="fields">字段</param>

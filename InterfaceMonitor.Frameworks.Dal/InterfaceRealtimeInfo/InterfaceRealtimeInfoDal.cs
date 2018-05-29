@@ -73,6 +73,32 @@ namespace InterfaceMonitor.Frameworks.Dal
             return info;
         }
         /// <summary>
+        /// 根据接口名、应用系统名和服务器地址获取接口实时状态信息
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="interfaceName"></param>
+        /// <param name="applicationName"></param>
+        /// <param name="server"></param>
+        /// <returns></returns>
+        public InterfaceRealtimeInfo GetInterfaceRealtimeInfo(IDbCommand icmd, string interfaceName, string applicationName, string server)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime
+                                from interfacerealtimeinfo
+                                where InterfaceName = '{0}' and ApplicationName = '{1}' and ServerAddress = '{2}'";
+            cmd.CommandText = string.Format(sql, interfaceName, applicationName, server);
+            InterfaceRealtimeInfo info = null;
+            DataTable dt = new DataTable();
+            if (dt.Rows.Count > 0)
+            {
+                info = new InterfaceRealtimeInfo();
+                info.AllParse(dt.Rows[0]);
+            }
+            return info;
+        }
+        /// <summary>
         /// 获取实时状态信息列表
         /// </summary>
         /// <param name="icmd"></param>
