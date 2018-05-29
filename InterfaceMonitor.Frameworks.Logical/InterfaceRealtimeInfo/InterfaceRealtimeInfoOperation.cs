@@ -62,6 +62,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 IInterfaceRealtimeInfo dp = DataProvider.DbInterfaceRealtimeDP;
                 conn = DbConnOperation.CreateConnection();
                 cmd = conn.CreateCommand();
+                conn.Open();
                 trans = conn.BeginTransaction();
                 cmd.Transaction = trans;
                 dp.DeleteInterfaceRealtimeInfoById(cmd, id);
