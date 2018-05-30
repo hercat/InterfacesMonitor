@@ -11,6 +11,8 @@ using InterfaceMonitor.Frameworks.Utility;
 using InterfaceMonitor.Frameworks.Entity;
 using InterfaceMonitor.Frameworks.Logical;
 using InterfaceMonitor.Frameworks.BizProcess;
+using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace WindowsFormsTest
 {
@@ -251,6 +253,89 @@ namespace WindowsFormsTest
             List<InterfaceConfigInfo> configs = InterfaceConfigInfoOperation.GetInterfaceConfigInfoPageList("Id,InterfaceName,ApplicationName,ServerAddress", "where UserPwd = 'test123'", 1, 2);
             List<InterfaceExceptionlog> logs = InterfaceExceptionlogOperation.GetInterfaceExceptionlogPageList("Id,ConfigId,StateCode,ExceptionInfo,CreateTime", "where StateCode = 500", 1, 3);
             List<InterfaceRealtimeInfo> realtimes = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoPageList("Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime", "where ApplicationName like '%测试接口%'", 1, 2);
+        }
+        /// <summary>
+        /// 写入Blb类型数据测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button18_Click(object sender, EventArgs e)
+        {
+            byte[] bytes = File.ReadAllBytes("./test.jpg");
+            string connString = "server=localhost;Database=test;Uid=root;Pwd=jianglin";
+            MySqlConnection conn = null;
+            MySqlCommand cmd = null;
+            MySqlTransaction trans = null;
+            try
+            {
+                conn = new MySqlConnection(connString);
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "insert into pictures(pictureBytes,CreateTime) values(@bytes,@createtime)";
+                cmd.Parameters.Add("@bytes", MySql.Data.MySqlClient.MySqlDbType.MediumBlob);
+                cmd.Parameters.Add("@createtime", MySql.Data.MySqlClient.MySqlDbType.DateTime);
+                cmd.Parameters[0].Value = bytes;
+                cmd.Parameters[1].Value = DateTime.Now;
+                cmd.ExecuteNonQuery();
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+        }
+        /// <summary>
+        /// 读取Bolb数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button19_Click(object sender, EventArgs e)
+        {
+            string connString = "server=localhost;Database=test;Uid=root;Pwd=jianglin";
+            MySqlConnection conn = null;
+            MySqlCommand cmd = null;
+            MySqlTransaction trans = null;
+            try
+            {
+                conn = new MySqlConnection(connString);
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select pictureBytes from pictures where Id = 1";
+                System.Data.Common.DbDataReader reader = cmd.ExecuteReader();
+                byte[] buffer = null;
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    long len = reader.GetBytes(0, 0, null, 0, 0);
+                    buffer = new byte[len];
+                    len = reader.GetBytes(0, 0, buffer, 0, (int)len);
+                    MemoryStream stream = new MemoryStream(buffer);
+                    System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
+                    image.Save(string.Format("../{0}.jpg", Guid.NewGuid().ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
         }
     }
 }
