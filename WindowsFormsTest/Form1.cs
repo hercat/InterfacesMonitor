@@ -359,6 +359,7 @@ namespace WindowsFormsTest
             }
             finally
             {
+                //WebService服务异常时处理
                 client.Close();
             }            
         }
