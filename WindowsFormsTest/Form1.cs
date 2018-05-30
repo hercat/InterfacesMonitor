@@ -216,7 +216,7 @@ namespace WindowsFormsTest
             InterfaceExceptionlogOperation.AddInterfaceExceptionlogInfo(log);
         }
         /// <summary>
-        /// 获取接口遗产日志信息列表
+        /// 获取接口异常日志信息列表
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -242,7 +242,7 @@ namespace WindowsFormsTest
             InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfoWithException("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "测试接口2", "192.168.1.80", 80, "InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal尝试连接失败，请重试！");
         }
         /// <summary>
-        /// 分页测试
+        /// 接口配置信息、接口实时状态信息及接口异常日志信息分页逻辑测试
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
