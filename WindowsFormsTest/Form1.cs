@@ -346,10 +346,21 @@ namespace WindowsFormsTest
         private void button20_Click(object sender, EventArgs e)
         {
             WebService1SoapClient client = new WebService1SoapClient();
-            //调用UpdateInterfaceRealtimeInfoService接口
-            //client.UpdateInterfaceRealtimeInfoService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90);
-            //调用UpdateInterfaceRealtimeInfoWithExceptionService接口
-            client.UpdateInterfaceRealtimeInfoWithExceptionService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90, "接口相关WebService调用异常");
+            try
+            {
+                //调用UpdateInterfaceRealtimeInfoService接口
+                //client.UpdateInterfaceRealtimeInfoService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90);
+                //调用UpdateInterfaceRealtimeInfoWithExceptionService接口
+                client.UpdateInterfaceRealtimeInfoWithExceptionService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90, "接口相关WebService调用异常");
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                client.Close();
+            }            
         }
     }
 }
