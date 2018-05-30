@@ -13,6 +13,7 @@ using InterfaceMonitor.Frameworks.Logical;
 using InterfaceMonitor.Frameworks.BizProcess;
 using MySql.Data.MySqlClient;
 using System.IO;
+using WindowsFormsTest.ServiceReference1;
 
 namespace WindowsFormsTest
 {
@@ -336,6 +337,17 @@ namespace WindowsFormsTest
                 if (null != conn)
                     conn.Close();
             }
+        }
+        /// <summary>
+        /// Webservice调用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button20_Click(object sender, EventArgs e)
+        {
+            WebService1SoapClient client = new WebService1SoapClient();
+            //client.UpdateInterfaceRealtimeInfoService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90);
+            client.UpdateInterfaceRealtimeInfoWithExceptionService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90, "接口相关WebService调用异常");
         }
     }
 }
