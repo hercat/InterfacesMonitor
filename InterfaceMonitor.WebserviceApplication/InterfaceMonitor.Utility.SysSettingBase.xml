@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SystemSettingBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileName>C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\InterfaceMonitor.Utility.SysSettingBase.xml</FileName>
+  <FormatVersion>10.0.14358.1000</FormatVersion>
+  <SysMySqlDB>
+    <Server>localhost</Server>
+    <Database>InterfaceMonitorDB</Database>
+    <Uid>root</Uid>
+    <Password>jianglin</Password>
+    <CharSet>utf8</CharSet>
+  </SysMySqlDB>
+  <SysMongodb />
+</SystemSettingBase>

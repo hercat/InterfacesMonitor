@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Configuration\WebServiceConfig.aspx" />
     <None Include="Properties\PublishProfiles\WebService.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -77,13 +78,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
-    <Content Include="WebService1.asmx" />
+    <Content Include="InterfaceMonitor.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebService1.asmx.cs">
-      <DependentUpon>WebService1.asmx</DependentUpon>
+    <Compile Include="InterfaceMonitor.asmx.cs">
+      <DependentUpon>InterfaceMonitor.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Configuration\WebServiceConfig.aspx.cs">
+      <DependentUpon>WebServiceConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\WebServiceConfig.aspx.designer.cs">
+      <DependentUpon>WebServiceConfig.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +107,12 @@
       <Project>{52dbdbe1-8805-42db-9b3a-2ded7638433b}</Project>
       <Name>InterfaceMonitor.Frameworks.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Utility\InterfaceMonitor.Frameworks.Utility.csproj">
+      <Project>{f1957244-ebe3-404e-a705-7f4987583ec2}</Project>
+      <Name>InterfaceMonitor.Frameworks.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
