@@ -14,3 +14,4 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logica
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\bin\Debug\MongoDB.Bson.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\bin\Debug\InterfaceMonitor.Frameworks.Dal.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\bin\Debug\InterfaceMonitor.Frameworks.Dal.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\bin\Debug\MyMVC.dll
