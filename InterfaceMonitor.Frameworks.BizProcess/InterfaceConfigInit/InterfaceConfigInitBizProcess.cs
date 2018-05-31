@@ -30,30 +30,34 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="descript">描述</param>
         public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript)
         {
-            InterfaceConfigInfo config = new InterfaceConfigInfo();
-            config.Id = Guid.NewGuid();
-            config.InterfaceName = interfaceName;
-            config.ApplicationName = applicationName;
-            config.ServerAddress = server;
-            config.ServerUser = user;
-            config.UserPwd = userPwd;
-            config.PersonOfChargeName = charger;
-            config.PersonOfChargePhone = phone;
-            config.ConnectedTimeout = timeout;
-            config.DocumentHelpPath = path;
-            config.Description = descript;
-            config.CreateTime = DateTime.Now;
+            //判断接口配置信息是否存在，如果不存在则新增
+            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server) == null)
+            {
+                InterfaceConfigInfo config = new InterfaceConfigInfo();
+                config.Id = Guid.NewGuid();
+                config.InterfaceName = interfaceName;
+                config.ApplicationName = applicationName;
+                config.ServerAddress = server;
+                config.ServerUser = user;
+                config.UserPwd = userPwd;
+                config.PersonOfChargeName = charger;
+                config.PersonOfChargePhone = phone;
+                config.ConnectedTimeout = timeout;
+                config.DocumentHelpPath = path;
+                config.Description = descript;
+                config.CreateTime = DateTime.Now;
 
-            InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
-            realtime.Id = Guid.NewGuid();
-            realtime.InterfaceName = interfaceName;
-            realtime.ApplicationName = applicationName;
-            realtime.ServerAddress = server;
-            realtime.StateCode = 0;
-            realtime.UpdateTime = DateTime.Now;
+                InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
+                realtime.Id = Guid.NewGuid();
+                realtime.InterfaceName = interfaceName;
+                realtime.ApplicationName = applicationName;
+                realtime.ServerAddress = server;
+                realtime.StateCode = 0;
+                realtime.UpdateTime = DateTime.Now;
 
-            InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(config, ModifierType.Add);
-            InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Add);
+                InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(config, ModifierType.Add);
+                InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Add);
+            }            
         }
     }
 }
