@@ -349,9 +349,9 @@ namespace WindowsFormsTest
             try
             {
                 //调用UpdateInterfaceRealtimeInfoService接口
-                //client.UpdateInterfaceRealtimeInfoService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90);
+                client.UpdateInterfaceRealtimeInfoService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90);
                 //异步调用方法
-                client.UpdateInterfaceRealtimeInfoServiceAsync("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 80);
+                //client.UpdateInterfaceRealtimeInfoServiceAsync("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 80);
                 //调用UpdateInterfaceRealtimeInfoWithExceptionService接口
                 //client.UpdateInterfaceRealtimeInfoWithExceptionService("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", 90, "接口相关WebService调用异常");
                 //异步调用方法
