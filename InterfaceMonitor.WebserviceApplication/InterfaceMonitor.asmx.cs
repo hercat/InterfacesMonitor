@@ -19,7 +19,7 @@ namespace InterfaceMonitor.WebserviceApplication
     // [System.Web.Script.Services.ScriptService]
     public class InterfaceMonitor : System.Web.Services.WebService
     {
-        [WebMethod]
+        [WebMethod] 
         public void UpdateInterfaceRealtimeInfoService(string interfaceName, string applicationName, string server, int stateCode)
         {
             //ConnString.MySqldb = "server=localhost;Database=InterfaceMonitorDB;Charset=utf8;Uid=root;Pwd=jianglin";
