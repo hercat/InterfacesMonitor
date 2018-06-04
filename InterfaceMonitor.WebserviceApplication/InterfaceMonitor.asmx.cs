@@ -21,15 +21,13 @@ namespace InterfaceMonitor.WebserviceApplication
     {
         [WebMethod] 
         public void UpdateInterfaceRealtimeInfoService(string interfaceName, string applicationName, string server, int stateCode)
-        {
-            //ConnString.MySqldb = "server=localhost;Database=InterfaceMonitorDB;Charset=utf8;Uid=root;Pwd=jianglin";
+        {            
             GetDataBaseConfig();
             InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfo(interfaceName, applicationName, server, stateCode);
         }
         [WebMethod]
         public void UpdateInterfaceRealtimeInfoWithExceptionService(string interfaceName, string applicationName, string server, int stateCode, string exceptionInfo)
-        {
-            //ConnString.MySqldb = "server=localhost;Database=InterfaceMonitorDB;Charset=utf8;Uid=root;Pwd=jianglin";
+        {            
             GetDataBaseConfig();
             InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfoWithException(interfaceName, applicationName, server, stateCode, exceptionInfo);
         }
