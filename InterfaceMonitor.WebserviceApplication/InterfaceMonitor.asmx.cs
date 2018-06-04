@@ -19,15 +19,15 @@ namespace InterfaceMonitor.WebserviceApplication
     // [System.Web.Script.Services.ScriptService]
     public class InterfaceMonitor : System.Web.Services.WebService
     {
-        [WebMethod] 
+        [WebMethod]
         public void UpdateInterfaceRealtimeInfoService(string interfaceName, string applicationName, string server, int stateCode)
-        {            
+        {
             GetDataBaseConfig();
             InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfo(interfaceName, applicationName, server, stateCode);
         }
         [WebMethod]
         public void UpdateInterfaceRealtimeInfoWithExceptionService(string interfaceName, string applicationName, string server, int stateCode, string exceptionInfo)
-        {            
+        {
             GetDataBaseConfig();
             InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfoWithException(interfaceName, applicationName, server, stateCode, exceptionInfo);
         }
@@ -35,7 +35,7 @@ namespace InterfaceMonitor.WebserviceApplication
         {
             SystemSettingBase settings = SystemSettingBase.CreateInstance();
             if (settings.SysMySqlDB != null)
-                ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;            
+                ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
         }
     }
 }

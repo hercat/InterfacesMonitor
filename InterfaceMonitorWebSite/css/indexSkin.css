@@ -1,0 +1,19 @@
+﻿@charset 'utf-8';
+body { background:url(../images/loading_background.png);color:#333;font:normal 62.5% Verdana, Arial, Helvetica, sans-serif, "宋体";width:100%;padding:0;margin:0;font-size:12px;}
+/*头部样式*/
+#header {
+    background:#fff;min-width:996px;margin:0 auto;font-size:12px;z-index:9;clear:both;
+}
+.head_line {
+    background:url(../images/head_line.jpg);height:4px;
+}
+.head {
+    background:url(../images/head_back.jpg);padding:0px;height:80px;border-bottom:1px solid #093c95;margin-bottom:0;padding-bottom:0;
+}
+.head span {
+    line-height:76px;margin-left:10px;color:#fff;font-size:25px;font-weight:bold;
+}
+/*底部样式*/
+#footer {
+    background:url(../images/foot_bg.jpg);font-size:14px;min-width:996px;height:43px;line-height:40px;text-align:center;margin:5px auto auto auto;clear:both;color:#fff;
+}
