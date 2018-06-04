@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="InterfaceMonitorWebSite.html.Main" %>
-
 <%@ Register Src="~/UserControls/MainMenu.ascx" TagPrefix="uc1" TagName="MainMenu" %>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -21,7 +19,8 @@
     <div id="header">
         <div class="head_line"></div>
         <div class="head">
-            <span>信息部接口监控系统</span>            
+            <span style="float:left;line-height:76px;text-align:center;margin-top:10px;"><img src="../images/shico.ico" /></span>
+           <span>信息部接口监控系统</span>
         </div>
     </div>
     <div id="main_container">

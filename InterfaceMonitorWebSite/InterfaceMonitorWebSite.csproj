@@ -106,6 +106,7 @@
     <Content Include="images\menu_dt_active.jpg" />
     <Content Include="images\menu_hover.jpg" />
     <Content Include="images\page_bg.png" />
+    <Content Include="images\shico.ico" />
     <Content Include="packages.config" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material-teal\images\Thumbs.db" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material\images\Thumbs.db" />
