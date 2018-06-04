@@ -7,9 +7,9 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace InterfaceMonitorWebSite.html {
+namespace InterfaceMonitorWebSite.UserControls {
     
     
-    public partial class WebForm1 {
+    public partial class MainMenu {
     }
 }

@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="InterfaceMonitorWebSite.html.Main" %>
+
+<%@ Register Src="~/UserControls/MainMenu.ascx" TagPrefix="uc1" TagName="MainMenu" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>InterfaceMonitor Master</title>
+    <link href="../css/indexSkin.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.5.5.2/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.5.5.2/themes/icon.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.5.5.2/themes/color.css" rel="stylesheet" />
+    <script src="../jquery-easyui-1.5.5.2/jquery.min.js"></script>
+    <script src="../jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="header">
+        <div class="head_line"></div>
+        <div class="head">
+            <span>信息部接口监控系统</span>            
+        </div>
+    </div>
+    <div id="main_container">
+        <div id="mainWrap">
+            <div id="left_container">
+                <uc1:MainMenu runat="server" id="MainMenu" />
+            </div>
+            <div id="contentWrap">
+                <asp:ContentPlaceHolder ID="bodyRight" runat="server">
+                    
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>        
+    </div>
+    <div id="footer">
+        Copyright 2018© 上海吉祥航空信息部&nbsp;&nbsp;&nbsp; <span id="pageVersion">version 1.0</span>
+    </div>
+    </form>
+</body>
+</html>

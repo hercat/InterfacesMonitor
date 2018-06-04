@@ -1,0 +1,103 @@
+﻿@charset 'utf-8';
+body {
+    font:normal 62.5% Verdana, Arial, Helvetica, sans-serif, "宋体";
+    font-size:12px;
+}
+
+#nav {
+    width:150px;height:auto;float:left;margin:0px 0px 0px 0px;
+}
+#nav ul {
+    display:inline;left:0px;margin:0px;top:0px;bottom:0px;padding:0px;
+}
+#nav ul li {
+    display:block;float:left;width:150px;margin:auto;white-space:nowrap;background:url(../images/menu.jpg);
+    line-height:20px;
+}
+#nav ul li a {
+    color:#000;cursor:pointer;padding-left:15px;display:block;_height:1em;
+}
+#nav ul li a:hover {
+    color:#fff;background:url(../images/menu_hover.jpg);text-decoration:none;
+}
+#nav ul li.active {
+    background:url(../images/menu_hover.jpg);
+}
+#nav ul li.active a {
+    color:#fff;cursor:pointer;
+}
+#nav ul li .nav_item_h {
+    display:none;
+}
+#nav ul li dl {
+    background:#dce8ff repeat-x left top;height:auto;margin:0;
+    padding-right:2px;
+}
+#nav ul li dl dd {
+    list-style-image:none;list-style-type:none;
+    line-height:20px;color:#000;font-weight:bold;
+    margin-left:25px;padding-top:5px;padding-bottom:5px;
+}
+#nav ul li dl dd a {
+    display:block;color:#404040;margin-left:0px;padding-left:0px;
+    font-size:12px;font-weight:bold;
+}
+#nav ul li dl dd a:hover {
+    list-style-image:none;list-style-type:none;line-height:20px;
+    cursor:pointer;color:#fff;background:url(../images/menu_dt_active.jpg);
+    font-size:12px;font-weight:bold;line-height:20px;height:20px;margin-left:-22px;
+    padding-left:20px;
+}
+#nav ul li dl dd.line_image {
+    background:url(../images/Horizontal_line.png);height:1px;font-size:0px;
+    width:120px;
+}
+#av ul li dl dt {
+    list-style-image:none;list-style-type:none;line-height:20px;margin:2px auto 2px auto;
+}
+#nav ul li dl dt a {
+    display:block;color:#404040;margin-left:25px;padding-left:10px;
+    background:url(../images/jiantou.png) no-repeat;
+    font-size:12px;font-weight:normal;
+}
+#nav ul li dl dt a:hover {
+    color:#fff;border-left:2px solid #e8efff;
+    background:url(../images/menu_dt_active.jpg);
+}
+#nav ul li.active dl dt a {
+    display:block;color:#404040;margin-left:0px;padding-left:0px;
+    font-size:12px;font-weight:bold;
+}
+#nav ul li.active dl dd a:hover {
+    list-style-image:none;list-style-type:none;line-height:20px;cursor:pointer;
+    color:#fff;background:url(../images/menu_dt_active.jpg);font-size:12px;
+    font-weight:bold;line-height:20px;height:20px;margin-left:-22px;padding-left:20px;
+    text-decoration:none;
+}
+#nav ul li.active dl dd.active_menu a {
+    list-style-image:none;list-style-type:none;line-height:20px;cursor:pointer;
+    color:#000;background:url(../images/menu_dt_active.jpg);font-size:12px;
+    font-weight:bold;line-height:20px;height:20px;margin-left:-22px;padding-left:20px;
+    padding-top:5px;padding-bottom:5px;
+}
+#nav ul li.active dl dd.active_menu a:hover {
+    list-style-image:none;list-style-type:none;line-height:20px;cursor:pointer;
+    color:#fff;background:url(../images/menu_dt_active.jpg);font-size:12px;font-weight:bold;
+    line-height:20px;height:20px;margin-left:20px;padding-top:5px;padding-bottom:5px;
+}
+#nav ul li dl dt a {
+    text-decoration:none;
+}
+#nav ul li.active dl dt a {
+    display:block;color:#404040;margin-left:25px;padding-left:10px;background:url(../images/jiantou.png) no-repeat;
+    font-size:12px;font-weight:normal;text-decoration:none;
+}
+#nav ul li.active dl dt a:hover {
+    color:#fff;border-left:2px solid #e8efff;background:url(../images/menu_dt_active.jpg);
+}
+#nav ul li.active dl .c_active {
+    background:url(../images/menu_dt_active.jpg);
+}
+#nav ul li.active dl .c_active a:hover {
+    border-left:none;color:#000;background:url(../images/menu_dt_active.jpg);
+}
