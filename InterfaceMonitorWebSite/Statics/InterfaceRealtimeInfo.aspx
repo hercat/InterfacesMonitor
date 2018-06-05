@@ -9,12 +9,13 @@
         </div>
         <div id="content">
             <div>                             
-                <div style="position:relative;display:inline;">
-                    <img src="../images/green48.ico" />Interface1
+                <div style="position:relative;display:inline;height:24px;">
+                    <img src="../images/green24.png" style="line-height:24px;" />
+                    <span style="margin:0 auto;">Interface</span>
                 </div>
                 <div style="position:relative;display:inline;">
-                    <img src="../images/red48.ico" />Interface2
-                </div>             
+                    <img src="../images/red24.png" />Interface2
+                </div>                
             </div>
         </div>
     </div>
