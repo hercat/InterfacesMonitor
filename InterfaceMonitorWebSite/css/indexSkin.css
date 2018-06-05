@@ -36,6 +36,13 @@ body {
     background:#dce8ff repeat-x left top;border-right:#b8c8e5 1px solid;
     border-bottom:#b8c8e5 2px solid;
 }
+#splitter {
+    text-align:right;cursor:pointer;line-height:20px;background:url(../images/splitter.jpg);
+    color:#fff;padding-right:5px;padding-left:2px;
+}
+#splitter img {
+    vertical-align:middle;padding-left:1px;
+}
 #contentWrap {
     margin-left:152px;_height:1em;
 }

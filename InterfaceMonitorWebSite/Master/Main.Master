@@ -4,13 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>InterfaceMonitor Master</title>
+    <title>InterfaceMonitor</title>
     <link href="../css/indexSkin.css" rel="stylesheet" />
     <link href="../jquery-easyui-1.5.5.2/themes/default/easyui.css" rel="stylesheet" />
     <link href="../jquery-easyui-1.5.5.2/themes/icon.css" rel="stylesheet" />
     <link href="../jquery-easyui-1.5.5.2/themes/color.css" rel="stylesheet" />
     <script src="../jquery-easyui-1.5.5.2/jquery.min.js"></script>
     <script src="../jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+    <script src="../javascript/master.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -26,7 +27,12 @@
     <div id="main_container">
         <div id="mainWrap">
             <div id="left_container">
-                <uc1:MainMenu runat="server" id="MainMenu" />
+                <div id="splitter" onclick="OpenTab()">
+                    <img src="../images/icon_head_minus.gif" /><span>隐藏菜单</span>
+                </div>
+                <div id="divResultMenu">
+                    <uc1:MainMenu runat="server" id="MainMenu" />
+                </div>                
             </div>
             <div id="contentWrap">
                 <asp:ContentPlaceHolder ID="bodyRight" runat="server">

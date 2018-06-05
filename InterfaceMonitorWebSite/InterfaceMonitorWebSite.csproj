@@ -93,20 +93,29 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\InterfaceConfiguration.aspx" />
     <Content Include="css\indexSkin.css" />
     <Content Include="css\MainMenuSkin.css" />
     <Content Include="html\WebForm1.aspx" />
+    <Content Include="images\content_title.jpg" />
     <Content Include="images\foot_bg.jpg" />
+    <Content Include="images\green48.ico" />
     <Content Include="images\head_back.jpg" />
     <Content Include="images\head_line.jpg" />
     <Content Include="images\Horizontal_line.png" />
+    <Content Include="images\icon_head_minus.gif" />
+    <Content Include="images\icon_head_plus.gif" />
     <Content Include="images\jiantou.png" />
+    <Content Include="images\list.png" />
     <Content Include="images\loading_background.png" />
     <Content Include="images\menu.jpg" />
     <Content Include="images\menu_dt_active.jpg" />
     <Content Include="images\menu_hover.jpg" />
     <Content Include="images\page_bg.png" />
+    <Content Include="images\red48.ico" />
     <Content Include="images\shico.ico" />
+    <Content Include="images\splitter.jpg" />
+    <Content Include="javascript\master.js" />
     <Content Include="packages.config" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material-teal\images\Thumbs.db" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material\images\Thumbs.db" />
@@ -141,7 +150,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="html\test.html" />
     <Content Include="javascript\test.js" />
     <Content Include="jquery-easyui-1.5.5.2\demo-mobile\accordion\basic.html" />
     <Content Include="jquery-easyui-1.5.5.2\demo-mobile\accordion\header.html" />
@@ -989,10 +997,18 @@
     <Content Include="jquery-easyui-1.5.5.2\themes\metro\validatebox.css" />
     <Content Include="jquery-easyui-1.5.5.2\themes\metro\window.css" />
     <Content Include="jquery-easyui-1.5.5.2\themes\mobile.css" />
+    <Content Include="Statics\InterfaceRealtimeInfo.aspx" />
     <Content Include="UserControls\MainMenu.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\InterfaceConfiguration.aspx.cs">
+      <DependentUpon>InterfaceConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Config\InterfaceConfiguration.aspx.designer.cs">
+      <DependentUpon>InterfaceConfiguration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1008,6 +1024,13 @@
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statics\InterfaceRealtimeInfo.aspx.cs">
+      <DependentUpon>InterfaceRealtimeInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Statics\InterfaceRealtimeInfo.aspx.designer.cs">
+      <DependentUpon>InterfaceRealtimeInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

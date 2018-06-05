@@ -6,7 +6,7 @@
             <dl>
                 <dd />                                    
                 <dt>
-                    <a href="#">实时状态</a>
+                    <a href="/Statics/InterfaceRealtimeInfo.aspx">实时状态</a>
                 </dt>
                 <dd />
             </dl>
@@ -20,11 +20,14 @@
                 <dd />
             </dl>
         </li>
-        <li><a>接口信息配置</a>
+        <li><a>信息配置</a>
             <dl>
                 <dd />
                 <dt>
-                    <a href="#">接口配置</a>
+                    <a href="/Config/InterfaceConfiguration.aspx">接口配置</a>
+                </dt>
+                <dt>
+                    <a href="#">系统配置</a>
                 </dt>
                 <dd />
             </dl>

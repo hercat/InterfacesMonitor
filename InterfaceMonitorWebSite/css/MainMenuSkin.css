@@ -100,3 +100,15 @@ body {
 #nav ul li.active dl .c_active a:hover {
     border-left:none;color:#000;background:url(../images/menu_dt_active.jpg);
 }
+#content_box {
+    margin:auto;margin-left:10px;margin-right:10px;_margin-right:0px;
+}
+#content_title {
+    background:url(../images/content_title.jpg);margin-top:0px;margin-bottom:8px;
+    padding-left:2px;font-size:12px;height:29px;line-height:29px;color:#404040;
+    border-bottom:2px solid #8ac2f5;font-weight:bold;vertical-align:central;
+}
+#content_title span {
+    text-align:center;vertical-align:central;margin:0 auto;
+    margin-left:2px;
+}
