@@ -116,24 +116,31 @@ body {
     z-index:-1;
 }
 #outer {
-    width:800px;
-    height:400px;
+    width:320px;
+    height:110px;
     border:dotted;
     margin-top:90px;
 }
 #left {
-    position:relative;
-    width:200px;
-    height:300px;
+    float:left;
+    width:100px;
+    height:100px;
     border:dotted;
-    left:80px;
-    top:70px;
+    border-color:#00ff21;
+}
+#middle {
+    float:left;
+    width:100px;
+    height:100px;
+    border:dotted;
+    border-color:#b200ff;
 }
 #right {
-    width:200px;
-    height:200px;
-    float:right;
+    float:left;
+    width:100px;
+    height:100px;
     border:dotted;
+    border-color:#ff6a00;
 }
 
 
