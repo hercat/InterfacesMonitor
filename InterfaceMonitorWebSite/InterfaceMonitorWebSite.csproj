@@ -98,6 +98,7 @@
     <Content Include="css\MainMenuSkin.css" />
     <Content Include="css\test.css" />
     <Content Include="images\content_title.jpg" />
+    <Content Include="images\eg_smile.gif" />
     <Content Include="images\foot_bg.jpg" />
     <Content Include="images\green24.png" />
     <Content Include="images\green48.ico" />
