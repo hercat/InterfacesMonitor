@@ -1,0 +1,65 @@
+﻿@charset 'utf-8';
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#id1 {
+    width:200px;
+    height:200px;
+    background-color:#ff6a00;
+}
+#link:link{
+    color:#00ff21;
+    text-decoration:none;
+}
+#link:visited {
+    color:#000000;
+}
+#link:hover {
+    color:#ff0000;
+}
+#link:active {
+    color:#b200ff;
+}
+#list ul {
+    /*list-style:circle;
+    list-style-image:url(../images/green24.png);*/
+    list-style:url(../images/green24.png) square outside;
+}
+#list2 ol {
+    list-style:url(../images/red24.png) circle outside;
+}
+#table1 {
+    width:280px;
+    height:280px;
+    border:dashed 2px #ff6a00;
+    /*border-collapse:collapse;*/
+    text-align:left;
+    caption-side:block-start;
+}
+#table1 tr {
+    border:double;
+}
+#table1 th {
+    border:double 2px #00ff21;
+}
+#table1 td{
+    border:dotted;
+    vertical-align:top;
+    padding:10px;
+}
+#outline {
+    width:120px;
+    height:100px;
+    margin:20px 30px 40px 50px;
+    padding:20px 30px 40px 50px;
+    /*outline:dashed;
+    outline-color:#00ff21;*/
+    outline:double 15px #b200ff;
+    border-style:dotted;
+    border-left-style:none;
+    border-width:medium;
+    border-bottom-color:transparent;
+    border-bottom-left-radius:unset;
+}
+
+

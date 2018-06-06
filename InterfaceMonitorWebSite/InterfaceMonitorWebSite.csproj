@@ -96,6 +96,7 @@
     <Content Include="Config\InterfaceConfiguration.aspx" />
     <Content Include="css\indexSkin.css" />
     <Content Include="css\MainMenuSkin.css" />
+    <Content Include="css\test.css" />
     <Content Include="images\content_title.jpg" />
     <Content Include="images\foot_bg.jpg" />
     <Content Include="images\green24.png" />
@@ -999,6 +1000,7 @@
     <Content Include="jquery-easyui-1.5.5.2\themes\metro\window.css" />
     <Content Include="jquery-easyui-1.5.5.2\themes\mobile.css" />
     <Content Include="Statics\InterfaceRealtimeInfo.aspx" />
+    <Content Include="Statics\test.html" />
     <Content Include="UserControls\MainMenu.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
