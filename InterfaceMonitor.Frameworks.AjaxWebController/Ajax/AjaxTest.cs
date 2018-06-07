@@ -8,7 +8,7 @@ using MyMVC;
 namespace InterfaceMonitor.Frameworks.AjaxWebController
 {
     public class AjaxTest
-    {
+    {       
         [Action]
         public object TestMethod()
         {
