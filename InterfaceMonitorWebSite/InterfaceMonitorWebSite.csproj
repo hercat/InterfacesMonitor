@@ -1040,7 +1040,15 @@
       <DependentUpon>MainMenu.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Ajax\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.AjaxWebController\InterfaceMonitor.Frameworks.AjaxWebController.csproj">
+      <Project>{afd8efd6-2519-4f83-9329-f831eb041563}</Project>
+      <Name>InterfaceMonitor.Frameworks.AjaxWebController</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

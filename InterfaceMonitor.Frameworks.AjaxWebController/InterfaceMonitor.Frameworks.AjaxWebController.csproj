@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>afd8efd6-2519-4f83-9329-f831eb041563</ProjectGuid>
+    <ProjectGuid>{AFD8EFD6-2519-4F83-9329-F831EB041563}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>InterfaceMonitor.Frameworks.AjaxWebController</RootNamespace>
@@ -30,24 +30,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="MyMVC">
+      <HintPath>..\文件\Library files\MyMVC\MyMVC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Ajax\AjaxTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.BizProcess\InterfaceMonitor.Frameworks.BizProcess.csproj">
+      <Project>{01435ebb-4a93-4feb-b3df-c9a5090f7f5e}</Project>
+      <Name>InterfaceMonitor.Frameworks.BizProcess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Dal\InterfaceMonitor.Frameworks.Dal.csproj">
+      <Project>{9dcbb59f-0be6-42f8-a7e1-e6b0e8a81cee}</Project>
+      <Name>InterfaceMonitor.Frameworks.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Entity\InterfaceMonitor.Frameworks.Entity.csproj">
+      <Project>{52dbdbe1-8805-42db-9b3a-2ded7638433b}</Project>
+      <Name>InterfaceMonitor.Frameworks.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Logical\InterfaceMonitor.Frameworks.Logical.csproj">
+      <Project>{580a2a97-d9df-47bd-afbd-56e2bbe21ab8}</Project>
+      <Name>InterfaceMonitor.Frameworks.Logical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Utility\InterfaceMonitor.Frameworks.Utility.csproj">
+      <Project>{f1957244-ebe3-404e-a705-7f4987583ec2}</Project>
+      <Name>InterfaceMonitor.Frameworks.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -57,5 +76,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>

@@ -35,3 +35,5 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\zh-Han
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\zh-Hans\System.Web.WebPages.resources.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\InterfaceMonitor.Frameworks.AjaxWebController.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\InterfaceMonitor.Frameworks.AjaxWebController.pdb

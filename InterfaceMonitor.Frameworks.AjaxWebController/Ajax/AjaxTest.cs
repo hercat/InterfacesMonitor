@@ -10,9 +10,10 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
     public class AjaxTest
     {
         [Action]
-        public string TestMethod()
+        public object TestMethod()
         {
-            return "这是一个测试方法！";
+            var obj = "这是一个测试方法！";
+            return new JsonResult(obj);
         }
     }
 }
