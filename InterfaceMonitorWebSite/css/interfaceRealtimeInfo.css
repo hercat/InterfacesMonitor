@@ -29,6 +29,7 @@
     position:absolute;
     top:90px;
     left:-20px;
+    font-size:13px;
     box-shadow:1px 1px 1px 1px #888888;   
 }
 .outer_div img {
