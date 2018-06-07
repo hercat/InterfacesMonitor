@@ -121,6 +121,7 @@
     <Content Include="images\red48.ico" />
     <Content Include="images\shico.ico" />
     <Content Include="images\splitter.jpg" />
+    <Content Include="javascript\interfaceRealtimeInfo.js" />
     <Content Include="javascript\master.js" />
     <Content Include="packages.config" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material-teal\images\Thumbs.db" />
