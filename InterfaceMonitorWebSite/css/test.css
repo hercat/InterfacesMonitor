@@ -142,6 +142,15 @@ body {
     border:dotted;
     border-color:#ff6a00;
 }
-
+#test {
+    width:60px;
+    height:60px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    /*white-space:nowrap;*/
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+}
 
 

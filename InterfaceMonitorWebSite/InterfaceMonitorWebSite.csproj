@@ -95,8 +95,10 @@
   <ItemGroup>
     <Content Include="Config\InterfaceConfiguration.aspx" />
     <Content Include="css\indexSkin.css" />
+    <Content Include="css\interfaceRealtimeInfo.css" />
     <Content Include="css\MainMenuSkin.css" />
     <Content Include="css\test.css" />
+    <Content Include="images\brand.png" />
     <Content Include="images\content_title.jpg" />
     <Content Include="images\eg_smile.gif" />
     <Content Include="images\foot_bg.jpg" />
@@ -108,6 +110,7 @@
     <Content Include="images\icon_head_minus.gif" />
     <Content Include="images\icon_head_plus.gif" />
     <Content Include="images\jiantou.png" />
+    <Content Include="images\linearbot.png" />
     <Content Include="images\list.png" />
     <Content Include="images\loading_background.png" />
     <Content Include="images\menu.jpg" />
