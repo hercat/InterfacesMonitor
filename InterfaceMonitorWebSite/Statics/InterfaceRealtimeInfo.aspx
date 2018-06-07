@@ -11,32 +11,30 @@
         </div>
         <div id="content">
             <div>
-                <div class="outer_div" onclick="alert('click me!');" title="测试系统1+测试接口1">
+                <div class="outer_div" onclick="alert('click me!');" data-title="测试系统1+测试接口1dfvewtcdcdfqwcdwrdrwxdqwdxqw" >
                     <img src="../images/green24.png" />
                     <div class="inner_div">
-                        <a style="text-decoration:none;" href="#" >测试系统1+测试接口1</a>
+                        测试系统1+测试接口1
                     </div>
                 </div>
-                <div class="outer_div" onclick="alert('click me!');" title="测试系统2+测试接口2">
+                <div class="outer_div" onclick="alert('click me!');" data-title="测试系统2+测试接口2">
                     <img src="../images/green24.png" />
                     <div class="inner_div">
                         <a style="text-decoration:none;" href="#" >测试系统2+测试接口2</a>
                     </div>
                 </div>
-                <div class="outer_div" onclick="alert('click me!');" title="测试系统1+测试接口3">
+                <div class="outer_div" onclick="alert('click me!');" data-title="测试系统1+测试接口3">
                     <img src="../images/red24.png" />
                     <div class="inner_div">
                         <a style="text-decoration:none;" href="#" >测试系统1+测试接口3</a>
                     </div>
                 </div>
-                <div class="outer_div" onclick="alert('click me!');" title="测试系统2+测试接口4">
+                <div class="outer_div" onclick="alert('click me!');" data-title="测试系统2+测试接口4">
                     <img src="../images/green24.png" />
                     <div class="inner_div">
                         <a style="text-decoration:none;" href="#" >测试系统2+测试接口4</a>
                     </div>
-                </div>
-                <a id="clickMe">点我测试</a>
-                <span id="test"></span>
+                </div>                              
             </div>
         </div>
     </div>

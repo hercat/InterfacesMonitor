@@ -16,6 +16,20 @@
     box-shadow: 2px 2px 2px 3px #888888;
     border:1px none;
     border-radius:8px;
+    position:relative;
+}
+.outer_div:hover::after {
+    content:attr(data-title);
+    display:inline-block;
+    padding:10px 14px;
+    /*border:1px solid #fff;*/
+    background:#0094ff;
+    color:#fff;
+    border-radius:5px;
+    position:absolute;
+    top:90px;
+    left:-20px;
+    box-shadow:1px 1px 1px 1px #888888;   
 }
 .outer_div img {
     margin-top:8px;
