@@ -1,4 +1,4 @@
-﻿
+﻿//js文档加载方法
 $(function () {
     $("#clickMe").click(function () {
         $.ajax({
