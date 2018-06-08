@@ -121,6 +121,7 @@
     <Content Include="images\red48.ico" />
     <Content Include="images\shico.ico" />
     <Content Include="images\splitter.jpg" />
+    <Content Include="InterfaceMonitor.Utility.SysSettingBase.xml" />
     <Content Include="javascript\interfaceRealtimeInfo.js" />
     <Content Include="javascript\jquery\jquery-1.9.0.js" />
     <Content Include="javascript\jquery\jquery-3.3.1.min.js" />
@@ -1046,6 +1047,10 @@
     <ProjectReference Include="..\InterfaceMonitor.Frameworks.AjaxWebController\InterfaceMonitor.Frameworks.AjaxWebController.csproj">
       <Project>{afd8efd6-2519-4f83-9329-f831eb041563}</Project>
       <Name>InterfaceMonitor.Frameworks.AjaxWebController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceMonitor.Frameworks.Dal\InterfaceMonitor.Frameworks.Dal.csproj">
+      <Project>{9dcbb59f-0be6-42f8-a7e1-e6b0e8a81cee}</Project>
+      <Name>InterfaceMonitor.Frameworks.Dal</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

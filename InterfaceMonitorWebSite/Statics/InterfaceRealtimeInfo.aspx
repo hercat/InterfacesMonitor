@@ -9,10 +9,10 @@
             <span>接口实时状态</span>
         </div>
         <div id="content">
-            <div class="outer_div" onclick="alert('click me!');" data-title="测试系统1+测试接口1" >
+            <%--<div class="outer_div" onclick="alert('click me!');" data-title="测试系统1+测试接口1" >
                 <img src="../images/green24.png" />
                 <div class="inner_div">
-                    测试系统1+测试接口1
+                    InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess
                 </div>
             </div>
             <div class="outer_div" onclick="alert('click me!');" data-title="测试系统2+测试接口2">
@@ -32,7 +32,7 @@
                 <div class="inner_div">
                     <a style="text-decoration:none;" href="#" >测试系统2+测试接口4</a>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
 </asp:Content>

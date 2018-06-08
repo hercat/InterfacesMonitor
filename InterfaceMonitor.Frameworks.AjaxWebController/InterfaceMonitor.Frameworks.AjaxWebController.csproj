@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajax\AjaxDbInitial.cs" />
+    <Compile Include="Ajax\AjaxInterfaceRealtime.cs" />
     <Compile Include="Ajax\AjaxTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
