@@ -122,6 +122,7 @@
     <Content Include="images\shico.ico" />
     <Content Include="images\splitter.jpg" />
     <Content Include="javascript\interfaceRealtimeInfo.js" />
+    <Content Include="javascript\jquery-3.3.1.min.js" />
     <Content Include="javascript\master.js" />
     <Content Include="packages.config" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material-teal\images\Thumbs.db" />
@@ -157,7 +158,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="javascript\test.js" />
     <Content Include="jquery-easyui-1.5.5.2\demo-mobile\accordion\basic.html" />
     <Content Include="jquery-easyui-1.5.5.2\demo-mobile\accordion\header.html" />
     <Content Include="jquery-easyui-1.5.5.2\demo-mobile\accordion\_content.html" />
