@@ -122,7 +122,8 @@
     <Content Include="images\shico.ico" />
     <Content Include="images\splitter.jpg" />
     <Content Include="javascript\interfaceRealtimeInfo.js" />
-    <Content Include="javascript\jquery-3.3.1.min.js" />
+    <Content Include="javascript\jquery\jquery-1.9.0.js" />
+    <Content Include="javascript\jquery\jquery-3.3.1.min.js" />
     <Content Include="javascript\master.js" />
     <Content Include="packages.config" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material-teal\images\Thumbs.db" />
@@ -1040,9 +1041,7 @@
       <DependentUpon>MainMenu.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ajax\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\InterfaceMonitor.Frameworks.AjaxWebController\InterfaceMonitor.Frameworks.AjaxWebController.csproj">
       <Project>{afd8efd6-2519-4f83-9329-f831eb041563}</Project>

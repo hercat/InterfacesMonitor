@@ -5,6 +5,8 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>InterfaceMonitor</title>
+    <link rel="bookmark" type="image/x-icon" href="../images/shico.ico" />
+    <link rel="shortcut icon" href="../images/shico.ico" />
     <link href="../css/indexSkin.css" rel="stylesheet" />
     <link href="../jquery-easyui-1.5.5.2/themes/default/easyui.css" rel="stylesheet" />
     <link href="../jquery-easyui-1.5.5.2/themes/icon.css" rel="stylesheet" />
