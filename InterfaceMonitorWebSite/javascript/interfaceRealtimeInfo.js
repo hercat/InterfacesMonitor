@@ -3,7 +3,7 @@
 //js文档加载方法
 $(function () {
     //设置数据库连接字符串
-    DbInitial();
+    //DbInitial();
     //定时刷新
     setInterval(LoadInterfaceRealtimeInfo, 50000);    
 });
@@ -16,7 +16,7 @@ function LoadInterfaceRealtimeInfo() {
         cache: false,
         success: function (json) {
             $('#content').empty();
-            $.each(json, function (key, val) {
+            $.each(json, function (key, val) {             
                 $('#content').append("<div class='outer_div' data-title='" + val.ApplicationName + "+" + val.InterfaceName + "' id='" + val.Id + "' ><img src='../images/green24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");
             });
         }

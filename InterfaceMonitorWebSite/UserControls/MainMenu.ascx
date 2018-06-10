@@ -24,7 +24,7 @@
             <dl>
                 <dd />
                 <dt>
-                    <a href="/Config/InterfaceConfiguration.aspx">接口配置</a>
+                    <a href="/InterfaceConfigInfo/InterfaceConfiguration.aspx">接口配置</a>
                 </dt>
                 <dt>
                     <a href="#">系统配置</a>

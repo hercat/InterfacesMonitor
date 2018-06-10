@@ -93,7 +93,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\InterfaceConfiguration.aspx" />
+    <Content Include="InterfaceConfigInfo\InterfaceConfiguration.aspx" />
     <Content Include="css\indexSkin.css" />
     <Content Include="css\interfaceRealtimeInfo.css" />
     <Content Include="css\MainMenuSkin.css" />
@@ -125,6 +125,7 @@
     <Content Include="javascript\interfaceRealtimeInfo.js" />
     <Content Include="javascript\jquery\jquery-1.9.0.js" />
     <Content Include="javascript\jquery\jquery-3.3.1.min.js" />
+    <Content Include="javascript\jquery\utility.js" />
     <Content Include="javascript\master.js" />
     <Content Include="packages.config" />
     <Content Include="jquery-easyui-1.5.5.2\themes\material-teal\images\Thumbs.db" />
@@ -1012,11 +1013,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\InterfaceConfiguration.aspx.cs">
+    <Compile Include="InterfaceConfigInfo\InterfaceConfiguration.aspx.cs">
       <DependentUpon>InterfaceConfiguration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Config\InterfaceConfiguration.aspx.designer.cs">
+    <Compile Include="InterfaceConfigInfo\InterfaceConfiguration.aspx.designer.cs">
       <DependentUpon>InterfaceConfiguration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\Main.Master.cs">
@@ -1042,7 +1043,9 @@
       <DependentUpon>MainMenu.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InterfaceMonitor.Frameworks.AjaxWebController\InterfaceMonitor.Frameworks.AjaxWebController.csproj">
       <Project>{afd8efd6-2519-4f83-9329-f831eb041563}</Project>
