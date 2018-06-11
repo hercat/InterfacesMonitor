@@ -93,6 +93,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\interfaceConfiguration.css" />
     <Content Include="InterfaceConfigInfo\InterfaceConfiguration.aspx" />
     <Content Include="css\indexSkin.css" />
     <Content Include="css\interfaceRealtimeInfo.css" />
@@ -122,6 +123,7 @@
     <Content Include="images\shico.ico" />
     <Content Include="images\splitter.jpg" />
     <Content Include="InterfaceMonitor.Utility.SysSettingBase.xml" />
+    <Content Include="javascript\interfaceConfiguration.js" />
     <Content Include="javascript\interfaceRealtimeInfo.js" />
     <Content Include="javascript\jquery\jquery-1.9.0.js" />
     <Content Include="javascript\jquery\jquery-3.3.1.min.js" />

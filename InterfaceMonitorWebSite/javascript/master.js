@@ -14,3 +14,8 @@
         $('#left_container').css("width", "150px");
     }
 }
+
+function fillsize(borderWidth,percent,id) {
+    var bodyWidth = parseInt($("#" + id + "").css('width'));
+    return (bodyWidth - 34.5) * percent;
+}

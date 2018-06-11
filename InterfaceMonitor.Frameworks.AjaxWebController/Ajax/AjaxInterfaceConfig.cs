@@ -53,15 +53,15 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             if (string.IsNullOrEmpty(fields))
                 fields = "*";
             StringBuilder sb = new StringBuilder();
-            //
+            //接口名称
             if (!string.IsNullOrEmpty(interfaceName))
                 sb.AppendFormat(" where InterfaceName like '%{0}%' ", interfaceName);
-            //
+            //应用系统名
             if (!string.IsNullOrEmpty(interfaceName) && !string.IsNullOrEmpty(applicationName))
                 sb.AppendFormat(" and ApplicationName like '%{0}%' ", applicationName);
             else if (string.IsNullOrEmpty(interfaceName) && !string.IsNullOrEmpty(applicationName))
                 sb.AppendFormat(" where ApplicationName like '%{0}%' ", applicationName);
-            //
+            //服务器地址
             if ((!string.IsNullOrEmpty(interfaceName) || !string.IsNullOrEmpty(applicationName)) && !string.IsNullOrEmpty(server))
                 sb.AppendFormat(" and ServerAddress like '%{0}%' ", server);
             else if ((string.IsNullOrEmpty(interfaceName) && (string.IsNullOrEmpty(applicationName))) && !string.IsNullOrEmpty(server))
