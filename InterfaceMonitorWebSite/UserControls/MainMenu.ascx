@@ -6,7 +6,7 @@
             <dl>
                 <dd />                                    
                 <dt>
-                    <a href="/Statics/InterfaceRealtimeInfo.aspx">实时状态</a>
+                    <a href="/InterfaceRealtime/InterfaceRealtimeInfo.aspx">实时状态</a>
                 </dt>
                 <dd />
             </dl>
