@@ -6,7 +6,7 @@ $(function () {
     //定时刷新
     setInterval(LoadInterfaceRealtimeInfo, 10000);    
 });
-//加载实时接口信息
+//加载实时接口信息方法
 function LoadInterfaceRealtimeInfo() {
     $.ajax({
         url: '/AjaxInterfaceRealtime/InterfaceRealtimeList.cspx',
@@ -24,7 +24,7 @@ function LoadInterfaceRealtimeInfo() {
         }
     });
 }
-
+//获取接口详细信息方法
 function InterfaceDetails(id) {
     //window.location.href = "./InterfaceDetails.aspx?id=" + id;//当前页跳转
     window.open("./InterfaceDetails.aspx?id=" + id);//新窗口跳转+地址栏参数
