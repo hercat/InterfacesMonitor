@@ -27,6 +27,7 @@ function tab2Initial() {
     var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='60'>序号</th><th>接口名</th><th>应用系统</th><th>变更内容</th><th width='180'>变更时间</th></tr></thread></table>";
     $('#tab2').append(html);
 }
+//测试追加数据到dom元素后
 function AddTest() {
     var dom = $('#tab1').children('table');
     dom.append("<tr><td>1</td><td>测试接口1</td><td>测试系统</td><td>接口调用失败，尝试多次后失败！</td><td>1</td><td>2018-06-13 12:19:30</td></tr>")
