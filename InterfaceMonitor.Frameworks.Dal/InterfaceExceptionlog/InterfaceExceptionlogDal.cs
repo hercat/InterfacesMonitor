@@ -47,6 +47,8 @@ namespace InterfaceMonitor.Frameworks.Dal
             StringBuilder sb = new StringBuilder();
             if (!string.IsNullOrEmpty(fields))
                 sb.AppendFormat("select {0} from interfaceexceptionlog ", fields);
+            else
+                sb.Append("select * from interfaceexceptionlog ");
             if (!string.IsNullOrEmpty(whereCondition))
                 sb.AppendFormat(whereCondition);
             cmd.CommandText = sb.ToString();

@@ -28,3 +28,22 @@ function GetUrlQueryString(name) {
         return unescape(r[2]);
     return null;
 }
+
+//解析json的时间“/Date(1216796600500)/ ”
+function renderTime(str) {
+    ss = str.replace("/Date(", "");
+    mm = ss.replace(")/", "");
+
+    var d = new Date();
+    d.setTime(mm);
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1;
+    var date = d.getDate();
+
+    var hour = d.getHours();
+    var minute = d.getMinutes();
+    var second = d.getSeconds();
+    dt = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+    //alert(dt);
+    return dt;
+}

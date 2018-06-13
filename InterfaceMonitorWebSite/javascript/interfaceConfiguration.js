@@ -41,7 +41,11 @@ function InitDataGrid() {
                     , { title: '负责人名', field: 'PersonOfChargeName', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
                     , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
                     , { title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
-                    , { title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.12, 'divTable'), sortable: false }
+                    , {
+                        title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.12, 'divTable'), sortable: false, formatter: function (value, row, index) {
+                            return renderTime(value);
+                        }
+                    }
         ]]
     });
 }

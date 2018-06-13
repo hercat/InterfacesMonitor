@@ -157,6 +157,20 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoPageList(fields, sb.ToString(), page, pagesize);
             return new JsonResult(list);
         }
+        /// <summary>
+        /// 根据Id获取接口配置信息
+        /// </summary>        
+        /// <param name="id">编号</param>
+        /// <returns></returns>
+        [Action]
+        public object GetInterfaceConfigById( string id)
+        {
+            SystemSettingBase settings = SystemSettingBase.CreateInstance();
+            if (settings.SysMySqlDB != null)
+                ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;            
+            InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(new Guid(id));
+            return new JsonResult(info);
+        }
 
     }
 }

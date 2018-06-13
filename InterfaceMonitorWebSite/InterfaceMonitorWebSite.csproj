@@ -97,6 +97,7 @@
     <Content Include="css\interfaceDetails.css" />
     <Content Include="images\document_32t.png" />
     <Content Include="images\document_48.png" />
+    <Content Include="images\pdf_16.png" />
     <Content Include="images\pdf_32.png" />
     <Content Include="images\pdf_48.png" />
     <Content Include="InterfaceConfigInfo\InterfaceConfiguration.aspx" />
