@@ -94,6 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\interfaceConfiguration.css" />
+    <Content Include="css\interfaceDetails.css" />
+    <Content Include="images\document_32t.png" />
+    <Content Include="images\document_48.png" />
+    <Content Include="images\pdf_32.png" />
+    <Content Include="images\pdf_48.png" />
     <Content Include="InterfaceConfigInfo\InterfaceConfiguration.aspx" />
     <Content Include="css\indexSkin.css" />
     <Content Include="css\interfaceRealtimeInfo.css" />
@@ -125,6 +130,7 @@
     <Content Include="InterfaceMonitor.Utility.SysSettingBase.xml" />
     <Content Include="InterfaceRealtime\InterfaceDetails.aspx" />
     <Content Include="javascript\interfaceConfiguration.js" />
+    <Content Include="javascript\interfaceDetails.js" />
     <Content Include="javascript\interfaceRealtimeInfo.js" />
     <Content Include="javascript\jquery\jquery-1.9.0.js" />
     <Content Include="javascript\jquery\jquery-3.3.1.min.js" />

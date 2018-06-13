@@ -40,5 +40,6 @@ function DbInitial() {
 }
 
 function InterfaceDetails(id) {
-    alert(id);
+    //window.location.href = "./InterfaceDetails.aspx?id=" + id;//当前页跳转
+    window.open("./InterfaceDetails.aspx?id=" + id);//新窗口跳转
 }
