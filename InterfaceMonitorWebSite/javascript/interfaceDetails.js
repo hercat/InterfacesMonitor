@@ -2,6 +2,8 @@
 /// <reference path="C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\jquery-easyui-1.5.5.2/jquery.min.js" />
 
 $(document).ready(function () {
+    //获取地址栏参数测试，GetUrlQueryString()函数定义域master.js
+    alert(GetUrlQueryString("id"));
     tab1Initial();
     tab2Initial();
     AddTest();
@@ -34,4 +36,5 @@ function AddTest() {
     var dom2 = $('#tab2').children('table');
     dom2.append("<tr><td>1</td><td>测试接口1</td><td>测试应用系统</td><td>接口名由'测试接口'修改为'测试接口1'</td><td>2018-06-13 12:39:10</td></tr>")
 }
+
 

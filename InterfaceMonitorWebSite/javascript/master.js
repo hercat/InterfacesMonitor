@@ -19,3 +19,12 @@ function fillsize(borderWidth,percent,id) {
     var bodyWidth = parseInt($("#" + id + "").css('width'));
     return (bodyWidth - 34.5) * percent;
 }
+
+//获取地址地址栏参数
+function GetUrlQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+        return unescape(r[2]);
+    return null;
+}

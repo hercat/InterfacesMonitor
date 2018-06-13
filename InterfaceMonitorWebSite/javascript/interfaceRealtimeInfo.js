@@ -3,8 +3,6 @@
 
 //js文档加载方法
 $(function () {
-    //设置数据库连接字符串
-    //DbInitial();
     //定时刷新
     setInterval(LoadInterfaceRealtimeInfo, 10000);    
 });
@@ -26,20 +24,8 @@ function LoadInterfaceRealtimeInfo() {
         }
     });
 }
-//数据库连接字符串加载
-function DbInitial() {
-    $.ajax({
-        url: '/AjaxDbInitial/InitDb.cspx',
-        data: {},
-        type: 'get',
-        cache: false,
-        success: function (json) {
-
-        }
-    });
-}
 
 function InterfaceDetails(id) {
     //window.location.href = "./InterfaceDetails.aspx?id=" + id;//当前页跳转
-    window.open("./InterfaceDetails.aspx?id=" + id);//新窗口跳转
+    window.open("./InterfaceDetails.aspx?id=" + id);//新窗口跳转+地址栏参数
 }
