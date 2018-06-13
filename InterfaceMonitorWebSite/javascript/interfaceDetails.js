@@ -9,7 +9,35 @@ $(document).ready(function () {
     tabContentInital();
     //文件上传
     $('#btn_upload').click(function () {
-        alert("上传附件！");
+        $('#upload_windows').dialog({
+            width: 600,
+            height: 280,
+            title:'文件上传',
+            iconCls: 'icon-save',
+            collapsible: true,
+            minimizable: false,
+            maximizable: false,
+            draggable: true,
+            shadow: true,
+            modal: true,
+            buttons: [
+                {
+                    text: '保存',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        alert('保存!');
+                    }
+                },
+                {
+                    text: '取消',
+                    iconCls: 'icon-undo',
+                    handler: function () {
+                        $('#upload_windows').dialog('close');
+                    }
+                }
+            ]
+        });
+        //$('#upload_windows').window('open');
     });
 });
 function tabContentInital() {

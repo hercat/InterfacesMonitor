@@ -53,4 +53,9 @@
             </div>
         </div>
     </div>
+    <div id="upload_windows" style="display:none;width:600px;height:280px;padding:10px;" >
+        <div>
+
+        </div>
+    </div>
 </asp:Content>
