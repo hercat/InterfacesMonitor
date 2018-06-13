@@ -36,6 +36,7 @@
                 </div>
                 <div class="basic_top_div">
                     <span class="basic_top_div_title">帮助文档：</span><span class="basic_top_div_content" id="documents"></span>
+                    <span class="basic_upload" id="btn_upload">上传附件</span>
                 </div>
             </div>
         </div>

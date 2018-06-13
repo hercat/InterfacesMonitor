@@ -27,6 +27,21 @@ body {
     margin:0 auto;
     margin-left:2px;
 }
+.basic_upload {
+    color:#fff;
+    height:35px;    
+    line-height:35px; 
+    margin:0 auto;
+    margin-left:20px;
+    text-align:center;
+    padding-left:10px;
+    padding-right:10px;
+    background:#0094ff;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:bold;
+    border:1px solid #cfcfd2;
+}
 #content_detail {
     margin:0;
     padding:0px;
