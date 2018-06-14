@@ -69,7 +69,8 @@ function tab1Initial() {
 }
 //tab2表格初始化
 function tab2Initial() {
-    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th  width='15%'>应用系统</th><th>变更内容</th><th width='25%'>变更时间</th></tr></thread></table>";
+    //var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th  width='15%'>应用系统</th><th>变更内容</th><th width='25%'>变更时间</th></tr></thread></table>";
+    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='10%'>序号</th><th>变更内容</th><th width='25%'>变更时间</th></tr></thread></table>";
     $('#tab2').append(html);
 }
 //测试追加数据到dom元素后
