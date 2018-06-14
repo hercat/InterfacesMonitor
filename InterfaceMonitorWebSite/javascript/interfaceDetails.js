@@ -44,16 +44,16 @@ function openUploadDialog() {
         buttons: [
             {
                 text: '上传',
-                iconCls: 'icon-save',
+                iconCls: 'icon-ok',
                 handler: function () {
                     var files = $('#selectfiles').filebox('getValue');
                     alert(files);
                     alert($('#selectfiles').filebox('getText'));
-                  }
+                }
             },
             {
                 text: '取消',
-                iconCls: 'icon-undo',
+                iconCls: 'icon-cancel',
                 handler: function () {
                     $('#upload_windows').dialog('close');
                 }
@@ -63,12 +63,13 @@ function openUploadDialog() {
 }
 //tab1表格初始化
 function tab1Initial() {
-    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th width='15%'>应用系统</th><th>异常信息</th><th width='10%'>状态码</th><th width='15%'>发生时间</th></tr></thread></table>";
+    //var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th width='15%'>应用系统</th><th>异常信息</th><th width='10%'>状态码</th><th width='15%'>发生时间</th></tr></thread></table>";
+    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='10%'>序号</th><th>异常信息</th><th width='15%'>状态码</th><th width='25%'>发生时间</th></tr></thread></table>";
     $('#tab1').append(html);
 }
 //tab2表格初始化
 function tab2Initial() {
-    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th  width='15%'>应用系统</th><th>变更内容</th><th width='15%'>变更时间</th></tr></thread></table>";
+    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th  width='15%'>应用系统</th><th>变更内容</th><th width='25%'>变更时间</th></tr></thread></table>";
     $('#tab2').append(html);
 }
 //测试追加数据到dom元素后
@@ -80,12 +81,13 @@ function AddTest() {
 }
 //根据id获取接口配置信息
 function getInterfaceConfigInfo(id) {
+    id = window.atob(id);//对地址栏参数进行解码
     $.ajax({
         url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
         data: {
             id: id
         },
-        type: 'post',
+        type: 'get',
         cache: false,
         success: function (json) {
             $('#interfaceName').html(json.InterfaceName);
@@ -102,18 +104,20 @@ function getInterfaceConfigInfo(id) {
 }
 //获取接口异常日志请求方法
 function getInterfaceLogs(id) {
+    id = window.atob(id);//对地址栏参数进行解码
     $.ajax({
         url: '/AjaxInterfacelog/GetInterfaceLogs.cspx',
         data: {
             id:id
         },
-        type: 'post',
+        type: 'get',
         cache: false,
         success: function (json) {
             var dom = $('#tab1').children('table');
             var index = 1;
             $.each(json, function (key, val) {
-                dom.append("<tr><td>" + index + "</td><td>" + $('#interfaceName').text() + "</td><td>" + $('#appName').text() + "</td><td>" + val.ExceptionInfo + "</td><td>" + val.StateCode + "</td><td>" + renderTime(val.CreateTime) + "</td></tr>");
+                //dom.append("<tr><td>" + index + "</td><td>" + $('#interfaceName').text() + "</td><td>" + $('#appName').text() + "</td><td>" + val.ExceptionInfo + "</td><td>" + val.StateCode + "</td><td>" + renderTime(val.CreateTime) + "</td></tr>");
+                dom.append("<tr><td>" + index + "</td><td>" + val.ExceptionInfo + "</td><td>" + val.StateCode + "</td><td>" + renderTime(val.CreateTime) + "</td></tr>");
                 index++;
             });
             index = 1;

@@ -11,7 +11,7 @@ function LoadInterfaceRealtimeInfo() {
     $.ajax({
         url: '/AjaxInterfaceRealtime/InterfaceRealtimeList.cspx',
         data: {},
-        type: 'post',
+        type: 'get',
         cache: false,
         success: function (json) {
             $('#content').empty();
@@ -25,7 +25,7 @@ function LoadInterfaceRealtimeInfo() {
     });
 }
 //获取接口详细信息方法
-function InterfaceDetails(id) {
-    //window.location.href = "./InterfaceDetails.aspx?id=" + id;//当前页跳转
-    window.open("./InterfaceDetails.aspx?id=" + id);//新窗口跳转+地址栏参数
+function InterfaceDetails(id) {    
+    //window.location.href = "./InterfaceDetails.aspx?id=" + window.btoa(id);//当前页跳转
+    window.open("./InterfaceDetails.aspx?id=" + window.btoa(id));//新窗口跳转+地址栏参数编码处理
 }
