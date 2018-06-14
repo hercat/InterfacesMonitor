@@ -53,9 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="upload_windows" style="display:none;width:600px;height:280px;padding:10px;" >
-        <div>
-
-        </div>
+    <div id="upload_windows" style="display:none;padding:8px;" >
+        <div id="selectfiles" class="easyui-filebox" style="width:99%;" data-options="buttonText:'选择文件...',buttonIcon:'icon-search',accept:'pdf/*',multiple:true"></div>        
     </div>
 </asp:Content>

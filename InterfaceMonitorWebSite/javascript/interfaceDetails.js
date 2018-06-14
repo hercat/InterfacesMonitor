@@ -7,39 +7,13 @@ $(document).ready(function () {
     GetInterfaceConfigInfo(GetUrlQueryString("id"));
     GetInterfaceLogs(GetUrlQueryString("id"));
     tabContentInital();
-    //文件上传
+    //文件上传dialog
     $('#btn_upload').click(function () {
-        $('#upload_windows').dialog({
-            width: 600,
-            height: 280,
-            title:'文件上传',
-            iconCls: 'icon-save',
-            collapsible: true,
-            minimizable: false,
-            maximizable: false,
-            draggable: true,
-            shadow: true,
-            modal: true,
-            buttons: [
-                {
-                    text: '保存',
-                    iconCls: 'icon-edit',
-                    handler: function () {
-                        alert('保存!');
-                    }
-                },
-                {
-                    text: '取消',
-                    iconCls: 'icon-undo',
-                    handler: function () {
-                        $('#upload_windows').dialog('close');
-                    }
-                }
-            ]
-        });
-        //$('#upload_windows').window('open');
+        OpenUploadDialog();
     });
+    
 });
+//tab初始化
 function tabContentInital() {
     $('.tab_content').hide();
     $('.tabs li:first').addClass('active').show();
@@ -51,6 +25,38 @@ function tabContentInital() {
         var activeTab = $(this).find('a').attr('href');
         $(activeTab).fadeIn();
         return false;
+    });
+}
+//打开上传dialog
+function OpenUploadDialog() {
+    $('#selectfiles').filebox('clear');    
+    $('#upload_windows').dialog({
+        width: 600,
+        height: 180,
+        title: '文件上传',        
+        collapsible: true,
+        minimizable: false,
+        maximizable: false,
+        draggable: true,
+        shadow: true,
+        modal: true,
+        buttons: [
+            {
+                text: '上传',
+                iconCls: 'icon-save',
+                handler: function () {                    
+                    var files = $('#selectfiles').filebox('getValue');
+                    alert(files);
+                }
+            },
+            {
+                text: '取消',
+                iconCls: 'icon-undo',
+                handler: function () {
+                    $('#upload_windows').dialog('close');
+                }
+            }
+        ]
     });
 }
 //tab1表格初始化
