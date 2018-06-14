@@ -4,12 +4,12 @@
 $(document).ready(function () {
     tab1Initial();
     tab2Initial();
-    GetInterfaceConfigInfo(GetUrlQueryString("id"));
-    GetInterfaceLogs(GetUrlQueryString("id"));
+    getInterfaceConfigInfo(GetUrlQueryString("id"));
+    getInterfaceLogs(GetUrlQueryString("id"));
     tabContentInital();
     //文件上传dialog
     $('#btn_upload').click(function () {
-        OpenUploadDialog();
+        openUploadDialog();
     });
     
 });
@@ -28,7 +28,7 @@ function tabContentInital() {
     });
 }
 //打开上传dialog
-function OpenUploadDialog() {
+function openUploadDialog() {
     $('#selectfiles').filebox('clear');    
     $('#upload_windows').dialog({
         width: 600,
@@ -61,11 +61,6 @@ function OpenUploadDialog() {
         ]
     });
 }
-
-function setfilepathOnchange(basicfile) {
-    alert(basicfile.value);
-    document.getElementById("selectfiles").value = basicfile.value;
-}
 //tab1表格初始化
 function tab1Initial() {
     var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th width='15%'>应用系统</th><th>异常信息</th><th width='10%'>状态码</th><th width='15%'>发生时间</th></tr></thread></table>";
@@ -84,7 +79,7 @@ function AddTest() {
     dom2.append("<tr><td>1</td><td>测试接口1</td><td>测试应用系统</td><td>接口名由'测试接口'修改为'测试接口1'</td><td>2018-06-13 12:39:10</td></tr>");
 }
 //根据id获取接口配置信息
-function GetInterfaceConfigInfo(id) {
+function getInterfaceConfigInfo(id) {
     $.ajax({
         url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
         data: {
@@ -106,7 +101,7 @@ function GetInterfaceConfigInfo(id) {
     });
 }
 //获取接口异常日志请求方法
-function GetInterfaceLogs(id) {
+function getInterfaceLogs(id) {
     $.ajax({
         url: '/AjaxInterfacelog/GetInterfaceLogs.cspx',
         data: {

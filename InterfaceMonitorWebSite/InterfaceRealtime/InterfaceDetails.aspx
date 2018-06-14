@@ -53,10 +53,11 @@
             </div>
         </div>
     </div>
+    <!-- 文件上传表单 -->
     <form id="upload_form" enctype="multipart/form-data">
         <div id="upload_windows" style="display:none;padding:8px;" >
-        <input id="selectfiles" class="easyui-filebox" onchange="setfilepathOnchange(this)" style="width:99%;" data-options="buttonText:'选择文件...',buttonIcon:'icon-search',accept:'pdf/*',multiple:false" />
-        <div id="progressbar" class="easyui-progressbar" style="width:99%;margin-top:20px;"></div>
-    </div>
+            <input id="selectfiles" class="easyui-filebox" onchange="setfilepathOnchange(this)" style="width:99%;" data-options="buttonText:'选择文件...',buttonIcon:'icon-search',accept:'pdf/*',multiple:false" />
+            <div id="progressbar" class="easyui-progressbar" data-options="text:'上传进度'" style="width:99%;margin-top:20px;"></div>            
+        </div>        
     </form>    
 </asp:Content>

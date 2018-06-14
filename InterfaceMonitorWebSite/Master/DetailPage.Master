@@ -9,9 +9,9 @@
     <link rel="bookmark" type="image/x-icon" href="../images/shico.ico" />
     <link rel="shortcut icon" href="../images/shico.ico" />
     <link href="../css/indexSkin.css" rel="stylesheet" />
-    <link href="../jquery-easyui-1.5.5.2/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.5.5.2/themes/default/easyui.css" rel="stylesheet" />    
     <link href="../jquery-easyui-1.5.5.2/themes/icon.css" rel="stylesheet" />
-    <link href="../jquery-easyui-1.5.5.2/themes/color.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.5.5.2/themes/color.css" rel="stylesheet" />    
     <script src="../jquery-easyui-1.5.5.2/jquery.min.js"></script>
     <script src="../jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
     <script src="../javascript/master.js"></script>
