@@ -18,7 +18,7 @@ function InitDataGrid() {
         collapsible: true,
         striped: true,
         fitcolumns: true,
-        method: 'get',
+        method: 'post',
         dataType: 'json',
         toolbar: [
             { iconCls: 'icon-add', text: '添加', align: 'left', handler: function () {alert('添加') } },

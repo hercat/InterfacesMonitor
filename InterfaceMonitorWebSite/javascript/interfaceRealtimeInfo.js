@@ -11,7 +11,7 @@ function LoadInterfaceRealtimeInfo() {
     $.ajax({
         url: '/AjaxInterfaceRealtime/InterfaceRealtimeList.cspx',
         data: {},
-        type: 'get',
+        type: 'post',
         cache: false,
         success: function (json) {
             $('#content').empty();

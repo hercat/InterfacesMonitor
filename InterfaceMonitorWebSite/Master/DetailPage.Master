@@ -19,24 +19,22 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">    
-        <div id="header">
-            <div class="head_line"></div>
-            <div class="head">
-                <span style="float:left;line-height:76px;text-align:center;margin-top:10px;"><img src="../images/shico.ico" /></span>
-               <span>信息部接口监控系统</span>
-            </div>
+    <div id="header">
+        <div class="head_line"></div>
+        <div class="head">
+            <span style="float:left;line-height:76px;text-align:center;margin-top:10px;"><img src="../images/shico.ico" /></span>
+            <span>信息部接口监控系统</span>
         </div>
-        <div id="main_container">
-            <div id="mainWrap">
-                <asp:ContentPlaceHolder ID="body" runat="server">
+    </div>
+    <div id="main_container">
+        <div id="mainWrap">
+            <asp:ContentPlaceHolder ID="body" runat="server">
                     
-                </asp:ContentPlaceHolder>
-            </div>        
-        </div>
-        <div id="footer">
-            Copyright 2018© 上海吉祥航空信息部&nbsp;&nbsp;&nbsp; <span id="pageVersion">version 1.0</span>
-        </div>
-    </form>  
+            </asp:ContentPlaceHolder>
+        </div>        
+    </div>
+    <div id="footer">
+        Copyright 2018© 上海吉祥航空信息部&nbsp;&nbsp;&nbsp; <span id="pageVersion">version 1.0</span>
+    </div> 
 </body>
 </html>

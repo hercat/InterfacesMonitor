@@ -33,21 +33,23 @@ function OpenUploadDialog() {
     $('#upload_windows').dialog({
         width: 600,
         height: 180,
-        title: '文件上传',        
+        title: '文件上传',
         collapsible: true,
         minimizable: false,
         maximizable: false,
         draggable: true,
         shadow: true,
         modal: true,
+        readonly:true,
         buttons: [
             {
                 text: '上传',
                 iconCls: 'icon-save',
-                handler: function () {                    
+                handler: function () {
                     var files = $('#selectfiles').filebox('getValue');
                     alert(files);
-                }
+                    alert($('#selectfiles').filebox('getText'));
+                  }
             },
             {
                 text: '取消',
@@ -59,14 +61,19 @@ function OpenUploadDialog() {
         ]
     });
 }
+
+function setfilepathOnchange(basicfile) {
+    alert(basicfile.value);
+    document.getElementById("selectfiles").value = basicfile.value;
+}
 //tab1表格初始化
 function tab1Initial() {
-    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='60'>序号</th><th>接口名称</th><th>应用系统</th><th>异常信息</th><th width='80'>状态码</th><th width='180'>发生时间</th></tr></thread></table>";
+    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th width='15%'>应用系统</th><th>异常信息</th><th width='10%'>状态码</th><th width='15%'>发生时间</th></tr></thread></table>";
     $('#tab1').append(html);
 }
 //tab2表格初始化
 function tab2Initial() {
-    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='60'>序号</th><th>接口名称</th><th>应用系统</th><th>变更内容</th><th width='180'>变更时间</th></tr></thread></table>";
+    var html = "<table width='100%' border='0' cellpadding='0' cellspacing='0'><thread><tr><th width='5%'>序号</th><th width='20%'>接口名称</th><th  width='15%'>应用系统</th><th>变更内容</th><th width='15%'>变更时间</th></tr></thread></table>";
     $('#tab2').append(html);
 }
 //测试追加数据到dom元素后
@@ -83,7 +90,7 @@ function GetInterfaceConfigInfo(id) {
         data: {
             id: id
         },
-        type: 'get',
+        type: 'post',
         cache: false,
         success: function (json) {
             $('#interfaceName').html(json.InterfaceName);
@@ -105,7 +112,7 @@ function GetInterfaceLogs(id) {
         data: {
             id:id
         },
-        type: 'get',
+        type: 'post',
         cache: false,
         success: function (json) {
             var dom = $('#tab1').children('table');
