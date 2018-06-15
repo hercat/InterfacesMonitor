@@ -1,10 +1,37 @@
 ﻿
-$(function () {
+$(document).ready(function () {
     initDataGrid();
     loadData();
-    importTooltip();
+    importTooltip();        
 });
+//弹出接口信息添加dialog对话框
+function showAddBox() {
+    $('#add_box_div').dialog({
+        title: '添加接口配置信息',
+        iconCls:'icon-save',
+        width: 800,
+        height: 560,
+        closed: false,
+        cache: false,
+        modal: true,
+        buttons: [
+            {
+                text: '添加',
+                iconCls: 'icon-ok',
+                handler: function () {
 
+                }
+            },
+            {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#add_box_div').dialog('close');
+                }
+            }
+        ]
+    });
+}
 function importTooltip() {
     $('#import_button').tooltip({
         position: 'top',
@@ -34,7 +61,14 @@ function initDataGrid() {
         method: 'post',
         dataType: 'json',
         toolbar: [
-            { iconCls: 'icon-add', text: '添加', align: 'left', handler: function () {alert('添加') } },
+            {
+                iconCls: 'icon-add',
+                text: '添加',
+                align: 'left',
+                handler: function () {
+                    showAddBox();
+                }
+            },
             '-',
             { iconCls: 'icon-edit', text: '编辑', align: 'left', handler: function () { alert('编辑')} },
             '-',

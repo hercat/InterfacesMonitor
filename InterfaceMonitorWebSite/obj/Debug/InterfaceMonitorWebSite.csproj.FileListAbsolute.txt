@@ -50,3 +50,5 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\Interf
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\InterfaceMonitor.Frameworks.Utility.pdb
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\InterfaceMonitor.Frameworks.Dal.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\InterfaceMonitor.Frameworks.Dal.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\InterfaceMonitor.Frameworks.BizProcess.dll
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\bin\InterfaceMonitor.Frameworks.BizProcess.pdb

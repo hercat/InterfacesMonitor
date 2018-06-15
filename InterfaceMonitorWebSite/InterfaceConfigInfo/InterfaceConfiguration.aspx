@@ -15,4 +15,7 @@
             <table id="gridData"></table>
         </div>
     </div>
+    <div id="add_box_div" style="display:none;">
+
+    </div>
 </asp:Content>

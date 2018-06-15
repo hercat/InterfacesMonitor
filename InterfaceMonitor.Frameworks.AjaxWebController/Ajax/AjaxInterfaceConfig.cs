@@ -7,6 +7,7 @@ using MyMVC;
 using InterfaceMonitor.Frameworks.Entity;
 using InterfaceMonitor.Frameworks.Logical;
 using InterfaceMonitor.Frameworks.Utility;
+using InterfaceMonitor.Frameworks.BizProcess;
 
 namespace InterfaceMonitor.Frameworks.AjaxWebController
 {
@@ -171,6 +172,33 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(new Guid(id));
             return new JsonResult(info);
         }
-
+        /// <summary>
+        /// 新增接口配置信息
+        /// </summary>
+        /// <param name="interfaceName">接口名称</param>
+        /// <param name="applicationName">应用系统名称</param>
+        /// <param name="server">服务器地址</param>
+        /// <param name="user">服务器用户名</param>
+        /// <param name="pwd">用户密码</param>
+        /// <param name="charger">负责人</param>
+        /// <param name="phone">负责人电话</param>
+        /// <param name="timeout">timeout值</param>
+        /// <param name="docPath">帮助文档路径</param>
+        /// <param name="desc">描述</param>
+        /// <returns></returns>
+        [Action]
+        public object AddInterfaceConfigInfo(string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc)
+        {
+            try
+            {
+                InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc);
+                //return string.Format("\"{0}\"配置信息添加成功!", interfaceName);
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 }
