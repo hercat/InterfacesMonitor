@@ -104,7 +104,7 @@ function initDataGrid() {
                     , {
                         title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
-                            return value;
+                            return "<span style='overflow:hidden;text-overflow:ellipsis;'>" + value + "</span>";
                         }
                     }
                     , {
