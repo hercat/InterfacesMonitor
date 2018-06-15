@@ -4,7 +4,17 @@
 //js文档加载方法
 $(function () {
     //定时刷新
-    setInterval(LoadInterfaceRealtimeInfo, 10000);    
+    setInterval(LoadInterfaceRealtimeInfo, 10000);
+    $('.outer_div').tooltip({
+        Position:'top',
+        content: '<span style="color:#fff">'+$(this.val())+'</span>',
+        onShow: function(){
+            $(this).tooltip('tip').css({
+                backgroundColor: '#666',
+                borderColor: '#666'
+            });
+        }
+    });
 });
 //加载实时接口信息方法
 function LoadInterfaceRealtimeInfo() {
@@ -17,7 +27,7 @@ function LoadInterfaceRealtimeInfo() {
             $('#content').empty();
             $.each(json, function (key, val) {
                 if (val.StateCode == 1)
-                    $('#content').append("<div class='outer_div' data-title='" + val.ApplicationName + "+" + val.InterfaceName + "' onclick=" + "InterfaceDetails('" + val.Id + "') ><img src='../images/green24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");
+                    $('#content').append("<div class='outer_div' data-title='" + val.ApplicationName + "+" + val.InterfaceName + "' onclick=" + "InterfaceDetails('" + val.Id + "') ><img src='../images/green24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");                    
                 else if (val.StateCode == 0)
                     $('#content').append("<div class='outer_div' data-title='" + val.ApplicationName + "+" + val.InterfaceName + "' onclick=" + "InterfaceDetails('" + val.Id + "') ><img src='../images/red24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");
             });

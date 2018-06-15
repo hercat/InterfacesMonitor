@@ -201,13 +201,13 @@ body {
 #content_title {
     background:url(../images/content_title.jpg);
     margin-top:0px;
-    margin-bottom:8px;
+    margin-bottom:2px;
     padding-left:2px;
     font-size:14px;
     height:29px;
     line-height:29px;
     color:#404040;
-    border-bottom:2px solid #8ac2f5;
+    border-bottom:1px solid #8ac2f5;
     font-weight:bold;
     vertical-align:central;
     /*text-shadow:1px 1px 1px #808080;*/    

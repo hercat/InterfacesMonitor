@@ -1,11 +1,24 @@
 ﻿
 $(function () {
-    InitDataGrid();
-    LoadData();    
+    initDataGrid();
+    loadData();
+    importTooltip();
 });
 
+function importTooltip() {
+    $('#import_button').tooltip({
+        position: 'top',
+        content: '<span style="color:#fff">建议使用IE11高版本浏览器导入数据</span>',
+        onShow: function () {
+            $(this).tooltip('tip').css({
+                backgroundColor: '#666',
+                borderColor: '#666'
+            });
+        }
+    });
+}
 //初始化datagrid
-function InitDataGrid() {    
+function initDataGrid() {    
     $('#gridData').datagrid({
         idField: 'Id',
         nowrap: false,
@@ -51,7 +64,7 @@ function InitDataGrid() {
 }
 
 //加载数据函数
-function LoadData() {
+function loadData() {
     //alert($("#gridData").datagrid("getPager").data("pagination").options.pageSize);
     $('#gridData').datagrid('load', {
         fields: '',

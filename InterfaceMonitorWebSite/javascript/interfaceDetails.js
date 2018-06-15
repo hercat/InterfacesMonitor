@@ -3,16 +3,30 @@
 
 $(document).ready(function () {
     tab1Initial();
-    tab2Initial();
+    tab2Initial();    
     getInterfaceConfigInfo(GetUrlQueryString("id"));
     getInterfaceLogs(GetUrlQueryString("id"));
     tabContentInital();
+    uploadTooltip();
     //文件上传dialog
     $('#btn_upload').click(function () {
         openUploadDialog();
     });
     
 });
+//设置上传按钮tooltip提示
+function uploadTooltip() {    
+    $('#btn_upload').tooltip({
+        position: 'top',
+        content: '<span style="color:#fff;padding:3px;">建议使用IE11高版本浏览器上传文件.</span>',
+        onShow: function () {
+            $(this).tooltip('tip').css({
+                backgroundColor: '#666',
+                borderColor: '#666'
+            })
+        }
+    });
+}
 //tab初始化
 function tabContentInital() {
     $('.tab_content').hide();
@@ -46,9 +60,12 @@ function openUploadDialog() {
                 text: '上传',
                 iconCls: 'icon-ok',
                 handler: function () {
-                    var files = $('#selectfiles').filebox('getValue');
-                    alert(files);
-                    alert($('#selectfiles').filebox('getText'));
+                    //获取本地文件文件路径
+                    var file = $('#selectfiles').filebox('getValue');
+                    alert(file);
+                    var filename = $('#selectfiles').filebox('getText');
+                    //获取选择上传文件文件名
+                    alert(filename);
                 }
             },
             {

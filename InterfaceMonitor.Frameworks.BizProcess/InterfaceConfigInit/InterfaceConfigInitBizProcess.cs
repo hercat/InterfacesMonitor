@@ -30,11 +30,12 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="descript">描述</param>
         public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript)
         {
+            Guid id = Guid.NewGuid();
             //判断接口配置信息是否存在，如果不存在则新增
             if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server) == null)
             {
                 InterfaceConfigInfo config = new InterfaceConfigInfo();
-                config.Id = Guid.NewGuid();
+                config.Id = id;
                 config.InterfaceName = interfaceName;
                 config.ApplicationName = applicationName;
                 config.ServerAddress = server;
@@ -48,7 +49,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 config.CreateTime = DateTime.Now;
 
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
-                realtime.Id = Guid.NewGuid();
+                realtime.Id = id;
                 realtime.InterfaceName = interfaceName;
                 realtime.ApplicationName = applicationName;
                 realtime.ServerAddress = server;
@@ -59,5 +60,6 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Add);
             }            
         }
+                
     }
 }
