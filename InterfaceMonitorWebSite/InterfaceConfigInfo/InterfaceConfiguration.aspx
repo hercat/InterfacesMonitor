@@ -16,6 +16,40 @@
         </div>
     </div>
     <div id="add_box_div" style="display:none;">
-
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">接口名称</div>
+            <div class="add_box_div_row_content"><input type="text" id="interfaceName" /></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">应用名称</div>
+            <div class="add_box_div_row_content"><input type="text" id="applicationName"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">服务器地址</div>
+            <div class="add_box_div_row_content"><input type="text" id="server"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">服务器用户名</div>
+            <div class="add_box_div_row_content"><input type="text" id="user"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">用户密码</div>
+            <div class="add_box_div_row_content"><input type="text" id="pwd"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">负责人</div>
+            <div class="add_box_div_row_content"><input type="text" id="charger"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">负责人电话</div>
+            <div class="add_box_div_row_content"><input type="text" id="phone"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">描述</div>
+            <div class="add_box_div_row_content"><input type="text" id="desc"/></div>
+        </div>
+    </div>
+    <div id="impoer_box_div" style="display:none;padding:8px;">
+        <input id="selectfiles" class="easyui-filebox" style="width:99%" data-options="buttonText:'选择excel文件',buttonIcon:'icon-search',multiple:false" />
     </div>
 </asp:Content>

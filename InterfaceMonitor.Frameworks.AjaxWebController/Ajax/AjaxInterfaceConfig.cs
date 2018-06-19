@@ -191,7 +191,10 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         {
             try
             {
-                InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc);
+                if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server))
+                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc);
+                else
+                    return string.Format("{0},{1},{2}该接口配置已存在！", interfaceName, applicationName, server);
                 //return string.Format("\"{0}\"配置信息添加成功!", interfaceName);
                 return "OK";
             }

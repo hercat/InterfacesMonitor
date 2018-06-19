@@ -3,24 +3,46 @@
 $(document).ready(function () {
     initDataGrid();
     loadData();
-    importTooltip();        
+    importTooltip();
+    $('#import_button').click(importExcel);
 });
 //弹出接口信息添加dialog对话框
 function showAddBox() {
     $('#add_box_div').dialog({
         title: '添加接口配置信息',
         iconCls:'icon-save',
-        width: 800,
-        height: 560,
+        width: 600,
+        height: 420,
         closed: false,
         cache: false,
         modal: true,
         buttons: [
             {
                 text: '添加',
-                iconCls: 'icon-ok',
+                iconCls: 'icon-add',
                 handler: function () {
-
+                    $.ajax({
+                        url: '/AjaxInterfaceConfig/AddInterfaceConfigInfo.cspx',
+                        data: {
+                            interfaceName: $('#interfaceName').val(),
+                            applicationName: $('#applicationName').val(),
+                            server: $('#server').val(),
+                            user: $('#user').val(),
+                            pwd: $('#pwd').val(),
+                            charger: $('#charger').val(),
+                            phone: $('#phone').val(),
+                            timeout: 0,
+                            docPath:'',
+                            desc: $('#desc').val()
+                        },
+                        type: 'post',
+                        cache: false,
+                        success: function (json) {
+                            alert(json);
+                            $('#add_box_div').dialog('close');
+                            $('#gridData').datagrid('load');
+                        }
+                    });
                 }
             },
             {
@@ -44,6 +66,35 @@ function importTooltip() {
             });
         }
     });
+}
+//弹出导入数据对话框
+function importExcel() {
+    $('#selectfiles').filebox('clear');
+    $('#impoer_box_div').dialog({
+        title: '接口配置数据导入',
+        iconCls: 'icon-save',
+        width: 600,
+        height: 130,
+        closed: false,
+        cache: false,
+        modal: true,
+        buttons: [
+            {
+                text: '导入',
+                iconCls: 'icon-ok',
+                handler: function () {
+
+                }
+            },
+            {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#impoer_box_div').dialog('close');
+                }
+            }
+        ]
+    })
 }
 //初始化datagrid
 function initDataGrid() {    
@@ -104,7 +155,7 @@ function initDataGrid() {
                     , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
                     , {
                         title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
-                        formatter: function (value, row, index) {                            
+                        formatter: function (value, row, index) {
                             var abValue = value;
                             if (abValue.length >= 18)
                                 abValue = value.substring(0, 14) + "...";
