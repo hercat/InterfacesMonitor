@@ -2,7 +2,7 @@
 body {
     font-family: 'Microsoft YaHei','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.outer_div {    
+.outer_div {
     width:80px;
     height:80px;
     float:left;
@@ -18,7 +18,7 @@ body {
     border:1px none;
     border-radius:8px;
     position:relative;
-    background-color:#f7f7f7;
+    background-color:#f7f7f7;    
 }
 .outer_div:hover::after {
     content:attr(data-title);
