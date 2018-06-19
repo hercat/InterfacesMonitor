@@ -25,7 +25,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                 ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
             StringBuilder sb = new StringBuilder();
             if (!string.IsNullOrEmpty(id))
-                sb.AppendFormat(" where ConfigId = '{0}' ", id);
+                sb.AppendFormat(" where ConfigId = '{0}' order by CreateTime desc ", id);
             List<InterfaceExceptionlog> logs = InterfaceExceptionlogOperation.GetInterfaceExceptionlogList(string.Empty, sb.ToString());
             return new JsonResult(logs);
         }
