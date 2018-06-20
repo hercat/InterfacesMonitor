@@ -20,14 +20,21 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         [Action]
         public object GetInterfaceLogs(string id)
         {
-            SystemSettingBase settings = SystemSettingBase.CreateInstance();
-            if (settings.SysMySqlDB != null)
-                ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-            StringBuilder sb = new StringBuilder();
-            if (!string.IsNullOrEmpty(id))
-                sb.AppendFormat(" where ConfigId = '{0}' order by CreateTime desc ", id);
-            List<InterfaceExceptionlog> logs = InterfaceExceptionlogOperation.GetInterfaceExceptionlogList(string.Empty, sb.ToString());
-            return new JsonResult(logs);
+            try
+            {
+                SystemSettingBase settings = SystemSettingBase.CreateInstance();
+                if (settings.SysMySqlDB != null)
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
+                StringBuilder sb = new StringBuilder();
+                if (!string.IsNullOrEmpty(id))
+                    sb.AppendFormat(" where ConfigId = '{0}' order by CreateTime desc ", id);
+                List<InterfaceExceptionlog> logs = InterfaceExceptionlogOperation.GetInterfaceExceptionlogList(string.Empty, sb.ToString());
+                return new JsonResult(logs);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

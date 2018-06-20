@@ -16,11 +16,18 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         [Action]
         public object InterfaceRealtimeList()
         {
-            SystemSettingBase settings = SystemSettingBase.CreateInstance();
-            if (settings.SysMySqlDB != null)
-                ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-            List<InterfaceRealtimeInfo> list = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoList("Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime", "");
-            return new JsonResult(list);
+            try
+            {
+                SystemSettingBase settings = SystemSettingBase.CreateInstance();
+                if (settings.SysMySqlDB != null)
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
+                List<InterfaceRealtimeInfo> list = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoList("Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime", "");
+                return new JsonResult(list);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         /// <summary>
         /// [Ajax层]根据Id获取接口实时状态方法
@@ -30,11 +37,18 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         [Action]
         public object GetInterfaceRealtimeById(string id)
         {
-            SystemSettingBase settings = SystemSettingBase.CreateInstance();
-            if (settings.SysMySqlDB != null)
-                ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-            InterfaceRealtimeInfo info = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(new Guid(id));
-            return new JsonResult(info);
+            try
+            {
+                SystemSettingBase settings = SystemSettingBase.CreateInstance();
+                if (settings.SysMySqlDB != null)
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
+                InterfaceRealtimeInfo info = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(new Guid(id));
+                return new JsonResult(info);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

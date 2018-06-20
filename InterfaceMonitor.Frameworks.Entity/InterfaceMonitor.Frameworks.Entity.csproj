@@ -45,15 +45,19 @@
     <Compile Include="ApplicationSysInfo\ApplicationSysInfo.cs" />
     <Compile Include="ChargesInfo\ChargesInfo.cs" />
     <Compile Include="ConnString\ConnString.cs" />
+    <Compile Include="GridResult\GridResult.cs" />
     <Compile Include="InterfaceBaseInfo\InterfaceBaseInfo.cs" />
     <Compile Include="InterfaceConfigInfo\InterfaceConfigInfo.cs" />
     <Compile Include="InterfaceExceptionlog\InterfaceExceptionlog.cs" />
     <Compile Include="InterfaceRealtimeInfo\InterfaceRealtimeInfo.cs" />
+    <Compile Include="PageInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemEnum\SystemEnum.cs" />
     <Compile Include="SystemItem\SystemItem.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="PageInfo\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

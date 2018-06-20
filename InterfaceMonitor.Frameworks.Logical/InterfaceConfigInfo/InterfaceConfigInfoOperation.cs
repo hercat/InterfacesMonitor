@@ -186,10 +186,10 @@ namespace InterfaceMonitor.Frameworks.Logical
         /// </summary>
         /// <param name="fields">字段名</param>
         /// <param name="whereCondition">sql筛选语句</param>
-        /// <param name="pageIndex">页下标</param>
+        /// <param name="startIndex">下标</param>
         /// <param name="pageSize">页大小</param>
         /// <returns></returns>
-        public static List<InterfaceConfigInfo> GetInterfaceConfigInfoPageList(string fields, string whereCondition, int pageIndex, int pageSize)
+        public static List<InterfaceConfigInfo> GetInterfaceConfigInfoPageList(string fields, string whereCondition, int startIndex, int pageSize)
         {
             IDbConnection conn = null;
             IDbCommand cmd = null;
@@ -203,7 +203,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 conn.Open();
                 trans = conn.BeginTransaction();
                 cmd.Transaction = trans;
-                list = dp.GetInterfaceConfigInfoPageList(cmd, fields, whereCondition, pageIndex, pageSize);
+                list = dp.GetInterfaceConfigInfoPageList(cmd, fields, whereCondition, startIndex, pageSize);
                 trans.Commit();
             }
             catch (Exception ex)

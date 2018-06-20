@@ -167,12 +167,11 @@ namespace InterfaceMonitor.Frameworks.Dal
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public List<InterfaceConfigInfo> GetInterfaceConfigInfoPageList(IDbCommand icmd, string fields, string whereCondition, int pageIndex, int pageSize)
+        public List<InterfaceConfigInfo> GetInterfaceConfigInfoPageList(IDbCommand icmd, string fields, string whereCondition, int startIndex, int pageSize)
         {
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
-            cmd.CommandType = CommandType.Text;
-            int startIndex = (pageIndex - 1) * pageSize;//计算分页开始下标值
+            cmd.CommandType = CommandType.Text;            
             StringBuilder sb = new StringBuilder();
             if (!string.IsNullOrEmpty(fields))
                 sb.AppendFormat("select {0} from interfaceconfiginfo ", fields);
