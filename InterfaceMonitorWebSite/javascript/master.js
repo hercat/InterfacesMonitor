@@ -1,4 +1,6 @@
-﻿function OpenTab() {
+﻿var g_MsgBoxTitle = "接口监控系统";
+
+function OpenTab() {
     var menu = $('#nav').css("display");
     var arrdiv = $('#').css("display");
     if (menu == 'block' || menu == "") {
@@ -46,4 +48,8 @@ function renderTime(str) {
     dt = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
     //alert(dt);
     return dt;
+}
+//清除空格
+function trim(str) {
+    return str.replace(/^\s+|\s+$/g, '');
 }

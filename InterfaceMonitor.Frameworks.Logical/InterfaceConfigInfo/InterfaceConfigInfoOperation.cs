@@ -218,5 +218,42 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
             return list;
         }
+        /// <summary>
+        /// 自定义接口配置信息列表查询
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <param name="whereCondition"></param>
+        /// <param name="orderby"></param>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public static List<InterfaceConfigInfo> GetInterfaceConfigInfoByCondition(string fields, string whereCondition, string orderby, string limit)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            List<InterfaceConfigInfo> list = new List<InterfaceConfigInfo>();
+            try
+            {
+                IInterfaceConfigInfo dp = DataProvider.DbInterfaceConfigDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                list = dp.GetInterfaceConfigInfoByCondition(cmd, fields, whereCondition, orderby, limit);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return list;
+        }
     }
 }

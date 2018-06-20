@@ -61,6 +61,37 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Add);
             }            
         }
-                
+        /// <summary>
+        /// 删除接口配置信息（同时删除对应的实时状态表中信息）
+        /// </summary>
+        /// <param name="interfaceName"></param>
+        /// <param name="applicationName"></param>
+        /// <param name="server"></param>
+        public static void DeleteInterfaceConfigInfo(string interfaceName, string applicationName, string server)
+        {
+            InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server);
+            if (info != null)
+            {
+                InterfaceConfigInfoOperation.DeleteInterfaceConfigInfoById(info.Id);
+                InterfaceRealtimeInfo realtime = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(info.Id);
+                if (realtime != null)
+                    InterfaceRealtimeInfoOperation.DeleteInterfaceRealtimeInfoById(info.Id);
+            }
+        }
+        /// <summary>
+        /// 根据id删除接口配置信息（同时删除对应的实时状态表中信息）
+        /// </summary>
+        /// <param name="id"></param>
+        public static void DeleteInterfaceConfigInfoById(string id)
+        {
+            InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(new Guid(id));
+            if (null != info)
+            {
+                InterfaceConfigInfoOperation.DeleteInterfaceConfigInfoById(info.Id);
+                InterfaceRealtimeInfo realtime = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(info.Id);
+                if (null != realtime)
+                    InterfaceRealtimeInfoOperation.DeleteInterfaceRealtimeInfoById(info.Id);           
+            }
+        }
     }
 }

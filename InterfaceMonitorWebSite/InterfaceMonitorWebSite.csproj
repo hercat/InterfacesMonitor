@@ -93,6 +93,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\SysConfiguration.aspx" />
     <Content Include="css\interfaceConfiguration.css" />
     <Content Include="css\interfaceDetails.css" />
     <Content Include="images\document_32t.png" />
@@ -1024,6 +1025,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\SysConfiguration.aspx.cs">
+      <DependentUpon>SysConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Config\SysConfiguration.aspx.designer.cs">
+      <DependentUpon>SysConfiguration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceConfigInfo\InterfaceConfiguration.aspx.cs">
       <DependentUpon>InterfaceConfiguration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1068,9 +1076,7 @@
       <DependentUpon>MainMenu.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\InterfaceMonitor.Frameworks.AjaxWebController\InterfaceMonitor.Frameworks.AjaxWebController.csproj">
       <Project>{afd8efd6-2519-4f83-9329-f831eb041563}</Project>

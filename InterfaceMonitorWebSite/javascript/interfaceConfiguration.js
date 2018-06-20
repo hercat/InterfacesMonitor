@@ -5,9 +5,54 @@ $(document).ready(function () {
     loadData();
     importTooltip();
     $('#import_button').click(importExcel);
+    onSelect();
 });
+function onSelect() {    
+    $('#gridData').datagrid({
+        onSelect: function (index, row) {
+            
+        }
+    })
+}
+//提交数据校验
+function checkingData() {
+    if (trim($('#interfaceName').val()) == ""){        
+        $.messager.alert(g_MsgBoxTitle, "接口名称不能为空！", "warning");        
+        return false;
+    }
+    if (trim($('#applicationName').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "应用名称不能为空！", "warning");
+        return false;
+    }
+    if (trim($('#server').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "服务器地址不能为空！", "warning");
+        return false;
+    }
+    if (trim($('#user').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "服务器用户名不能为空！", "warning");
+        return false;
+    }
+    if (trim($('#pwd').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "用户密码不能为空！", "warning");
+        return false;
+    }
+    if (trim($('#charger').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "负责人不能为空！", "warning");
+        return false;
+    }
+    if (trim($('#phone').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "负责人电话不能为空！", "warning");
+        return false;
+    }
+    if (trim($('#desc').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "描述不能为空！", "warning");
+        return false;
+    }
+    return true;
+}
 //弹出接口信息添加dialog对话框
 function showAddBox() {
+    
     $('#add_box_div').dialog({
         title: '添加接口配置信息',
         iconCls:'icon-save',
@@ -21,26 +66,34 @@ function showAddBox() {
                 text: '添加',
                 iconCls: 'icon-add',
                 handler: function () {
-                    $.ajax({
-                        url: '/AjaxInterfaceConfig/AddInterfaceConfigInfo.cspx',
-                        data: {
-                            interfaceName: $('#interfaceName').val(),
-                            applicationName: $('#applicationName').val(),
-                            server: $('#server').val(),
-                            user: $('#user').val(),
-                            pwd: $('#pwd').val(),
-                            charger: $('#charger').val(),
-                            phone: $('#phone').val(),
-                            timeout: 0,
-                            docPath:'',
-                            desc: $('#desc').val()
-                        },
-                        type: 'post',
-                        cache: false,
-                        success: function (json) {
-                            alert(json);
-                            $('#add_box_div').dialog('close');
-                            $('#gridData').datagrid('load');
+                    if (!checkingData())
+                        return;
+                    $.messager.confirm('提醒', '确定要添加【' + $('#interfaceName').val() + '】接口信息吗？', function (r) {
+                        if (!r)
+                            return;
+                        else {
+                            $.ajax({
+                                url: '/AjaxInterfaceConfig/AddInterfaceConfigInfo.cspx',
+                                data: {
+                                    interfaceName: $('#interfaceName').val(),
+                                    applicationName: $('#applicationName').val(),
+                                    server: $('#server').val(),
+                                    user: $('#user').val(),
+                                    pwd: $('#pwd').val(),
+                                    charger: $('#charger').val(),
+                                    phone: $('#phone').val(),
+                                    timeout: 0,
+                                    docPath: '',
+                                    desc: $('#desc').val()
+                                },
+                                type: 'post',
+                                cache: false,
+                                success: function (json) {
+                                    alert(json);
+                                    $('#add_box_div').dialog('close');
+                                    $('#gridData').datagrid('load');
+                                }
+                            });
                         }
                     });
                 }
@@ -96,6 +149,10 @@ function importExcel() {
         ]
     })
 }
+//编辑接口配置信息
+function editInterfaceConfig() {
+
+}
 //初始化datagrid
 function initDataGrid() {    
     $('#gridData').datagrid({
@@ -131,7 +188,7 @@ function initDataGrid() {
                 text: '编辑',
                 align: 'left',
                 handler: function () {
-                    alert('编辑');
+                    
                 }
             },
             '-',
@@ -144,9 +201,9 @@ function initDataGrid() {
                 }
             }
         ],
-        url: '/AjaxInterfaceConfig/SearchInterfaceConfig.cspx',
-        //pageNumber:1,
-        //pagesize: 10,
+        url: '/AjaxInterfaceConfig/SearchInterfaceConfigNew.cspx',
+        pageNumber:1,
+        pagesize: 10,
         pageList: [10, 20, 30],
         columns: [[
                     { field: 'ck', align: 'center', checkbox: true }
@@ -194,13 +251,15 @@ function initDataGrid() {
         $('#gridData').datagrid('resize', {
             width: $("#divTable").css("width")
         });
-    });
+    });    
 }
 
 //加载数据函数
 function loadData() {    
     $('#gridData').datagrid('load', {
         fields: '',
-        key: ''
+        key: '',
+        order: 'CreateTime',
+        ascOrdesc:'desc'
     });
 }

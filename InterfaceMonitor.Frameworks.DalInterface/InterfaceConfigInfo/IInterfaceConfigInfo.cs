@@ -16,5 +16,6 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, string applicationName, string server);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoList(IDbCommand idbcmd, string fields, string whereCondition);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoPageList(IDbCommand idbcmd, string fields, string whereCondition, int pageIndex, int pageSize);
+        List<InterfaceConfigInfo> GetInterfaceConfigInfoByCondition(IDbCommand idbcmd, string fields, string whereCondition, string orderby,string limit);
     }
 }

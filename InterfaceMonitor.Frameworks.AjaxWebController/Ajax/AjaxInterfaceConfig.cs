@@ -126,10 +126,55 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                 if (string.IsNullOrEmpty(fields))
                     fields = "*";
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat(" where InterfaceName like '%{0}%' or ApplicationName like '%{0}%' or ServerAddress like '%{0}%' ", key.Trim());
+                if (!string.IsNullOrEmpty(key))
+                    sb.AppendFormat(" where InterfaceName like '%{0}%' or ApplicationName like '%{0}%' or ServerAddress like '%{0}%' ", key.Trim());
                 List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoList(fields, sb.ToString());
                 pageInfo.RecCount = list.Count;
                 List<InterfaceConfigInfo> target = InterfaceConfigInfoOperation.GetInterfaceConfigInfoPageList(fields, sb.ToString(), pageInfo.PageIndex, pageInfo.PageSize);
+                GridResult<InterfaceConfigInfo> result = new GridResult<InterfaceConfigInfo>(target, pageInfo.RecCount);
+                return new JsonResult(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <param name="key"></param>
+        /// <param name="order"></param>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        [Action]
+        public object SearchInterfaceConfigNew(string fields, string key, string order,string ascOrdesc, int page, int rows)
+        {
+            try
+            {
+                SystemSettingBase settings = SystemSettingBase.CreateInstance();
+                if (settings.SysMySqlDB != null)
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
+                PageInfo pageInfo = new PageInfo()
+                {
+                    PageIndex = rows * (page - 1),
+                    PageSize = rows,
+                    RecCount = 0
+                };
+                if (string.IsNullOrEmpty(fields))
+                    fields = "*";
+                string where = string.Empty;
+                if (!string.IsNullOrEmpty(key))
+                    where = string.Format(" where InterfaceName like '%{0}%' or ApplicationName like '%{0}%' or ServerAddress like '%{0}%' ", key.Trim());
+                string orderby = string.Empty;
+                if (!string.IsNullOrEmpty(order))
+                    orderby = string.Format(" order by {0} {1} ", order, ascOrdesc);
+                string limit = string.Empty;
+                limit = string.Format(" limit {0},{1} ", pageInfo.PageIndex, pageInfo.PageSize);
+                List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoList(fields, where);
+                pageInfo.RecCount = list.Count;
+                List<InterfaceConfigInfo> target = InterfaceConfigInfoOperation.GetInterfaceConfigInfoByCondition(fields, where, orderby, limit);
                 GridResult<InterfaceConfigInfo> result = new GridResult<InterfaceConfigInfo>(target, pageInfo.RecCount);
                 return new JsonResult(result);
             }

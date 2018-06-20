@@ -195,5 +195,45 @@ namespace InterfaceMonitor.Frameworks.Dal
             }
             return list;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <param name="fields"></param>
+        /// <param name="whereCondition"></param>
+        /// <param name="orderby"></param>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public List<InterfaceConfigInfo> GetInterfaceConfigInfoByCondition(IDbCommand icmd, string fields, string whereCondition, string orderby,string limit)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            StringBuilder sb = new StringBuilder();
+            if(!string.IsNullOrEmpty(fields))
+                sb.AppendFormat("select {0} from interfaceconfiginfo ", fields);
+            if (!string.IsNullOrEmpty(whereCondition))
+                sb.AppendFormat("{0} ", whereCondition);
+            if (!string.IsNullOrEmpty(orderby))
+                sb.AppendFormat("{0} ", orderby);
+            if (!string.IsNullOrEmpty(limit))
+                sb.AppendFormat("{0} ", limit);
+            cmd.CommandText = sb.ToString();
+            List<InterfaceConfigInfo> list = new List<InterfaceConfigInfo>();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                InterfaceConfigInfo obj = null;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    obj = new InterfaceConfigInfo();
+                    obj.AllParse(dr);
+                    if (null != obj)
+                        list.Add(obj);
+                }
+            }
+            return list;
+        }
     }
 }
