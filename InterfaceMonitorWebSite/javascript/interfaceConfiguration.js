@@ -5,7 +5,6 @@ $(document).ready(function () {
     loadData();
     importTooltip();
     $('#import_button').click(importExcel);
-    onSelect();
 });
 function onSelect() {    
     $('#gridData').datagrid({
@@ -50,8 +49,19 @@ function checkingData() {
     }
     return true;
 }
+//清空添加
+function clearAddBox() {
+    $('#interfaceName').val('');
+    $('#applicationName').val('');
+    $('#server').val('');
+    $('#user').val('');
+    $('#pwd').val('');
+    $('#charger').val('');
+    $('#phone').val('');
+    $('#desc').val('');
+}
 //弹出接口信息添加dialog对话框
-function showAddBox() {
+function addInterfaceConfigInfo() {
     
     $('#add_box_div').dialog({
         title: '添加接口配置信息',
@@ -89,9 +99,10 @@ function showAddBox() {
                                 type: 'post',
                                 cache: false,
                                 success: function (json) {
-                                    alert(json);
+                                    $.messager.alert(g_MsgBoxTitle, json, "info");
                                     $('#add_box_div').dialog('close');
                                     $('#gridData').datagrid('load');
+                                    clearAddBox();
                                 }
                             });
                         }
@@ -103,6 +114,7 @@ function showAddBox() {
                 iconCls: 'icon-cancel',
                 handler: function () {
                     $('#add_box_div').dialog('close');
+                    clearAddBox();
                 }
             }
         ]
@@ -151,7 +163,36 @@ function importExcel() {
 }
 //编辑接口配置信息
 function editInterfaceConfig() {
-
+    var rowdata = $('#gridData').datagrid('getSelected');
+    alert(rowdata.Id);
+}
+//删除接口配置信息
+function deleteInterfaceConfig() {
+    var rowdata = $('#gridData').datagrid('getSelected');
+    if (rowdata == null) {
+        $.messager.alert(g_MsgBoxTitle, "请先选中需要删除的配置！", "warning");
+        return;
+    }
+    else {
+        $.messager.confirm("提醒", "确定要删除【" + rowdata.InterfaceName + "】接口配置吗？", function (r) {
+            if (!r)
+                return;
+            else {
+                $.ajax({
+                    url: '/AjaxInterfaceConfig/DeleteInterfaceConfigInfo.cspx',
+                    data: {
+                        id: rowdata.Id
+                    },
+                    type: 'post',
+                    cache: false,
+                    success: function (json) {
+                        $.messager.alert(g_MsgBoxTitle, json, "info");
+                        loadData();
+                    }
+                });
+            }
+        });        
+    }
 }
 //初始化datagrid
 function initDataGrid() {    
@@ -179,7 +220,7 @@ function initDataGrid() {
                 text: '添加',
                 align: 'left',
                 handler: function () {
-                    showAddBox();
+                    addInterfaceConfigInfo();
                 }
             },
             '-',
@@ -188,7 +229,7 @@ function initDataGrid() {
                 text: '编辑',
                 align: 'left',
                 handler: function () {
-                    
+                    editInterfaceConfig();
                 }
             },
             '-',
@@ -197,7 +238,7 @@ function initDataGrid() {
                 text: '删除',
                 align: 'left',
                 handler: function () {
-                    alert('删除');
+                    deleteInterfaceConfig()
                 }
             }
         ],

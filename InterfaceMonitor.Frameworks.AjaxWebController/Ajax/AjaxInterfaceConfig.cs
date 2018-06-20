@@ -339,14 +339,40 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             try
             {
                 if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server))
+                {
                     InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc);
+                    return string.Format("添加【{0}】配置信息成功！", interfaceName);
+                }                    
                 else
-                    return string.Format("{0},{1},{2}该接口配置已存在！", interfaceName, applicationName, server);               
-                return "OK";
+                    return string.Format("{0},{1},{2}该接口配置已存在！", interfaceName, applicationName, server);                               
             }
             catch (Exception ex)
             {
                 return ex.Message;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Action]
+        public object DeleteInterfaceConfigInfo(string id)
+        {
+            try
+            {
+                InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(new Guid(id));
+                if (info != null)
+                {
+                    InterfaceConfigInitBizProcess.DeleteInterfaceConfigInfoById(id);
+                    return string.Format("删除【{0}】成功！", info.InterfaceName);
+                }
+                else
+                    return string.Format("系统不存在【{0}】配置信息！", info.InterfaceName);
+            }
+            catch (Exception ex)
+            {
+                return "删除失败！";
             }
         }
     }
