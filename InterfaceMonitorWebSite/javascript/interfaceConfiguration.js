@@ -117,7 +117,7 @@ function addInterfaceConfigInfo() {
                 }
             }
         ]
-    });    
+    });
 }
 function importTooltip() {
     $('#import_button').tooltip({
