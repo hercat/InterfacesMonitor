@@ -4,7 +4,7 @@ $(document).ready(function () {
     initDataGrid();
     loadData();
     importTooltip();
-    $('#import_button').click(importExcel);
+    excelImport();
 });
 function onSelect() {    
     $('#gridData').datagrid({
@@ -61,8 +61,7 @@ function clearAddBox() {
     $('#desc').val('');
 }
 //弹出接口信息添加dialog对话框
-function addInterfaceConfigInfo() {
-    
+function addInterfaceConfigInfo() {    
     $('#add_box_div').dialog({
         title: '添加接口配置信息',
         iconCls:'icon-save',
@@ -170,10 +169,11 @@ function editInterfaceConfig() {
 function deleteInterfaceConfig() {
     var rowdata = $('#gridData').datagrid('getSelected');
     if (rowdata == null) {
-        $.messager.alert(g_MsgBoxTitle, "请先选中需要删除的配置！", "warning");
+        $.messager.alert(g_MsgBoxTitle, "请选中需要删除的配置信息！", "warning");
         return;
     }
     else {
+        //确认消息框
         $.messager.confirm("提醒", "确定要删除【" + rowdata.InterfaceName + "】接口配置吗？", function (r) {
             if (!r)
                 return;
@@ -224,21 +224,21 @@ function initDataGrid() {
                 }
             },
             '-',
-            {
-                iconCls: 'icon-edit',
-                text: '编辑',
-                align: 'left',
-                handler: function () {
-                    editInterfaceConfig();
-                }
-            },
-            '-',
+            //{
+            //    iconCls: 'icon-edit',
+            //    text: '编辑',
+            //    align: 'left',
+            //    handler: function () {
+            //        editInterfaceConfig();
+            //    }
+            //},
+            //'-',
             {
                 iconCls: 'icon-remove',
                 text: '删除',
                 align: 'left',
                 handler: function () {
-                    deleteInterfaceConfig()
+                    deleteInterfaceConfig();
                 }
             }
         ],
@@ -255,8 +255,7 @@ function initDataGrid() {
 					, { title: '用户密码', field: 'UserPwd', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
                     , { title: '负责人名', field: 'PersonOfChargeName', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
                     , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
-                    , {
-                        title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
+                    , { title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             var abValue = value;
                             if (abValue.length >= 18)
@@ -265,8 +264,7 @@ function initDataGrid() {
                             return content;
                         }
                     }
-                    , {
-                        title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.12, 'divTable'), sortable: false,
+                    , { title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.12, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             return renderTime(value);
                         }
@@ -294,7 +292,6 @@ function initDataGrid() {
         });
     });    
 }
-
 //加载数据函数
 function loadData() {    
     $('#gridData').datagrid('load', {
@@ -303,4 +300,8 @@ function loadData() {
         order: 'CreateTime',
         ascOrdesc:'desc'
     });
+}
+//excel导入响应方法
+function excelImport() {
+    $('#import_button').click(importExcel);
 }

@@ -13,6 +13,7 @@
     <link href="../jquery-easyui-1.5.5.2/themes/color.css" rel="stylesheet" />
     <script src="../jquery-easyui-1.5.5.2/jquery.min.js"></script>
     <script src="../jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+    <script src="../jquery-easyui-1.5.5.2/locale/easyui-lang-zh_CN.js"></script>
     <script src="../javascript/master.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>

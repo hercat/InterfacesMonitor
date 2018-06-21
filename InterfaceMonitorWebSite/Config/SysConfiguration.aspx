@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyRight" runat="server">
     <div>
         <div id="content_title">
-            <span>接口配置信息</span>
+            <span>系统配置信息</span>
         </div>
         <div>
 

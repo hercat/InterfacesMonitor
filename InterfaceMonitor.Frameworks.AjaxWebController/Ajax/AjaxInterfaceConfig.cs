@@ -300,7 +300,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         }
         /// <summary>
         /// 根据Id获取接口配置信息
-        /// </summary>        
+        /// </summary>
         /// <param name="id">编号</param>
         /// <returns></returns>
         [Action]
@@ -352,7 +352,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             }
         }
         /// <summary>
-        /// 
+        /// 根据id删除接口配置信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
