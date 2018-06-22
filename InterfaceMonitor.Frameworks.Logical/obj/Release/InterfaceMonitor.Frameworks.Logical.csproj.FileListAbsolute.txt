@@ -14,3 +14,4 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logica
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\obj\Release\InterfaceMonitor.Frameworks.Logical.csprojResolveAssemblyReference.cache
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\obj\Release\InterfaceMonitor.Frameworks.Logical.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\obj\Release\InterfaceMonitor.Frameworks.Logical.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.Logical\bin\Release\MyMVC.dll

@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DetailPage.master.cs" Inherits="InterfaceMonitorWebSite.Master.DetailPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>InterfaceMonitors</title>
+    <link rel="bookmark" type="image/x-icon" href="../images/shico.ico" />
+    <link rel="shortcut icon" href="../images/shico.ico" />
+    <link href="../css/indexSkin.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.5.5.2/themes/default/easyui.css" rel="stylesheet" />    
+    <link href="../jquery-easyui-1.5.5.2/themes/icon.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.5.5.2/themes/color.css" rel="stylesheet" />    
+    <script src="../jquery-easyui-1.5.5.2/jquery.min.js"></script>
+    <script src="../jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+    <script src="../jquery-easyui-1.5.5.2/locale/easyui-lang-zh_CN.js"></script>
+    <script src="../javascript/master.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="header">
+        <div class="head_line"></div>
+        <div class="head">
+            <span style="float:left;line-height:76px;text-align:center;margin-top:10px;"><img src="../images/shico.ico" /></span>
+            <span>信息部接口监控系统</span>
+        </div>
+    </div>
+    <div id="main_container">
+        <div id="mainWrap">
+            <asp:ContentPlaceHolder ID="body" runat="server">
+                    
+            </asp:ContentPlaceHolder>
+        </div>        
+    </div>
+    <div id="footer">
+        Copyright 2018© 上海吉祥航空信息部&nbsp;&nbsp;&nbsp; <span id="pageVersion">version 1.0</span>
+    </div> 
+</body>
+</html>

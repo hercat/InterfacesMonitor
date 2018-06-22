@@ -10,25 +10,25 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/InterfaceMonitor.Frameworks.BizProcess.dll">
-      <publishTime>05/31/2018 10:29:09</publishTime>
+      <publishTime>06/22/2018 09:44:01</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Dal.dll">
-      <publishTime>05/30/2018 13:40:58</publishTime>
+      <publishTime>06/22/2018 09:44:01</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.DalInterface.dll">
-      <publishTime>05/30/2018 13:40:58</publishTime>
+      <publishTime>06/22/2018 09:44:01</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Entity.dll">
-      <publishTime>05/30/2018 13:40:58</publishTime>
+      <publishTime>06/22/2018 09:44:00</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Logical.dll">
-      <publishTime>05/31/2018 10:29:09</publishTime>
+      <publishTime>06/22/2018 09:44:01</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Utility.dll">
-      <publishTime>05/30/2018 13:40:58</publishTime>
+      <publishTime>06/22/2018 09:44:00</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.WebserviceApplication.dll">
-      <publishTime>05/31/2018 10:29:12</publishTime>
+      <publishTime>06/22/2018 09:44:07</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -88,7 +88,7 @@
       <publishTime>05/30/2018 13:02:20</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>05/31/2018 10:29:14</publishTime>
+      <publishTime>06/22/2018 09:44:11</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>05/30/2018 13:41:04</publishTime>

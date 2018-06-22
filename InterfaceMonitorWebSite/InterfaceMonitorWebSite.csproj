@@ -165,6 +165,7 @@
     <Content Include="jquery-easyui-1.5.5.2\demo\tree\tree_data2.json" />
     <Content Include="Master\Main.Master" />
     <Content Include="Master\DetailPage.Master" />
+    <None Include="Properties\PublishProfiles\InterfaceMonitorPartal.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
