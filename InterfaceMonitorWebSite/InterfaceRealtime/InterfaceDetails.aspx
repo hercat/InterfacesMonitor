@@ -19,12 +19,12 @@
                 <div class="basic_top_div">
                     <span class="basic_top_div_title">服务器地址：</span><span class="basic_top_div_content" id="server"></span>
                 </div>
-                <div class="basic_top_div">
+                <%--<div class="basic_top_div">
                     <span class="basic_top_div_title">服务器用户名：</span><span class="basic_top_div_content" id="userName"></span>
                 </div>
                 <div class="basic_top_div">
                     <span class="basic_top_div_title">密码：</span><span class="basic_top_div_content" id="pwd"></span>
-                </div>
+                </div>--%>
                 <div class="basic_top_div">
                     <span class="basic_top_div_title">负责人：</span><span class="basic_top_div_content" id="chargeman"></span>
                 </div>

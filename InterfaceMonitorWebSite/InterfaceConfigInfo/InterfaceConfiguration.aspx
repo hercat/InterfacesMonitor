@@ -28,14 +28,14 @@
             <div class="add_box_div_row_label">服务器地址</div>
             <div class="add_box_div_row_content"><input type="text" id="server"/></div>
         </div>
-        <div class="add_box_div_row">
+        <%--<div class="add_box_div_row">
             <div class="add_box_div_row_label">服务器用户名</div>
             <div class="add_box_div_row_content"><input type="text" id="user"/></div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">用户密码</div>
             <div class="add_box_div_row_content"><input type="text" id="pwd"/></div>
-        </div>
+        </div>--%>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">负责人</div>
             <div class="add_box_div_row_content"><input type="text" id="charger"/></div>

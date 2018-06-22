@@ -111,8 +111,8 @@ function getInterfaceConfigInfo(id) {
             $('#interfaceName').html(json.InterfaceName);
             $('#appName').html(json.ApplicationName);
             $('#server').html(json.ServerAddress);
-            $('#userName').html(json.ServerUser);
-            $('#pwd').html(json.UserPwd);
+            //$('#userName').html(json.ServerUser);
+            //$('#pwd').html(json.UserPwd);
             $('#chargeman').html(json.PersonOfChargeName);
             $('#phone').html(json.PersonOfChargePhone);
             $('#description').html(json.Description);
