@@ -9,7 +9,8 @@
             <span>接口配置信息</span>
         </div>
         <div id="funtion_buttons">            
-            <input id="search_text" /><span id="search_button">查询</span>
+            <input id="search_text" type="text" value="输入接口名称、应用名称、服务器地址..." onfocus="if(this.value=='输入接口名称、应用名称、服务器地址...'){this.value='';}" onblur="if(this.value==''){this.value='输入接口名称、应用名称、服务器地址...';}"  />
+            <span id="search_button">查询</span>
             <span id="import_button">导入</span>
         </div>
         <div id="divTable">
