@@ -116,7 +116,8 @@ function getInterfaceConfigInfo(id) {
             $('#chargeman').html(json.PersonOfChargeName);
             $('#phone').html(json.PersonOfChargePhone);
             $('#description').html(json.Description);
-            $('#documents').html("<a href='" + json.DocumentHelpPath + "' target='_blank' style='text-decoration:none;' ><img src='../images/pdf_16.png' />&nbsp;" + json.DocumentHelpPath.substring(json.DocumentHelpPath.lastIndexOf('/') + 1, json.DocumentHelpPath.length) + "</a>,");
+            if (json.DocumentHelpPath != null || json.DocumentHelpPath != "")
+                $('#documents').html("<a href='" + json.DocumentHelpPath + "' target='_blank' style='text-decoration:none;' ><img src='../images/pdf_16.png' />&nbsp;" + json.DocumentHelpPath.substring(json.DocumentHelpPath.lastIndexOf('/') + 1, json.DocumentHelpPath.length) + "</a>,");
         }
     });
 }

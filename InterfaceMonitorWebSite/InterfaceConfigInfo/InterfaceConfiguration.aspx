@@ -8,8 +8,9 @@
         <div id="content_title">
             <span>接口配置信息</span>
         </div>
-        <div id="funtion_buttons">
-            <span id="import_button">Excel导入</span>
+        <div id="funtion_buttons">            
+            <input id="search_text" /><span id="search_button">查询</span>
+            <span id="import_button">导入</span>
         </div>
         <div id="divTable">
             <table id="gridData"></table>

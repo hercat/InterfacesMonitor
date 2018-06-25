@@ -27,6 +27,7 @@ function checkingData() {
         $.messager.alert(g_MsgBoxTitle, "服务器地址不能为空！", "warning");
         return false;
     }
+
     //if (trim($('#user').val()) == "") {
     //    $.messager.alert(g_MsgBoxTitle, "服务器用户名不能为空！", "warning");
     //    return false;
@@ -35,6 +36,7 @@ function checkingData() {
     //    $.messager.alert(g_MsgBoxTitle, "用户密码不能为空！", "warning");
     //    return false;
     //}
+
     if (trim($('#charger').val()) == "") {
         $.messager.alert(g_MsgBoxTitle, "负责人不能为空！", "warning");
         return false;

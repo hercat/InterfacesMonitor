@@ -22,7 +22,20 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                 if (settings.SysMySqlDB != null)
                     ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
                 List<InterfaceRealtimeInfo> list = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoList("Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime", "");
-                return new JsonResult(list);
+                List<InterfaceRealtimeInfo> result = new List<InterfaceRealtimeInfo>();
+                foreach (InterfaceRealtimeInfo info in list)
+                {
+                    int interval = (DateTime.Now - info.UpdateTime).Minutes;
+                    //状态不更新超时判断
+                    if (interval > 10)
+                    {
+                        info.StateCode = 0;
+                        info.UpdateTime = DateTime.Now;
+                        InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(info, ModifierType.Update);
+                    }
+                    result.Add(info);
+                }
+                return new JsonResult(result);
             }
             catch (Exception ex)
             {

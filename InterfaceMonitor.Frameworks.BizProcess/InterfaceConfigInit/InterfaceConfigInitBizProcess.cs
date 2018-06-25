@@ -59,7 +59,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
 
                 InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(config, ModifierType.Add);
                 InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Add);
-            }            
+            }
         }
         /// <summary>
         /// 删除接口配置信息（同时删除对应的实时状态表中信息）

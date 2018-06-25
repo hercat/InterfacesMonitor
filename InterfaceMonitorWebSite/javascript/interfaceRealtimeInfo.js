@@ -27,9 +27,9 @@ function LoadInterfaceRealtimeInfo() {
             $('#content').empty();
             $.each(json, function (key, val) {
                 if (val.StateCode == 1)
-                    $('#content').append("<div class='outer_div' data-title='" + val.ApplicationName + "+" + val.InterfaceName + "' onclick=" + "InterfaceDetails('" + val.Id + "') ><img src='../images/green24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");                    
+                    $('#content').append("<div class='outer_div' data-title='应用【" + val.ApplicationName + "】+接口【" + val.InterfaceName + "】' onclick=" + "InterfaceDetails('" + val.Id + "') ><img src='../images/green24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");                    
                 else if (val.StateCode == 0)
-                    $('#content').append("<div class='outer_div' data-title='" + val.ApplicationName + "+" + val.InterfaceName + "' onclick=" + "InterfaceDetails('" + val.Id + "') ><img src='../images/red24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");
+                    $('#content').append("<div class='outer_div' data-title='应用【" + val.ApplicationName + "】+接口【" + val.InterfaceName + "】' onclick=" + "InterfaceDetails('" + val.Id + "') ><img src='../images/red24.png' /><div class='inner_div'>" + val.InterfaceName + "</div></div>");
             });
         }
     });

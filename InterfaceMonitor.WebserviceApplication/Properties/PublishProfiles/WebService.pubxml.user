@@ -10,25 +10,25 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/InterfaceMonitor.Frameworks.BizProcess.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/25/2018 16:12:44</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Dal.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/25/2018 16:12:44</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.DalInterface.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/25/2018 16:12:43</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Entity.dll">
-      <publishTime>06/22/2018 09:44:00</publishTime>
+      <publishTime>06/25/2018 16:12:43</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Logical.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/25/2018 16:12:44</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Utility.dll">
-      <publishTime>06/22/2018 09:44:00</publishTime>
+      <publishTime>06/25/2018 16:12:43</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.WebserviceApplication.dll">
-      <publishTime>06/22/2018 09:44:07</publishTime>
+      <publishTime>06/25/2018 16:27:36</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -81,6 +81,9 @@
     <File Include="Configuration/WebServiceConfig.aspx">
       <publishTime>05/31/2018 10:10:47</publishTime>
     </File>
+    <File Include="InterfaceMonitor.ashx">
+      <publishTime>06/25/2018 14:36:30</publishTime>
+    </File>
     <File Include="InterfaceMonitor.asmx">
       <publishTime>05/31/2018 10:24:28</publishTime>
     </File>
@@ -88,7 +91,7 @@
       <publishTime>05/30/2018 13:02:20</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/22/2018 09:44:11</publishTime>
+      <publishTime>06/25/2018 16:27:37</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>05/30/2018 13:41:04</publishTime>
