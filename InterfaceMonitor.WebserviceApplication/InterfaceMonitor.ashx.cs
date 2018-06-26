@@ -24,17 +24,33 @@ namespace InterfaceMonitor.WebserviceApplication
         /// <param name="context"></param>
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
-            string interfaceName = context.Request.Form["interfaceName"];
-            string applicationName = context.Request.Form["applicationName"];
-            string server = context.Request.Form["server"];
-            int stateCode = !string.IsNullOrEmpty(context.Request.Form["stateCode"]) ? Int32.Parse(context.Request.Form["stateCode"]) : 0;
-            string exceptionInfo = context.Request.Form["exceptionInfo"];
-            if (!string.IsNullOrEmpty(exceptionInfo))
-                UpdateInterfaceRealtimeInfoWithExceptionService(interfaceName, applicationName, server, stateCode, exceptionInfo);
-            else
-                UpdateInterfaceRealtimeInfoService(interfaceName, applicationName, server, stateCode);
-            context.Response.Write("调用ashx成功！");
+            try
+            {
+                Log4netInit();
+                context.Response.ContentType = "text/plain";
+                string interfaceName = context.Request.Form["interfaceName"];
+                string applicationName = context.Request.Form["applicationName"];
+                string server = context.Request.Form["server"];
+                int stateCode = !string.IsNullOrEmpty(context.Request.Form["stateCode"]) ? Int32.Parse(context.Request.Form["stateCode"]) : 0;
+                string exceptionInfo = context.Request.Form["exceptionInfo"];
+                InterfaceMonitor client = new InterfaceMonitor();
+                if (!string.IsNullOrEmpty(exceptionInfo))
+                {
+                    client.UpdateInterfaceRealtimeInfoWithExceptionService(interfaceName, applicationName, server, stateCode, exceptionInfo);
+                    context.Response.Write("调用InterfaceMonitor.ashx成功！");
+                    log.Info(string.Format("InterfaceMonitor.ashx   UpdateInterfaceRealtimeInfoWithExceptionService({0},{1},{2},{3},{4})调用成功！", interfaceName, applicationName, server, stateCode, exceptionInfo));
+                }
+                else
+                {
+                    client.UpdateInterfaceRealtimeInfoService(interfaceName, applicationName, server, stateCode);                    
+                    context.Response.Write("调用InterfaceMonitor.ashx成功！");
+                    log.Info(string.Format("InterfaceMonitor.ashx   UpdateInterfaceRealtimeInfoService({0},{1},{2},{3})调用成功！", interfaceName, applicationName, server, stateCode));
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(string.Format("InterfaceMonitor.ashx接口调用发生异常,异常信息为:{0}", ex));
+            }
         }
 
         public bool IsReusable
@@ -43,57 +59,7 @@ namespace InterfaceMonitor.WebserviceApplication
             {
                 return false;
             }
-        }
-        /// <summary>
-        /// 接口实时状态更新
-        /// </summary>
-        /// <param name="interfaceName"></param>
-        /// <param name="applicationName"></param>
-        /// <param name="server"></param>
-        /// <param name="stateCode"></param>
-        private void UpdateInterfaceRealtimeInfoService(string interfaceName, string applicationName, string server, int stateCode)
-        {
-            try
-            {
-                Log4netInit();
-                GetDataBaseConfig();
-                InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfo(interfaceName, applicationName, server, stateCode);
-            }
-            catch (Exception ex)
-            {
-                log.Error("");
-            }
-        }
-        /// <summary>
-        /// 接口实时状态更新（带异常信息内容）
-        /// </summary>
-        /// <param name="interfaceName"></param>
-        /// <param name="applicationName"></param>
-        /// <param name="server"></param>
-        /// <param name="stateCode"></param>
-        /// <param name="exceptionInfo"></param>
-        private void UpdateInterfaceRealtimeInfoWithExceptionService(string interfaceName, string applicationName, string server, int stateCode, string exceptionInfo)
-        {
-            try
-            {
-                Log4netInit();
-                GetDataBaseConfig();
-                InterfaceRealtimeBizProcess.UpdateInterfaceRealtimeInfoWithException(interfaceName, applicationName, server, stateCode, exceptionInfo);
-            }
-            catch(Exception ex)
-            {
-                log.Error("");
-            }
-        }
-        /// <summary>
-        /// 获取数据库配置信息
-        /// </summary>
-        private void GetDataBaseConfig()
-        {
-            SystemSettingBase settings = SystemSettingBase.CreateInstance();
-            if (settings.SysMySqlDB != null)
-                ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-        }
+        }        
         private void Log4netInit()
         {
             string currentPath = AppDomain.CurrentDomain.BaseDirectory;

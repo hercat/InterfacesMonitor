@@ -71,6 +71,6 @@ namespace InterfaceMonitor.WebserviceApplication
             string currentPath = AppDomain.CurrentDomain.BaseDirectory;
             string log4netConfigPath = string.Format("{0}\\log4net.xml", currentPath);
             XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo(log4netConfigPath));
-        }
+        }        
     }
 }

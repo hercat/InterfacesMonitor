@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/InterfaceMonitor.Frameworks.BizProcess.dll">
-      <publishTime>06/26/2018 08:55:34</publishTime>
+      <publishTime>06/26/2018 14:12:56</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Dal.dll">
       <publishTime>06/26/2018 08:55:34</publishTime>
@@ -28,7 +28,7 @@
       <publishTime>06/26/2018 08:55:33</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.WebserviceApplication.dll">
-      <publishTime>06/26/2018 10:21:56</publishTime>
+      <publishTime>06/26/2018 14:42:01</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:25:34</publishTime>
@@ -97,10 +97,10 @@
       <publishTime>05/30/2018 13:02:20</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/26/2018 10:22:42</publishTime>
+      <publishTime>06/26/2018 14:42:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/30/2018 13:41:04</publishTime>
+      <publishTime>06/26/2018 14:13:02</publishTime>
     </File>
     <File Include="WebService1.asmx">
       <publishTime>05/30/2018 13:02:53</publishTime>
