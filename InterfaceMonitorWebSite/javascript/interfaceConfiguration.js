@@ -5,6 +5,9 @@ $(document).ready(function () {
     loadData();
     importTooltip();
     excelImport();
+    $('#search_button').click(function () {
+        searchData();
+    });
 });
 function onSelect() {    
     $('#gridData').datagrid({
@@ -301,6 +304,17 @@ function loadData() {
         key: '',
         order: 'CreateTime',
         ascOrdesc:'desc'
+    });
+}
+function searchData() {
+    var searchText = $('#search_text').val();    
+    if (searchText == '输入接口名称、应用名称、服务器地址、负责人...')
+        searchText = '';
+    $('#gridData').datagrid('load', {
+        fields: '',
+        key: searchText,
+        order: 'CreateTime',
+        ascOrdesc: 'desc'
     });
 }
 //excel导入响应方法

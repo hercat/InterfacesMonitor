@@ -166,7 +166,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                     fields = "*";
                 string where = string.Empty;
                 if (!string.IsNullOrEmpty(key))
-                    where = string.Format(" where InterfaceName like '%{0}%' or ApplicationName like '%{0}%' or ServerAddress like '%{0}%' ", key.Trim());
+                    where = string.Format(" where InterfaceName like '%{0}%' or ApplicationName like '%{0}%' or ServerAddress like '%{0}%' or PersonInChargeName like '%{0}%' ", key.Trim());
                 string orderby = string.Empty;
                 if (!string.IsNullOrEmpty(order))
                     orderby = string.Format(" order by {0} {1} ", order, ascOrdesc);
