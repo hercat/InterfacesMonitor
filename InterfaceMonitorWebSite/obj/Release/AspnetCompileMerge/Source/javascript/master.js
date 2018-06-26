@@ -40,11 +40,20 @@ function renderTime(str) {
     d.setTime(mm);
     var year = d.getFullYear();
     var month = d.getMonth() + 1;
+    if (month < 10)
+        month = '0' + month;
     var date = d.getDate();
-
+    if (date < 10)
+        date = '0' + date;
     var hour = d.getHours();
+    if (hour < 10)
+        hour = '0' + hour;
     var minute = d.getMinutes();
+    if (minute < 10)
+        minute = '0' + minute;
     var second = d.getSeconds();
+    if (second < 10)
+        second = '0' + second;
     dt = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
     //alert(dt);
     return dt;
@@ -53,3 +62,4 @@ function renderTime(str) {
 function trim(str) {
     return str.replace(/^\s+|\s+$/g, '');
 }
+

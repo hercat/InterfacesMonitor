@@ -9,7 +9,9 @@
             <span>接口配置信息</span>
         </div>
         <div id="funtion_buttons">
-            <span id="import_button">Excel导入</span>
+            <input id="search_text" type="text" value="输入接口名称、应用名称、服务器地址、负责人..." onfocus="if(this.value=='输入接口名称、应用名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='输入接口名称、应用名称、服务器地址、负责人...';}"  />
+            <span id="search_button">查询</span>
+            <span id="import_button">导入</span>
         </div>
         <div id="divTable">
             <table id="gridData"></table>
@@ -28,14 +30,14 @@
             <div class="add_box_div_row_label">服务器地址</div>
             <div class="add_box_div_row_content"><input type="text" id="server"/></div>
         </div>
-        <div class="add_box_div_row">
+        <%--<div class="add_box_div_row">
             <div class="add_box_div_row_label">服务器用户名</div>
             <div class="add_box_div_row_content"><input type="text" id="user"/></div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">用户密码</div>
             <div class="add_box_div_row_content"><input type="text" id="pwd"/></div>
-        </div>
+        </div>--%>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">负责人</div>
             <div class="add_box_div_row_content"><input type="text" id="charger"/></div>

@@ -27,11 +27,11 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                 {
                     int interval = (DateTime.Now - info.UpdateTime).Minutes;
                     //状态不更新超时判断
-                    if (interval > 10)
+                    if (interval >= 10)
                     {
                         info.StateCode = 0;
-                        info.UpdateTime = DateTime.Now;
-                        InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(info, ModifierType.Update);
+                        //info.UpdateTime = DateTime.Now;
+                        //InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(info, ModifierType.Update);
                     }
                     result.Add(info);
                 }

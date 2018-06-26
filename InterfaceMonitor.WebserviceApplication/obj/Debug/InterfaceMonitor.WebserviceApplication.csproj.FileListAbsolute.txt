@@ -33,3 +33,4 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplica
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\bin\InterfaceMonitor.Frameworks.Utility.pdb
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\bin\InterfaceMonitor.Frameworks.Dal.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\bin\InterfaceMonitor.Frameworks.Dal.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\bin\log4net.dll

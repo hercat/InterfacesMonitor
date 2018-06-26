@@ -4,7 +4,7 @@
 //js文档加载方法
 $(function () {
     //定时刷新
-    setInterval(LoadInterfaceRealtimeInfo, 10000);
+    setInterval(LoadInterfaceRealtimeInfo, 60000);
     $('.outer_div').tooltip({
         Position:'top',
         content: '<span style="color:#fff">'+$(this.val())+'</span>',

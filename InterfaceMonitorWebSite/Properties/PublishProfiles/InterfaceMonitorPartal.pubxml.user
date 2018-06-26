@@ -10,28 +10,28 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/InterfaceMonitor.Frameworks.AjaxWebController.dll">
-      <publishTime>06/22/2018 09:58:38</publishTime>
+      <publishTime>06/26/2018 08:55:35</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.BizProcess.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/26/2018 08:55:34</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Dal.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/26/2018 08:55:34</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.DalInterface.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/26/2018 08:55:34</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Entity.dll">
-      <publishTime>06/22/2018 09:44:00</publishTime>
+      <publishTime>06/26/2018 08:55:34</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Logical.dll">
-      <publishTime>06/22/2018 09:44:01</publishTime>
+      <publishTime>06/26/2018 08:55:34</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Utility.dll">
-      <publishTime>06/22/2018 09:44:00</publishTime>
+      <publishTime>06/26/2018 08:55:33</publishTime>
     </File>
     <File Include="bin/InterfaceMonitorWebSite.dll">
-      <publishTime>06/22/2018 09:58:43</publishTime>
+      <publishTime>06/26/2018 08:55:41</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -124,7 +124,7 @@
       <publishTime>06/19/2018 14:08:48</publishTime>
     </File>
     <File Include="css/interfaceConfiguration.css">
-      <publishTime>06/19/2018 16:57:08</publishTime>
+      <publishTime>06/25/2018 18:00:00</publishTime>
     </File>
     <File Include="css/interfaceDetails.css">
       <publishTime>06/14/2018 14:41:13</publishTime>
@@ -223,25 +223,25 @@
       <publishTime>06/05/2018 09:27:09</publishTime>
     </File>
     <File Include="InterfaceConfigInfo/InterfaceConfiguration.aspx">
-      <publishTime>06/19/2018 17:18:42</publishTime>
+      <publishTime>06/26/2018 07:49:02</publishTime>
     </File>
     <File Include="InterfaceMonitor.Utility.SysSettingBase.xml">
       <publishTime>06/08/2018 14:37:25</publishTime>
     </File>
     <File Include="InterfaceRealtime/InterfaceDetails.aspx">
-      <publishTime>06/15/2018 09:23:57</publishTime>
+      <publishTime>06/25/2018 17:08:32</publishTime>
     </File>
     <File Include="InterfaceRealtime/InterfaceRealtimeInfo.aspx">
       <publishTime>06/15/2018 10:06:31</publishTime>
     </File>
     <File Include="javascript/interfaceConfiguration.js">
-      <publishTime>06/21/2018 16:31:03</publishTime>
+      <publishTime>06/26/2018 07:56:18</publishTime>
     </File>
     <File Include="javascript/interfaceDetails.js">
-      <publishTime>06/15/2018 13:12:54</publishTime>
+      <publishTime>06/26/2018 08:27:34</publishTime>
     </File>
     <File Include="javascript/interfaceRealtimeInfo.js">
-      <publishTime>06/15/2018 10:42:29</publishTime>
+      <publishTime>06/25/2018 17:25:01</publishTime>
     </File>
     <File Include="javascript/jquery/jquery-1.9.0.js">
       <publishTime>06/08/2018 09:03:22</publishTime>
@@ -253,7 +253,7 @@
       <publishTime>06/08/2018 17:42:33</publishTime>
     </File>
     <File Include="javascript/master.js">
-      <publishTime>06/20/2018 13:18:11</publishTime>
+      <publishTime>06/26/2018 08:42:26</publishTime>
     </File>
     <File Include="jquery-easyui-1.5.5.2/demo-mobile/accordion/basic.html">
       <publishTime>05/31/2018 11:13:18</publishTime>
@@ -2875,13 +2875,16 @@
       <publishTime>06/04/2018 10:40:14</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/22/2018 09:58:47</publishTime>
+      <publishTime>06/26/2018 08:55:46</publishTime>
+    </File>
+    <File Include="Statics/Handler1.ashx">
+      <publishTime>06/25/2018 14:23:20</publishTime>
     </File>
     <File Include="Statics/test.html">
-      <publishTime>06/12/2018 09:03:38</publishTime>
+      <publishTime>06/25/2018 16:34:24</publishTime>
     </File>
     <File Include="UserControls/MainMenu.ascx">
-      <publishTime>06/20/2018 12:53:28</publishTime>
+      <publishTime>06/25/2018 17:07:36</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>06/22/2018 09:58:44</publishTime>

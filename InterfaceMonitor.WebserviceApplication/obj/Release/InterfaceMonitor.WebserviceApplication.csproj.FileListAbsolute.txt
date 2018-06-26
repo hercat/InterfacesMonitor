@@ -33,3 +33,4 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplica
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\obj\Release\InterfaceMonitor.WebserviceApplication.csprojResolveAssemblyReference.cache
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\obj\Release\InterfaceMonitor.WebserviceApplication.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\obj\Release\InterfaceMonitor.WebserviceApplication.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.WebserviceApplication\bin\log4net.dll

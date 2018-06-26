@@ -19,12 +19,12 @@
                 <div class="basic_top_div">
                     <span class="basic_top_div_title">服务器地址：</span><span class="basic_top_div_content" id="server"></span>
                 </div>
-                <div class="basic_top_div">
+                <%--<div class="basic_top_div">
                     <span class="basic_top_div_title">服务器用户名：</span><span class="basic_top_div_content" id="userName"></span>
                 </div>
                 <div class="basic_top_div">
                     <span class="basic_top_div_title">密码：</span><span class="basic_top_div_content" id="pwd"></span>
-                </div>
+                </div>--%>
                 <div class="basic_top_div">
                     <span class="basic_top_div_title">负责人：</span><span class="basic_top_div_content" id="chargeman"></span>
                 </div>
@@ -44,12 +44,12 @@
             <div class="content_list_tab">
                 <ul class="tabs">
                     <li><a href="#tab1">接口异常日志</a></li>
-                    <li><a href="#tab2">变更日志记录</a></li>
+                    <%--<li><a href="#tab2">变更日志记录</a></li>--%>
                 </ul>
             </div>
             <div class="tab_container">
                 <div class="tab_content" id="tab1"></div>
-                <div class="tab_content" id="tab2"></div>
+                <%--<div class="tab_content" id="tab2"></div>--%>
             </div>
         </div>
     </div>

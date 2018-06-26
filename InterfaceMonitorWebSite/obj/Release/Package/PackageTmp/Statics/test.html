@@ -5,6 +5,26 @@
     <title>CSS样式测试页面</title>
 	<meta charset="utf-8" />    
     <link href="../css/test.css" rel="stylesheet" />
+    <script src="../jquery-easyui-1.5.5.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: 'http://localhost:8088/InterfaceMonitor.ashx',
+                dataType: 'json',
+                data: {
+                    interfaceName: '吉祥航空接口监控日志查询分页接口',
+                    applicationName: '接口监控系统',
+                    server: '192.168.21.52',
+                    stateCode: 600,
+                    exceptionInfo: 'ashx一般处理程序封装调用测试，记录异常信息！'
+                },
+                type: 'post',
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <!--<div id="id1"></div>-->

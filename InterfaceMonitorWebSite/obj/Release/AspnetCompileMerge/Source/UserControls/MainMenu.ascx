@@ -11,7 +11,7 @@
                 <dd />
             </dl>
         </li>
-        <li><a>接口异常日志</a>
+        <%--<li><a>接口异常日志</a>
             <dl>
                 <dd />                   
                 <dt>
@@ -19,16 +19,16 @@
                 </dt>
                 <dd />
             </dl>
-        </li>
+        </li>--%>
         <li><a>信息配置</a>
             <dl>
                 <dd />
                 <dt>
                     <a href="/InterfaceConfigInfo/InterfaceConfiguration.aspx">接口配置</a>
                 </dt>
-                <dt>
+                <%--<dt>
                     <a href="/Config/SysConfiguration.aspx">系统配置</a>
-                </dt>
+                </dt>--%>
                 <dd />
             </dl>
         </li>
