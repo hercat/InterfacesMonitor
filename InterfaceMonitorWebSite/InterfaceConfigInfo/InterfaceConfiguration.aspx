@@ -47,6 +47,10 @@
             <div class="add_box_div_row_content"><input type="text" id="phone"/></div>
         </div>
         <div class="add_box_div_row">
+            <div class="add_box_div_row_label">接口超时时间</div>
+            <div class="add_box_div_row_content"><input type="text" id="timeout" /></div>
+        </div>
+        <div class="add_box_div_row">
             <div class="add_box_div_row_label">描述</div>
             <div class="add_box_div_row_content"><input type="text" id="desc"/></div>
         </div>

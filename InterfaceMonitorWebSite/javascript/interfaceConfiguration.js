@@ -48,6 +48,10 @@ function checkingData() {
         $.messager.alert(g_MsgBoxTitle, "负责人电话不能为空！", "warning");
         return false;
     }
+    if (trim($('#timeout').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "接口超时时间不能为空！", "warning");
+        return false;
+    }
     if (trim($('#desc').val()) == "") {
         $.messager.alert(g_MsgBoxTitle, "描述不能为空！", "warning");
         return false;
@@ -63,6 +67,7 @@ function clearAddBox() {
     //$('#pwd').val('');
     $('#charger').val('');
     $('#phone').val('');
+    $('#timeout').val('');
     $('#desc').val('');
 }
 //弹出接口信息添加dialog对话框
@@ -71,7 +76,7 @@ function addInterfaceConfigInfo() {
         title: '添加接口配置信息',
         iconCls:'icon-save',
         width: 580,
-        height: 330,
+        height: 380,
         closed: false,
         cache: false,
         modal: true,
@@ -93,10 +98,10 @@ function addInterfaceConfigInfo() {
                                     applicationName: $('#applicationName').val(),
                                     server: $('#server').val(),
                                     user: '',//$('#user').val(),
-                                    pwd: '',//$('#pwd').val(),
+                                    pwd: '',//$('#pwd').val(),                               
                                     charger: $('#charger').val(),
                                     phone: $('#phone').val(),
-                                    timeout: 0,
+                                    timeout: $('#timeout').val(),
                                     docPath: '',
                                     desc: $('#desc').val()
                                 },

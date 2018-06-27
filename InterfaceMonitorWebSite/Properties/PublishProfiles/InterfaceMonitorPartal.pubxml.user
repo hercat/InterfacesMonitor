@@ -10,28 +10,28 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/InterfaceMonitor.Frameworks.AjaxWebController.dll">
-      <publishTime>06/26/2018 08:55:35</publishTime>
+      <publishTime>06/27/2018 10:48:31</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.BizProcess.dll">
-      <publishTime>06/26/2018 08:55:34</publishTime>
+      <publishTime>06/27/2018 08:50:10</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Dal.dll">
-      <publishTime>06/26/2018 08:55:34</publishTime>
+      <publishTime>06/27/2018 08:50:09</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.DalInterface.dll">
-      <publishTime>06/26/2018 08:55:34</publishTime>
+      <publishTime>06/27/2018 08:50:09</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Entity.dll">
-      <publishTime>06/26/2018 08:55:34</publishTime>
+      <publishTime>06/27/2018 08:50:09</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Logical.dll">
-      <publishTime>06/26/2018 08:55:34</publishTime>
+      <publishTime>06/27/2018 08:50:10</publishTime>
     </File>
     <File Include="bin/InterfaceMonitor.Frameworks.Utility.dll">
-      <publishTime>06/26/2018 08:55:33</publishTime>
+      <publishTime>06/27/2018 08:50:08</publishTime>
     </File>
     <File Include="bin/InterfaceMonitorWebSite.dll">
-      <publishTime>06/26/2018 08:55:41</publishTime>
+      <publishTime>06/27/2018 10:48:38</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -130,7 +130,7 @@
       <publishTime>06/14/2018 14:41:13</publishTime>
     </File>
     <File Include="css/interfaceRealtimeInfo.css">
-      <publishTime>06/19/2018 14:10:58</publishTime>
+      <publishTime>06/26/2018 15:11:07</publishTime>
     </File>
     <File Include="css/MainMenuSkin.css">
       <publishTime>06/15/2018 09:42:06</publishTime>
@@ -223,7 +223,7 @@
       <publishTime>06/05/2018 09:27:09</publishTime>
     </File>
     <File Include="InterfaceConfigInfo/InterfaceConfiguration.aspx">
-      <publishTime>06/26/2018 07:49:02</publishTime>
+      <publishTime>06/27/2018 10:33:44</publishTime>
     </File>
     <File Include="InterfaceMonitor.Utility.SysSettingBase.xml">
       <publishTime>06/08/2018 14:37:25</publishTime>
@@ -232,16 +232,16 @@
       <publishTime>06/25/2018 17:08:32</publishTime>
     </File>
     <File Include="InterfaceRealtime/InterfaceRealtimeInfo.aspx">
-      <publishTime>06/15/2018 10:06:31</publishTime>
+      <publishTime>06/26/2018 14:50:59</publishTime>
     </File>
     <File Include="javascript/interfaceConfiguration.js">
-      <publishTime>06/26/2018 07:56:18</publishTime>
+      <publishTime>06/27/2018 10:41:57</publishTime>
     </File>
     <File Include="javascript/interfaceDetails.js">
       <publishTime>06/26/2018 08:27:34</publishTime>
     </File>
     <File Include="javascript/interfaceRealtimeInfo.js">
-      <publishTime>06/25/2018 17:25:01</publishTime>
+      <publishTime>06/27/2018 08:42:21</publishTime>
     </File>
     <File Include="javascript/jquery/jquery-1.9.0.js">
       <publishTime>06/08/2018 09:03:22</publishTime>
@@ -2875,13 +2875,13 @@
       <publishTime>06/04/2018 10:40:14</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/26/2018 08:55:46</publishTime>
+      <publishTime>06/27/2018 10:48:42</publishTime>
     </File>
     <File Include="Statics/Handler1.ashx">
       <publishTime>06/25/2018 14:23:20</publishTime>
     </File>
     <File Include="Statics/test.html">
-      <publishTime>06/25/2018 16:34:24</publishTime>
+      <publishTime>06/26/2018 14:41:14</publishTime>
     </File>
     <File Include="UserControls/MainMenu.ascx">
       <publishTime>06/25/2018 17:07:36</publishTime>

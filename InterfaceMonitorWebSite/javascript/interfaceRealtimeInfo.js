@@ -3,6 +3,9 @@
 
 //js文档加载方法
 $(function () {
+    $(window).load(function () {
+        LoadInterfaceRealtimeInfo();
+    });
     //定时刷新
     setInterval(LoadInterfaceRealtimeInfo, 60000);
     $('.outer_div').tooltip({

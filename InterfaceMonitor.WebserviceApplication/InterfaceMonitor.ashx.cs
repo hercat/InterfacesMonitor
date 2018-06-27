@@ -37,13 +37,13 @@ namespace InterfaceMonitor.WebserviceApplication
                 if (!string.IsNullOrEmpty(exceptionInfo))
                 {
                     client.UpdateInterfaceRealtimeInfoWithExceptionService(interfaceName, applicationName, server, stateCode, exceptionInfo);
-                    context.Response.Write("调用InterfaceMonitor.ashx成功！");
+                    //context.Response.Write("调用InterfaceMonitor.ashx成功！");
                     log.Info(string.Format("InterfaceMonitor.ashx   UpdateInterfaceRealtimeInfoWithExceptionService({0},{1},{2},{3},{4})调用成功！", interfaceName, applicationName, server, stateCode, exceptionInfo));
                 }
                 else
                 {
                     client.UpdateInterfaceRealtimeInfoService(interfaceName, applicationName, server, stateCode);                    
-                    context.Response.Write("调用InterfaceMonitor.ashx成功！");
+                    //context.Response.Write("调用InterfaceMonitor.ashx成功！");
                     log.Info(string.Format("InterfaceMonitor.ashx   UpdateInterfaceRealtimeInfoService({0},{1},{2},{3})调用成功！", interfaceName, applicationName, server, stateCode));
                 }
             }

@@ -9,13 +9,13 @@
     <script type="text/javascript">
         $(function () {
             $.ajax({
-                url: 'http://localhost:8088/InterfaceMonitor.ashx',
+                url: 'http://172.22.24.45:8088/InterfaceMonitor.ashx',
                 dataType: 'json',
                 data: {
-                    interfaceName: '吉祥航空接口监控日志查询分页接口',
-                    applicationName: '接口监控系统',
-                    server: '192.168.21.52',
-                    stateCode: 600,
+                    interfaceName: 'getFlightInfoById',
+                    applicationName: 'ods服务_test',
+                    server: '172.20.70.161',
+                    stateCode: 1,
                     exceptionInfo: 'ashx一般处理程序封装调用测试，记录异常信息！'
                 },
                 type: 'post',
