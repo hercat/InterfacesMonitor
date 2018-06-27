@@ -32,11 +32,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         timeout = config.ConnectedTimeout;
                     //状态不更新超时判断
                     if (interval >= timeout)
-                    {
-                        info.StateCode = 0;
-                        //info.UpdateTime = DateTime.Now;
-                        //InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(info, ModifierType.Update);
-                    }
+                        info.StateCode = 0;                    
                     result.Add(info);
                 }
                 return new JsonResult(result);
