@@ -34,7 +34,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                     if (interval >= timeout)
                         info.StateCode = 0;                    
                     result.Add(info);
-                }                
+                }
                 return new JsonResult(result);
             }
             catch (Exception ex)
