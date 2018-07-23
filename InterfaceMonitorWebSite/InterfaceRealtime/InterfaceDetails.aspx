@@ -48,8 +48,11 @@
                 </ul>
             </div>
             <div class="tab_container">
-                <div class="tab_content" id="tab1"></div>
-                <%--<div class="tab_content" id="tab2"></div>--%>
+                <%--<div class="tab_content" id="tab1"></div>
+                <div class="tab_content" id="tab2"></div>--%>
+                <div id="divTable">
+                    <table id="gridData"></table>
+                </div>   
             </div>
         </div>
     </div>

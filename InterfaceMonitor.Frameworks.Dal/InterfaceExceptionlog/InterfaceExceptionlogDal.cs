@@ -106,5 +106,35 @@ namespace InterfaceMonitor.Frameworks.Dal
             }
             return list;
         }
+
+        public List<InterfaceExceptionlog> GetInterfaceExceptionByCondition(IDbCommand icmd, string fields, string whereCondition, string limit)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(fields))
+                sb.AppendFormat("select {0} from interfaceexceptionlog ", fields);
+            if (!string.IsNullOrEmpty(whereCondition))
+                sb.AppendFormat("{0} ", whereCondition);
+            if (!string.IsNullOrEmpty(limit))
+                sb.AppendFormat("{0} ", limit);
+            cmd.CommandText = sb.ToString();
+            List<InterfaceExceptionlog> list = new List<InterfaceExceptionlog>();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                InterfaceExceptionlog obj = null;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    obj = new InterfaceExceptionlog();
+                    obj.AllParse(dr);
+                    if (null != obj)
+                        list.Add(obj);
+                }
+            }
+            return list;
+        }
     }
 }

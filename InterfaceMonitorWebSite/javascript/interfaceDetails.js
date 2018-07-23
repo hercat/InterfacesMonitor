@@ -1,12 +1,15 @@
 ﻿/// <reference path="C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\jquery-easyui-1.5.5.2/jquery.easyui.min.js" />
 /// <reference path="C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\jquery-easyui-1.5.5.2/jquery.min.js" />
-
+var cid = null;
 $(document).ready(function () {
-    tab1Initial();
-    tab2Initial();    
-    getInterfaceConfigInfo(GetUrlQueryString("id"));
-    getInterfaceLogs(GetUrlQueryString("id"));
-    tabContentInital();
+    cid = GetUrlQueryString("id")
+    //tab1Initial();
+    //tab2Initial();
+    getInterfaceConfigInfo(cid);
+    //getInterfaceLogs(GetUrlQueryString("id"));
+    initDataGrid();
+    loadData(cid);
+    //tabContentInital();
     uploadTooltip();
     //文件上传dialog
     $('#btn_upload').click(function () {
@@ -143,5 +146,70 @@ function getInterfaceLogs(id) {
         }
     });
 }
+//获取接口异常日志分页请求方法
+function getInterfaceLogsListPage(id) {
 
+}
 
+function initDataGrid() {    
+    $('#gridData').datagrid({
+        idField: 'Id',
+        nowrap: false,
+        rownumbers: true,
+        singleSelect: true,
+        border: true,
+        checkOnSelect: true,
+        selectOnCheck: true,
+        pagination: true,
+        collapsible: true,
+        striped: true,
+        fitcolumns: true,
+        onLoadError: function (XMLHttpRequest, textStatus, ErrorThrown) {
+            $.messager.alert(g_MsgBoxTitle,
+                XMLHttpRequest.responseText.substring(XMLHttpRequest.respinseText.indexOf("<title>") + 7, XMLHttpRequest.responseText.indexOf("</title>")), "error");
+        },        
+        method: 'get',
+        dataType: 'json',
+        url: '/AjaxInterfacelog/GetInterfaceLogsPageList.cspx',
+        pageNumber: 1,
+        pagesize: 10,
+        pageList: [10, 20, 30],
+        columns: [[
+					{ title: '异常信息', field: 'ExceptionInfo', align: 'center', width: fillsize(380, 0.5, 'divTable'), sortable: false }
+					, { title: '状态码', field: 'StateCode', align: 'center', width: fillsize(380, 0.25, 'divTable'), sortable: false }
+                    , {
+                        title: '发生时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.25, 'divTable'), sortable: false,
+                        formatter: function (value, row, index) {
+                            return renderTime(value);
+                        }
+                    }
+        ]],
+        onLoadSuccess: function (data) {
+            $(".note").tooltip(
+                {
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            position: 'top',
+                            backgroundColor: '#666',
+                            borderColor: '#666',
+                            color: '#fff'
+                        });
+                    }
+                }
+            );
+        }
+    });
+    //窗体尺寸调整
+    $(window).resize(function () {
+        $('#gridData').datagrid('resize', {
+            width: $("#divTable").css("width")
+        });
+    });
+}
+
+function loadData(id) {
+    id = window.atob(id);//对地址栏参数进行解码
+    $('#gridData').datagrid('load', {
+        id:id
+    });
+}

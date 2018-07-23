@@ -119,5 +119,35 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
             return list;
         }
+
+        public static List<InterfaceExceptionlog> GetInterfaceExceptionByCondition(string fields, string whereCondition, string limit)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            List<InterfaceExceptionlog> list = new List<InterfaceExceptionlog>();
+            try
+            {
+                IInterfaceExceptionlog dp = DataProvider.DbInterfaceExceptionlogDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                list = dp.GetInterfaceExceptionByCondition(cmd, fields, whereCondition, limit);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return list;
+        }
     }
 }
