@@ -15,7 +15,7 @@ $(document).ready(function () {
     
 });
 //设置上传按钮tooltip提示
-function uploadTooltip() {    
+function uploadTooltip() {
     $('#btn_upload').tooltip({
         position: 'top',
         content: '<span style="color:#fff;padding:3px;">建议使用IE11高版本浏览器上传文件.</span>',

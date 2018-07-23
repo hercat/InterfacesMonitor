@@ -28,17 +28,29 @@ $(document).ready(function () {
     //    }
     //});
 
-    var vm = new Vue({
+    //var vm = new Vue({
+    //    data: {
+    //        a: 1
+    //    },
+    //    created: function () {
+    //        console.log('a is:' + this.a);
+    //    }
+    //});
+    //vm.$watch('a', function (newValue, oldValue) {
+    //    console.log('oldValue is:' + oldValue + ",newValue is:" + newValue);
+    //});
+    //vm.a = 3;
+
+    var app2 = new Vue({
+        el: '#app2',
         data: {
-            a: 1
-        },
-        created: function () {
-            console.log('a is:' + this.a);
+            infolist: [
+                { name: 'javascript' },
+                { name: 'jquery' },
+                { name: 'angular' },
+                { name: 'vue.js' },
+                { name: 'node.js' }
+            ]
         }
     });
-    vm.$watch('a', function (newValue, oldValue) {
-        console.log('oldValue is:' + oldValue + ",newValue is:" + newValue);
-    });
-    vm.a = 3;
-
 });
