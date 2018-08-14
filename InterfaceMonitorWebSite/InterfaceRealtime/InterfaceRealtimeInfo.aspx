@@ -4,7 +4,7 @@
     <script src="../javascript/interfaceRealtimeInfo.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyRight" runat="server">
-    <div>
+    <div class="mainDiv">
         <div id="content_title">
             <span>接口实时状态</span>
         </div>

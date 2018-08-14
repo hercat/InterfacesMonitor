@@ -63,6 +63,14 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public DateTime CreateTime { get; set; }
         /// <summary>
+        /// 异常影响等级（0:一般;1:严重;2:非常严重）
+        /// </summary>
+        public int Exeptionlevel { get; set; }
+        /// <summary>
+        /// 是否立刻影响生产
+        /// </summary>
+        public bool AffectProduction { get; set; }
+        /// <summary>
         /// AllParse
         /// </summary>
         /// <param name="dr"></param>
@@ -93,6 +101,10 @@ namespace InterfaceMonitor.Frameworks.Entity
                 Description = dr[EnumInterfaceConfigInfo.Description.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.CreateTime.ToString()))
                 CreateTime = DateTime.Parse(dr[EnumInterfaceConfigInfo.CreateTime.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.exeptionlevel.ToString()))
+                Exeptionlevel = Int32.Parse(dr[EnumInterfaceConfigInfo.exeptionlevel.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.affectProduction.ToString()))
+                AffectProduction = bool.Parse(dr[EnumInterfaceConfigInfo.affectProduction.ToString()].ToString());
             return true;
         }
     }
@@ -112,6 +124,8 @@ namespace InterfaceMonitor.Frameworks.Entity
         ConnectedTimeout,
         DocumentHelpPath,
         Description,
-        CreateTime
+        CreateTime,
+        exeptionlevel,
+        affectProduction
     }
 }

@@ -2,6 +2,9 @@
 body {
     font-family: 'Microsoft YaHei','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.mainDiv {
+    min-height:720px;
+}
 .outer_div {
     width:80px;
     height:80px;

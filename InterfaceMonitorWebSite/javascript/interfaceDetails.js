@@ -1,6 +1,8 @@
 ﻿/// <reference path="C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\jquery-easyui-1.5.5.2/jquery.easyui.min.js" />
 /// <reference path="C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitorWebSite\jquery-easyui-1.5.5.2/jquery.min.js" />
+
 var cid = null;
+
 $(document).ready(function () {
     cid = GetUrlQueryString("id")
     //tab1Initial();
@@ -170,12 +172,22 @@ function initDataGrid() {
         },        
         method: 'get',
         dataType: 'json',
-        url: '/AjaxInterfacelog/GetInterfaceLogsPageList.cspx',
+        url: '/AjaxInterfacelog/GetInterfaceLogsPageList.cspx',       
         pageNumber: 1,
         pagesize: 10,
         pageList: [10, 20, 30],
         columns: [[
-					{ title: '异常信息', field: 'ExceptionInfo', align: 'center', width: fillsize(380, 0.5, 'divTable'), sortable: false }
+					{
+					    title: '异常信息', field: 'ExceptionInfo', align: 'center', width: fillsize(380, 0.5, 'divTable'), sortable: false,
+					    formatter: function (value, row, index) {
+					        var abValue = value;
+					        if (abValue.length >= 50) {
+					            abValue = value.substring(0, 46) + "...";
+					        }
+					        var content = "<span title='" + value + "' class='note'>" + abValue + "</span>";
+					        return content;
+					    }
+					}
 					, { title: '状态码', field: 'StateCode', align: 'center', width: fillsize(380, 0.25, 'divTable'), sortable: false }
                     , {
                         title: '发生时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.25, 'divTable'), sortable: false,
@@ -213,3 +225,4 @@ function loadData(id) {
         id:id
     });
 }
+
