@@ -71,8 +71,10 @@
   <ItemGroup>
     <Content Include="html\HtmlPage2.html" />
     <Content Include="html\HtmlPage3.html" />
+    <Content Include="html\HtmlPage4.html" />
     <Content Include="js\htmlPage2.js" />
     <Content Include="js\htmlPage3.js" />
+    <Content Include="js\htmlPage4.js" />
     <Content Include="js\jquery-1.9.0.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="packages.config" />
