@@ -8,6 +8,7 @@ using InterfaceMonitor.Frameworks.Entity;
 using InterfaceMonitor.Frameworks.Utility;
 using InterfaceMonitor.Frameworks.DalInterface;
 using System.Reflection;
+using log4net;
 
 namespace InterfaceMonitor.Frameworks.Logical
 {
@@ -18,6 +19,7 @@ namespace InterfaceMonitor.Frameworks.Logical
     /// </summary>
     public class DataProvider
     {
+        private readonly static ILog log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         #region 数据库连接数据提供对象
         /// <summary>
         /// 数据库连接数据提供对象
@@ -34,6 +36,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                     if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
                     {
                         //后续增加日志处理
+                        log.Error(string.Format("DataProvider不存在{0}数据提供对象！", dpname));
                     }
                     _dbConnDP = (IDbConn)Assembly.Load(assname).CreateInstance(dllname);
                 }
@@ -57,6 +60,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                     if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
                     {
                         //后续增加日志处理
+                        log.Error(string.Format("DataProvider不存在{0}数据提供对象！", dpname));
                     }
                     _dbInterfaceConfigInfoDP = (IInterfaceConfigInfo)Assembly.Load(assname).CreateInstance(dllname);
                 }
@@ -78,6 +82,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                     if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
                     {
                         //后续增加日志处理
+                        log.Error(string.Format("DataProvider不存在{0}数据提供对象！", dpname));
                     }
                     _dbInterfaceRealtimeDP = (IInterfaceRealtimeInfo)Assembly.Load(assname).CreateInstance(dllname);
                 }
@@ -99,6 +104,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                     if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
                     {
                         //后续增加日志处理
+                        log.Error(string.Format("DataProvider不存在{0}数据提供对象！", dpname));
                     }
                     _dbInterfaceExceptionlogDP = (IInterfaceExceptionlog)Assembly.Load(assname).CreateInstance(dllname);
                 }
@@ -106,5 +112,29 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
         }
         #endregion
+
+        #region 应用系统数据提供对象
+        private static IApplicationSysInfo _dbApplicationSysInfoDP;
+        public static IApplicationSysInfo DbApplicationSysInfoDP
+        {
+            get
+            {
+                if (_dbApplicationSysInfoDP == null)
+                {
+                    string dpname = "DbApplicationSysInfoDP";
+                    string dllname, assname;
+                    if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
+                    {
+                        //后续增加日志处理
+                        log.Error(string.Format("DataProvider不存在{0}数据提供对象！", dpname));
+                    }
+                    _dbApplicationSysInfoDP = (IApplicationSysInfo)Assembly.Load(assname).CreateInstance(dllname);
+                }
+                return _dbApplicationSysInfoDP;
+            }
+        }
+        #endregion
+
+
     }
 }
