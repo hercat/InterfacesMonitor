@@ -13,6 +13,8 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         bool AddOrUpdateApplicationSysInfo(IDbCommand idbcmd, ApplicationSysInfo info, ModifierType mode);
         ApplicationSysInfo GetApplicationSysInfoById(IDbCommand idbcmd, Guid id);
         bool DeleteApplicationSysInfoById(IDbCommand idbcmd, Guid id);
-        ApplicationSysInfo GetApplicationSysInfo(IDbCommand idbcmd,string name,string server)
+        ApplicationSysInfo GetApplicationSysInfo(IDbCommand idbcmd, string name, string server);
+        List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand idbcmd, string fields, string condition);
+        List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand idbcmd, string fileds, string condition, int startIndex, int pageSize);
     }
 }

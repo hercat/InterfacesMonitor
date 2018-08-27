@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\文件\Library files\log4net\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="MyMVC">
       <HintPath>..\文件\Library files\MyMVC\MyMVC.dll</HintPath>
     </Reference>
@@ -43,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationSysInfo\ApplicationSysInfoLogical.cs" />
     <Compile Include="DataProvider\DataProvider.cs" />
     <Compile Include="DbConn\DbConnOperation.cs" />
     <Compile Include="InterfaceConfigInfo\InterfaceConfigInfoOperation.cs" />

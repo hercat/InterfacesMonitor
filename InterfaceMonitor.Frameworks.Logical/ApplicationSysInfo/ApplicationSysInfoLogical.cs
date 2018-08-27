@@ -36,6 +36,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 log.Error(string.Format("AddOrUpdateApplicationSysInfo()发生错误,异常信息如下:{0}", ex));
                 if (trans != null)
                     trans.Rollback();
+                throw ex;
             }
             finally
             {
@@ -67,6 +68,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 log.Error(string.Format("GetApplicationSysInfoById()发生错误,异常信息如下:{0}", ex));
                 if (trans != null)
                     trans.Rollback();
+                throw ex;
             }
             finally
             {
@@ -98,6 +100,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 log.Error(string.Format("DeleteApplicationSysInfoById()发生错误,异常信息如下:{0}", ex));
                 if (trans != null)
                     trans.Rollback();
+                throw ex;
             }
             finally
             {
@@ -128,6 +131,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 log.Error(string.Format("GetApplicationSysInfo()发生错误,异常信息如下:{0}", ex));
                 if (trans != null)
                     trans.Rollback();
+                throw ex;
             }
             finally
             {
@@ -137,6 +141,35 @@ namespace InterfaceMonitor.Frameworks.Logical
             return info;
         }
 
-
+        public static List<ApplicationSysInfo> GetApplicationSysInfoList(string fields, string condition)
+        {
+            List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            try
+            {
+                IApplicationSysInfo dp = DataProvider.DbApplicationSysInfoDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                list = dp.GetApplicationSysInfoList(cmd, fields, condition);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                log.Error(string.Format("发生错误,异常信息如下:{0}", ex));
+                if (trans != null)
+                    trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+            return list;
+        }
     }
 }

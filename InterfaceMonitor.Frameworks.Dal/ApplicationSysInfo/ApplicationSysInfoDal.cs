@@ -79,5 +79,64 @@ namespace InterfaceMonitor.Frameworks.Dal
             }
             return info;
         }
+
+        public List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand icmd, string fields, string condition)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(fields))
+                sb.AppendFormat("select {0} from applicationinfo ", fields);
+            else
+                sb.Append("select * from applicationinfo ");
+            if (!string.IsNullOrEmpty(condition))
+                sb.AppendFormat("where {0}", condition);
+            List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                ApplicationSysInfo info = null;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    info = new ApplicationSysInfo();
+                    info.AllParse(dr);
+                    if (info != null)
+                        list.Add(info);
+                }
+            }
+            return list;
+        }
+
+        public static List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand icmd, string fileds, string condition, int startIndex, int pageSize)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(fileds))
+                sb.AppendFormat("select {0} from applicationinfo ", fileds);
+            else
+                sb.Append("select * from applicationinfo ");
+            if (!string.IsNullOrEmpty(condition))
+                sb.AppendFormat(" where {0} ", condition);
+            sb.AppendFormat("limit {0},{1}", startIndex, pageSize);
+            List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                ApplicationSysInfo info = null;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    info = new ApplicationSysInfo();
+                    info.AllParse(dr);
+                    if (info != null)
+                        list.Add(info);
+                }
+            }
+            return list;
+        }
     }
 }

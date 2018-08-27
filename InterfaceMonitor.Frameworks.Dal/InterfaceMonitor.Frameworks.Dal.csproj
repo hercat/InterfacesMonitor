@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationSysInfo\ApplicationSysInfoDal.cs" />
     <Compile Include="DbConnDal\DbConnDal.cs" />
     <Compile Include="InterfaceConfigInfoDal\InterfaceConfigInfoDal.cs" />
     <Compile Include="InterfaceExceptionlog\InterfaceExceptionlogDal.cs" />
