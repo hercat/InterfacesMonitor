@@ -56,6 +56,10 @@ function checkingData() {
         $.messager.alert(g_MsgBoxTitle, "描述不能为空！", "warning");
         return false;
     }
+    if (trim($('#urlAddress').val()) == "") {
+        $.messager.alert(g_MsgBoxTitle, "url连接地址不能为空！", "warning");
+        return false;
+    }
     return true;
 }
 //清空添加
@@ -69,6 +73,7 @@ function clearAddBox() {
     $('#phone').val('');
     $('#timeout').val('');
     $('#desc').val('');
+    $('#urlAddress').val('');
 }
 //弹出接口信息添加dialog对话框
 function addInterfaceConfigInfo() {    
@@ -76,7 +81,7 @@ function addInterfaceConfigInfo() {
         title: '添加接口配置信息',
         iconCls:'icon-save',
         width: 580,
-        height: 380,
+        height: 460,
         closable: false,
         cache: false,
         modal: true,        
@@ -103,7 +108,8 @@ function addInterfaceConfigInfo() {
                                     phone: $('#phone').val(),
                                     timeout: $('#timeout').val(),
                                     docPath: '',
-                                    desc: $('#desc').val()
+                                    desc: $('#desc').val(),
+                                    urlAddress: $('#urlAddress').val()
                                 },
                                 type: 'post',
                                 cache: false,
@@ -161,12 +167,13 @@ function editInterfaceConfig() {
             $('#phone').val(info.PersonOfChargePhone);
             $('#timeout').val(info.ConnectedTimeout);
             $('#desc').val(info.Description);
-
+            $('#urlAddress').val(info.UrlAddress);
+            //控件数据加载完毕后弹出对话框
             $('#add_box_div').dialog({
                 title: '修改【' + info.InterfaceName + '】接口配置信息',
                 iconCls: 'icon-edit',
                 width: 580,
-                height: 380,
+                height: 460,
                 closable: false,
                 cache: false,
                 modal: false,
@@ -191,7 +198,8 @@ function editInterfaceConfig() {
                                         phone: $('#phone').val(),
                                         timeout: $('#timeout').val(),
                                         docPath: '',
-                                        desc: $('#desc').val()
+                                        desc: $('#desc').val(),
+                                        urlAddress: $('#urlAddress').val()
                                     },
                                     type: 'post',
                                     cache: false,
@@ -348,7 +356,7 @@ function initDataGrid() {
 					//, { title: '用户密码', field: 'UserPwd', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
                     , { title: '负责人名', field: 'PersonOfChargeName', align: 'center', width: fillsize(380, 0.08, 'divTable'), sortable: false }
                     , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
-                    , { title: '超时时间(分钟)', field: 'ConnectedTimeout', align: 'center', width: fillsize(380, 0.09, 'divTable'),sortable:false }
+                    , { title: '超时时间（分钟）', field: 'ConnectedTimeout', align: 'center', width: fillsize(380, 0.09, 'divTable'),sortable:false }
                     , { title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.11, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             var abValue = value;

@@ -50,9 +50,13 @@
             <div class="add_box_div_row_label">接口超时时间</div>
             <div class="add_box_div_row_content"><input type="text" id="timeout" /></div>
         </div>
-        <div class="add_box_div_row">
+        <div class ="add_box_div_row2">
+            <div class="add_box_div_row_label">url连接地址</div>
+            <div class="add_box_div_row_content"><textarea id="urlAddress" rows="1" cols="39"></textarea></div>
+        </div>
+        <div class="add_box_div_row2">
             <div class="add_box_div_row_label">描述</div>
-            <div class="add_box_div_row_content"><input type="text" id="desc"/></div>
+            <div class="add_box_div_row_content"><textarea id="desc" rows="1" cols="39"></textarea></div>
         </div>
     </div>
     <div id="impoer_box_div" style="display:none;padding:8px;">

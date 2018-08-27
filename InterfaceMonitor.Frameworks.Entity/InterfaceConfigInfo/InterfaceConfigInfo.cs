@@ -55,6 +55,10 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public string DocumentHelpPath { get; set; }
         /// <summary>
+        /// 接口Url地址
+        /// </summary>
+        public string UrlAddress { get; set; }
+        /// <summary>
         /// 应用程序描述
         /// </summary>
         public string Description { get; set; }
@@ -97,6 +101,8 @@ namespace InterfaceMonitor.Frameworks.Entity
                 ConnectedTimeout = Int32.Parse(dr[EnumInterfaceConfigInfo.ConnectedTimeout.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.DocumentHelpPath.ToString()))
                 DocumentHelpPath = dr[EnumInterfaceConfigInfo.DocumentHelpPath.ToString()].ToString();
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.urlAddress.ToString()))
+                UrlAddress = dr[EnumInterfaceConfigInfo.urlAddress.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.Description.ToString()))
                 Description = dr[EnumInterfaceConfigInfo.Description.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.CreateTime.ToString()))
@@ -123,6 +129,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         PersonInChargePhone,
         ConnectedTimeout,
         DocumentHelpPath,
+        urlAddress,
         Description,
         CreateTime,
         exeptionlevel,

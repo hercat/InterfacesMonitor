@@ -28,7 +28,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout">超时时间</param>
         /// <param name="path">帮助文档存放路径</param>
         /// <param name="descript">描述</param>
-        public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript)
+        public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress)
         {
             //生成接口编号id
             Guid id = Guid.NewGuid();
@@ -46,6 +46,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 config.PersonOfChargePhone = phone;
                 config.ConnectedTimeout = timeout;
                 config.DocumentHelpPath = path;
+                config.UrlAddress = urlAddress;
                 config.Description = descript;
                 config.CreateTime = DateTime.Now;
 
@@ -75,7 +76,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout"></param>
         /// <param name="path"></param>
         /// <param name="descript"></param>
-        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript)
+        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress)
         {
             Guid newid = new Guid(id);
             //判断接口配置信息是否存在，如果不存在则新增
@@ -93,6 +94,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 config.ConnectedTimeout = timeout;
                 config.DocumentHelpPath = path;
                 config.Description = descript;
+                config.UrlAddress = urlAddress;
                 config.CreateTime = DateTime.Now;
 
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
