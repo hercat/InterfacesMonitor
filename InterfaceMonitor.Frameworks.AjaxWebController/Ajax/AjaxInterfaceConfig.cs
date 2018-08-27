@@ -352,6 +352,39 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             }
         }
         /// <summary>
+        /// 修改接口配置信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="interfaceName"></param>
+        /// <param name="applicationName"></param>
+        /// <param name="server"></param>
+        /// <param name="user"></param>
+        /// <param name="pwd"></param>
+        /// <param name="charger"></param>
+        /// <param name="phone"></param>
+        /// <param name="timeout"></param>
+        /// <param name="docPath"></param>
+        /// <param name="desc"></param>
+        /// <returns></returns>
+        [Action]
+        public object UpdateInterfaceConfigInfo(string id, string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc)
+        {
+            try
+            {
+                if (null != InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server))
+                {
+                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc);
+                    return string.Format("更新【{0}】配置信息成功！", interfaceName);
+                }
+                else
+                    return string.Format("不存在【{0}】配置信息！", interfaceName);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        /// <summary>
         /// 根据id删除接口配置信息
         /// </summary>
         /// <param name="id"></param>

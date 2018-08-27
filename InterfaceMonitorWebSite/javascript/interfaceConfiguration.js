@@ -77,9 +77,9 @@ function addInterfaceConfigInfo() {
         iconCls:'icon-save',
         width: 580,
         height: 380,
-        closed: false,
+        closable: false,
         cache: false,
-        modal: true,
+        modal: true,        
         buttons: [
             {
                 text: '添加',
@@ -98,7 +98,7 @@ function addInterfaceConfigInfo() {
                                     applicationName: $('#applicationName').val(),
                                     server: $('#server').val(),
                                     user: '',//$('#user').val(),
-                                    pwd: '',//$('#pwd').val(),                               
+                                    pwd: '',//$('#pwd').val(),
                                     charger: $('#charger').val(),
                                     phone: $('#phone').val(),
                                     timeout: $('#timeout').val(),
@@ -128,6 +128,123 @@ function addInterfaceConfigInfo() {
             }
         ]
     });
+}
+//根据id获取配置信息
+function getConfigInfo(id) {
+    $.ajax({
+        url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
+        data: {
+            id: id
+        },
+        type: 'get',
+        cache: false,
+        success: function (info) {
+            alert(info.Id);
+        }
+    });
+}
+//编辑接口配置信息
+function editInterfaceConfig() {
+    var rowdata = $('#gridData').datagrid('getSelected');   
+    $.ajax({
+        url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
+        data: {
+            id: rowdata.Id
+        },
+        type: 'get',
+        cache: false,
+        success: function (info) {
+            $('#interfaceName').val(info.InterfaceName);
+            $('#applicationName').val(info.ApplicationName),
+            $('#server').val(info.ServerAddress);
+            $('#charger').val(info.PersonOfChargeName);
+            $('#phone').val(info.PersonOfChargePhone);
+            $('#timeout').val(info.ConnectedTimeout);
+            $('#desc').val(info.Description);
+
+            $('#add_box_div').dialog({
+                title: '修改【' + info.InterfaceName + '】接口配置信息',
+                iconCls: 'icon-edit',
+                width: 580,
+                height: 380,
+                closable: false,
+                cache: false,
+                modal: false,
+                buttons: [{
+                    text: '修改',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+                        if (!checkingData())
+                            return;
+                        $.messager.confirm("提醒", "确定要修改【" + info.InterfaceName + "】配置信息？", function (r) {
+                            if (r) {
+                                $.ajax({
+                                    url: '/AjaxInterfaceConfig/UpdateInterfaceConfigInfo.cspx',
+                                    data: {
+                                        id: rowdata.Id,
+                                        interfaceName: $('#interfaceName').val(),
+                                        applicationName: $('#applicationName').val(),
+                                        server: $('#server').val(),
+                                        user: '',
+                                        pwd: '',
+                                        charger: $('#charger').val(),
+                                        phone: $('#phone').val(),
+                                        timeout: $('#timeout').val(),
+                                        docPath: '',
+                                        desc: $('#desc').val()
+                                    },
+                                    type: 'post',
+                                    cache: false,
+                                    success: function (json) {
+                                        $.messager.alert(g_MsgBoxTitle, json, "info");
+                                        $('#add_box_div').dialog('close');
+                                        $('#gridData').datagrid('load');
+                                        clearAddBox();
+                                    }
+                                });
+                            }
+                        });                        
+                    }
+                }, {
+                    text: '取消',
+                    iconCls: 'icon-cancel',
+                    handler: function () {
+                        $('#add_box_div').dialog('close');
+                        clearAddBox();
+                    }
+                }]
+            });
+        }
+    });    
+}
+//删除接口配置信息
+function deleteInterfaceConfig() {
+    var rowdata = $('#gridData').datagrid('getSelected');
+    if (rowdata == null) {
+        $.messager.alert(g_MsgBoxTitle, "请选中需要删除的配置信息！", "warning");
+        return;
+    }
+    else {
+        //确认消息框
+        $.messager.confirm("提醒", "确定要删除【" + rowdata.InterfaceName + "】接口配置吗？", function (r) {
+            if (!r)
+                return;
+            else {
+                $.ajax({
+                    url: '/AjaxInterfaceConfig/DeleteInterfaceConfigInfo.cspx',
+                    data: {
+                        id: rowdata.Id
+                    },
+                    type: 'post',
+                    cache: false,
+                    success: function (json) {
+                        $.messager.alert(g_MsgBoxTitle, json, "info");
+                        loadData();
+                    }
+                });
+            }
+        });        
+    }
 }
 function importTooltip() {
     $('#import_button').tooltip({
@@ -170,40 +287,6 @@ function importExcel() {
         ]
     })
 }
-//编辑接口配置信息
-function editInterfaceConfig() {
-    var rowdata = $('#gridData').datagrid('getSelected');
-    alert(rowdata.Id);
-}
-//删除接口配置信息
-function deleteInterfaceConfig() {
-    var rowdata = $('#gridData').datagrid('getSelected');
-    if (rowdata == null) {
-        $.messager.alert(g_MsgBoxTitle, "请选中需要删除的配置信息！", "warning");
-        return;
-    }
-    else {
-        //确认消息框
-        $.messager.confirm("提醒", "确定要删除【" + rowdata.InterfaceName + "】接口配置吗？", function (r) {
-            if (!r)
-                return;
-            else {
-                $.ajax({
-                    url: '/AjaxInterfaceConfig/DeleteInterfaceConfigInfo.cspx',
-                    data: {
-                        id: rowdata.Id
-                    },
-                    type: 'post',
-                    cache: false,
-                    success: function (json) {
-                        $.messager.alert(g_MsgBoxTitle, json, "info");
-                        loadData();
-                    }
-                });
-            }
-        });        
-    }
-}
 //初始化datagrid
 function initDataGrid() {    
     $('#gridData').datagrid({
@@ -234,15 +317,15 @@ function initDataGrid() {
                 }
             },
             '-',
-            //{
-            //    iconCls: 'icon-edit',
-            //    text: '编辑',
-            //    align: 'left',
-            //    handler: function () {
-            //        editInterfaceConfig();
-            //    }
-            //},
-            //'-',
+            {
+                iconCls: 'icon-edit',
+                text: '编辑',
+                align: 'left',
+                handler: function () {
+                    editInterfaceConfig();
+                }
+            },
+            '-',
             {
                 iconCls: 'icon-remove',
                 text: '删除',
@@ -258,14 +341,15 @@ function initDataGrid() {
         pageList: [10, 20, 30],
         columns: [[
                     { field: 'ck', align: 'center', checkbox: true }
-					, { title: '接口名称', field: 'InterfaceName', align: 'center', width: fillsize(380, 0.25, 'divTable'), sortable: false }
+					, { title: '接口名称', field: 'InterfaceName', align: 'center', width: fillsize(380, 0.2, 'divTable'), sortable: false }
 					, { title: '应用名称', field: 'ApplicationName', align: 'center', width: fillsize(380, 0.15, 'divTable'), sortable: false }
 					, { title: '服务器地址', field: 'ServerAddress', align: 'center', width: fillsize(380, 0.15, 'divTable'), sortable: false }
 					//, { title: '服务器用户名', field: 'ServerUser', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
 					//, { title: '用户密码', field: 'UserPwd', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
-                    , { title: '负责人名', field: 'PersonOfChargeName', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
+                    , { title: '负责人名', field: 'PersonOfChargeName', align: 'center', width: fillsize(380, 0.08, 'divTable'), sortable: false }
                     , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
-                    , { title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
+                    , { title: '超时时间(分钟)', field: 'ConnectedTimeout', align: 'center', width: fillsize(380, 0.09, 'divTable'),sortable:false }
+                    , { title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.11, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             var abValue = value;
                             if (abValue.length >= 18)
@@ -274,7 +358,7 @@ function initDataGrid() {
                             return content;
                         }
                     }
-                    , { title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.12, 'divTable'), sortable: false,
+                    , { title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             return renderTime(value);
                         }
@@ -303,7 +387,7 @@ function initDataGrid() {
     });    
 }
 //加载数据函数
-function loadData() {    
+function loadData() {
     $('#gridData').datagrid('load', {
         fields: '',
         key: '',

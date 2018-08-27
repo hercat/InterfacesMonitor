@@ -13,5 +13,42 @@
         <h1>{{header}}</h1>
         <p>{{message}}</p>
     </div>
+    <div id="app2">
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
+    </div>
+    <div id="app3">
+        <span v-bind:title="message">            
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+    </div>
+    <div id="app4">
+       <p v-if="seen">现在你能看到我了</p>
+    </div>
+    <div id="app5">
+        <ol>
+            <li v-for="item in items">
+                {{item.text}}
+            </li>
+        </ol>
+    </div>
+    <div id="app6">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">逆转消息</button>
+    </div>
+    <div id="app7">
+        <p>{{message}}</p>
+        <input v-model="message" />
+    </div>
+
+    <div>
+        <ol>
+            <todo-item></todo-item>
+        </ol>
+    </div>
+
+    <div id="app8" class="app8">
+        <p>{{message}}</p>
+    </div>
 </body>
 </html>

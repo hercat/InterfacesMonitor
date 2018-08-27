@@ -69,7 +69,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// <summary>
         /// 是否立刻影响生产
         /// </summary>
-        public bool AffectProduction { get; set; }
+        public int AffectProduction { get; set; }
         /// <summary>
         /// AllParse
         /// </summary>
@@ -104,7 +104,7 @@ namespace InterfaceMonitor.Frameworks.Entity
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.exeptionlevel.ToString()))
                 Exeptionlevel = Int32.Parse(dr[EnumInterfaceConfigInfo.exeptionlevel.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.affectProduction.ToString()))
-                AffectProduction = bool.Parse(dr[EnumInterfaceConfigInfo.affectProduction.ToString()].ToString());
+                AffectProduction = Int32.Parse(dr[EnumInterfaceConfigInfo.affectProduction.ToString()].ToString());
             return true;
         }
     }

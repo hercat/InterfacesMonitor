@@ -62,6 +62,52 @@ namespace InterfaceMonitor.Frameworks.BizProcess
             }
         }
         /// <summary>
+        /// 接口更新业务逻辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="interfaceName"></param>
+        /// <param name="applicationName"></param>
+        /// <param name="server"></param>
+        /// <param name="user"></param>
+        /// <param name="userPwd"></param>
+        /// <param name="charger"></param>
+        /// <param name="phone"></param>
+        /// <param name="timeout"></param>
+        /// <param name="path"></param>
+        /// <param name="descript"></param>
+        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript)
+        {
+            Guid newid = new Guid(id);
+            //判断接口配置信息是否存在，如果不存在则新增
+            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server) != null)
+            {
+                InterfaceConfigInfo config = new InterfaceConfigInfo();
+                config.Id = newid;
+                config.InterfaceName = interfaceName;
+                config.ApplicationName = applicationName;
+                config.ServerAddress = server;
+                config.ServerUser = user;
+                config.UserPwd = userPwd;
+                config.PersonOfChargeName = charger;
+                config.PersonOfChargePhone = phone;
+                config.ConnectedTimeout = timeout;
+                config.DocumentHelpPath = path;
+                config.Description = descript;
+                config.CreateTime = DateTime.Now;
+
+                InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
+                realtime.Id = newid;
+                realtime.InterfaceName = interfaceName;
+                realtime.ApplicationName = applicationName;
+                realtime.ServerAddress = server;
+                realtime.StateCode = 0;
+                realtime.UpdateTime = DateTime.Now;
+
+                InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(config, ModifierType.Update);
+                InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtime, ModifierType.Update);
+            }
+        }
+        /// <summary>
         /// 删除接口配置信息（同时删除对应的实时状态表中信息）
         /// </summary>
         /// <param name="interfaceName"></param>
