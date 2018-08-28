@@ -20,15 +20,15 @@
     <div id="add_box_div" style="display:none;">
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">接口名称</div>
-            <div class="add_box_div_row_content"><input type="text" id="interfaceName" /></div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="interfaceName" /></div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">应用名称</div>
-            <div class="add_box_div_row_content"><input type="text" id="applicationName"/></div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="applicationName"/></div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">服务器地址</div>
-            <div class="add_box_div_row_content"><input type="text" id="server"/></div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="server"/></div>
         </div>
         <%--<div class="add_box_div_row">
             <div class="add_box_div_row_label">服务器用户名</div>
@@ -40,16 +40,33 @@
         </div>--%>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">负责人</div>
-            <div class="add_box_div_row_content"><input type="text" id="charger"/></div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="charger"/></div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">负责人电话</div>
-            <div class="add_box_div_row_content"><input type="text" id="phone"/></div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="phone"/></div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">接口超时时间</div>
-            <div class="add_box_div_row_content"><input type="text" id="timeout" /></div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="timeout" /></div>
         </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">是否影响生产</div>
+            <div class="add_box_div_row_content">
+                <input class="influence" type="radio" name="influence" value="1" checked="checked" />是
+                <input class="influence" type="radio" name="influence" value="0" />否
+            </div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">影响等级</div>
+            <div class="add_box_div_row_content">
+                <select id="level" name="level" class="easyui-combobox" data-options="panelHeight:'100'" >
+                    <option value="0">一般</option>
+                    <option value="1">严重</option>
+                    <option value="2">非常严重</option>
+                </select>
+            </div>
+        </div>        
         <div class ="add_box_div_row2">
             <div class="add_box_div_row_label">url连接地址</div>
             <div class="add_box_div_row_content"><textarea id="urlAddress" rows="1" cols="39"></textarea></div>
@@ -59,7 +76,7 @@
             <div class="add_box_div_row_content"><textarea id="desc" rows="1" cols="39"></textarea></div>
         </div>
     </div>
-    <div id="impoer_box_div" style="display:none;padding:8px;">
+    <%--<div id="impoer_box_div" style="display:none;padding:8px;">
         <input id="selectfiles" class="easyui-filebox" style="width:99%" data-options="buttonText:'选择excel文件',buttonIcon:'icon-search',multiple:false" />
-    </div>
+    </div>--%>
 </asp:Content>

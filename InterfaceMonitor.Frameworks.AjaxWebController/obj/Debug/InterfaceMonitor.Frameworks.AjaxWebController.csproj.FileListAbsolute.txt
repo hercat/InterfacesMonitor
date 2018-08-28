@@ -19,3 +19,4 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.AjaxWe
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.AjaxWebController\obj\Debug\InterfaceMonitor.Frameworks.AjaxWebController.csprojResolveAssemblyReference.cache
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.AjaxWebController\obj\Debug\InterfaceMonitor.Frameworks.AjaxWebController.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.AjaxWebController\obj\Debug\InterfaceMonitor.Frameworks.AjaxWebController.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.AjaxWebController\bin\Debug\log4net.dll

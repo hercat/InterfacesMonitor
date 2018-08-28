@@ -80,8 +80,8 @@ function addInterfaceConfigInfo() {
     $('#add_box_div').dialog({
         title: '添加接口配置信息',
         iconCls:'icon-save',
-        width: 580,
-        height: 460,
+        width: 660,
+        height: 540,
         closable: false,
         cache: false,
         modal: true,        
@@ -172,8 +172,8 @@ function editInterfaceConfig() {
             $('#add_box_div').dialog({
                 title: '修改【' + info.InterfaceName + '】接口配置信息',
                 iconCls: 'icon-edit',
-                width: 580,
-                height: 460,
+                width: 660,
+                height: 540,
                 closable: false,
                 cache: false,
                 modal: false,

@@ -43,10 +43,8 @@
   <ItemGroup>
     <Compile Include="ApplicationInterfaceRelation\ApplicationInterfaceRelation.cs" />
     <Compile Include="ApplicationSysInfo\ApplicationSysInfo.cs" />
-    <Compile Include="ChargesInfo\ChargesInfo.cs" />
     <Compile Include="ConnString\ConnString.cs" />
     <Compile Include="GridResult\GridResult.cs" />
-    <Compile Include="InterfaceBaseInfo\InterfaceBaseInfo.cs" />
     <Compile Include="InterfaceConfigInfo\InterfaceConfigInfo.cs" />
     <Compile Include="InterfaceExceptionlog\InterfaceExceptionlog.cs" />
     <Compile Include="InterfaceRealtimeInfo\InterfaceRealtimeInfo.cs" />

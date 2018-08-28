@@ -14,3 +14,4 @@ C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.BizPro
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.BizProcess\obj\Debug\InterfaceMonitor.Frameworks.BizProcess.csprojResolveAssemblyReference.cache
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.BizProcess\obj\Debug\InterfaceMonitor.Frameworks.BizProcess.dll
 C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.BizProcess\obj\Debug\InterfaceMonitor.Frameworks.BizProcess.pdb
+C:\工作\SourceCode\InterfaceMonitorSolution\InterfaceMonitor.Frameworks.BizProcess\bin\Debug\log4net.dll

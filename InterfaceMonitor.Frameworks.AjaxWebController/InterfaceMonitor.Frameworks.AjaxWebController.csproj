@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajax\AjaxApplicationSysInfo.cs" />
     <Compile Include="Ajax\AjaxInterfacelog.cs" />
     <Compile Include="Ajax\AjaxInterfaceConfig.cs" />
     <Compile Include="Ajax\AjaxInterfaceRealtime.cs" />
