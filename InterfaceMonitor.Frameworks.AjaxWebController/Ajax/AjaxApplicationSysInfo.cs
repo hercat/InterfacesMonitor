@@ -24,17 +24,79 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="description"></param>
         /// <returns></returns>
         [Action]
-        public object AddApplicationSysInfo(string name, string server, string userdep, string chageman, string phone, string description)
+        public object AddApplicationSysInfo(string name, string server, string userdep, string chargeman, string phone, string description)
         {
             try
             {
                 SystemSettingBase settings = SystemSettingBase.CreateInstance();
                 if (null != settings.SysMySqlDB)
                     ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-                
+                if (null == ApplicationSysInfoLogical.GetApplicationSysInfo(name, server))
+                {
+                    ApplicationSysInfo info = new ApplicationSysInfo()
+                    {
+                        Id = Guid.NewGuid(),
+                        name = name,
+                        server = server,
+                        userdep = userdep,
+                        chargeman = chargeman,
+                        phone = phone,
+                        description = description,
+                        createtime = DateTime.Now
+                    };
+                    ApplicationSysInfoLogical.AddOrUpdateApplicationSysInfo(info, ModifierType.Add);
+                    return string.Format("添加【{0},{1}】应用系统成功！", name, server);
+                }
+                else
+                    return string.Format("【{0},{1}】该应用系统已存在！", name, server);
             }
             catch (Exception ex)
             {
+                return string.Format("添加【{0},{1}】应用系统失败！", name, server);
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// 更新应用系统信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="server"></param>
+        /// <param name="userdep"></param>
+        /// <param name="chargeman"></param>
+        /// <param name="phone"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        [Action]
+        public object UpdateApplicationSysInfo(string id, string name, string server, string userdep, string chargeman, string phone, string description)
+        {
+            try
+            {
+                SystemSettingBase settings = SystemSettingBase.CreateInstance();
+                if (null != settings.SysMySqlDB)
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
+                if (null != ApplicationSysInfoLogical.GetApplicationSysInfoById(new Guid(id)))
+                {
+                    ApplicationSysInfo info = new ApplicationSysInfo()
+                    {
+                        Id = new Guid(id),
+                        name = name,
+                        server = server,
+                        userdep = userdep,
+                        chargeman = chargeman,
+                        phone = phone,
+                        description = description,
+                        createtime = DateTime.Now
+                    };
+                    ApplicationSysInfoLogical.AddOrUpdateApplicationSysInfo(info, ModifierType.Update);
+                    return string.Format("更新【{0},{1}】应用系统信息成功！", name, server);
+                }
+                else
+                    return string.Format("不存在【{0},{1}】该应用系统信息！", name, server);
+            }
+            catch (Exception ex)
+            {
+                return string.Format("更新【{0,{1}}】应用系统信息失败！", name, server);
                 throw ex;
             }
         }
