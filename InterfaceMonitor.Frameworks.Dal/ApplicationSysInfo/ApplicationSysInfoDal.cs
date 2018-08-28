@@ -86,12 +86,9 @@ namespace InterfaceMonitor.Frameworks.Dal
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
             StringBuilder sb = new StringBuilder();
-            if (!string.IsNullOrEmpty(fields))
-                sb.AppendFormat("select {0} from applicationinfo ", fields);
-            else
-                sb.Append("select * from applicationinfo ");
+            sb.AppendFormat("select {0} from applicationinfo ", fields);
             if (!string.IsNullOrEmpty(condition))
-                sb.AppendFormat("where {0}", condition);
+                sb.AppendFormat("{0}", condition);
             List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
@@ -109,19 +106,18 @@ namespace InterfaceMonitor.Frameworks.Dal
             return list;
         }
 
-        public static List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand icmd, string fileds, string condition, int startIndex, int pageSize)
+        public List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand icmd, string fileds, string condition,string orderby, string limit)
         {
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
             StringBuilder sb = new StringBuilder();
-            if (!string.IsNullOrEmpty(fileds))
-                sb.AppendFormat("select {0} from applicationinfo ", fileds);
-            else
-                sb.Append("select * from applicationinfo ");
+            sb.AppendFormat("select {0} from applicationinfo ", fileds);
             if (!string.IsNullOrEmpty(condition))
-                sb.AppendFormat(" where {0} ", condition);
-            sb.AppendFormat("limit {0},{1}", startIndex, pageSize);
+                sb.AppendFormat("{0} ", condition);
+            if (!string.IsNullOrEmpty(orderby))
+                sb.AppendFormat("{0} ", orderby);
+            sb.AppendFormat("{0} ", limit);
             List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());

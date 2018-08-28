@@ -78,7 +78,7 @@ namespace InterfaceMonitor.Frameworks.Logical
             return info;
         }
 
-        public static bool DeleteApplicationSysInfoById(IDbCommand icmd, Guid id)
+        public static bool DeleteApplicationSysInfoById(Guid id)
         {
             bool ret = false;
             IDbConnection conn = null;
@@ -159,7 +159,38 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
             catch (Exception ex)
             {
-                log.Error(string.Format("发生错误,异常信息如下:{0}", ex));
+                log.Error(string.Format("GetApplicationSysInfoList()发生错误,异常信息如下:{0}", ex));
+                if (trans != null)
+                    trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+            return list;
+        }
+
+        public static List<ApplicationSysInfo> GetApplicationSysInfoList(string fileds, string condition,string orderby, string limit)
+        {
+            List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            try
+            {
+                IApplicationSysInfo dp = DataProvider.DbApplicationSysInfoDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                list = dp.GetApplicationSysInfoList(cmd, fileds, condition, orderby, limit);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                log.Error(string.Format("GetApplicationSysInfoList()发生错误,异常信息如下:{0}", ex));
                 if (trans != null)
                     trans.Rollback();
                 throw ex;

@@ -15,6 +15,6 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         bool DeleteApplicationSysInfoById(IDbCommand idbcmd, Guid id);
         ApplicationSysInfo GetApplicationSysInfo(IDbCommand idbcmd, string name, string server);
         List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand idbcmd, string fields, string condition);
-        List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand idbcmd, string fileds, string condition, int startIndex, int pageSize);
+        List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand idbcmd, string fileds, string condition, string orderby, string limit);
     }
 }
