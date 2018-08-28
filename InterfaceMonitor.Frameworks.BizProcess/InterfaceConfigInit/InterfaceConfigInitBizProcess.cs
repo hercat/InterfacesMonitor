@@ -28,7 +28,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout">超时时间</param>
         /// <param name="path">帮助文档存放路径</param>
         /// <param name="descript">描述</param>
-        public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress)
+        public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress,string exeptionlevel,string affectProduction,string type)
         {
             //生成接口编号id
             Guid id = Guid.NewGuid();
@@ -48,6 +48,9 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 config.DocumentHelpPath = path;
                 config.UrlAddress = urlAddress;
                 config.Description = descript;
+                config.Exeptionlevel = Int32.Parse(exeptionlevel);
+                config.AffectProduction = Int32.Parse(affectProduction);
+                config.Type = Int32.Parse(type);
                 config.CreateTime = DateTime.Now;
 
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
@@ -76,7 +79,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout"></param>
         /// <param name="path"></param>
         /// <param name="descript"></param>
-        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress)
+        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress, string exeptionlevel, string affectProduction,string type)
         {
             Guid newid = new Guid(id);
             //判断接口配置信息是否存在，如果不存在则新增
@@ -95,6 +98,9 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 config.DocumentHelpPath = path;
                 config.Description = descript;
                 config.UrlAddress = urlAddress;
+                config.Exeptionlevel = Int32.Parse(exeptionlevel);
+                config.AffectProduction = Int32.Parse(affectProduction);
+                config.Type = Int32.Parse(type);
                 config.CreateTime = DateTime.Now;
 
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();

@@ -93,6 +93,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="applicationSysInfo\ApplicationSysInfo.aspx" />
     <Content Include="Config\SysConfiguration.aspx" />
     <Content Include="css\interfaceConfiguration.css" />
     <Content Include="css\interfaceDetails.css" />
@@ -1027,6 +1028,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="applicationSysInfo\ApplicationSysInfo.aspx.cs">
+      <DependentUpon>ApplicationSysInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="applicationSysInfo\ApplicationSysInfo.aspx.designer.cs">
+      <DependentUpon>ApplicationSysInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Config\SysConfiguration.aspx.cs">
       <DependentUpon>SysConfiguration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

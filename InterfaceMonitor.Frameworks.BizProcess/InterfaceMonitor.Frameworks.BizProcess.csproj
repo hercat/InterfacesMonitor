@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationSysInfoBizprocess.cs" />
+    <Compile Include="ApplicationSysInfo\ApplicationSysInfoBizprocess.cs" />
     <Compile Include="InterfaceConfigInit\InterfaceConfigInitBizProcess.cs" />
     <Compile Include="InterfaceRealtime\InterfaceRealtimeBizProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

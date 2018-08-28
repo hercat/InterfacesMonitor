@@ -10,7 +10,16 @@
                 </dt>
                 <dd />
             </dl>
-        </li>        
+        </li>
+        <li><a>应用系统</a>
+            <dl>
+                <dd></dd>
+                <dt>
+                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">应用管理</a>
+                </dt>
+                <dd></dd>
+            </dl>
+        </li>
         <li><a>信息配置</a>
             <dl>
                 <dd />

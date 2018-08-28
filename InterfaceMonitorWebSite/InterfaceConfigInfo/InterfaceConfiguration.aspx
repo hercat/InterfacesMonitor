@@ -23,12 +23,22 @@
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="interfaceName" /></div>
         </div>
         <div class="add_box_div_row">
-            <div class="add_box_div_row_label">应用名称</div>
+            <div class="add_box_div_row_label">应用系统</div>
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="applicationName"/></div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">服务器地址</div>
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="server"/></div>
+        </div>
+        <div class="add_box_div_row2">
+            <div class="add_box_div_row_label">接口类型</div>
+            <div class="add_box_div_row_content">
+                <select id="type" name="level" class="easyui-combobox" data-options="width:'100',height:'30',panelHeight:'100'" >
+                    <option value="0">默认</option>
+                    <option value="1">应用程序</option>
+                    <option value="2">网站</option>
+                </select>
+            </div>
         </div>
         <%--<div class="add_box_div_row">
             <div class="add_box_div_row_label">服务器用户名</div>
@@ -53,20 +63,19 @@
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">是否影响生产</div>
             <div class="add_box_div_row_content">
-                <input class="influence" type="radio" name="influence" value="1" checked="checked" />是
-                <input class="influence" type="radio" name="influence" value="0" />否
+                <input id="incluence" class="easyui-switchbutton" data-options="width:'100',onText:'是',offText:'否'"/>
             </div>
         </div>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">影响等级</div>
             <div class="add_box_div_row_content">
-                <select id="level" name="level" class="easyui-combobox" data-options="panelHeight:'100'" >
+                <select id="level" name="level" class="easyui-combobox" data-options="width:'100',height:'30',panelHeight:'100'" >
                     <option value="0">一般</option>
                     <option value="1">严重</option>
                     <option value="2">非常严重</option>
                 </select>
             </div>
-        </div>        
+        </div>
         <div class ="add_box_div_row2">
             <div class="add_box_div_row_label">url连接地址</div>
             <div class="add_box_div_row_content"><textarea id="urlAddress" rows="1" cols="39"></textarea></div>

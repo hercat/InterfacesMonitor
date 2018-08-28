@@ -75,6 +75,10 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public int AffectProduction { get; set; }
         /// <summary>
+        /// 接口类型（0:默认类型;其他未定义）
+        /// </summary>
+        public int Type { get; set; }
+        /// <summary>
         /// AllParse
         /// </summary>
         /// <param name="dr"></param>
@@ -111,6 +115,8 @@ namespace InterfaceMonitor.Frameworks.Entity
                 Exeptionlevel = Int32.Parse(dr[EnumInterfaceConfigInfo.exeptionlevel.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.affectProduction.ToString()))
                 AffectProduction = Int32.Parse(dr[EnumInterfaceConfigInfo.affectProduction.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.type.ToString()))
+                Type = Int32.Parse(dr[EnumInterfaceConfigInfo.type.ToString()].ToString());
             return true;
         }
     }
@@ -133,6 +139,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         Description,
         CreateTime,
         exeptionlevel,
-        affectProduction
+        affectProduction,
+        type
     }
 }

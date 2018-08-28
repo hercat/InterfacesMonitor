@@ -8,6 +8,7 @@ $(document).ready(function () {
     $('#search_button').click(function () {
         searchData();
     });
+    clearAddBox();
 });
 function onSelect() {    
     $('#gridData').datagrid({
@@ -56,10 +57,10 @@ function checkingData() {
         $.messager.alert(g_MsgBoxTitle, "描述不能为空！", "warning");
         return false;
     }
-    if (trim($('#urlAddress').val()) == "") {
-        $.messager.alert(g_MsgBoxTitle, "url连接地址不能为空！", "warning");
-        return false;
-    }
+    //if (trim($('#urlAddress').val()) == "") {
+    //    $.messager.alert(g_MsgBoxTitle, "url连接地址不能为空！", "warning");
+    //    return false;
+    //}
     return true;
 }
 //清空添加
@@ -74,14 +75,17 @@ function clearAddBox() {
     $('#timeout').val('');
     $('#desc').val('');
     $('#urlAddress').val('');
+    $('#level').combobox('select', '0');
+    $('#type').combobox('select', '0');
+    $('#incluence').switchbutton('uncheck');
 }
 //弹出接口信息添加dialog对话框
 function addInterfaceConfigInfo() {    
     $('#add_box_div').dialog({
         title: '添加接口配置信息',
-        iconCls:'icon-save',
-        width: 660,
-        height: 540,
+        iconCls:'icon-add',
+        width: 700,
+        height: 680,
         closable: false,
         cache: false,
         modal: true,        
@@ -109,7 +113,10 @@ function addInterfaceConfigInfo() {
                                     timeout: $('#timeout').val(),
                                     docPath: '',
                                     desc: $('#desc').val(),
-                                    urlAddress: $('#urlAddress').val()
+                                    urlAddress: $('#urlAddress').val(),
+                                    exeptionlevel: $('#level').combobox('getValue'),
+                                    affectProduction: $('#incluence').switchbutton('options').checked ? 1 : 0,
+                                    type: $('#type').combobox('getValue')
                                 },
                                 type: 'post',
                                 cache: false,
@@ -151,79 +158,94 @@ function getConfigInfo(id) {
 }
 //编辑接口配置信息
 function editInterfaceConfig() {
-    var rowdata = $('#gridData').datagrid('getSelected');   
-    $.ajax({
-        url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
-        data: {
-            id: rowdata.Id
-        },
-        type: 'get',
-        cache: false,
-        success: function (info) {
-            $('#interfaceName').val(info.InterfaceName);
-            $('#applicationName').val(info.ApplicationName),
-            $('#server').val(info.ServerAddress);
-            $('#charger').val(info.PersonOfChargeName);
-            $('#phone').val(info.PersonOfChargePhone);
-            $('#timeout').val(info.ConnectedTimeout);
-            $('#desc').val(info.Description);
-            $('#urlAddress').val(info.UrlAddress);
-            //控件数据加载完毕后弹出对话框
-            $('#add_box_div').dialog({
-                title: '修改【' + info.InterfaceName + '】接口配置信息',
-                iconCls: 'icon-edit',
-                width: 660,
-                height: 540,
-                closable: false,
-                cache: false,
-                modal: false,
-                buttons: [{
-                    text: '修改',
+    var rowdata = $('#gridData').datagrid('getSelected');
+    if (rowdata != null) {
+        $.ajax({
+            url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
+            data: {
+                id: rowdata.Id
+            },
+            type: 'get',
+            cache: false,
+            success: function (info) {
+                $('#interfaceName').val(info.InterfaceName);
+                $('#applicationName').val(info.ApplicationName),
+                $('#server').val(info.ServerAddress);
+                $('#charger').val(info.PersonOfChargeName);
+                $('#phone').val(info.PersonOfChargePhone);
+                $('#timeout').val(info.ConnectedTimeout);
+                $('#desc').val(info.Description);
+                $('#urlAddress').val(info.UrlAddress);                
+                $('#level').combobox('setValue', info.Exeptionlevel);
+                $('#type').combobox('setValue', info.Type);
+                if (info.AffectProduction == 0)
+                    $('#incluence').switchbutton('uncheck');
+                else
+                    $('#incluence').switchbutton('check');
+                //控件数据加载完毕后弹出对话框
+                $('#add_box_div').dialog({
+                    title: '修改【' + info.InterfaceName + '】接口配置信息',
                     iconCls: 'icon-edit',
-                    handler: function () {
-                        if (!checkingData())
-                            return;
-                        $.messager.confirm("提醒", "确定要修改【" + info.InterfaceName + "】配置信息？", function (r) {
-                            if (r) {
-                                $.ajax({
-                                    url: '/AjaxInterfaceConfig/UpdateInterfaceConfigInfo.cspx',
-                                    data: {
-                                        id: rowdata.Id,
-                                        interfaceName: $('#interfaceName').val(),
-                                        applicationName: $('#applicationName').val(),
-                                        server: $('#server').val(),
-                                        user: '',
-                                        pwd: '',
-                                        charger: $('#charger').val(),
-                                        phone: $('#phone').val(),
-                                        timeout: $('#timeout').val(),
-                                        docPath: '',
-                                        desc: $('#desc').val(),
-                                        urlAddress: $('#urlAddress').val()
-                                    },
-                                    type: 'post',
-                                    cache: false,
-                                    success: function (json) {
-                                        $.messager.alert(g_MsgBoxTitle, json, "info");
-                                        $('#add_box_div').dialog('close');
-                                        $('#gridData').datagrid('load');
-                                        clearAddBox();
-                                    }
-                                });
-                            }
-                        });                        
-                    }
-                }, {
-                    text: '取消',
-                    iconCls: 'icon-cancel',
-                    handler: function () {
-                        $('#add_box_div').dialog('close');
-                        clearAddBox();
-                    }
-                }]
-            });
-        }
-    });    
+                    width: 700,
+                    height: 680,
+                    closable: false,
+                    cache: false,
+                    modal: false,
+                    buttons: [{
+                        text: '修改',
+                        iconCls: 'icon-edit',
+                        handler: function () {
+                            if (!checkingData())
+                                return;                            
+                            $.messager.confirm("提醒", "确定要修改【" + info.InterfaceName + "】配置信息？", function (r) {
+                                if (r) {
+                                    $.ajax({
+                                        url: '/AjaxInterfaceConfig/UpdateInterfaceConfigInfo.cspx',
+                                        data: {
+                                            id: rowdata.Id,
+                                            interfaceName: $('#interfaceName').val(),
+                                            applicationName: $('#applicationName').val(),
+                                            server: $('#server').val(),
+                                            user: '',
+                                            pwd: '',
+                                            charger: $('#charger').val(),
+                                            phone: $('#phone').val(),
+                                            timeout: $('#timeout').val(),
+                                            docPath: '',
+                                            desc: $('#desc').val(),
+                                            urlAddress: $('#urlAddress').val(),
+                                            exeptionlevel: $('#level').combobox('getValue'),
+                                            affectProduction: $('#incluence').switchbutton('options').checked ? 1 : 0,
+                                            type: $('#type').combobox('getValue')
+                                        },
+                                        type: 'post',
+                                        cache: false,
+                                        success: function (json) {
+                                            $.messager.alert(g_MsgBoxTitle, json, "info");
+                                            $('#add_box_div').dialog('close');
+                                            $('#gridData').datagrid('load');
+                                            clearAddBox();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    }, {
+                        text: '取消',
+                        iconCls: 'icon-cancel',
+                        handler: function () {
+                            $('#add_box_div').dialog('close');
+                            clearAddBox();
+                        }
+                    }]
+                });
+            }
+        });
+    }
+    else {
+        $.messager.alert(g_MsgBoxTitle, "请勾选需要编辑的行！", "warning");
+    }
+       
 }
 //删除接口配置信息
 function deleteInterfaceConfig() {

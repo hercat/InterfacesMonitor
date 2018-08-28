@@ -334,13 +334,13 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="desc">描述</param>
         /// <returns></returns>
         [Action]
-        public object AddInterfaceConfigInfo(string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress)
+        public object AddInterfaceConfigInfo(string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type)
         {
             try
             {
                 if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server))
                 {
-                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress);
+                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
                     return string.Format("添加【{0}】配置信息成功！", interfaceName);
                 }                    
                 else
@@ -367,13 +367,13 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="desc"></param>
         /// <returns></returns>
         [Action]
-        public object UpdateInterfaceConfigInfo(string id, string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress)
+        public object UpdateInterfaceConfigInfo(string id, string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type)
         {
             try
             {
                 if (null != InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server))
                 {
-                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress);
+                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
                     return string.Format("更新【{0}】配置信息成功！", interfaceName);
                 }
                 else
