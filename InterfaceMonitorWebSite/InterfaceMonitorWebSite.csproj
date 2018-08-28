@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="applicationSysInfo\ApplicationSysInfo.aspx" />
     <Content Include="Config\SysConfiguration.aspx" />
+    <Content Include="css\applicationSysInfo.css" />
     <Content Include="css\interfaceConfiguration.css" />
     <Content Include="css\interfaceDetails.css" />
     <Content Include="images\document_32t.png" />
@@ -132,6 +133,7 @@
     <Content Include="images\splitter.jpg" />
     <Content Include="InterfaceMonitor.Utility.SysSettingBase.xml" />
     <Content Include="InterfaceRealtime\InterfaceDetails.aspx" />
+    <Content Include="javascript\applicationSysInfo.js" />
     <Content Include="javascript\interfaceConfiguration.js" />
     <Content Include="javascript\interfaceDetails.js" />
     <Content Include="javascript\interfaceRealtimeInfo.js" />

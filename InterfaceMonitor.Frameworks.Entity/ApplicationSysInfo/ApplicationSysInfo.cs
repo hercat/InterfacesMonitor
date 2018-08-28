@@ -46,6 +46,10 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// 创建时间
         /// </summary>
         public DateTime createtime { get; set; }
+        /// <summary>
+        /// 系统级别
+        /// </summary>
+        public int level { get; set; }
         public bool AllParse(DataRow dr)
         {
             if (dr.Table.Columns.Contains(EnumApplicationSysInfo.Id.ToString()))
@@ -64,6 +68,8 @@ namespace InterfaceMonitor.Frameworks.Entity
                 description = dr[EnumApplicationSysInfo.description.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumApplicationSysInfo.createtime.ToString()))
                 createtime = DateTime.Parse(dr[EnumApplicationSysInfo.createtime.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumApplicationSysInfo.level.ToString()))
+                level = Int32.Parse(dr[EnumApplicationSysInfo.level.ToString()].ToString());
             return true;
         }
     }
@@ -76,6 +82,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         chargeman,
         phone,
         description,
-        createtime
+        createtime,
+        level
     }
 }
