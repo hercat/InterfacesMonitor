@@ -177,7 +177,7 @@ function editInterfaceConfig() {
                 $('#desc').val(info.Description);
                 $('#urlAddress').val(info.UrlAddress);                
                 $('#level').combobox('setValue', info.Exeptionlevel);
-                $('#type').combobox('setValue', info.Type);
+                $('#type').combobox('setValue',info.Type);
                 if (info.AffectProduction == 0)
                     $('#incluence').switchbutton('uncheck');
                 else

@@ -19,15 +19,15 @@ namespace InterfaceMonitor.Frameworks.Dal
             cmd.CommandType = CommandType.Text;
             if (mode == ModifierType.Add)
             {
-                string sql = @"insert into applicationinfo(Id,name,server,userdep,chargeman,phone,description,createtime) 
-                            values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')";
-                cmd.CommandText = string.Format(sql, info.Id, info.name, info.server, info.userdep, info.chargeman, info.phone, info.description, info.createtime);
+                string sql = @"insert into applicationinfo(Id,name,server,userdep,chargeman,phone,description,createtime,level) 
+                            values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')";
+                cmd.CommandText = string.Format(sql, info.Id, info.name, info.server, info.userdep, info.chargeman, info.phone, info.description, info.createtime, info.level);
             }
             else if (mode == ModifierType.Update)
             {
-                string sql = @"update applicationinfo set name = '{0}',server = '{1}',userdep = '{2}',chargeman = '{3}',phone = '{4}',description = '{5}',createtime = '{6}'
+                string sql = @"update applicationinfo set name = '{0}',server = '{1}',userdep = '{2}',chargeman = '{3}',phone = '{4}',description = '{5}',createtime = '{6}',level = '{8}'
                                 where Id = '{7}'";
-                cmd.CommandText = string.Format(sql, info.name, info.server, info.userdep, info.chargeman, info.phone, info.description, info.createtime, info.Id);
+                cmd.CommandText = string.Format(sql, info.name, info.server, info.userdep, info.chargeman, info.phone, info.description, info.createtime, info.Id, info.level);
             }
             cmd.ExecuteNonQuery();
             return true;
@@ -38,7 +38,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,name,server,userdep,chargeman,phone,description,createtime from applicationinfo where Id = '{0}'";
+            string sql = @"select Id,name,server,userdep,chargeman,phone,description,createtime,level from applicationinfo where Id = '{0}'";
             cmd.CommandText = string.Format(sql, id);
             DataTable dt = new DataTable();
             ApplicationSysInfo info = null;
@@ -67,7 +67,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,name,server,userdep,chargeman,phone,description,createtime from applicationinfo where name = '{0}' and server = '{1}'";
+            string sql = @"select Id,name,server,userdep,chargeman,phone,description,createtime,level from applicationinfo where name = '{0}' and server = '{1}'";
             cmd.CommandText = string.Format(sql, name, server);
             DataTable dt = new DataTable();
             ApplicationSysInfo info = null;
@@ -88,7 +88,8 @@ namespace InterfaceMonitor.Frameworks.Dal
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("select {0} from applicationinfo ", fields);
             if (!string.IsNullOrEmpty(condition))
-                sb.AppendFormat("{0}", condition);
+                sb.AppendFormat("{0} ", condition);
+            cmd.CommandText = sb.ToString();
             List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
@@ -118,6 +119,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             if (!string.IsNullOrEmpty(orderby))
                 sb.AppendFormat("{0} ", orderby);
             sb.AppendFormat("{0} ", limit);
+            cmd.CommandText = sb.ToString();
             List<ApplicationSysInfo> list = new List<ApplicationSysInfo>();
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());

@@ -24,7 +24,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="description"></param>
         /// <returns></returns>
         [Action]
-        public object AddApplicationSysInfo(string name, string server, string userdep, string chargeman, string phone, string description)
+        public object AddApplicationSysInfo(string name, string server, string userdep, string chargeman, string phone, string description,string level)
         {
             try
             {
@@ -42,6 +42,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         chargeman = chargeman,
                         phone = phone,
                         description = description,
+                        level = Int32.Parse(level),
                         createtime = DateTime.Now
                     };
                     ApplicationSysInfoLogical.AddOrUpdateApplicationSysInfo(info, ModifierType.Add);
@@ -160,7 +161,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             {
                 SystemSettingBase settings = SystemSettingBase.CreateInstance();
                 if (settings.SysMySqlDB != null)
-                    ConnString.MySqldb = settings.SysMySqlDB.ToString();
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
                 PageInfo pageInfo = new PageInfo()
                 {
                     PageIndex = rows * (page - 1),

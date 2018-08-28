@@ -16,4 +16,40 @@
             <table id="gridData"></table>
         </div>
     </div>
+    <div id="add_box_div" style="display:none;">        
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">应用系统名称</div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="applicationName"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">服务器地址</div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="server"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">使用部门</div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="userdep"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">负责人</div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="charger"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">负责人电话</div>
+            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="phone"/></div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">系统级别</div>
+            <div class="add_box_div_row_content">
+                <select id="level" name="level" class="easyui-combobox" data-options="width:'100',height:'30',panelHeight:'100'" >
+                    <option value="0">一般</option>
+                    <option value="1">重要</option>
+                    <option value="2">非常重要</option>
+                </select>
+            </div>
+        </div>        
+        <div class="add_box_div_row2">
+            <div class="add_box_div_row_label">描述</div>
+            <div class="add_box_div_row_content"><textarea id="desc" rows="1" cols="39"></textarea></div>
+        </div>
+    </div>
 </asp:Content>
