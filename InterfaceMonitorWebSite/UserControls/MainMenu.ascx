@@ -2,7 +2,7 @@
 <link href="../css/MainMenuSkin.css" rel="stylesheet" />
 <div id="nav">
     <ul>
-        <li><a>接口实时状态</a>
+        <li><a>实时状态</a>
             <dl>
                 <dd />                                    
                 <dt>
@@ -11,24 +11,25 @@
                 <dd />
             </dl>
         </li>
-        <li><a>应用系统</a>
+        <li><a>应用系统管理</a>
             <dl>
                 <dd></dd>
                 <dt>
-                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">应用管理</a>
+                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">应用系统配置</a>
+                </dt>
+                <dd></dd>
+                <dt>
+                    <a href="../applicationSysInfo/ApplicationInterfaceRelation.aspx">系统接口管理</a>
                 </dt>
                 <dd></dd>
             </dl>
         </li>
-        <li><a>信息配置</a>
+        <li><a>接口管理</a>
             <dl>
                 <dd />
                 <dt>
                     <a href="/InterfaceConfigInfo/InterfaceConfiguration.aspx">接口配置</a>
-                </dt>
-                <%--<dt>
-                    <a href="/Config/SysConfiguration.aspx">系统配置</a>
-                </dt>--%>
+                </dt>                
                 <dd />
             </dl>
         </li>

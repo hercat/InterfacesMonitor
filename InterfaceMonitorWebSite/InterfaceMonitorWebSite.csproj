@@ -93,8 +93,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="applicationSysInfo\ApplicationInterfaceRelation.aspx" />
     <Content Include="applicationSysInfo\ApplicationSysInfo.aspx" />
     <Content Include="Config\SysConfiguration.aspx" />
+    <Content Include="css\applicationInterfaceRelation.css" />
     <Content Include="css\applicationSysInfo.css" />
     <Content Include="css\interfaceConfiguration.css" />
     <Content Include="css\interfaceDetails.css" />
@@ -133,6 +135,7 @@
     <Content Include="images\splitter.jpg" />
     <Content Include="InterfaceMonitor.Utility.SysSettingBase.xml" />
     <Content Include="InterfaceRealtime\InterfaceDetails.aspx" />
+    <Content Include="javascript\applicationInterfaceRelation.js" />
     <Content Include="javascript\applicationSysInfo.js" />
     <Content Include="javascript\interfaceConfiguration.js" />
     <Content Include="javascript\interfaceDetails.js" />
@@ -1030,6 +1033,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="applicationSysInfo\ApplicationInterfaceRelation.aspx.cs">
+      <DependentUpon>ApplicationInterfaceRelation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="applicationSysInfo\ApplicationInterfaceRelation.aspx.designer.cs">
+      <DependentUpon>ApplicationInterfaceRelation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="applicationSysInfo\ApplicationSysInfo.aspx.cs">
       <DependentUpon>ApplicationSysInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

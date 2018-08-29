@@ -1,4 +1,4 @@
-﻿<%@ Page Title="应用系统管理" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true" CodeBehind="ApplicationSysInfo.aspx.cs" Inherits="InterfaceMonitorWebSite.applicationSysInfo.ApplicationSysInfo" %>
+﻿<%@ Page Title="应用系统配置" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true" CodeBehind="ApplicationSysInfo.aspx.cs" Inherits="InterfaceMonitorWebSite.applicationSysInfo.ApplicationSysInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../css/applicationSysInfo.css" rel="stylesheet" />
     <script src="../javascript/applicationSysInfo.js"></script>
@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyRight" runat="server">
     <div>
         <div id="content_title">
-            <span>应用系统管理</span>
+            <span>应用系统配置</span>
         </div>
         <div class="funtion_buttons">
             <input id="search_text" type="text" value="应用系统名称、服务器地址、负责人..." onfocus="if(this.value=='应用系统名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='应用系统名称、服务器地址、负责人...';}"  />
@@ -16,6 +16,7 @@
             <table id="gridData"></table>
         </div>
     </div>
+    <!-- 添加或修改应用系统信息控件 -->
     <div id="add_box_div" style="display:none;">        
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">应用系统名称</div>
@@ -51,5 +52,27 @@
             <div class="add_box_div_row_label">描述</div>
             <div class="add_box_div_row_content"><textarea id="desc" rows="1" cols="39"></textarea></div>
         </div>
+    </div>
+    <!-- 关联接口控件 -->
+    <div id="attach_interface_div" style="display:none;">
+        <div class="add_box_div_row3">
+            <div class="add_box_div_row_content3">
+                <span id="appname"></span>
+            </div>
+        </div>
+        <div class="add_box_div_row3">
+            <div class="add_box_div_row_content3">
+                <input id="key" type="text" value="接口名称、服务器地址、负责人..." onfocus="if(this.value=='接口名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='接口名称、服务器地址、负责人...';}"  />
+            <span id="search">搜索</span>
+            </div>
+        </div>
+        <div id="divAttachTable">
+            <table id="attachGridData"></table>
+        </div>
+        <%--<div class="add_box_div_row4">
+            <div class="add_box_div_row_content3">
+
+            </div>
+        </div>--%>
     </div>
 </asp:Content>
