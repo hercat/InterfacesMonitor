@@ -1,4 +1,5 @@
 ﻿
+//页面加载函数
 $(document).ready(function () {
     initDataGrid();
     loadData();
@@ -6,7 +7,7 @@ $(document).ready(function () {
         searchData();
     });
 });
-
+//初始化datagrid
 function initDataGrid() {
     $('#gridData').datagrid({
         idField: 'Id',
@@ -147,6 +148,7 @@ function checkingData() {
         $.messager.alert(g_MsgBoxTitle, "负责人电话不能为空！", "warning");
         return false;
     }
+    return true;
 }
 //清空对话框缓存
 function clearAddBox() {
@@ -173,8 +175,8 @@ function addApplicationInfo() {
                 text: '添加',
                 iconCls: 'icon-add',
                 handler: function () {
-                    //if (!checkingData())
-                    //    return;
+                    if (!checkingData())
+                        return;
                     $.messager.confirm('提醒', '确定要添加【' + $('#applicationName').val() + '】应用系统信息吗？', function (r) {
                         if (!r)
                             return;
@@ -213,6 +215,7 @@ function addApplicationInfo() {
         ]
     });
 }
+//查询点击事件
 function searchData() {
     var searchText = $('#search_text').val();
     if (searchText == '应用系统名称、服务器地址、负责人...')
@@ -223,4 +226,109 @@ function searchData() {
         order: 'CreateTime',
         ascOrdesc: 'desc'
     });
+}
+//修改应用系统信息
+function editApplicationInfo() {
+    var rowdata = $('#gridData').datagrid('getSelected');
+    if (rowdata != null) {
+        $.ajax({
+            url: '/AjaxApplicationSysInfo/GetApplicationSysInfoById.cspx',
+            data: {
+                id: rowdata.Id
+            },
+            type: 'get',
+            cache: false,
+            success: function (info) {
+                $('#applicationName').val(info.name);
+                $('#server').val(info.server);
+                $('#userdep').val(info.userdep);
+                $('#charger').val(info.chargeman);
+                $('#phone').val(info.phone);
+                $('#desc').val(info.description);
+                $('#level').combobox('setValue', info.level);
+                //控件数据加载完毕后弹出对话框
+                $('#add_box_div').dialog({
+                    title: '修改【' + info.name + '】接口配置信息',
+                    iconCls: 'icon-edit',
+                    width: 700,
+                    height: 460,
+                    closable: false,
+                    cache: false,
+                    modal: false,
+                    buttons: [{
+                        text: '修改',
+                        iconCls: 'icon-edit',
+                        handler: function () {
+                            if (!checkingData())
+                                return;
+                            $.messager.confirm("提醒", "确定要修改【" + info.name + "】应用系统信息？", function (r) {
+                                if (r) {
+                                    $.ajax({
+                                        url: '/AjaxApplicationSysInfo/UpdateApplicationSysInfo.cspx',
+                                        data: {
+                                            id:rowdata.Id,
+                                            name: $('#applicationName').val(),
+                                            server: $('#server').val(),
+                                            userdep: $('#userdep').val(),
+                                            chargeman: $('#charger').val(),
+                                            phone: $('#phone').val(),
+                                            description: $('#desc').val(),
+                                            level: $('#level').combobox('getValue')
+                                        },
+                                        type: 'post',
+                                        cache: false,
+                                        success: function (json) {
+                                            $.messager.alert(g_MsgBoxTitle, json, "info");
+                                            $('#add_box_div').dialog('close');
+                                            $('#gridData').datagrid('load');
+                                            clearAddBox();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    }, {
+                        text: '取消',
+                        iconCls: 'icon-cancel',
+                        handler: function () {
+                            $('#add_box_div').dialog('close');
+                            clearAddBox();
+                        }
+                    }]
+                });
+            }
+        });
+    }
+    else {
+        $.messager.alert(g_MsgBoxTitle, "请勾选需要编辑的行！", "warning");
+    }
+}
+//删除应用系统
+function deleteApplicationInfo() {
+    var rowdata = $('#gridData').datagrid('getSelected');
+    if (rowdata == null) {
+        $.messager.alert(g_MsgBoxTitle, "请选中需要删除的应用系统信息！", "warning");
+        return;
+    }
+    else {
+        //确认消息框
+        $.messager.confirm("提醒", "确定要删除【" + rowdata.name + "】应用系统吗？", function (r) {
+            if (!r)
+                return;
+            else {
+                $.ajax({
+                    url: '/AjaxApplicationSysInfo/DeleteApplicationSysInfo.cspx',
+                    data: {
+                        id: rowdata.Id
+                    },
+                    type: 'post',
+                    cache: false,
+                    success: function (json) {
+                        $.messager.alert(g_MsgBoxTitle, json, "info");
+                        loadData();
+                    }
+                });
+            }
+        });
+    }
 }

@@ -13,7 +13,11 @@ namespace InterfaceMonitor.Frameworks.Entity
     /// Date:2018/08/28
     /// </summary>
     public class ApplicationInterfaceRelation
-    {        
+    {
+        /// <summary>
+        /// 编号
+        /// </summary>
+        public Guid Id { get; set; }
         /// <summary>
         /// 应用系统编号
         /// </summary>
@@ -35,7 +39,9 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public DateTime updatetime { get; set; }
         public bool AllParse(DataRow dr)
-        {            
+        {
+            if (dr.Table.Columns.Contains(EnumApplicationInterfaceRelation.Id.ToString()))
+                Id = new Guid(dr[EnumApplicationInterfaceRelation.Id.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumApplicationInterfaceRelation.appId.ToString()))
                 appId = new Guid(dr[EnumApplicationInterfaceRelation.appId.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumApplicationInterfaceRelation.appname.ToString()))
@@ -51,6 +57,7 @@ namespace InterfaceMonitor.Frameworks.Entity
     }
     public enum EnumApplicationInterfaceRelation
     {
+        Id,
         appId,
         appname,
         interfaceId,

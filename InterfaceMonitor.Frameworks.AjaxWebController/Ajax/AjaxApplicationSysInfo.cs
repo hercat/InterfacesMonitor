@@ -53,8 +53,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             }
             catch (Exception ex)
             {
-                return string.Format("添加【{0},{1}】应用系统失败！", name, server);
-                throw ex;
+                return string.Format("添加【{0},{1}】应用系统失败！异常信息如下:{2}", name, server, ex.Message);
             }
         }
         /// <summary>
@@ -69,7 +68,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="description"></param>
         /// <returns></returns>
         [Action]
-        public object UpdateApplicationSysInfo(string id, string name, string server, string userdep, string chargeman, string phone, string description)
+        public object UpdateApplicationSysInfo(string id, string name, string server, string userdep, string chargeman, string phone, string description,string level)
         {
             try
             {
@@ -87,6 +86,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         chargeman = chargeman,
                         phone = phone,
                         description = description,
+                        level = Int32.Parse(level),
                         createtime = DateTime.Now
                     };
                     ApplicationSysInfoLogical.AddOrUpdateApplicationSysInfo(info, ModifierType.Update);
@@ -97,8 +97,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             }
             catch (Exception ex)
             {
-                return string.Format("更新【{0,{1}}】应用系统信息失败！", name, server);
-                throw ex;
+                return string.Format("更新【{0,{1}}】应用系统信息失败！异常信息如下:{2}", name, server, ex.Message);                
             }
         }
         /// <summary>
@@ -119,7 +118,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             }
             catch (Exception ex)
             {
-                throw ex;
+                return ex.Message;
             }
         }
         /// <summary>
