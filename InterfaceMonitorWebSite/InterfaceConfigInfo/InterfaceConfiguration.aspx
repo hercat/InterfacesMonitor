@@ -22,10 +22,10 @@
             <div class="add_box_div_row_label">接口名称</div>
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="interfaceName" /></div>
         </div>
-        <div class="add_box_div_row">
+        <%--<div class="add_box_div_row">
             <div class="add_box_div_row_label">应用系统</div>
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="applicationName"/></div>
-        </div>
+        </div>--%>
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">服务器地址</div>
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="server"/></div>

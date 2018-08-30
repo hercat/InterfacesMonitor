@@ -43,7 +43,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         public static void UpdateInterfaceRealtimeInfoWithException(string interfaceName, string applicationName, string server, int stateCode, string exceptionInfo)
         {
             InterfaceRealtimeInfo realtime = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(interfaceName, applicationName, server);
-            InterfaceConfigInfo config = InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server);
+            InterfaceConfigInfo config = InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server);
             if (null != realtime)
             {
                 realtime.StateCode = stateCode;

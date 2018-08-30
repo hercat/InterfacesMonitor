@@ -28,17 +28,17 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout">超时时间</param>
         /// <param name="path">帮助文档存放路径</param>
         /// <param name="descript">描述</param>
-        public static void SaveInterfaceInitial(string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress,string exeptionlevel,string affectProduction,string type)
+        public static void SaveInterfaceInitial(string interfaceName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress,string exeptionlevel,string affectProduction,string type)
         {
             //生成接口编号id
             Guid id = Guid.NewGuid();
             //判断接口配置信息是否存在，如果不存在则新增
-            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server) == null)
+            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server) == null)
             {
                 InterfaceConfigInfo config = new InterfaceConfigInfo();
                 config.Id = id;
                 config.InterfaceName = interfaceName;
-                config.ApplicationName = applicationName;
+                config.ApplicationName = "";
                 config.ServerAddress = server;
                 config.ServerUser = user;
                 config.UserPwd = userPwd;
@@ -56,7 +56,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
                 realtime.Id = id;
                 realtime.InterfaceName = interfaceName;
-                realtime.ApplicationName = applicationName;
+                realtime.ApplicationName = "";
                 realtime.ServerAddress = server;
                 realtime.StateCode = 0;
                 realtime.UpdateTime = DateTime.Now;
@@ -79,16 +79,16 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout"></param>
         /// <param name="path"></param>
         /// <param name="descript"></param>
-        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string applicationName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress, string exeptionlevel, string affectProduction,string type)
+        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress, string exeptionlevel, string affectProduction,string type)
         {
             Guid newid = new Guid(id);
             //判断接口配置信息是否存在，如果不存在则新增
-            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server) != null)
+            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server) != null)
             {
                 InterfaceConfigInfo config = new InterfaceConfigInfo();
                 config.Id = newid;
                 config.InterfaceName = interfaceName;
-                config.ApplicationName = applicationName;
+                config.ApplicationName = "";
                 config.ServerAddress = server;
                 config.ServerUser = user;
                 config.UserPwd = userPwd;
@@ -106,7 +106,7 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
                 realtime.Id = newid;
                 realtime.InterfaceName = interfaceName;
-                realtime.ApplicationName = applicationName;
+                realtime.ApplicationName = "";
                 realtime.ServerAddress = server;
                 realtime.StateCode = 0;
                 realtime.UpdateTime = DateTime.Now;
@@ -121,9 +121,9 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="interfaceName"></param>
         /// <param name="applicationName"></param>
         /// <param name="server"></param>
-        public static void DeleteInterfaceConfigInfo(string interfaceName, string applicationName, string server)
+        public static void DeleteInterfaceConfigInfo(string interfaceName,string server)
         {
-            InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server);
+            InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server);
             if (info != null)
             {
                 InterfaceConfigInfoOperation.DeleteInterfaceConfigInfoById(info.Id);

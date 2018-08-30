@@ -13,7 +13,7 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         void AddOrUpdateInterfaceConfigInfo(IDbCommand idbcmd,InterfaceConfigInfo entity,ModifierType mode);
         void DeleteInterfaceConfigInfoById(IDbCommand idbcmd, Guid id);
         InterfaceConfigInfo GetInterfaceConfigInfoById(IDbCommand idbcmd,Guid id);
-        InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, string applicationName, string server);
+        InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, string server);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoList(IDbCommand idbcmd, string fields, string whereCondition);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoPageList(IDbCommand idbcmd, string fields, string whereCondition, int pageIndex, int pageSize);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoByCondition(IDbCommand idbcmd, string fields, string whereCondition, string orderby,string limit);

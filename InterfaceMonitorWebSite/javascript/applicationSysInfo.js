@@ -227,7 +227,7 @@ function initDataGrid() {
                         }
                     }
                     , {
-                        title: '关联关系', field: 'Id', align: 'center', width: fillsize(380, 0.08, 'divTable'), sortable: false,
+                        title: '关系维护', field: 'Id', align: 'center', width: fillsize(380, 0.08, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             var str = '<a name="attach" href="#" class="easyui-linkbutton" ></a>';
                             return str;
@@ -249,7 +249,7 @@ function initDataGrid() {
             );
             $('a[name="attach"]').linkbutton({
                 iconCls: 'icon-add',
-                text: '添加',
+                text: '编辑',
                 onClick: function () {
                     var rowdata = $('#gridData').datagrid('getSelected');
                     attachInterface(rowdata.Id,rowdata.name);

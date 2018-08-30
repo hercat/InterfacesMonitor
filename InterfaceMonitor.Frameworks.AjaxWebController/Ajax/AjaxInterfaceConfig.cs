@@ -61,7 +61,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="rows"></param>
         /// <returns></returns>
         [Action]
-        public object SearchInterfaceConfigPageList(string fields, string interfaceName, string applicationName, string server, int page, int rows)
+        public object SearchInterfaceConfigPageList(string fields, string interfaceName, string server, int page, int rows)
         {
             try
             {
@@ -81,14 +81,16 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                 if (!string.IsNullOrEmpty(interfaceName))
                     sb.AppendFormat(" where InterfaceName like '%{0}%' ", interfaceName);
                 //应用系统名
-                if (!string.IsNullOrEmpty(interfaceName) && !string.IsNullOrEmpty(applicationName))
-                    sb.AppendFormat(" and ApplicationName like '%{0}%' ", applicationName);
-                else if (string.IsNullOrEmpty(interfaceName) && !string.IsNullOrEmpty(applicationName))
-                    sb.AppendFormat(" where ApplicationName like '%{0}%' ", applicationName);
-                //服务器地址
-                if ((!string.IsNullOrEmpty(interfaceName) || !string.IsNullOrEmpty(applicationName)) && !string.IsNullOrEmpty(server))
-                    sb.AppendFormat(" and ServerAddress like '%{0}%' ", server);
-                else if ((string.IsNullOrEmpty(interfaceName) && (string.IsNullOrEmpty(applicationName))) && !string.IsNullOrEmpty(server))
+                //if (!string.IsNullOrEmpty(interfaceName) && !string.IsNullOrEmpty(applicationName))
+                //    sb.AppendFormat(" and ApplicationName like '%{0}%' ", applicationName);
+                //else if (string.IsNullOrEmpty(interfaceName) && !string.IsNullOrEmpty(applicationName))
+                //    sb.AppendFormat(" where ApplicationName like '%{0}%' ", applicationName);
+                ////服务器地址
+                //if ((!string.IsNullOrEmpty(interfaceName) || !string.IsNullOrEmpty(applicationName)) && !string.IsNullOrEmpty(server))
+                //    sb.AppendFormat(" and ServerAddress like '%{0}%' ", server);
+                //else if ((string.IsNullOrEmpty(interfaceName) && (string.IsNullOrEmpty(applicationName))) && !string.IsNullOrEmpty(server))
+                //    sb.AppendFormat(" where ServerAddress like '%{0}%' ", server);
+                if(!string.IsNullOrEmpty(server))
                     sb.AppendFormat(" where ServerAddress like '%{0}%' ", server);
                 List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoList(fields, sb.ToString());
                 pageInfo.RecCount = list.Count;
@@ -127,7 +129,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                     fields = "*";
                 StringBuilder sb = new StringBuilder();
                 if (!string.IsNullOrEmpty(key))
-                    sb.AppendFormat(" where InterfaceName like '%{0}%' or ApplicationName like '%{0}%' or ServerAddress like '%{0}%' ", key.Trim());
+                    sb.AppendFormat(" where InterfaceName like '%{0}%' or ServerAddress like '%{0}%' ", key.Trim());
                 List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoList(fields, sb.ToString());
                 pageInfo.RecCount = list.Count;
                 List<InterfaceConfigInfo> target = InterfaceConfigInfoOperation.GetInterfaceConfigInfoPageList(fields, sb.ToString(), pageInfo.PageIndex, pageInfo.PageSize);
@@ -166,7 +168,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                     fields = "*";
                 string where = string.Empty;
                 if (!string.IsNullOrEmpty(key))
-                    where = string.Format(" where InterfaceName like '%{0}%' or ApplicationName like '%{0}%' or ServerAddress like '%{0}%' or PersonInChargeName like '%{0}%' ", key.Trim());
+                    where = string.Format(" where InterfaceName like '%{0}%' or ServerAddress like '%{0}%' or PersonInChargeName like '%{0}%' ", key.Trim());
                 string orderby = string.Empty;
                 if (!string.IsNullOrEmpty(order))
                     orderby = string.Format(" order by {0} {1} ", order, ascOrdesc);
@@ -334,17 +336,17 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="desc">描述</param>
         /// <returns></returns>
         [Action]
-        public object AddInterfaceConfigInfo(string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type)
+        public object AddInterfaceConfigInfo(string interfaceName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type)
         {
             try
             {
-                if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server))
+                if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server))
                 {
-                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
+                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
                     return string.Format("添加【{0}】配置信息成功！", interfaceName);
                 }                    
                 else
-                    return string.Format("{0},{1},{2}该接口配置已存在！", interfaceName, applicationName, server);                               
+                    return string.Format("{0},{1},{2}该接口配置已存在！", interfaceName, server);                               
             }
             catch (Exception ex)
             {
@@ -371,9 +373,9 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         {
             try
             {
-                if (null != InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, applicationName, server))
+                if (null != InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server))
                 {
-                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, applicationName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
+                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
                     return string.Format("更新【{0}】配置信息成功！", interfaceName);
                 }
                 else

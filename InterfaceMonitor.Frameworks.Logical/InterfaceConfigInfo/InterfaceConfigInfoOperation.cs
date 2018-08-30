@@ -117,7 +117,7 @@ namespace InterfaceMonitor.Frameworks.Logical
         /// <param name="applicationName">应用系统名</param>
         /// <param name="server">服务器地址</param>
         /// <returns></returns>
-        public static InterfaceConfigInfo GetInterfaceConfigInfo(string interfaceName, string applicationName, string server)
+        public static InterfaceConfigInfo GetInterfaceConfigInfo(string interfaceName, string server)
         {
             IDbConnection conn = null;
             IDbCommand cmd = null;
@@ -131,7 +131,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 conn.Open();
                 trans = conn.BeginTransaction();
                 cmd.Transaction = trans;
-                info = dp.GetInterfaceConfigInfo(cmd, interfaceName, applicationName, server);
+                info = dp.GetInterfaceConfigInfo(cmd, interfaceName, server);
                 trans.Commit();               
             }
             catch (Exception ex)

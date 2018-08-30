@@ -23,10 +23,10 @@ function checkingData() {
         $.messager.alert(g_MsgBoxTitle, "接口名称不能为空！", "warning");        
         return false;
     }
-    if (trim($('#applicationName').val()) == "") {
-        $.messager.alert(g_MsgBoxTitle, "应用名称不能为空！", "warning");
-        return false;
-    }
+    //if (trim($('#applicationName').val()) == "") {
+    //    $.messager.alert(g_MsgBoxTitle, "应用名称不能为空！", "warning");
+    //    return false;
+    //}
     if (trim($('#server').val()) == "") {
         $.messager.alert(g_MsgBoxTitle, "服务器地址不能为空！", "warning");
         return false;
@@ -66,7 +66,7 @@ function checkingData() {
 //清空添加
 function clearAddBox() {
     $('#interfaceName').val('');
-    $('#applicationName').val('');
+    //$('#applicationName').val('');
     $('#server').val('');
     //$('#user').val('');
     //$('#pwd').val('');
@@ -85,7 +85,7 @@ function addInterfaceConfigInfo() {
         title: '添加接口配置信息',
         iconCls:'icon-add',
         width: 700,
-        height: 680,
+        height: 625,
         closable: false,
         cache: false,
         modal: true,        
@@ -104,7 +104,7 @@ function addInterfaceConfigInfo() {
                                 url: '/AjaxInterfaceConfig/AddInterfaceConfigInfo.cspx',
                                 data: {
                                     interfaceName: $('#interfaceName').val(),
-                                    applicationName: $('#applicationName').val(),
+                                    //applicationName: $('#applicationName').val(),
                                     server: $('#server').val(),
                                     user: '',//$('#user').val(),
                                     pwd: '',//$('#pwd').val(),
@@ -169,7 +169,7 @@ function editInterfaceConfig() {
             cache: false,
             success: function (info) {
                 $('#interfaceName').val(info.InterfaceName);
-                $('#applicationName').val(info.ApplicationName),
+                //$('#applicationName').val(info.ApplicationName),
                 $('#server').val(info.ServerAddress);
                 $('#charger').val(info.PersonOfChargeName);
                 $('#phone').val(info.PersonOfChargePhone);
@@ -187,7 +187,7 @@ function editInterfaceConfig() {
                     title: '修改【' + info.InterfaceName + '】接口配置信息',
                     iconCls: 'icon-edit',
                     width: 700,
-                    height: 680,
+                    height: 625,
                     closable: false,
                     cache: false,
                     modal: false,
@@ -203,8 +203,7 @@ function editInterfaceConfig() {
                                         url: '/AjaxInterfaceConfig/UpdateInterfaceConfigInfo.cspx',
                                         data: {
                                             id: rowdata.Id,
-                                            interfaceName: $('#interfaceName').val(),
-                                            applicationName: $('#applicationName').val(),
+                                            interfaceName: $('#interfaceName').val(),                                            
                                             server: $('#server').val(),
                                             user: '',
                                             pwd: '',
@@ -372,14 +371,14 @@ function initDataGrid() {
         columns: [[
                     { field: 'ck', align: 'center', checkbox: true }
 					, { title: '接口名称', field: 'InterfaceName', align: 'center', width: fillsize(380, 0.2, 'divTable'), sortable: false }
-					, { title: '应用名称', field: 'ApplicationName', align: 'center', width: fillsize(380, 0.15, 'divTable'), sortable: false }
-					, { title: '服务器地址', field: 'ServerAddress', align: 'center', width: fillsize(380, 0.15, 'divTable'), sortable: false }
+					//, { title: '应用名称', field: 'ApplicationName', align: 'center', width: fillsize(380, 0.15, 'divTable'), sortable: false }
+					, { title: '服务器地址', field: 'ServerAddress', align: 'center', width: fillsize(380, 0.16, 'divTable'), sortable: false }
 					//, { title: '服务器用户名', field: 'ServerUser', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
 					//, { title: '用户密码', field: 'UserPwd', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
                     , { title: '负责人名', field: 'PersonOfChargeName', align: 'center', width: fillsize(380, 0.08, 'divTable'), sortable: false }
-                    , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false }
+                    , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: fillsize(380, 0.12, 'divTable'), sortable: false }
                     , { title: '超时时间（分钟）', field: 'ConnectedTimeout', align: 'center', width: fillsize(380, 0.09, 'divTable'),sortable:false }
-                    , { title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.11, 'divTable'), sortable: false,
+                    , { title: '应用程序描述', field: 'Description', align: 'center', width: fillsize(380, 0.18, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             var abValue = value;
                             if (abValue.length >= 18)
@@ -388,7 +387,7 @@ function initDataGrid() {
                             return content;
                         }
                     }
-                    , { title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
+                    , { title: '创建时间', field: 'CreateTime', align: 'center', width: fillsize(380, 0.14, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             return renderTime(value);
                         }

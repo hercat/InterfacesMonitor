@@ -108,7 +108,7 @@ namespace InterfaceMonitor.Frameworks.Dal
         /// <param name="applicationName"></param>
         /// <param name="server"></param>
         /// <returns></returns>
-        public InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand icmd, string interfaceName, string applicationName, string server)
+        public InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand icmd, string interfaceName, string server)
         {
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
@@ -117,8 +117,8 @@ namespace InterfaceMonitor.Frameworks.Dal
                             PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime,urlAddress,
                             exeptionlevel,affectProduction,type
                             from interfaceconfiginfo
-                            where InterfaceName = '{0}' and ApplicationName = '{1}' and ServerAddress = '{2}'";
-            cmd.CommandText = string.Format(sql, interfaceName, applicationName, server);
+                            where InterfaceName = '{0}' and ServerAddress = '{1}'";
+            cmd.CommandText = string.Format(sql, interfaceName, server);
             InterfaceConfigInfo info = null;
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
