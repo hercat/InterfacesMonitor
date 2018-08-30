@@ -21,14 +21,14 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="interfacename"></param>
         /// <returns></returns>
         [Action]
-        public object AddApplicationInterfaceRelation(string appid, string appname, string interfaceid, string interfacename)
+        public object AddApplicationInterfaceRelation(string appid, string appname, string interfaceid, string interfacename,string destinappid,string destinappname)
         {
             try
             {
                 SystemSettingBase settings = SystemSettingBase.CreateInstance();
                 if (settings.SysMySqlDB != null)
                     ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-                if (null == ApplicationInterfaceRelationOperation.GetApplicationInterfaceRelation(new Guid(appid), new Guid(interfaceid)))
+                if (null == ApplicationInterfaceRelationOperation.GetApplicationInterfaceRelation(new Guid(appid), new Guid(interfaceid),new Guid(destinappid)))
                 {
                     ApplicationInterfaceRelation info = new ApplicationInterfaceRelation()
                     {
@@ -37,6 +37,8 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         appname = appname,
                         interfaceId = new Guid(interfaceid),
                         interfacename = interfacename,
+                        destinappid = new Guid(destinappid),
+                        destinappname = destinappname,
                         updatetime = DateTime.Now
                     };
                     ApplicationInterfaceRelationOperation.AddOrUpdateApplicationInterfaceRelation(info, ModifierType.Add);
@@ -60,7 +62,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="interfacename"></param>
         /// <returns></returns>
         [Action]
-        public object UpdateApplicationInterfaceRelation(string id, string appid, string appname, string interfaceid, string interfacename)
+        public object UpdateApplicationInterfaceRelation(string id, string appid, string appname, string interfaceid, string interfacename, string destinappid, string destinappname)
         {
             try
             {
@@ -76,6 +78,8 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         appname = appname,
                         interfaceId = new Guid(interfaceid),
                         interfacename = interfacename,
+                        destinappid = new Guid(destinappid),
+                        destinappname = destinappname,
                         updatetime = DateTime.Now
                     };
                     ApplicationInterfaceRelationOperation.AddOrUpdateApplicationInterfaceRelation(info, ModifierType.Update);

@@ -56,23 +56,44 @@
     <!-- 关联接口控件 -->
     <div id="attach_interface_div" style="display:none;">
         <div class="add_box_div_row3">
+            <div class="add_box_div_row_label">当前系统</div>
             <div class="add_box_div_row_content3">
                 <span id="appname"></span>
             </div>
         </div>
         <div class="add_box_div_row3">
+            <div class="add_box_div_row_label">上游系统</div>
+            <div class="add_box_div_row_content3">
+                <div id="container2"></div>
+                <div id="searchSystem2">选择</div>
+            </div>
+        </div>
+        <div class="add_box_div_row3">
+            <div class="add_box_div_row_label">下游系统</div>
+            <div class="add_box_div_row_content3">                
+                <div id="container"></div>
+                <div id="searchSystem">选择</div>
+            </div>
+        </div>
+        <div class="add_box_div_row3">
             <div class="add_box_div_row_content3">
                 <input id="key" type="text" value="接口名称、服务器地址、负责人..." onfocus="if(this.value=='接口名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='接口名称、服务器地址、负责人...';}"  />
-            <span id="search">搜索</span>
+            <span id="search" class="easyui-linkbutton">搜索</span>
             </div>
         </div>
         <div id="divAttachTable">
             <table id="attachGridData"></table>
         </div>
-        <%--<div class="add_box_div_row4">
+    </div>
+    <div id="attach_system_div" style="display:none;">
+        <div class="add_box_div_row3">
             <div class="add_box_div_row_content3">
-
+                <input id="key2" type="text" value="应用系统名称、服务器地址、负责人..." onfocus="if(this.value=='应用系统名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='应用系统名称、服务器地址、负责人...';}"  />
+            <span id="search2" class="easyui-linkbutton">搜索</span>
             </div>
-        </div>--%>
+        </div>
+        <div id="sysDiv">
+            <table id="sysdataGrid"></table>
+        </div>
     </div>
 </asp:Content>

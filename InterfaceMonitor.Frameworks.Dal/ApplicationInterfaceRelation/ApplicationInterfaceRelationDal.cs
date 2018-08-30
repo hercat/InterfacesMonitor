@@ -19,14 +19,14 @@ namespace InterfaceMonitor.Frameworks.Dal
             cmd.CommandType = CommandType.Text;
             if (mode == ModifierType.Add)
             {
-                string sql = @"insert into applicationinterfacerelation(Id,appId,appname,interfaceId,interfacename,updatetime) values('{0}','{1}','{2}','{3}','{4}','{5}')";
-                cmd.CommandText = string.Format(sql, info.Id, info.appId, info.appname, info.interfaceId, info.interfacename, info.updatetime);
+                string sql = @"insert into applicationinterfacerelation(Id,appId,appname,interfaceId,interfacename,updatetime,destinappid,destinappname) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')";
+                cmd.CommandText = string.Format(sql, info.Id, info.appId, info.appname, info.interfaceId, info.interfacename, info.updatetime, info.destinappid, info.destinappname);
             }
             else if (mode == ModifierType.Update)
             {
-                string sql = @"update applicationinterfacerelation set appId = '{0}',appname = '{1}',interfaceId = '{2}',interfacename = '{3}',updatetime = '{4}'
+                string sql = @"update applicationinterfacerelation set appId = '{0}',appname = '{1}',interfaceId = '{2}',interfacename = '{3}',updatetime = '{4}',,destinappid = '{6}',destinappname = '{7}'
                                where Id = '{5}'";
-                cmd.CommandText = string.Format(sql, info.appId, info.appname, info.interfaceId, info.interfacename, info.updatetime, info.Id);
+                cmd.CommandText = string.Format(sql, info.appId, info.appname, info.interfaceId, info.interfacename, info.updatetime, info.Id, info.destinappid, info.destinappname);
             }
             cmd.ExecuteNonQuery();
             return true;
@@ -37,7 +37,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,appId,appname,interfaceId,interfacename,updatetime from applicationinterfacerelation where Id = '{0}'";
+            string sql = @"select Id,appId,appname,interfaceId,interfacename,updatetime,destinappid,destinappname from applicationinterfacerelation where Id = '{0}'";
             cmd.CommandText = string.Format(sql, id);
             ApplicationInterfaceRelation info = null;
             DataTable dt = new DataTable();
@@ -50,13 +50,13 @@ namespace InterfaceMonitor.Frameworks.Dal
             return info;
         }
 
-        public ApplicationInterfaceRelation GetApplicationInterfaceRelation(IDbCommand icmd, Guid appid, Guid interfaceid)
+        public ApplicationInterfaceRelation GetApplicationInterfaceRelation(IDbCommand icmd, Guid appid, Guid interfaceid,Guid destinappid)
         {
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,appId,appname,interfaceId,interfacename,updatetime from applicationinterfacerelation where appId = '{0}' and interfaceId = '{1}'";
-            cmd.CommandText = string.Format(sql, appid, interfaceid);
+            string sql = @"select Id,appId,appname,interfaceId,interfacename,updatetime,destinappid,destinappname from applicationinterfacerelation where appId = '{0}' and interfaceId = '{1}' and destinappid = '{2}'";
+            cmd.CommandText = string.Format(sql, appid, interfaceid, destinappid);
             ApplicationInterfaceRelation info = null;
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
@@ -79,13 +79,13 @@ namespace InterfaceMonitor.Frameworks.Dal
             return true;
         }
 
-        public bool DeleteApplicationInterfaceRelation(IDbCommand icmd, Guid appid, Guid interfaceid)
+        public bool DeleteApplicationInterfaceRelation(IDbCommand icmd, Guid appid, Guid interfaceid, Guid destinappid)
         {
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"delete from applicationinterfacerelation where appId = '{0}' and interfaceId = '{1}'";
-            cmd.CommandText = string.Format(sql, appid, interfaceid);
+            string sql = @"delete from applicationinterfacerelation where appId = '{0}' and interfaceId = '{1}' and destinappid = '{2}'";
+            cmd.CommandText = string.Format(sql, appid, interfaceid, destinappid);
             cmd.ExecuteNonQuery();
             return true;
         }

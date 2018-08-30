@@ -38,6 +38,14 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// 更新时间
         /// </summary>
         public DateTime updatetime { get; set; }
+        /// <summary>
+        /// 下游系统编号
+        /// </summary>
+        public Guid destinappid { get; set; }
+        /// <summary>
+        /// 下游系统名称
+        /// </summary>
+        public string destinappname { get; set; }
         public bool AllParse(DataRow dr)
         {
             if (dr.Table.Columns.Contains(EnumApplicationInterfaceRelation.Id.ToString()))
@@ -52,6 +60,10 @@ namespace InterfaceMonitor.Frameworks.Entity
                 interfacename = dr[EnumApplicationInterfaceRelation.interfacename.ToString()].ToString();
             if (dr.Table.Columns.Contains(EnumApplicationInterfaceRelation.updatetime.ToString()))
                 updatetime = DateTime.Parse(dr[EnumApplicationInterfaceRelation.updatetime.ToString()].ToString());
+            if (dr.Table.Rows.Contains(EnumApplicationInterfaceRelation.destinappid.ToString()))
+                destinappid = new Guid(dr[EnumApplicationInterfaceRelation.destinappid.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumApplicationInterfaceRelation.destinappname.ToString()))
+                destinappname = dr[EnumApplicationInterfaceRelation.destinappname.ToString()].ToString();
             return true;
         }
     }
@@ -62,6 +74,8 @@ namespace InterfaceMonitor.Frameworks.Entity
         appname,
         interfaceId,
         interfacename,
-        updatetime
+        updatetime,
+        destinappid,
+        destinappname
     }
 }

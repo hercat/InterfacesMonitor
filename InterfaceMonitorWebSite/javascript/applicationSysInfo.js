@@ -4,6 +4,8 @@ $(document).ready(function () {
     initDataGrid();
     //初始化绑定接口datagrid并加载数据
     initAttachGrid();
+    //初始化下游系统选择datagrid
+    initSysGrid();
     loadData();
     $('#search_button').click(function () {
         searchData();
@@ -11,7 +13,70 @@ $(document).ready(function () {
     $('#search').click(function () {
         searchInterface();
     });
+    $('#search2').click(function () {
+        searchSysInfo();
+    });
+    linkbutton();
+    //选择下游系统
+    $('#searchSystem').click(function () {
+        $('#container').empty();
+        $('#attach_system_div').dialog({
+            title: '选择下游系统',
+            iconCls: 'icon-add',
+            width: 920,
+            height: 540,
+            closable: false,
+            cache: false,
+            modal: true,
+            onBeforeOpen:function(){
+                searchSysInfo();
+            },
+            buttons: [
+                {
+                    text: '确定',
+                    iconCls: 'icon-add',
+                    handler: function () {
+                        var rowdata = $('#sysdataGrid').datagrid('getSelected');
+                        $.messager.confirm("提醒", "确定要选择【" + rowdata.name + "】该应用系统吗？", function (r) {
+                            if (r) {
+                                var name = rowdata.name;
+                                var id = rowdata.Id;
+                                var el = '<span value="' + id + '" class="destinname">' + name + '</span>';
+                                $('#container').append(el);
+                                $('#attach_system_div').dialog('close');
+                                clearSysSelectBox();
+                            }
+                        });
+                    }
+                },
+                {
+                    text: '取消',
+                    iconCls: 'icon-cancel',
+                    handler: function () {
+                        $('#attach_system_div').dialog('close');
+                        clearSysSelectBox();
+                    }
+                }
+            ]
+        })
+    });
 });
+function clearSysSelectBox() {
+    $('#key2').val('应用系统名称、服务器地址、负责人...');
+    $('#sysdataGrid').datagrid('clearChecked');
+}
+//初始化页面linkbutton
+function linkbutton() {
+    $('#search').linkbutton({
+        iconCls: 'icon-search'
+    });
+    $('#searchSystem').linkbutton({
+        iconCls: 'icon-search'
+    });
+    $('#search2').linkbutton({
+        iconCls: 'icon-search'
+    });
+}
 //初始化datagrid
 function initDataGrid() {
     $('#gridData').datagrid({
@@ -143,17 +208,36 @@ function attachInterface(id) {
     $('#attach_interface_div').dialog({
         title: '关联接口绑定',
         iconCls: 'icon-add',
-        width: 920,
-        height: 590,
+        width: 910,
+        height: 640,
         closable: false,
         cache: false,
         modal: true,        
-        onBeforeOpen:function(){
+        onBeforeOpen: function () {
+            $('#container').empty();
             beforeOpen(id);
+            searchInterface();
         },
         buttons: [
             {
-                text: '关闭',
+                text: '保存',
+                iconCls: 'icon-add',
+                handler: function () {
+                    var rowdata = $('#attachGridData').datagrid('getSelected');
+                    if (rowdata == null){
+                        $.messager.alert(g_MsgBoxTitle, "请选择要关联的接口！", "warning");
+                        return;
+                    }
+                    $.messager.confirm("提醒", "确定要保存该关联信息？", function (r) {
+                        if (r) {
+                            
+                            clearAttachBox();
+                        }
+                    });
+                }
+            },
+            {
+                text: '取消',
                 iconCls: 'icon-cancel',
                 handler: function () {
                     $('#attach_interface_div').dialog('close');
@@ -165,6 +249,7 @@ function attachInterface(id) {
 }
 function clearAttachBox() {
     $('#key').val('接口名称、服务器地址、负责人...');
+    $('#attachGridData').datagrid('clearChecked');
 }
 //接口绑定onBeforeOpen响应事件
 function beforeOpen(id) {
@@ -208,22 +293,22 @@ function initAttachGrid() {
         columns: [[
                     { field: 'ck', align: 'center', checkbox: true }
 					, { title: '接口名称', field: 'InterfaceName', align: 'center', width: 200, sortable: false }
-					, { title: '服务器地址', field: 'ServerAddress', align: 'center', width: 140, sortable: false }
-                    , { title: '负责人', field: 'PersonOfChargeName', align: 'center', width: 90, sortable: false }
-                    , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: 140, sortable: false }
+					, { title: '服务器地址', field: 'ServerAddress', align: 'center', width: 180, sortable: false }
+                    , { title: '负责人', field: 'PersonOfChargeName', align: 'center', width: 100, sortable: false }
+                    , { title: '负责人电话', field: 'PersonOfChargePhone', align: 'center', width: 180, sortable: false }
                     , {
                         title: '创建时间', field: 'CreateTime', align: 'center', width: 160, sortable: false,
                         formatter: function (value, row, index) {
                             return renderTime(value);
                         }
                     }
-                    , {
-                        title: '操作', field: 'Id', align: 'center', width: 110, sortable: false,
-                        formatter: function (value, row, index) {
-                            var str = '<a name="add" href="#" class="easyui-linkbutton" ></a>';
-                            return str;
-                        }
-                    }
+                    //, {
+                    //    title: '操作', field: 'Id', align: 'center', width: 110, sortable: false,
+                    //    formatter: function (value, row, index) {
+                    //        var str = '<a name="add" href="#" class="easyui-linkbutton" ></a>';
+                    //        return str;
+                    //    }
+                    //}
         ]],
         onLoadSuccess: function (data) {
             $(".note").tooltip(
@@ -369,6 +454,7 @@ function addApplicationInfo() {
 }
 //查询点击事件
 function searchData() {
+    $('#gridData').datagrid('clearChecked');
     var searchText = $('#search_text').val();
     if (searchText == '应用系统名称、服务器地址、负责人...')
         searchText = '';
@@ -483,4 +569,89 @@ function deleteApplicationInfo() {
             }
         });
     }
+}
+
+function initSysGrid() {
+    $('#sysdataGrid').datagrid({
+        idField: 'Id',
+        height: '400',
+        nowrap: false,
+        rownumbers: true,
+        singleSelect: true,
+        border: true,
+        checkOnSelect: true,
+        selectOnCheck: true,
+        pagination: true,
+        collapsible: true,
+        striped: true,
+        fitcolumns: true,
+        onLoadError: function (XMLHttpRequest, textStatus, ErrorThrown) {
+            $.messager.alert(g_MsgBoxTitle,
+                XMLHttpRequest.responseText.substring(XMLHttpRequest.respinseText.indexOf("<title>") + 7, XMLHttpRequest.responseText.indexOf("</title>")), "error");
+        },
+        method: 'post',
+        dataType: 'json',
+        url: '/AjaxApplicationSysInfo/GetApplicationSysInfoList.cspx',
+        pageNumber: 1,
+        pagesize: 10,
+        pageList: [10, 20, 30],
+        columns: [[
+                    { field: 'ck', align: 'center', checkbox: true }
+					, { title: '应用名称', field: 'name', align: 'center', width: 180, sortable: false }
+					, { title: '服务器地址', field: 'server', align: 'center', width: 180, sortable: false }
+                    , { title: '使用部门', field: 'userdep', align: 'center', width: 120, sortable: false }
+                    , { title: '负责人', field: 'chargeman', align: 'center', width: 100, sortable: false }
+                    //, { title: '负责人电话', field: 'phone', align: 'center', width: 160, sortable: false }
+                    , {
+                        title: '级别', field: 'level', align: 'center', width: 100, sortable: false, formatter: function (value, row, index) {
+                            var result;
+                            if (value == 0)
+                                result = "一般";
+                            else if (value == 1)
+                                result = "重要";
+                            else if (value == 2)
+                                result = "非常重要";
+                            return result;
+                        }
+                    }                    
+                    , {
+                        title: '创建时间', field: 'createtime', align: 'center', width: 160, sortable: false,
+                        formatter: function (value, row, index) {
+                            return renderTime(value);
+                        }
+                    }                   
+        ]],
+        onLoadSuccess: function (data) {
+            $(".note").tooltip(
+                {
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            position: 'top',
+                            backgroundColor: '#666',
+                            borderColor: '#666',
+                            color: '#fff'
+                        });
+                    }
+                }
+            );            
+        }
+    });
+    //窗体尺寸调整
+    $(window).resize(function () {
+        $('#sysdataGrid').datagrid('resize', {
+            width: $("#sysDiv").css("width")
+        });
+    });
+}
+//查询点击事件
+function searchSysInfo() {
+    var searchText = $('#key2').val();
+    if (searchText == '应用系统名称、服务器地址、负责人...')
+        searchText = '';
+    $('#sysdataGrid').datagrid('load', {
+        fields: '',
+        key: searchText,
+        order: 'CreateTime',
+        ascOrdesc: 'desc'
+    });
 }

@@ -78,7 +78,7 @@ namespace InterfaceMonitor.Frameworks.Logical
             return info;
         }
 
-        public static ApplicationInterfaceRelation GetApplicationInterfaceRelation(Guid appid, Guid interfaceid)
+        public static ApplicationInterfaceRelation GetApplicationInterfaceRelation(Guid appid, Guid interfaceid, Guid destinappid)
         {
             ApplicationInterfaceRelation info = null;
             IDbConnection conn = null;
@@ -92,7 +92,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 conn.Open();
                 trans = conn.BeginTransaction();
                 cmd.Transaction = trans;
-                info = dp.GetApplicationInterfaceRelation(cmd, appid, interfaceid);
+                info = dp.GetApplicationInterfaceRelation(cmd, appid, interfaceid, destinappid);
                 trans.Commit();
             }
             catch (Exception ex)
@@ -142,7 +142,7 @@ namespace InterfaceMonitor.Frameworks.Logical
             return ret;
         }
 
-        public static bool DeleteApplicationInterfaceRelation(Guid appid, Guid interfaceid)
+        public static bool DeleteApplicationInterfaceRelation(Guid appid, Guid interfaceid, Guid destinappid)
         {
             bool ret = false;
             IDbConnection conn = null;
@@ -156,7 +156,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 conn.Open();
                 trans = conn.BeginTransaction();
                 cmd.Transaction = trans;
-                ret = dp.DeleteApplicationInterfaceRelation(cmd, appid, interfaceid);
+                ret = dp.DeleteApplicationInterfaceRelation(cmd, appid, interfaceid, destinappid);
                 trans.Commit();
             }
             catch (Exception ex)
