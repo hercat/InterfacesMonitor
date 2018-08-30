@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationInterfaceRelation\ApplicationInterfaceRelation.cs" />
+    <Compile Include="ApplicationRelation\ApplicationRelation.cs" />
     <Compile Include="ApplicationSysInfo\ApplicationSysInfo.cs" />
     <Compile Include="ConnString\ConnString.cs" />
     <Compile Include="GridResult\GridResult.cs" />

@@ -252,7 +252,7 @@ function initDataGrid() {
                 text: '添加',
                 onClick: function () {
                     var rowdata = $('#gridData').datagrid('getSelected');
-                    attachInterface(rowdata.Id);
+                    attachInterface(rowdata.Id,rowdata.name);
                 }
             });
         }
@@ -266,7 +266,7 @@ function initDataGrid() {
 }
 
 //关联接口按钮响应事件
-function attachInterface(id) {
+function attachInterface(id,name) {
     $('#attach_interface_div').dialog({
         title: '关联关系维护',
         iconCls: 'icon-add',
@@ -274,7 +274,7 @@ function attachInterface(id) {
         height: 690,
         closable: false,
         cache: false,
-        modal: true,        
+        modal: true,
         onBeforeOpen: function () {
             $('#container').empty();
             $('#container2').empty();
@@ -287,18 +287,46 @@ function attachInterface(id) {
                 iconCls: 'icon-add',
                 handler: function () {
                     var rowdata = $('#attachGridData').datagrid('getSelected');
-                    if (rowdata == null){
+                    if (rowdata == null) {
                         $.messager.alert(g_MsgBoxTitle, "请选择要关联的接口！", "warning");
                         return;
                     }
                     $.messager.confirm("提醒", "确定要保存该关联关系吗？", function (r) {
-                        if (r) {                            
+                        if (r) {
                             var fatherid = $('#container2').children('.destinname').attr('id');
                             var fathername = $('#container2').children('.destinname').text();
                             var childid = $('#container').children('.destinname').attr('id');
-                            var childname = $('#container').children('.destinname').text();
+                            var childname = $('#container').children('.destinname').text();         
                             var interfaceid = rowdata.Id;
-                            var interfacename = rowdata.name;
+                            var interfacename = rowdata.InterfaceName;
+                            if ((childid == null || childid == "") || (childname == null || childname == "")) {
+                                $.messager.alert(g_MsgBoxTitle, "请选择下游系统！", "warning");
+                                return;
+                            }
+                            if ((fatherid == null || fatherid == "") || (fathername == null || fathername == "")) {
+                                $.messager.alert(g_MsgBoxTitle, "请选择上游系统！", "warning");
+                                return;
+                            }
+                            $.ajax({
+                                url: '/AjaxApplicationInterfaceRelation/AddApplicationInterfaceRelation.cspx',
+                                data: {
+                                    appid: id,
+                                    appname: name,
+                                    interfaceid: interfaceid,
+                                    interfacename: interfacename,
+                                    destinappid: childid,
+                                    destinappname: childname,
+                                    fatherid: fatherid,
+                                    fathername: fathername
+                                },
+                                type: 'post',
+                                cache: false,
+                                success: function (json) {
+                                    $.messager.alert(g_MsgBoxTitle, json, "info");
+                                    $('#attach_interface_div').dialog('close');
+                                    $('#gridData').datagrid('load');
+                                }
+                            });
                             clearAttachBox();
                         }
                     });

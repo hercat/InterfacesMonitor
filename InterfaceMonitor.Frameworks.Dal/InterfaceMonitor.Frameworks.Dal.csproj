@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationInterfaceRelation\ApplicationInterfaceRelationDal.cs" />
+    <Compile Include="ApplicationRelation\ApplicationRelationDal.cs" />
     <Compile Include="ApplicationSysInfo\ApplicationSysInfoDal.cs" />
     <Compile Include="DbConnDal\DbConnDal.cs" />
     <Compile Include="InterfaceConfigInfoDal\InterfaceConfigInfoDal.cs" />

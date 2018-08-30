@@ -41,7 +41,20 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         destinappname = destinappname,
                         updatetime = DateTime.Now
                     };
-                    ApplicationInterfaceRelationOperation.AddOrUpdateApplicationInterfaceRelation(info, ModifierType.Add);                    
+                    ApplicationInterfaceRelationOperation.AddOrUpdateApplicationInterfaceRelation(info, ModifierType.Add);
+                    if (null == ApplicationRelationOperation.GetApplicationRelationById(new Guid(appid)))
+                    {
+                        ApplicationRelation relation = new ApplicationRelation()
+                        {
+                            appId = new Guid(appid),
+                            appName = appname,
+                            fatherId = new Guid(fatherid),
+                            fatherName = fathername,
+                            childId = new Guid(destinappid),
+                            childName = destinappname
+                        };
+                        ApplicationRelationOperation.AddOrUpdateApplicationRelation(relation, ModifierType.Add);
+                    }
                     return string.Format("添加【{0},{1},{2}】关联关系成功！", appname, interfacename, destinappname);
                 }
                 else

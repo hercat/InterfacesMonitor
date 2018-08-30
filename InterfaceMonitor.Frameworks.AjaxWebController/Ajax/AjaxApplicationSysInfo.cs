@@ -45,7 +45,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         level = Int32.Parse(level),
                         createtime = DateTime.Now
                     };
-                    ApplicationSysInfoLogical.AddOrUpdateApplicationSysInfo(info, ModifierType.Add);
+                    ApplicationSysInfoLogical.AddOrUpdateApplicationSysInfo(info, ModifierType.Add);                    
                     return string.Format("添加【{0},{1}】应用系统成功！", name, server);
                 }
                 else

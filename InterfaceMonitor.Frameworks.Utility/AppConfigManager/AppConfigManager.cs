@@ -27,6 +27,7 @@ namespace InterfaceMonitor.Frameworks.Utility
                     _dicDataProvider.Add("DbInterfaceExceptionlogDP", "InterfaceMonitor.Frameworks.Dal.InterfaceExceptionlogDal");
                     _dicDataProvider.Add("DbApplicationSysInfoDP", "InterfaceMonitor.Frameworks.Dal.ApplicationSysInfoDal");
                     _dicDataProvider.Add("DbApplicationInterfaceRelationDP", "InterfaceMonitor.Frameworks.Dal.ApplicationInterfaceRelationDal");
+                    _dicDataProvider.Add("DbApplicationRelationDP", "InterfaceMonitor.Frameworks.Dal.ApplicationRelationDal");
                 }
                 return _dicDataProvider;
             }

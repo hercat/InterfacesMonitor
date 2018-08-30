@@ -157,6 +157,27 @@ namespace InterfaceMonitor.Frameworks.Logical
         }
         #endregion
 
+        #region 应用系统关系数据提供对象
+        private static IApplicationRelation _dbApplicationRelationDP;
+        public static IApplicationRelation DbApplicationRelationDP
+        {
+            get
+            {
+                if (_dbApplicationRelationDP == null)
+                {
+                    string dpname = "DbApplicationRelationDP";
+                    string dllname, assname;
+                    if (!AppConfigManager.GetDataProvider(dpname, out dllname, out assname))
+                    {
+                        //后续增加日志处理
+                        log.Error(string.Format("DataProvider不存在{0}数据提供对象！", dpname));
+                    }
+                    _dbApplicationRelationDP = (IApplicationRelation)Assembly.Load(assname).CreateInstance(dllname);
+                }
+                return _dbApplicationRelationDP;
+            }
+        }
+        #endregion
 
     }
 }
