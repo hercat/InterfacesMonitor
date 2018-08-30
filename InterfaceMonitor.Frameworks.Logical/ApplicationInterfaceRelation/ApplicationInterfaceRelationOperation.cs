@@ -184,7 +184,7 @@ namespace InterfaceMonitor.Frameworks.Logical
                 IApplicationInterfaceRelation dp = DataProvider.DbApplicationInterfaceRelationDP;
                 conn = DbConnOperation.CreateConnection();
                 cmd = conn.CreateCommand();
-                conn.BeginTransaction();
+                conn.Open();
                 trans = conn.BeginTransaction();
                 cmd.Transaction = trans;
                 list = dp.GetApplicationInterfaceRealtionList(cmd, fields, condition);

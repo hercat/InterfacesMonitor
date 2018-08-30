@@ -22,16 +22,7 @@ function initDataGrid() {
         },
         method: 'post',
         dataType: 'json',
-        toolbar: [
-            //{
-            //    iconCls: 'icon-add',
-            //    text: '添加',
-            //    align: 'left',
-            //    handler: function () {
-            //        addApplicationInterface();
-            //    }
-            //},
-            //'-',
+        toolbar: [            
             {
                 iconCls: 'icon-edit',
                 text: '编辑',
@@ -56,10 +47,11 @@ function initDataGrid() {
         pageList: [10, 20, 30],
         columns: [[
                     { field: 'ck', align: 'center', checkbox: true }
-					, { title: '应用系统名称', field: 'name', align: 'center', width: fillsize(380, 0.38, 'divTable'), sortable: false }					
-                    , { title: '接口名称', field: 'chargeman', align: 'center', width: fillsize(380, 0.49, 'divTable'), sortable: false }                                              
-                    , {
-                        title: '创建时间', field: 'createtime', align: 'center', width: fillsize(380, 0.1, 'divTable'), sortable: false,
+					, { title: '应用系统', field: 'appname', align: 'center', width: fillsize(380, 0.3, 'divTable'), sortable: false }
+                    , { title: '接口名称', field: 'interfacename', align: 'center', width: fillsize(380, 0.3, 'divTable'), sortable: false }
+                    , { title: '接口下级调用系统', field: 'destinappname', align: 'center', width: fillsize(380, 0.2, 'divTable'), sortable: false }
+                    ,{
+                        title: '更新时间', field: 'updatetime', align: 'center', width: fillsize(380, 0.18, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             return renderTime(value);
                         }
