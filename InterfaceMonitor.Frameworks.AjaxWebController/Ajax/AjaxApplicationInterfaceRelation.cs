@@ -21,14 +21,14 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="interfacename"></param>
         /// <returns></returns>
         [Action]
-        public object AddApplicationInterfaceRelation(string appid, string appname, string interfaceid, string interfacename,string destinappid,string destinappname)
+        public object AddApplicationInterfaceRelation(string appid, string appname, string interfaceid, string interfacename,string destinappid,string destinappname,string fatherid,string fathername)
         {
             try
             {
                 SystemSettingBase settings = SystemSettingBase.CreateInstance();
                 if (settings.SysMySqlDB != null)
                     ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-                if (null == ApplicationInterfaceRelationOperation.GetApplicationInterfaceRelation(new Guid(appid), new Guid(interfaceid),new Guid(destinappid)))
+                if (null == ApplicationInterfaceRelationOperation.GetApplicationInterfaceRelation(new Guid(appid), new Guid(interfaceid), new Guid(destinappid)))
                 {
                     ApplicationInterfaceRelation info = new ApplicationInterfaceRelation()
                     {
@@ -41,15 +41,15 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         destinappname = destinappname,
                         updatetime = DateTime.Now
                     };
-                    ApplicationInterfaceRelationOperation.AddOrUpdateApplicationInterfaceRelation(info, ModifierType.Add);
-                    return string.Format("添加【{0},{1}】关联关系成功！", appname, interfacename);
+                    ApplicationInterfaceRelationOperation.AddOrUpdateApplicationInterfaceRelation(info, ModifierType.Add);                    
+                    return string.Format("添加【{0},{1},{2}】关联关系成功！", appname, interfacename, destinappname);
                 }
                 else
-                    return string.Format("系统已存在【{0},{1}】该关联关系！", appname, interfacename);
+                    return string.Format("系统已存在【{0},{1},{2}】该关联关系！", appname, interfacename, destinappname);
             }
             catch (Exception ex)
             {
-                return string.Format("添加【{0},{1}】关联关系失败！异常信息如下:{2}", appname, interfacename, ex.Message);
+                return string.Format("添加【{0},{1},{2}】关联关系失败！异常信息如下:{3}", appname, interfacename, destinappname, ex.Message);
             }
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="interfacename"></param>
         /// <returns></returns>
         [Action]
-        public object UpdateApplicationInterfaceRelation(string id, string appid, string appname, string interfaceid, string interfacename, string destinappid, string destinappname)
+        public object UpdateApplicationInterfaceRelation(string id, string appid, string appname, string interfaceid, string interfacename, string destinappid, string destinappname,string fatherid,string fathername)
         {
             try
             {
@@ -81,16 +81,16 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         destinappid = new Guid(destinappid),
                         destinappname = destinappname,
                         updatetime = DateTime.Now
-                    };
+                    };                    
                     ApplicationInterfaceRelationOperation.AddOrUpdateApplicationInterfaceRelation(info, ModifierType.Update);
-                    return string.Format("修改【{0},{1}】关联关系成功！", appname, interfacename);
+                    return string.Format("修改【{0},{1},{2}】关联关系成功！", appname, interfacename, destinappname);
                 }
                 else
-                    return string.Format("系统不存在【{0},{1}】该关联关系！", appname, interfacename);
+                    return string.Format("系统不存在【{0},{1},{2}】该关联关系！", appname, interfacename, destinappname);
             }
             catch (Exception ex)
             {
-                return string.Format("修改【{0},{1}】关联关系失败！异常信息如下:{2}", appname, interfacename, ex.Message);
+                return string.Format("修改【{0},{1},{2}】关联关系失败！异常信息如下:{3}", appname, interfacename, destinappname, ex.Message);
             }
         }
         /// <summary>
@@ -131,7 +131,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                 if (null != info)
                 {
                     ApplicationInterfaceRelationOperation.DeleteApplicationInterfaceRelationById(new Guid(id));
-                    return string.Format("删除【{0},{1}】关联关系成功！", info.appname, info.interfacename);
+                    return string.Format("删除【{0},{1},{2}】关联关系成功！", info.appname, info.interfacename, info.destinappname);
                 }
                 else
                     return string.Format("系统不存在【{0}】编号关联关系！", id);

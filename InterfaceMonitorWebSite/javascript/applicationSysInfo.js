@@ -73,7 +73,7 @@ function searchDestinctionSystem() {
                         if (r) {
                             var name = rowdata.name;
                             var id = rowdata.Id;
-                            var el = '<span value="' + id + '" class="destinname">' + name + '</span>';
+                            var el = '<span id="' + id + '" class="destinname">' + name + '</span>';
                             $('#container').append(el);
                             $('#attach_system_div').dialog('close');
                             clearSysSelectBox();
@@ -113,14 +113,14 @@ function searchFatherSystem() {
                 handler: function () {
                     var rowdata = $('#sysdataGrid').datagrid('getSelected');
                     if (rowdata == null) {
-                        $.messager.alert(g_MsgBoxTitle, "请选择下游应用系统！", "warning");
+                        $.messager.alert(g_MsgBoxTitle, "请选择上游应用系统！", "warning");
                         return;
                     }
                     $.messager.confirm("提醒", "确定要选择【" + rowdata.name + "】该应用系统吗？", function (r) {
                         if (r) {
                             var name = rowdata.name;
                             var id = rowdata.Id;
-                            var el = '<span value="' + id + '" class="destinname">' + name + '</span>';
+                            var el = '<span id="' + id + '" class="destinname">' + name + '</span>';
                             $('#container2').append(el);
                             $('#attach_system_div').dialog('close');
                             clearSysSelectBox();
@@ -227,7 +227,7 @@ function initDataGrid() {
                         }
                     }
                     , {
-                        title: '关联接口', field: 'Id', align: 'center', width: fillsize(380, 0.08, 'divTable'), sortable: false,
+                        title: '关联关系', field: 'Id', align: 'center', width: fillsize(380, 0.08, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
                             var str = '<a name="attach" href="#" class="easyui-linkbutton" ></a>';
                             return str;
@@ -249,7 +249,7 @@ function initDataGrid() {
             );
             $('a[name="attach"]').linkbutton({
                 iconCls: 'icon-add',
-                text: '关联接口',
+                text: '添加',
                 onClick: function () {
                     var rowdata = $('#gridData').datagrid('getSelected');
                     attachInterface(rowdata.Id);
@@ -268,7 +268,7 @@ function initDataGrid() {
 //关联接口按钮响应事件
 function attachInterface(id) {
     $('#attach_interface_div').dialog({
-        title: '关联接口绑定',
+        title: '关联关系维护',
         iconCls: 'icon-add',
         width: 910,
         height: 690,
@@ -291,9 +291,14 @@ function attachInterface(id) {
                         $.messager.alert(g_MsgBoxTitle, "请选择要关联的接口！", "warning");
                         return;
                     }
-                    $.messager.confirm("提醒", "确定要保存该关联信息？", function (r) {
-                        if (r) {
-                            
+                    $.messager.confirm("提醒", "确定要保存该关联关系吗？", function (r) {
+                        if (r) {                            
+                            var fatherid = $('#container2').children('.destinname').attr('id');
+                            var fathername = $('#container2').children('.destinname').text();
+                            var childid = $('#container').children('.destinname').attr('id');
+                            var childname = $('#container').children('.destinname').text();
+                            var interfaceid = rowdata.Id;
+                            var interfacename = rowdata.name;
                             clearAttachBox();
                         }
                     });
@@ -386,15 +391,14 @@ function initAttachGrid() {
                     }
                 }
             );
-            $('a[name="add"]').linkbutton({
-                iconCls: 'icon-add',
-                text: '关联',
-                onClick: function () {
-                    var rowdata = $('#attachGridData').datagrid('getSelected');
-                    alert(rowdata.Id);
-                    //addInterface(rowdata.Id);
-                }
-            });
+            //$('a[name="add"]').linkbutton({
+            //    iconCls: 'icon-add',
+            //    text: '关联',
+            //    onClick: function () {
+            //        var rowdata = $('#attachGridData').datagrid('getSelected');
+            //        alert(rowdata.Id);
+            //    }
+            //});
         }
     });
     //窗体尺寸调整

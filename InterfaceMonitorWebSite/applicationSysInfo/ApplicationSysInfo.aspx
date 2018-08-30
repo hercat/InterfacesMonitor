@@ -76,6 +76,7 @@
             </div>
         </div>
         <div class="add_box_div_row3">
+            <div class="add_box_div_row_label">关联接口</div>
             <div class="add_box_div_row_content3">
                 <input id="key" type="text" value="接口名称、服务器地址、负责人..." onfocus="if(this.value=='接口名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='接口名称、服务器地址、负责人...';}"  />
             <span id="search" class="easyui-linkbutton">搜索</span>
