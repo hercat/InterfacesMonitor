@@ -17,48 +17,13 @@ $(document).ready(function () {
         searchSysInfo();
     });
     linkbutton();
+    //选择上游应用系统
+    $('#searchSystem2').click(function () {
+        searchFatherSystem();
+    });
     //选择下游系统
     $('#searchSystem').click(function () {
-        $('#container').empty();
-        $('#attach_system_div').dialog({
-            title: '选择下游系统',
-            iconCls: 'icon-add',
-            width: 920,
-            height: 540,
-            closable: false,
-            cache: false,
-            modal: true,
-            onBeforeOpen:function(){
-                searchSysInfo();
-            },
-            buttons: [
-                {
-                    text: '确定',
-                    iconCls: 'icon-add',
-                    handler: function () {
-                        var rowdata = $('#sysdataGrid').datagrid('getSelected');
-                        $.messager.confirm("提醒", "确定要选择【" + rowdata.name + "】该应用系统吗？", function (r) {
-                            if (r) {
-                                var name = rowdata.name;
-                                var id = rowdata.Id;
-                                var el = '<span value="' + id + '" class="destinname">' + name + '</span>';
-                                $('#container').append(el);
-                                $('#attach_system_div').dialog('close');
-                                clearSysSelectBox();
-                            }
-                        });
-                    }
-                },
-                {
-                    text: '取消',
-                    iconCls: 'icon-cancel',
-                    handler: function () {
-                        $('#attach_system_div').dialog('close');
-                        clearSysSelectBox();
-                    }
-                }
-            ]
-        })
+        searchDestinctionSystem();
     });
 });
 function clearSysSelectBox() {
@@ -75,6 +40,103 @@ function linkbutton() {
     });
     $('#search2').linkbutton({
         iconCls: 'icon-search'
+    });
+    $('#searchSystem2').linkbutton({
+        iconCls:'icon-search'
+    });
+}
+//选择下游应用系统
+function searchDestinctionSystem() {
+    $('#container').empty();
+    $('#attach_system_div').dialog({
+        title: '选择下游系统',
+        iconCls: 'icon-add',
+        width: 920,
+        height: 540,
+        closable: false,
+        cache: false,
+        modal: true,
+        onBeforeOpen: function () {
+            searchSysInfo();
+        },
+        buttons: [
+            {
+                text: '确定',
+                iconCls: 'icon-add',
+                handler: function () {
+                    var rowdata = $('#sysdataGrid').datagrid('getSelected');
+                    if (rowdata == null) {
+                        $.messager.alert(g_MsgBoxTitle, "请选择下游应用系统！", "warning");
+                        return;
+                    }
+                    $.messager.confirm("提醒", "确定要选择【" + rowdata.name + "】该应用系统吗？", function (r) {
+                        if (r) {
+                            var name = rowdata.name;
+                            var id = rowdata.Id;
+                            var el = '<span value="' + id + '" class="destinname">' + name + '</span>';
+                            $('#container').append(el);
+                            $('#attach_system_div').dialog('close');
+                            clearSysSelectBox();
+                        }
+                    });
+                }
+            },
+            {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#attach_system_div').dialog('close');
+                    clearSysSelectBox();
+                }
+            }
+        ]
+    });
+}
+//选择上游应用系统
+function searchFatherSystem() {
+    $('#container2').empty();
+    $('#attach_system_div').dialog({
+        title: '选择上游系统',
+        iconCls: 'icon-add',
+        width: 920,
+        height: 540,
+        closable: false,
+        cache: false,
+        modal: true,
+        onBeforeOpen: function () {
+            searchSysInfo();
+        },
+        buttons: [
+            {
+                text: '确定',
+                iconCls: 'icon-add',
+                handler: function () {
+                    var rowdata = $('#sysdataGrid').datagrid('getSelected');
+                    if (rowdata == null) {
+                        $.messager.alert(g_MsgBoxTitle, "请选择下游应用系统！", "warning");
+                        return;
+                    }
+                    $.messager.confirm("提醒", "确定要选择【" + rowdata.name + "】该应用系统吗？", function (r) {
+                        if (r) {
+                            var name = rowdata.name;
+                            var id = rowdata.Id;
+                            var el = '<span value="' + id + '" class="destinname">' + name + '</span>';
+                            $('#container2').append(el);
+                            $('#attach_system_div').dialog('close');
+                            clearSysSelectBox();
+                        }
+                    });
+                }
+            },
+            {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#attach_system_div').dialog('close');
+                    clearSysSelectBox();
+                }
+            }
+        ]
     });
 }
 //初始化datagrid
@@ -209,12 +271,13 @@ function attachInterface(id) {
         title: '关联接口绑定',
         iconCls: 'icon-add',
         width: 910,
-        height: 640,
+        height: 690,
         closable: false,
         cache: false,
         modal: true,        
         onBeforeOpen: function () {
             $('#container').empty();
+            $('#container2').empty();
             beforeOpen(id);
             searchInterface();
         },

@@ -142,9 +142,8 @@
 #appname {
     width:100%;
     height:100%;
-    font-size:15px;
-    color:#000000;
-    margin-left:5%;
+    font-size:15px;    
+    margin-left:3%;
 }
 #key {
     color:#808080;
@@ -177,7 +176,17 @@
     float:left;
     margin-left:3%;
 }
+#container2 {
+    float:left;
+    margin-left:3%;
+}
 #searchSystem {
+    float:left;
+    width:80px;
+    margin-left:1%;
+    margin-top:6px;
+}
+#searchSystem2 {
     float:left;
     width:80px;
     margin-left:1%;

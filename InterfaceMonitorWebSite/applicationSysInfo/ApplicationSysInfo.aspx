@@ -58,7 +58,7 @@
         <div class="add_box_div_row3">
             <div class="add_box_div_row_label">当前系统</div>
             <div class="add_box_div_row_content3">
-                <span id="appname"></span>
+                <span class="destinname" id="appname"></span>
             </div>
         </div>
         <div class="add_box_div_row3">
