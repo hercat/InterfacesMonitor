@@ -1,6 +1,7 @@
 ﻿
 $(document).ready(function () {
     initDataGrid();
+    loadData();
 });
 
 function initDataGrid() {
@@ -49,7 +50,7 @@ function initDataGrid() {
                     { field: 'ck', align: 'center', checkbox: true }
 					, { title: '应用系统', field: 'appname', align: 'center', width: fillsize(380, 0.3, 'divTable'), sortable: false }
                     , { title: '接口名称', field: 'interfacename', align: 'center', width: fillsize(380, 0.3, 'divTable'), sortable: false }
-                    , { title: '接口下级调用系统', field: 'destinappname', align: 'center', width: fillsize(380, 0.2, 'divTable'), sortable: false }
+                    , { title: '下游调用系统', field: 'destinappname', align: 'center', width: fillsize(380, 0.2, 'divTable'), sortable: false }
                     ,{
                         title: '更新时间', field: 'updatetime', align: 'center', width: fillsize(380, 0.18, 'divTable'), sortable: false,
                         formatter: function (value, row, index) {
@@ -78,4 +79,40 @@ function initDataGrid() {
             width: $("#divTable").css("width")
         });
     });
+}
+function loadData() {
+    $('#gridData').datagrid('load', { 
+        fields: '',
+        key: '',
+        order: 'updatetime',
+        ascOrdesc: 'desc'
+    });
+}
+function deleteApplicationInterface() {
+    var rowdata = $('#gridData').datagrid('getSelected');
+    if (rowdata == null) {
+        $.messager.alert(g_MsgBoxTitle, "请选中需要删除的配置信息！", "warning");
+        return;
+    }
+    else {
+        //确认消息框
+        $.messager.confirm("提醒", "确定要删除【" + rowdata.appname + "," + rowdata.interfacename + "】该配置信息吗？", function (r) {
+            if (!r)
+                return;
+            else {
+                $.ajax({
+                    url: '/AjaxApplicationInterfaceRelation/DeleteApplicationInterfaceRelation.cspx',
+                    data: {
+                        id: rowdata.Id
+                    },
+                    type: 'post',
+                    cache: false,
+                    success: function (json) {
+                        $.messager.alert(g_MsgBoxTitle, json, "info");
+                        loadData();
+                    }
+                });
+            }
+        });
+    }
 }

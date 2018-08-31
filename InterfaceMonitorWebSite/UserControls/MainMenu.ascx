@@ -11,19 +11,6 @@
                 <dd />
             </dl>
         </li>
-        <li><a>应用系统管理</a>
-            <dl>
-                <dd></dd>
-                <dt>
-                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">应用系统配置</a>
-                </dt>
-                <dd></dd>
-                <dt>
-                    <a href="../applicationSysInfo/ApplicationInterfaceRelation.aspx">系统接口管理</a>
-                </dt>
-                <dd></dd>
-            </dl>
-        </li>
         <li><a>接口管理</a>
             <dl>
                 <dd />
@@ -33,5 +20,18 @@
                 <dd />
             </dl>
         </li>
+        <li><a>应用系统管理</a>
+            <dl>
+                <dd></dd>
+                <dt>
+                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">应用配置</a>
+                </dt>
+                <dd></dd>
+                <dt>
+                    <a href="../applicationSysInfo/ApplicationInterfaceRelation.aspx">关联关系</a>
+                </dt>
+                <dd></dd>
+            </dl>
+        </li>        
     </ul>
 </div>
