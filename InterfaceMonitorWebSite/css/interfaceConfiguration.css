@@ -139,3 +139,39 @@ body {
     border-color:#808080;
     cursor:pointer;
 }
+#searchSystem {
+    float:left;
+    width:80px;
+    margin-left:3%;
+    margin-top:6px;
+}
+#container {
+    float:left;
+    margin-left:1%;
+}
+#key2 {
+    color:#808080;
+    height:25px;
+    line-height:25px;
+    width:500px;
+    margin-left:5px;
+    margin-top:8px;
+    margin-bottom:5px;
+    border-radius:5px;
+    border:2px solid #808080;
+}
+#key2:hover {
+    border:2px solid #0094ff;    
+}
+#search2 {
+    width:80px;
+    margin-left:2px;
+    margin-top:2px;
+}
+.destinname {
+    color:#fff;
+    font-size:15px;
+    background:#0094ff;
+    padding:4px 12px 4px 12px;
+    border-radius:8px;
+}

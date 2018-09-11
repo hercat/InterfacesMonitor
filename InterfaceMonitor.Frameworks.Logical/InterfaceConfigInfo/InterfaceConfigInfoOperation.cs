@@ -146,6 +146,71 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
             return info;
         }
+
+        public static InterfaceConfigInfo GetInterfaceConfigInfo(string interfaceName, string appname, string server)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            InterfaceConfigInfo info = null;
+            try
+            {
+                IInterfaceConfigInfo dp = DataProvider.DbInterfaceConfigDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                info = dp.GetInterfaceConfigInfo(cmd, interfaceName, appname, server);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return info;
+        }
+        /// <summary>
+        /// 根据接口名、应用系统编号获取配置信息
+        /// </summary>
+        /// <param name="interfaceName"></param>
+        /// <param name="appid"></param>
+        /// <returns></returns>
+        public static InterfaceConfigInfo GetInterfaceConfigInfo(string interfaceName, Guid appid)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            InterfaceConfigInfo info = null;
+            try
+            {
+                IInterfaceConfigInfo dp = DataProvider.DbInterfaceConfigDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                info = dp.GetInterfaceConfigInfo(cmd, interfaceName, appid);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return info;
+        }
         /// <summary>
         /// 获取接口配置信息列表
         /// </summary>

@@ -21,7 +21,7 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                 SystemSettingBase settings = SystemSettingBase.CreateInstance();
                 if (settings.SysMySqlDB != null)
                     ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
-                List<InterfaceRealtimeInfo> list = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoList("Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime", "");
+                List<InterfaceRealtimeInfo> list = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfoList("Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime,appid", "");
                 List<InterfaceRealtimeInfo> result = new List<InterfaceRealtimeInfo>();
                 int timeout = 10;
                 foreach (InterfaceRealtimeInfo info in list)

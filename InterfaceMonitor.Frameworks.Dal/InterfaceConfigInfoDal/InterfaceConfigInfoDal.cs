@@ -32,10 +32,10 @@ namespace InterfaceMonitor.Frameworks.Dal
             {                
                 string sql = @"insert into interfaceconfiginfo(Id,InterfaceName,ApplicationName,ServerAddress,
                                 ServerUser,UserPwd,PersonInChargeName,PersonInChargePhone,ConnectedTimeout,
-                                DocumentHelpPath,Description,CreateTime,urlAddress,exeptionlevel,affectProduction,type)
-                            values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}','{11}','{12}','{13}','{14}','{15}')";
+                                DocumentHelpPath,Description,CreateTime,urlAddress,exeptionlevel,affectProduction,type,appid)
+                            values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}')";
                 cmd.CommandText = string.Format(sql, entity.Id, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.ServerUser, entity.UserPwd, entity.PersonOfChargeName, entity.PersonOfChargePhone,
-                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.CreateTime, entity.UrlAddress, entity.Exeptionlevel, entity.AffectProduction, entity.Type);
+                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.CreateTime, entity.UrlAddress, entity.Exeptionlevel, entity.AffectProduction, entity.Type, entity.appid);
             }
             else if (mode == ModifierType.Update)
             {
@@ -54,10 +54,11 @@ namespace InterfaceMonitor.Frameworks.Dal
                                 urlAddress = '{12}',
                                 exeptionlevel = '{13}',
                                 affectProduction = '{14}',
-                                type = '{15}'
+                                type = '{15}',
+                                appid = '{16}'
                                 where Id = '{11}'";
                 cmd.CommandText = string.Format(sql, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.ServerUser, entity.UserPwd, entity.PersonOfChargeName, entity.PersonOfChargePhone,
-                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.CreateTime, entity.Id, entity.UrlAddress, entity.Exeptionlevel, entity.AffectProduction, entity.Type);
+                    entity.ConnectedTimeout, entity.DocumentHelpPath, entity.Description, entity.CreateTime, entity.Id, entity.UrlAddress, entity.Exeptionlevel, entity.AffectProduction, entity.Type, entity.appid);
             }
             cmd.ExecuteNonQuery();
         }
@@ -86,7 +87,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime,urlAddress,exeptionlevel,affectProduction,type
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime,urlAddress,exeptionlevel,affectProduction,type,appid
                             from interfaceconfiginfo
                             where Id = '{0}'";
             cmd.CommandText = string.Format(sql, id);
@@ -115,10 +116,52 @@ namespace InterfaceMonitor.Frameworks.Dal
             cmd.CommandType = CommandType.Text;
             string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,
                             PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime,urlAddress,
-                            exeptionlevel,affectProduction,type
+                            exeptionlevel,affectProduction,type,appid
                             from interfaceconfiginfo
                             where InterfaceName = '{0}' and ServerAddress = '{1}'";
             cmd.CommandText = string.Format(sql, interfaceName, server);
+            InterfaceConfigInfo info = null;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                info = new InterfaceConfigInfo();
+                info.AllParse(dt.Rows[0]);
+            }
+            return info;
+        }
+        public InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand icmd, string interfaceName, string appname, string server)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,
+                            PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime,urlAddress,
+                            exeptionlevel,affectProduction,type,appid
+                            from interfaceconfiginfo
+                            where InterfaceName = '{0}' and ApplicationName ='{1}' and ServerAddress = '{2}'";
+            cmd.CommandText = string.Format(sql, interfaceName, appname, server);
+            InterfaceConfigInfo info = null;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                info = new InterfaceConfigInfo();
+                info.AllParse(dt.Rows[0]);
+            }
+            return info;
+        }
+        public InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand icmd, string interfaceName, Guid appid)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,ServerUser,UserPwd,PersonInChargeName,
+                            PersonInChargePhone,ConnectedTimeout,DocumentHelpPath,Description,CreateTime,urlAddress,
+                            exeptionlevel,affectProduction,type,appid
+                            from interfaceconfiginfo
+                            where InterfaceName = '{0}' and appid = '{1}'";
+            cmd.CommandText = string.Format(sql, interfaceName, appid);
             InterfaceConfigInfo info = null;
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());

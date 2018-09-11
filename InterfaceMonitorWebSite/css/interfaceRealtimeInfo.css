@@ -3,7 +3,7 @@ body {
     font-family: 'Microsoft YaHei','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .mainDiv {
-    min-height:720px;
+    min-height:520px;
 }
 .outer_div {
     width:80px;
@@ -69,5 +69,3 @@ body {
 .inner_div a:link {
     
 }
-
-

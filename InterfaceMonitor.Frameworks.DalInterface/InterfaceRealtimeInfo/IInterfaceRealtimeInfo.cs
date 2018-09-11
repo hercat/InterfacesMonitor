@@ -18,7 +18,8 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         void AddOrUpdateInterceRealtimeInfo(IDbCommand idbcmd, InterfaceRealtimeInfo entity, ModifierType mode);
         void DeleteInterfaceRealtimeInfoById(IDbCommand idbcmd, Guid id);
         InterfaceRealtimeInfo GetInterfaceRealtimeInfo(IDbCommand idbcmd, Guid id);
-        InterfaceRealtimeInfo GetInterfaceRealtimeInfo(IDbCommand idbcmd, string interfaceName, string applicationName, string server);       
+        InterfaceRealtimeInfo GetInterfaceRealtimeInfo(IDbCommand idbcmd, string interfaceName, string applicationName, string server);
+        InterfaceRealtimeInfo GetInterfaceRealtimeInfo(IDbCommand icmd, string interfaceName, Guid appid);
         List<InterfaceRealtimeInfo> GetInterfaceRealtimeInfoList(IDbCommand idbcmd, string fields, string whereCondition);
         List<InterfaceRealtimeInfo> GetInterfaceRealtimeInfoPageList(IDbCommand idbcmd, string fields, string whereCondition, int pageIndex, int pageSize);
     }

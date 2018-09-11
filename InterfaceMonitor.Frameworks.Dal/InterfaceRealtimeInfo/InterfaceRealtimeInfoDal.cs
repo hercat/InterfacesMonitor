@@ -30,9 +30,9 @@ namespace InterfaceMonitor.Frameworks.Dal
             cmd.CommandType = CommandType.Text;
             if (mode == ModifierType.Add)
             {
-                string sql = @"insert into interfacerealtimeinfo(Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime)
-                            values('{0}','{1}','{2}','{3}',{4},'{5}')";
-                cmd.CommandText = string.Format(sql, entity.Id, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.StateCode, entity.UpdateTime);
+                string sql = @"insert into interfacerealtimeinfo(Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime,appid)
+                            values('{0}','{1}','{2}','{3}',{4},'{5}','{6}')";
+                cmd.CommandText = string.Format(sql, entity.Id, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.StateCode, entity.UpdateTime, entity.appid);
             }
             else if (mode == ModifierType.Update)
             {
@@ -41,9 +41,10 @@ namespace InterfaceMonitor.Frameworks.Dal
                                 ApplicationName = '{1}',
                                 ServerAddress = '{2}',
                                 StateCode = {3},
-                                UpdateTime = '{4}'
-                                where Id = '{5}'";
-                cmd.CommandText = string.Format(sql, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.StateCode, entity.UpdateTime, entity.Id);
+                                UpdateTime = '{4}',
+                                appid = '{5}'
+                                where Id = '{6}'";
+                cmd.CommandText = string.Format(sql, entity.InterfaceName, entity.ApplicationName, entity.ServerAddress, entity.StateCode, entity.UpdateTime, entity.appid, entity.Id);
             }
             cmd.ExecuteNonQuery();
         }
@@ -72,7 +73,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime 
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime,appid
                             from interfacerealtimeinfo
                             where Id = '{0}'";
             cmd.CommandText = string.Format(sql, id);
@@ -99,10 +100,30 @@ namespace InterfaceMonitor.Frameworks.Dal
             icmd.Parameters.Clear();
             MySqlCommand cmd = icmd as MySqlCommand;
             cmd.CommandType = CommandType.Text;
-            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime,appid
                                 from interfacerealtimeinfo
                                 where InterfaceName = '{0}' and ApplicationName = '{1}' and ServerAddress = '{2}'";
             cmd.CommandText = string.Format(sql, interfaceName, applicationName, server);
+            InterfaceRealtimeInfo info = null;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                info = new InterfaceRealtimeInfo();
+                info.AllParse(dt.Rows[0]);
+            }
+            return info;
+        }
+
+        public InterfaceRealtimeInfo GetInterfaceRealtimeInfo(IDbCommand icmd, string interfaceName, Guid appid)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select Id,InterfaceName,ApplicationName,ServerAddress,StateCode,UpdateTime,appid
+                                from interfacerealtimeinfo
+                                where InterfaceName = '{0}' and appid = '{1}'";
+            cmd.CommandText = string.Format(sql, interfaceName, appid);
             InterfaceRealtimeInfo info = null;
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());

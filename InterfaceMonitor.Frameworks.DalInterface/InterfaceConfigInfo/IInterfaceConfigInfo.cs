@@ -14,6 +14,8 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         void DeleteInterfaceConfigInfoById(IDbCommand idbcmd, Guid id);
         InterfaceConfigInfo GetInterfaceConfigInfoById(IDbCommand idbcmd,Guid id);
         InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, string server);
+        InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, string appname, string server);
+        InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, Guid appid);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoList(IDbCommand idbcmd, string fields, string whereCondition);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoPageList(IDbCommand idbcmd, string fields, string whereCondition, int pageIndex, int pageSize);
         List<InterfaceConfigInfo> GetInterfaceConfigInfoByCondition(IDbCommand idbcmd, string fields, string whereCondition, string orderby,string limit);

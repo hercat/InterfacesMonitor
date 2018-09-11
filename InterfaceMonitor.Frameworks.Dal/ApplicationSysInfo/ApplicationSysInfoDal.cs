@@ -136,5 +136,46 @@ namespace InterfaceMonitor.Frameworks.Dal
             }
             return list;
         }
+        /// <summary>
+        /// 获取应用系统
+        /// </summary>
+        /// <param name="icmd"></param>
+        /// <returns></returns>
+        public DataTable GetApplicationInfoStatics(IDbCommand icmd)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = @"select a.Id,a.name,a.level,a.server,a.level,a.userdep,a.chargeman,a.phone,count(b.interfaceId) as num from applicationinfo a
+                                left join applicationinterfacerelation b
+                                on a.Id = b.appId
+                                left join interfacerealtimeinfo c
+                                on b.interfaceId = c.Id
+                                group by a.Id
+                                order by num desc,a.level desc,c.StateCode asc";
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            return dt;
+        }
+
+        public DataTable GetApplicationInfoStaticsDetails(IDbCommand icmd, Guid id)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select b.destinappid,b.destinappname,b.interfaceId,b.interfacename,c.StateCode,c.UpdateTime,d.ConnectedTimeout from applicationinfo a
+                            inner join applicationinterfacerelation b
+                            on a.Id = b.appId
+                            inner join interfacerealtimeinfo c
+                            on b.interfaceId = c.Id
+                            inner join interfacemonitordb.interfaceconfiginfo d
+                            on b.interfaceId = d.Id
+                            where a.Id = '{0}'
+                            order by c.StateCode desc";
+            cmd.CommandText = string.Format(sql, id);
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            return dt;
+        }
     }
 }

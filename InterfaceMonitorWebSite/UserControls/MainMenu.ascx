@@ -4,27 +4,35 @@
     <ul>
         <li><a>实时状态</a>
             <dl>
-                <dd />                                    
+                <dd />   
+                <dt>
+                    <a href="../InterfaceRealtime/applicationRealtimeInfo.aspx">系统状态</a>
+                </dt>
+                <dd></dd>
                 <dt>
                     <a href="/InterfaceRealtime/InterfaceRealtimeInfo.aspx">实时状态</a>
                 </dt>
                 <dd />
             </dl>
         </li>
-        <li><a>接口管理</a>
+        <li><a>基础数据管理</a>
             <dl>
                 <dd />
+                <dt>
+                    <a href="../applicationSysInfo/ApplicationInfoManager.aspx">应用配置</a>
+                </dt>
+                <dd></dd>
                 <dt>
                     <a href="/InterfaceConfigInfo/InterfaceConfiguration.aspx">接口配置</a>
                 </dt>                
                 <dd />
             </dl>
         </li>
-        <li><a>应用系统管理</a>
+        <li><a>应用接口关系管理</a>
             <dl>
                 <dd></dd>
                 <dt>
-                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">应用配置</a>
+                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">关系配置维护</a>
                 </dt>
                 <dd></dd>
                 <dt>

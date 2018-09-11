@@ -144,7 +144,7 @@ namespace WindowsFormsTest
             InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(id);
             #endregion
             //根据接口名、应用系统名和服务器地址获取接口配置信息
-            InterfaceConfigInfo info2 = InterfaceConfigInfoOperation.GetInterfaceConfigInfo("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "测试接口2", "192.168.1.80");
+            InterfaceConfigInfo info2 = InterfaceConfigInfoOperation.GetInterfaceConfigInfo("InterfaceMonitor.Frameworks.Dal.InterfaceConfigInfoDal", "192.168.1.80");
         }
         /// <summary>
         /// 获取接口配置信息列表测试
@@ -236,7 +236,7 @@ namespace WindowsFormsTest
         /// <param name="e"></param>
         private void button15_Click(object sender, EventArgs e)
         {
-            InterfaceConfigInitBizProcess.SaveInterfaceInitial("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "测试应用系统", "192.168.1.90", "test3", "test123", "WUWEI", "13812345678", 0, "./test/test3.pdf", "添加描述测试内容");
+            //InterfaceConfigInitBizProcess.SaveInterfaceInitial("InterfaceMonitor.Frameworks.BizProcess.InterfaceConfigInitBizProcess", "192.168.1.90", "test3", "test123", "WUWEI", "13812345678", 0, "./test/test3.pdf", "添加描述测试内容");
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -362,6 +362,11 @@ namespace WindowsFormsTest
                 if (null != client)
                     client.Close();
             }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            List<DataStatics> list = StaticsBizprocess.GetDataStaics();
         }
     }
 }

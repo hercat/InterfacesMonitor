@@ -55,6 +55,22 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
                         };
                         ApplicationRelationOperation.AddOrUpdateApplicationRelation(relation, ModifierType.Add);
                     }
+                    //更新接口配置表接口配置中接口所属系统信息
+                    InterfaceConfigInfo interfaceConfig = InterfaceConfigInfoOperation.GetInterfaceConfigInfoById(new Guid(interfaceid));
+                    if (null != interfaceConfig)
+                    {
+                        interfaceConfig.ApplicationName = appname;
+                        interfaceConfig.CreateTime = DateTime.Now;
+                        InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(interfaceConfig, ModifierType.Update);
+                    }                    
+                    //更新接口实时信息表中接口所属系统信息
+                    InterfaceRealtimeInfo realtimeInfo = InterfaceRealtimeInfoOperation.GetInterfaceRealtimeInfo(new Guid(interfaceid));
+                    if (null != realtimeInfo)
+                    {
+                        realtimeInfo.ApplicationName = appname;
+                        realtimeInfo.UpdateTime = DateTime.Now;
+                        InterfaceRealtimeInfoOperation.AddOrUpdateInterceRealtimeInfo(realtimeInfo, ModifierType.Update);
+                    }
                     return string.Format("添加【{0},{1},{2}】关联关系成功！", appname, interfacename, destinappname);
                 }
                 else

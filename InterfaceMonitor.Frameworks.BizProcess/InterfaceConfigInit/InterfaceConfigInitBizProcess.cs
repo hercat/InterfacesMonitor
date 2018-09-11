@@ -28,18 +28,20 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout">超时时间</param>
         /// <param name="path">帮助文档存放路径</param>
         /// <param name="descript">描述</param>
-        public static void SaveInterfaceInitial(string interfaceName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress,string exeptionlevel,string affectProduction,string type)
+        /// <param name="appid">应用编号</param>
+        public static void SaveInterfaceInitial(string interfaceName, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress,string exeptionlevel,string affectProduction,string type,string appid)
         {
             //生成接口编号id
             Guid id = Guid.NewGuid();
+            ApplicationSysInfo appinfo = ApplicationSysInfoLogical.GetApplicationSysInfoById(new Guid(appid));
             //判断接口配置信息是否存在，如果不存在则新增
-            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server) == null)
+            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, appinfo.name, appinfo.server) == null)
             {
                 InterfaceConfigInfo config = new InterfaceConfigInfo();
                 config.Id = id;
                 config.InterfaceName = interfaceName;
-                config.ApplicationName = "";
-                config.ServerAddress = server;
+                config.ApplicationName = appinfo.name;
+                config.ServerAddress = appinfo.server;
                 config.ServerUser = user;
                 config.UserPwd = userPwd;
                 config.PersonOfChargeName = charger;
@@ -51,14 +53,17 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 config.Exeptionlevel = Int32.Parse(exeptionlevel);
                 config.AffectProduction = Int32.Parse(affectProduction);
                 config.Type = Int32.Parse(type);
+                config.appid = new Guid(appid);
                 config.CreateTime = DateTime.Now;
 
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
                 realtime.Id = id;
                 realtime.InterfaceName = interfaceName;
-                realtime.ApplicationName = "";
-                realtime.ServerAddress = server;
+                realtime.ApplicationName = appinfo.name;
+                realtime.ServerAddress = appinfo.server;
+                realtime.appid = new Guid(appid);
                 realtime.StateCode = 0;
+
                 realtime.UpdateTime = DateTime.Now;
 
                 InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(config, ModifierType.Add);
@@ -79,17 +84,18 @@ namespace InterfaceMonitor.Frameworks.BizProcess
         /// <param name="timeout"></param>
         /// <param name="path"></param>
         /// <param name="descript"></param>
-        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string server, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress, string exeptionlevel, string affectProduction,string type)
+        public static void UpdateInterfaceConfigInfo(string id,string interfaceName, string user, string userPwd, string charger, string phone, int timeout, string path, string descript,string urlAddress, string exeptionlevel, string affectProduction,string type,string appid)
         {
             Guid newid = new Guid(id);
+            ApplicationSysInfo appinfo = ApplicationSysInfoLogical.GetApplicationSysInfoById(new Guid(appid));
             //判断接口配置信息是否存在，如果不存在则新增
-            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server) != null)
+            if (InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, appinfo.name,appinfo.server) != null)
             {
                 InterfaceConfigInfo config = new InterfaceConfigInfo();
                 config.Id = newid;
                 config.InterfaceName = interfaceName;
-                config.ApplicationName = "";
-                config.ServerAddress = server;
+                config.ApplicationName = appinfo.name;
+                config.ServerAddress = appinfo.server;
                 config.ServerUser = user;
                 config.UserPwd = userPwd;
                 config.PersonOfChargeName = charger;
@@ -101,14 +107,16 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                 config.Exeptionlevel = Int32.Parse(exeptionlevel);
                 config.AffectProduction = Int32.Parse(affectProduction);
                 config.Type = Int32.Parse(type);
+                config.appid = new Guid(appid);
                 config.CreateTime = DateTime.Now;
 
                 InterfaceRealtimeInfo realtime = new InterfaceRealtimeInfo();
                 realtime.Id = newid;
                 realtime.InterfaceName = interfaceName;
-                realtime.ApplicationName = "";
-                realtime.ServerAddress = server;
+                realtime.ApplicationName = appinfo.name;
+                realtime.ServerAddress = appinfo.server;
                 realtime.StateCode = 0;
+                realtime.appid = new Guid(appid);
                 realtime.UpdateTime = DateTime.Now;
 
                 InterfaceConfigInfoOperation.AddOrUpdateInterfaceConfigInfo(config, ModifierType.Update);

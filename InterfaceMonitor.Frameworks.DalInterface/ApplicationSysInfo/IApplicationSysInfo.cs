@@ -16,5 +16,7 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         ApplicationSysInfo GetApplicationSysInfo(IDbCommand idbcmd, string name, string server);
         List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand idbcmd, string fields, string condition);
         List<ApplicationSysInfo> GetApplicationSysInfoList(IDbCommand idbcmd, string fileds, string condition, string orderby, string limit);
+        DataTable GetApplicationInfoStatics(IDbCommand idbcmd);
+        DataTable GetApplicationInfoStaticsDetails(IDbCommand idbcmd, Guid id);
     }
 }

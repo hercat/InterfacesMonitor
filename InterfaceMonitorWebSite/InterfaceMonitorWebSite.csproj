@@ -93,10 +93,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="applicationSysInfo\ApplicationInfoManager.aspx" />
     <Content Include="applicationSysInfo\ApplicationInterfaceRelation.aspx" />
     <Content Include="applicationSysInfo\ApplicationSysInfo.aspx" />
     <Content Include="Config\SysConfiguration.aspx" />
+    <Content Include="css\applicationInfoManager.css" />
     <Content Include="css\applicationInterfaceRelation.css" />
+    <Content Include="css\applicationRealtimeInfo.css" />
+    <Content Include="css\applicationRelationDetails.css" />
     <Content Include="css\applicationSysInfo.css" />
     <Content Include="css\interfaceConfiguration.css" />
     <Content Include="css\interfaceDetails.css" />
@@ -134,8 +138,13 @@
     <Content Include="images\shico.ico" />
     <Content Include="images\splitter.jpg" />
     <Content Include="InterfaceMonitor.Utility.SysSettingBase.xml" />
+    <Content Include="InterfaceRealtime\applicationRealtimeInfo.aspx" />
+    <Content Include="InterfaceRealtime\applicationRelationDetails.aspx" />
     <Content Include="InterfaceRealtime\InterfaceDetails.aspx" />
+    <Content Include="javascript\applicationInfoManager.js" />
     <Content Include="javascript\applicationInterfaceRelation.js" />
+    <Content Include="javascript\applicationRealtimeInfo.js" />
+    <Content Include="javascript\applicationRelationDetails.js" />
     <Content Include="javascript\applicationSysInfo.js" />
     <Content Include="javascript\interfaceConfiguration.js" />
     <Content Include="javascript\interfaceDetails.js" />
@@ -1033,6 +1042,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="applicationSysInfo\ApplicationInfoManager.aspx.cs">
+      <DependentUpon>ApplicationInfoManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="applicationSysInfo\ApplicationInfoManager.aspx.designer.cs">
+      <DependentUpon>ApplicationInfoManager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="applicationSysInfo\ApplicationInterfaceRelation.aspx.cs">
       <DependentUpon>ApplicationInterfaceRelation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1060,6 +1076,20 @@
     </Compile>
     <Compile Include="InterfaceConfigInfo\InterfaceConfiguration.aspx.designer.cs">
       <DependentUpon>InterfaceConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceRealtime\applicationRealtimeInfo.aspx.cs">
+      <DependentUpon>applicationRealtimeInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InterfaceRealtime\applicationRealtimeInfo.aspx.designer.cs">
+      <DependentUpon>applicationRealtimeInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceRealtime\applicationRelationDetails.aspx.cs">
+      <DependentUpon>applicationRelationDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InterfaceRealtime\applicationRelationDetails.aspx.designer.cs">
+      <DependentUpon>applicationRelationDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="InterfaceRealtime\InterfaceDetails.aspx.cs">
       <DependentUpon>InterfaceDetails.aspx</DependentUpon>

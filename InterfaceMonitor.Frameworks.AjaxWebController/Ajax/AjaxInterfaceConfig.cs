@@ -336,17 +336,17 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="desc">描述</param>
         /// <returns></returns>
         [Action]
-        public object AddInterfaceConfigInfo(string interfaceName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type)
+        public object AddInterfaceConfigInfo(string interfaceName, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type,string appid)
         {
             try
             {
-                if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server))
+                if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, new Guid(appid)))
                 {
-                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
+                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type, appid);
                     return string.Format("添加【{0}】配置信息成功！", interfaceName);
                 }                    
                 else
-                    return string.Format("{0},{1},{2}该接口配置已存在！", interfaceName, server);                               
+                    return string.Format("{0},{1},{2}该接口配置已存在！", interfaceName, appid);                               
             }
             catch (Exception ex)
             {
@@ -369,13 +369,14 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="desc"></param>
         /// <returns></returns>
         [Action]
-        public object UpdateInterfaceConfigInfo(string id, string interfaceName, string applicationName, string server, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type)
+        public object UpdateInterfaceConfigInfo(string id, string interfaceName, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type,string appid)
         {
             try
             {
-                if (null != InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, server))
+                ApplicationSysInfo appinfo = ApplicationSysInfoLogical.GetApplicationSysInfoById(new Guid(appid));
+                if (null != InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, appinfo.name, appinfo.server))
                 {
-                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, server, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type);
+                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type, appid);
                     return string.Format("更新【{0}】配置信息成功！", interfaceName);
                 }
                 else

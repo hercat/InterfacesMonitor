@@ -48,6 +48,7 @@
     <Compile Include="Ajax\AjaxInterfacelog.cs" />
     <Compile Include="Ajax\AjaxInterfaceConfig.cs" />
     <Compile Include="Ajax\AjaxInterfaceRealtime.cs" />
+    <Compile Include="Ajax\AjaxStatics.cs" />
     <Compile Include="Ajax\AjaxTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

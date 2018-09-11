@@ -79,6 +79,10 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public int Type { get; set; }
         /// <summary>
+        /// 应用系统编号
+        /// </summary>
+        public Guid appid { get; set; }
+        /// <summary>
         /// AllParse
         /// </summary>
         /// <param name="dr"></param>
@@ -117,6 +121,8 @@ namespace InterfaceMonitor.Frameworks.Entity
                 AffectProduction = Int32.Parse(dr[EnumInterfaceConfigInfo.affectProduction.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.type.ToString()))
                 Type = Int32.Parse(dr[EnumInterfaceConfigInfo.type.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.appid.ToString()))
+                appid = new Guid(dr[EnumInterfaceConfigInfo.appid.ToString()].ToString());
             return true;
         }
     }
@@ -140,6 +146,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         CreateTime,
         exeptionlevel,
         affectProduction,
-        type
+        type,
+        appid
     }
 }

@@ -43,6 +43,10 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public DateTime UpdateTime { get; set; }
         /// <summary>
+        /// 应用系统编号
+        /// </summary>
+        public Guid appid { get; set; }
+        /// <summary>
         /// AllParse
         /// </summary>
         /// <param name="dr"></param>
@@ -63,6 +67,8 @@ namespace InterfaceMonitor.Frameworks.Entity
                 StateCode = Int32.Parse(dr[EnumInterfaceRealtimeInfo.StateCode.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.UpdateTime.ToString()))
                 UpdateTime = DateTime.Parse(dr[EnumInterfaceRealtimeInfo.UpdateTime.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceRealtimeInfo.appid.ToString()))
+                appid = new Guid(dr[EnumInterfaceRealtimeInfo.appid.ToString()].ToString());
             return true;
         }
     }
@@ -77,6 +83,7 @@ namespace InterfaceMonitor.Frameworks.Entity
         ServerAddress,
         //ReturnTimeout,
         StateCode,
-        UpdateTime
+        UpdateTime,
+        appid
     }
 }

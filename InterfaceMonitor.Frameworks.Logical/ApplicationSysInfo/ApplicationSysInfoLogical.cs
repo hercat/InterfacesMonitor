@@ -202,5 +202,68 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
             return list;
         }
+        /// <summary>
+        /// 应用系统监控统计数据
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetApplicationInfoStatics()
+        {
+            DataTable dt = new DataTable();
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            try
+            {
+                IApplicationSysInfo dp = DataProvider.DbApplicationSysInfoDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                dt = dp.GetApplicationInfoStatics(cmd);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                log.Error(string.Format("GetApplicationInfoStatics()发生错误,错误信息如下:{0}", ex));
+                if (trans != null)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable GetApplicationInfoStaticsDetails(Guid id)
+        {
+            DataTable dt = new DataTable();
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            try
+            {
+                IApplicationSysInfo dp = DataProvider.DbApplicationSysInfoDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                dt = dp.GetApplicationInfoStaticsDetails(cmd, id);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                log.Error(string.Format("GetApplicationInfoStaticsDetails()发生错误,错误信息如下:{0}", ex));
+                if (trans != null)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+            return dt;
+        }
     }
 }

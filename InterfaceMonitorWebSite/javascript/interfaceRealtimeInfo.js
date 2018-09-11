@@ -38,7 +38,7 @@ function LoadInterfaceRealtimeInfo() {
     });
 }
 //获取接口详细信息方法
-function InterfaceDetails(id) {    
+function InterfaceDetails(id) {
     //window.location.href = "./InterfaceDetails.aspx?id=" + window.btoa(id);//当前页跳转
     window.open("./InterfaceDetails.aspx?id=" + window.btoa(id));//新窗口跳转+地址栏参数编码处理
 }

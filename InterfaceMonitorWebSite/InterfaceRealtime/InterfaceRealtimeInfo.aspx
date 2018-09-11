@@ -8,7 +8,8 @@
         <div id="content_title">
             <span>接口实时状态</span>
         </div>
-        <div id="content">
+        <div id="content">                     
+
         </div>
     </div>
 </asp:Content>
