@@ -110,6 +110,36 @@ namespace InterfaceMonitor.Frameworks.Logical
             }
             return entity;
         }
+
+        public static InterfaceConfigInfo GetInterfaceConfigInfoWithApp(Guid id)
+        {
+            IDbConnection conn = null;
+            IDbCommand cmd = null;
+            IDbTransaction trans = null;
+            InterfaceConfigInfo entity = null;
+            try
+            {
+                IInterfaceConfigInfo dp = DataProvider.DbInterfaceConfigDP;
+                conn = DbConnOperation.CreateConnection();
+                cmd = conn.CreateCommand();
+                conn.Open();
+                trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                entity = dp.GetInterfaceConfigInfoWithApp(cmd, id);
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (null != trans)
+                    trans.Rollback();
+            }
+            finally
+            {
+                if (null != conn)
+                    conn.Close();
+            }
+            return entity;
+        }
         /// <summary>
         /// 根据接口名、应用系统名和服务器地址获取配置信息
         /// </summary>

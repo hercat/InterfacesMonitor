@@ -100,10 +100,10 @@ namespace InterfaceMonitor.Frameworks.BizProcess
                         if (o != null)
                         {
                             if ((DateTime.Now - o.updatetime).TotalMinutes > o.ConnectedTimeout)
-                            {
                                 o.StateCode = 0;
-                                dlist.Add(o);
-                            }
+                            else
+                                o.StateCode = 1;
+                            dlist.Add(o);
                         }
                     }
                 }

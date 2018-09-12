@@ -145,7 +145,17 @@ body {
     margin-left:3%;
     margin-top:6px;
 }
+#searchSystem2 {
+    float:left;
+    width:80px;
+    margin-left:3%;
+    margin-top:6px;
+}
 #container {
+    float:left;
+    margin-left:1%;
+}
+#container2 {
     float:left;
     margin-left:1%;
 }

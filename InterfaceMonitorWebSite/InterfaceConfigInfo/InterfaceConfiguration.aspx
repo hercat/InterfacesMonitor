@@ -1,4 +1,4 @@
-﻿<%@ Page Title="接口信息配置" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true" CodeBehind="InterfaceConfiguration.aspx.cs" Inherits="InterfaceMonitorWebSite.Config.InterfaceConfiguration" %>
+﻿<%@ Page Title="接口信息" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true" CodeBehind="InterfaceConfiguration.aspx.cs" Inherits="InterfaceMonitorWebSite.Config.InterfaceConfiguration" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../css/interfaceConfiguration.css" rel="stylesheet" />
     <script src="../javascript/interfaceConfiguration.js"></script>
@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyRight" runat="server">
     <div>
         <div id="content_title">
-            <span>接口配置信息</span>
+            <span>接口配置</span>
         </div>
         <div id="funtion_buttons">
             <input id="search_text" type="text" value="输入接口名称、应用名称、服务器地址、负责人..." onfocus="if(this.value=='输入接口名称、应用名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='输入接口名称、应用名称、服务器地址、负责人...';}"  />
@@ -20,17 +20,19 @@
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">接口名称</div>
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="interfaceName" /></div>
-        </div>
-        <%--<div class="add_box_div_row">
-            <div class="add_box_div_row_label">应用系统</div>
-            <div class="add_box_div_row_content"><input class="inputbox" type="text" id="applicationName"/></div>
-        </div>--%>
+        </div>     
         <div class="add_box_div_row">
-            <div class="add_box_div_row_label">应用系统</div>
-            <div class="add_box_div_row_content">
-                <%--<input class="inputbox" type="text" id="server"/>--%>
+            <div class="add_box_div_row_label">所属应用</div>
+            <div class="add_box_div_row_content">            
                 <div id="container"></div>
                 <div id="searchSystem">选择</div>
+            </div>
+        </div>
+        <div class="add_box_div_row">
+            <div class="add_box_div_row_label">关联应用</div>
+            <div class="add_box_div_row_content">
+                <div id="container2"></div>
+                <div id="searchSystem2">选择</div>
             </div>
         </div>
         <div class="add_box_div_row2">
@@ -42,15 +44,7 @@
                     <option value="2">网站</option>
                 </select>
             </div>
-        </div>
-        <%--<div class="add_box_div_row">
-            <div class="add_box_div_row_label">服务器用户名</div>
-            <div class="add_box_div_row_content"><input type="text" id="user"/></div>
-        </div>
-        <div class="add_box_div_row">
-            <div class="add_box_div_row_label">用户密码</div>
-            <div class="add_box_div_row_content"><input type="text" id="pwd"/></div>
-        </div>--%>
+        </div>      
         <div class="add_box_div_row">
             <div class="add_box_div_row_label">负责人</div>
             <div class="add_box_div_row_content"><input class="inputbox" type="text" id="charger"/></div>

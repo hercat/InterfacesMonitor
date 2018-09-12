@@ -32,7 +32,7 @@
             <dl>
                 <dd></dd>
                 <dt>
-                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">关系配置维护</a>
+                    <a href="../applicationSysInfo/ApplicationSysInfo.aspx">关联关系维护</a>
                 </dt>
                 <dd></dd>
                 <dt>

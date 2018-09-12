@@ -186,6 +186,50 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             }
         }
         /// <summary>
+        /// 获取应用系统包含的接口信息
+        /// </summary>
+        /// <param name="appid"></param>
+        /// <param name="order"></param>
+        /// <param name="ascOrdesc"></param>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        [Action]
+        public object SearchApplicationRelateInterface(string fields, string appid, string order, string ascOrdesc, int page, int rows)
+        {
+            try
+            {
+                SystemSettingBase settings = SystemSettingBase.CreateInstance();
+                if (settings.SysMySqlDB != null)
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
+                PageInfo pageInfo = new PageInfo()
+                {
+                    PageIndex = rows * (page - 1),
+                    PageSize = rows,
+                    RecCount = 0
+                };
+                if (string.IsNullOrEmpty(fields))
+                    fields = "*";
+                string where = string.Empty;
+                if (!string.IsNullOrEmpty(appid))
+                    where = string.Format(" where appid = '{0}' ", appid);
+                string orderby = string.Empty;
+                if (!string.IsNullOrEmpty(order))
+                    orderby = string.Format(" order by {0} {1} ", order, ascOrdesc);
+                string limit = string.Empty;
+                limit = string.Format(" limit {0},{1} ", pageInfo.PageIndex, pageInfo.PageSize);
+                List<InterfaceConfigInfo> list = InterfaceConfigInfoOperation.GetInterfaceConfigInfoList(fields, where);
+                pageInfo.RecCount = list.Count;
+                List<InterfaceConfigInfo> target = InterfaceConfigInfoOperation.GetInterfaceConfigInfoByCondition(fields, where, orderby, limit);
+                GridResult<InterfaceConfigInfo> result = new GridResult<InterfaceConfigInfo>(target, pageInfo.RecCount);
+                return new JsonResult(result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
         /// [Ajax层]根据接口名模糊搜索接口配置信息分页列表
         /// </summary>
         /// <param name="fields">返回字段</param>
@@ -322,6 +366,27 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
             }
         }
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Action]
+        public object GetInterfaceConfigInfoWithApp(string id)
+        {
+            try
+            {
+                SystemSettingBase settings = SystemSettingBase.CreateInstance();
+                if (settings.SysMySqlDB != null)
+                    ConnString.MySqldb = settings.SysMySqlDB.ConnectionString;
+                InterfaceConfigInfo info = InterfaceConfigInfoOperation.GetInterfaceConfigInfoWithApp(new Guid(id));
+                return new JsonResult(info);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        /// <summary>
         /// 新增接口配置信息
         /// </summary>
         /// <param name="interfaceName">接口名称</param>
@@ -336,13 +401,13 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="desc">描述</param>
         /// <returns></returns>
         [Action]
-        public object AddInterfaceConfigInfo(string interfaceName, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type,string appid)
+        public object AddInterfaceConfigInfo(string interfaceName, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type,string appid,string destAppid)
         {
             try
             {
                 if (null == InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, new Guid(appid)))
                 {
-                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type, appid);
+                    InterfaceConfigInitBizProcess.SaveInterfaceInitial(interfaceName, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type, appid, destAppid);
                     return string.Format("添加【{0}】配置信息成功！", interfaceName);
                 }                    
                 else
@@ -369,14 +434,14 @@ namespace InterfaceMonitor.Frameworks.AjaxWebController
         /// <param name="desc"></param>
         /// <returns></returns>
         [Action]
-        public object UpdateInterfaceConfigInfo(string id, string interfaceName, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type,string appid)
+        public object UpdateInterfaceConfigInfo(string id, string interfaceName, string user, string pwd, string charger, string phone, int timeout, string docPath, string desc,string urlAddress, string exeptionlevel, string affectProduction,string type,string appid,string destapp)
         {
             try
             {
                 ApplicationSysInfo appinfo = ApplicationSysInfoLogical.GetApplicationSysInfoById(new Guid(appid));
                 if (null != InterfaceConfigInfoOperation.GetInterfaceConfigInfo(interfaceName, appinfo.name, appinfo.server))
                 {
-                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type, appid);
+                    InterfaceConfigInitBizProcess.UpdateInterfaceConfigInfo(id, interfaceName, user, pwd, charger, phone, timeout, docPath, desc, urlAddress, exeptionlevel, affectProduction, type, appid, destapp);
                     return string.Format("更新【{0}】配置信息成功！", interfaceName);
                 }
                 else

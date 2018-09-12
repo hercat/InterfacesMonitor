@@ -1,4 +1,4 @@
-﻿<%@ Page Title="应用关系维护" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true" CodeBehind="ApplicationSysInfo.aspx.cs" Inherits="InterfaceMonitorWebSite.applicationSysInfo.ApplicationSysInfo" %>
+﻿<%@ Page Title="关联关系维护" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true" CodeBehind="ApplicationSysInfo.aspx.cs" Inherits="InterfaceMonitorWebSite.applicationSysInfo.ApplicationSysInfo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../css/applicationSysInfo.css" rel="stylesheet" />
     <script src="../javascript/applicationSysInfo.js"></script>
@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyRight" runat="server">
     <div>
         <div id="content_title">
-            <span>应用关系维护</span>
+            <span>关联关系维护</span>
         </div>
         <div class="funtion_buttons">
             <input id="search_text" type="text" value="应用系统名称、服务器地址、负责人..." onfocus="if(this.value=='应用系统名称、服务器地址、负责人...'){this.value='';}" onblur="if(this.value==''){this.value='应用系统名称、服务器地址、负责人...';}"  />
@@ -61,13 +61,13 @@
                 <span class="destinname" id="appname"></span>
             </div>
         </div>
-        <div class="add_box_div_row3">
+        <%--<div class="add_box_div_row3">
             <div class="add_box_div_row_label">上游系统</div>
             <div class="add_box_div_row_content3">
                 <div id="container2"></div>
                 <div id="searchSystem2">选择</div>
             </div>
-        </div>
+        </div>--%>
         <div class="add_box_div_row3">
             <div class="add_box_div_row_label">下游系统</div>
             <div class="add_box_div_row_content3">                

@@ -14,6 +14,9 @@ $(document).ready(function () {
     $('#searchSystem').click(function () {
         searchDestinctionSystem();
     });
+    $('#searchSystem2').click(function () {
+        searchDestinctionSystem2();
+    });
     $('#search2').click(function () {
         searchSysInfo();
     });
@@ -98,7 +101,6 @@ function initSysGrid() {
 }
 //选择应用系统
 function searchDestinctionSystem() {
-    $('#container').empty();
     $('#attach_system_div').dialog({
         title: '选择应用系统',
         iconCls: 'icon-add',
@@ -115,6 +117,7 @@ function searchDestinctionSystem() {
                 text: '确定',
                 iconCls: 'icon-add',
                 handler: function () {
+                    $('#container').empty();
                     var rowdata = $('#sysdataGrid').datagrid('getSelected');
                     if (rowdata == null) {
                         $.messager.alert(g_MsgBoxTitle, "请选择应用系统！", "warning");
@@ -142,6 +145,57 @@ function searchDestinctionSystem() {
             }
         ]
     });
+}
+//选择下游应用系统
+function searchDestinctionSystem2() {
+    $('#attach_system_div').dialog({
+        title: '选择关联应用系统',
+        iconCls: 'icon-add',
+        width: 920,
+        height: 530,
+        closable: false,
+        cache: false,
+        modal: true,
+        onBeforeOpen: function () {
+            searchSysInfo();
+        },
+        buttons: [
+            {
+                text: '确定',
+                iconCls: 'icon-add',
+                handler: function () {
+                    $('#container2').empty();
+                    var rowdata = $('#sysdataGrid').datagrid('getSelected');
+                    if (rowdata == null) {
+                        $.messager.alert(g_MsgBoxTitle, "请选择关联应用系统！", "warning");
+                        return;
+                    }
+                    $.messager.confirm("提醒", "确定要选择【" + rowdata.name + "】该应用系统吗？", function (r) {
+                        if (r) {
+                            var name = rowdata.name;
+                            var id = rowdata.Id;
+                            var el = '<span id="' + id + '" class="destinname">' + name + '</span>';
+                            $('#container2').append(el);
+                            $('#attach_system_div').dialog('close');
+                            clearSysSelectBox();
+                        }
+                    });
+                }
+            },
+            {
+                text: '取消',
+                iconCls: 'icon-cancel',
+                handler: function () {
+                    $('#attach_system_div').dialog('close');
+                    clearSysSelectBox();
+                }
+            }
+        ]
+    });
+}
+function clearSysSelectBox() {
+    $('#key2').val('应用系统名称、服务器地址、负责人...');
+    $('#sysdataGrid').datagrid('clearChecked');
 }
 //查询点击事件
 function searchSysInfo() {
@@ -173,10 +227,10 @@ function checkingData() {
         $.messager.alert(g_MsgBoxTitle, "接口超时时间不能为空！", "warning");
         return false;
     }
-    if (trim($('#desc').val()) == "") {
-        $.messager.alert(g_MsgBoxTitle, "描述不能为空！", "warning");
-        return false;
-    }
+    //if (trim($('#desc').val()) == "") {
+    //    $.messager.alert(g_MsgBoxTitle, "描述不能为空！", "warning");
+    //    return false;
+    //}
     return true;
 }
 //清空添加
@@ -194,11 +248,12 @@ function clearAddBox() {
 //弹出接口信息添加dialog对话框
 function addInterfaceConfigInfo() {
     $('#container').empty();
+    $('#container2').empty();
     $('#add_box_div').dialog({
         title: '添加接口配置信息',
         iconCls:'icon-add',
         width: 700,
-        height: 625,
+        height: 680,
         closable: false,
         cache: false,
         modal: true,        
@@ -219,6 +274,12 @@ function addInterfaceConfigInfo() {
                                 $.messager.alert(g_MsgBoxTitle, "请选择应用系统！", "warning");
                                 return;
                             }
+                            var destappid = $('#container2').children('.destinname').attr('id');
+                            var destappname = $('#container2').children('.destinname').text();                            
+                            if ((destappid == null || destappid == "") || (destappname == null || destappname == "")) {
+                                $.messager.alert(g_MsgBoxTitle, "请选择关联应用系统！", "warning");
+                                return;
+                            }
                             $.ajax({
                                 url: '/AjaxInterfaceConfig/AddInterfaceConfigInfo.cspx',
                                 data: {
@@ -234,7 +295,8 @@ function addInterfaceConfigInfo() {
                                     exeptionlevel: $('#level').combobox('getValue'),
                                     affectProduction: $('#incluence').switchbutton('options').checked ? 1 : 0,
                                     type: $('#type').combobox('getValue'),
-                                    appid: appid
+                                    appid: appid,
+                                    destAppid: destappid
                                 },
                                 type: 'post',
                                 cache: false,
@@ -277,10 +339,11 @@ function getConfigInfo(id) {
 //编辑接口配置信息
 function editInterfaceConfig() {
     $('#container').empty();
+    $('#container2').empty();
     var rowdata = $('#gridData').datagrid('getSelected');
     if (rowdata != null) {
         $.ajax({
-            url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
+            url: '/AjaxInterfaceConfig/GetInterfaceConfigInfoWithApp.cspx',
             data: {
                 id: rowdata.Id
             },
@@ -288,8 +351,10 @@ function editInterfaceConfig() {
             cache: false,
             success: function (info) {
                 $('#interfaceName').val(info.InterfaceName);
-                var el = '<span id="' + info.appid + '" class="destinname">' + info.ApplicationName + '</span>';
+                var el = '<span id="' + info.appid + '" class="destinname">' + info.appname + '</span>';
                 $('#container').append(el);
+                var el = '<span id="' + info.destinappid + '" class="destinname">' + info.destinappname + '</span>';
+                $('#container2').append(el);
                 $('#charger').val(info.PersonOfChargeName);
                 $('#phone').val(info.PersonOfChargePhone);
                 $('#timeout').val(info.ConnectedTimeout);
@@ -306,7 +371,7 @@ function editInterfaceConfig() {
                     title: '修改【' + info.InterfaceName + '】接口配置信息',
                     iconCls: 'icon-edit',
                     width: 700,
-                    height: 625,
+                    height: 680,
                     closable: false,
                     cache: false,
                     modal: false,
@@ -317,11 +382,17 @@ function editInterfaceConfig() {
                             if (!checkingData())
                                 return;
                             $.messager.confirm("提醒", "确定要修改【" + info.InterfaceName + "】配置信息？", function (r) {
-                                if (r) {
+                                if (r) {                                    
                                     var appid = $('#container').children('.destinname').attr('id');
                                     var appname = $('#container').children('.destinname').text();
                                     if ((appid == null || appid == "") || (appname == null || appname == "")) {
                                         $.messager.alert(g_MsgBoxTitle, "请选择应用系统！", "warning");
+                                        return;
+                                    }
+                                    var destappid = $('#container2').children('.destinname').attr('id');
+                                    var destappname = $('#container2').children('.destinname').text();
+                                    if ((destappid == null || destappid == "") || (destappname == null || destappname == "")) {
+                                        $.messager.alert(g_MsgBoxTitle, "请选择关联应用系统！", "warning");
                                         return;
                                     }
                                     $.ajax({
@@ -340,7 +411,8 @@ function editInterfaceConfig() {
                                             exeptionlevel: $('#level').combobox('getValue'),
                                             affectProduction: $('#incluence').switchbutton('options').checked ? 1 : 0,
                                             type: $('#type').combobox('getValue'),
-                                            appid:appid
+                                            appid: appid,
+                                            destapp: destappid
                                         },
                                         type: 'post',
                                         cache: false,
@@ -565,6 +637,9 @@ function excelImport() {
 //初始化linkbutton
 function linkbutton() {
     $('#searchSystem').linkbutton({
+        iconCls: 'icon-search'
+    });
+    $('#searchSystem2').linkbutton({
         iconCls: 'icon-search'
     });
     $('#search2').linkbutton({

@@ -271,7 +271,7 @@ function attachInterface(id,name) {
         title: '关联关系维护',
         iconCls: 'icon-add',
         width: 910,
-        height: 690,
+        height: 640,
         closable: false,
         cache: false,
         modal: true,
@@ -293,16 +293,16 @@ function attachInterface(id,name) {
                     }
                     $.messager.confirm("提醒", "确定要保存该关联关系吗？", function (r) {
                         if (r) {
-                            var fatherid = $('#container2').children('.destinname').attr('id');
-                            var fathername = $('#container2').children('.destinname').text();
+                            //var fatherid = $('#container2').children('.destinname').attr('id');
+                            //var fathername = $('#container2').children('.destinname').text();
                             var childid = $('#container').children('.destinname').attr('id');
                             var childname = $('#container').children('.destinname').text();         
                             var interfaceid = rowdata.Id;
                             var interfacename = rowdata.InterfaceName;
-                            if ((childid == null || childid == "") || (childname == null || childname == "")) {
-                                $.messager.alert(g_MsgBoxTitle, "请选择下游系统！", "warning");
-                                return;
-                            }
+                            //if ((childid == null || childid == "") || (childname == null || childname == "")) {
+                            //    $.messager.alert(g_MsgBoxTitle, "请选择下游系统！", "warning");
+                            //    return;
+                            //}
                             if ((fatherid == null || fatherid == "") || (fathername == null || fathername == "")) {
                                 $.messager.alert(g_MsgBoxTitle, "请选择上游系统！", "warning");
                                 return;
@@ -316,8 +316,8 @@ function attachInterface(id,name) {
                                     interfacename: interfacename,
                                     destinappid: childid,
                                     destinappname: childname,
-                                    fatherid: fatherid,
-                                    fathername: fathername
+                                    fatherid: "",
+                                    fathername: ""
                                 },
                                 type: 'post',
                                 cache: false,
@@ -359,6 +359,14 @@ function beforeOpen(id) {
         success: function (info) {
             $('#appname').text(info.name);
         }
+    });    
+    $('#attachGridData').datagrid({
+        queryParams: {
+            fields: '',
+            appid: id,
+            order: 'CreateTime',
+            ascOrdesc: 'desc'
+        }
     });
 }
 //初始化接口绑定控件datagrid
@@ -382,7 +390,7 @@ function initAttachGrid() {
         },
         method: 'post',
         dataType: 'json',        
-        url: '/AjaxInterfaceConfig/SearchInterfaceConfigNew.cspx',
+        url: '/AjaxInterfaceConfig/SearchInterfaceConfigNew.cspx',//SearchInterfaceConfigNew.cspx
         pageNumber: 1,
         pagesize: 10,
         pageList: [10],
@@ -397,14 +405,7 @@ function initAttachGrid() {
                         formatter: function (value, row, index) {
                             return renderTime(value);
                         }
-                    }
-                    //, {
-                    //    title: '操作', field: 'Id', align: 'center', width: 110, sortable: false,
-                    //    formatter: function (value, row, index) {
-                    //        var str = '<a name="add" href="#" class="easyui-linkbutton" ></a>';
-                    //        return str;
-                    //    }
-                    //}
+                    }                   
         ]],
         onLoadSuccess: function (data) {
             $(".note").tooltip(
@@ -419,14 +420,6 @@ function initAttachGrid() {
                     }
                 }
             );
-            //$('a[name="add"]').linkbutton({
-            //    iconCls: 'icon-add',
-            //    text: '关联',
-            //    onClick: function () {
-            //        var rowdata = $('#attachGridData').datagrid('getSelected');
-            //        alert(rowdata.Id);
-            //    }
-            //});
         }
     });
     //窗体尺寸调整
@@ -444,6 +437,15 @@ function searchInterface() {
     $('#attachGridData').datagrid('load', {
         fields: '',
         key: searchText,
+        order: 'CreateTime',
+        ascOrdesc: 'desc'
+    });
+}
+function searchInterfaceNew(id) {
+    alert(id);   
+    $('#attachGridData').datagrid('load', {
+        fields: '',
+        appid: id,
         order: 'CreateTime',
         ascOrdesc: 'desc'
     });

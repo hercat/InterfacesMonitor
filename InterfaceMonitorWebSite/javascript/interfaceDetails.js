@@ -106,7 +106,7 @@ function AddTest() {
 function getInterfaceConfigInfo(id) {
     id = window.atob(id);//对地址栏参数进行解码
     $.ajax({
-        url: '/AjaxInterfaceConfig/GetInterfaceConfigById.cspx',
+        url: '/AjaxInterfaceConfig/GetInterfaceConfigInfoWithApp.cspx',
         data: {
             id: id
         },
@@ -120,6 +120,7 @@ function getInterfaceConfigInfo(id) {
             //$('#pwd').html(json.UserPwd);
             $('#chargeman').html(json.PersonOfChargeName);
             $('#phone').html(json.PersonOfChargePhone);
+            $('#destappname').html(json.destinappname);
             $('#description').html(json.Description);
             if (json.DocumentHelpPath != null && json.DocumentHelpPath != '')
                 $('#documents').html("<a href='" + json.DocumentHelpPath + "' target='_blank' style='text-decoration:none;' ><img src='../images/pdf_16.png' />&nbsp;" + json.DocumentHelpPath.substring(json.DocumentHelpPath.lastIndexOf('/') + 1, json.DocumentHelpPath.length) + "</a>,");

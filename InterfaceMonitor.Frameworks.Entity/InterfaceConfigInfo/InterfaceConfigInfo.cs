@@ -83,6 +83,18 @@ namespace InterfaceMonitor.Frameworks.Entity
         /// </summary>
         public Guid appid { get; set; }
         /// <summary>
+        /// 应用名称
+        /// </summary>
+        public string appname { get; set; }
+        /// <summary>
+        /// 关联应用系统编号
+        /// </summary>
+        public Guid destinappid { get; set; }
+        /// <summary>
+        /// 关联应用系统名称
+        /// </summary>
+        public string destinappname { get; set; }
+        /// <summary>
         /// AllParse
         /// </summary>
         /// <param name="dr"></param>
@@ -123,6 +135,12 @@ namespace InterfaceMonitor.Frameworks.Entity
                 Type = Int32.Parse(dr[EnumInterfaceConfigInfo.type.ToString()].ToString());
             if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.appid.ToString()))
                 appid = new Guid(dr[EnumInterfaceConfigInfo.appid.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.appname.ToString()))
+                appname = dr[EnumInterfaceConfigInfo.appname.ToString()].ToString();
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.destinappid.ToString()))
+                destinappid = new Guid(dr[EnumInterfaceConfigInfo.destinappid.ToString()].ToString());
+            if (dr.Table.Columns.Contains(EnumInterfaceConfigInfo.destinappname.ToString()))
+                destinappname = dr[EnumInterfaceConfigInfo.destinappname.ToString()].ToString();
             return true;
         }
     }
@@ -147,6 +165,9 @@ namespace InterfaceMonitor.Frameworks.Entity
         exeptionlevel,
         affectProduction,
         type,
-        appid
+        appid,
+        appname,
+        destinappid,
+        destinappname
     }
 }

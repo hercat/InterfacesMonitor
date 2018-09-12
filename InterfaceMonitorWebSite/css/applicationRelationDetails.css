@@ -36,7 +36,7 @@
     margin-top:5%;
     text-align:center;
     line-height:40px;
-    font-size:15px;
+    font-size:12px;
 }
 .container-bottom {
     width:100%;
@@ -44,8 +44,10 @@
     line-height:40px;
     background-color:#edf4ff;
     margin-top:2%;
-    font-size:15px;
+    font-size:11px;
     text-align:center;
+    text-overflow:ellipsis;
+    word-wrap:break-word;
 }
 .container-bottom a {
     text-decoration:none;

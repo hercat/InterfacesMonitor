@@ -13,6 +13,7 @@ namespace InterfaceMonitor.Frameworks.DalInterface
         void AddOrUpdateInterfaceConfigInfo(IDbCommand idbcmd,InterfaceConfigInfo entity,ModifierType mode);
         void DeleteInterfaceConfigInfoById(IDbCommand idbcmd, Guid id);
         InterfaceConfigInfo GetInterfaceConfigInfoById(IDbCommand idbcmd,Guid id);
+        InterfaceConfigInfo GetInterfaceConfigInfoWithApp(IDbCommand idbcmd, Guid id);
         InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, string server);
         InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, string appname, string server);
         InterfaceConfigInfo GetInterfaceConfigInfo(IDbCommand idbcmd, string interfaceName, Guid appid);

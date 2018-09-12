@@ -101,6 +101,29 @@ namespace InterfaceMonitor.Frameworks.Dal
             }
             return entity;
         }
+
+        public InterfaceConfigInfo GetInterfaceConfigInfoWithApp(IDbCommand icmd, Guid id)
+        {
+            icmd.Parameters.Clear();
+            MySqlCommand cmd = icmd as MySqlCommand;
+            cmd.CommandType = CommandType.Text;
+            string sql = @"select a.Id,a.InterfaceName,a.ApplicationName,a.ServerAddress,a.ServerUser,a.UserPwd,a.PersonInChargeName,a.PersonInChargePhone,a.ConnectedTimeout,a.DocumentHelpPath,a.Description,a.CreateTime,a.urlAddress,a.exeptionlevel,a.affectProduction,a.type,
+                                b.appId,b.appname,b.destinappid,b.destinappname
+                            from interfaceconfiginfo a
+                            left join applicationinterfacerelation b
+                            on a.Id = b.interfaceId
+                            where a.Id = '{0}'";
+            cmd.CommandText = string.Format(sql, id);
+            InterfaceConfigInfo entity = null;
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            if (dt.Rows.Count > 0)
+            {
+                entity = new InterfaceConfigInfo();
+                entity.AllParse(dt.Rows[0]);
+            }
+            return entity;
+        }
         /// <summary>
         /// 根据接口名、应用系统名和服务器地址获取配置信息
         /// </summary>

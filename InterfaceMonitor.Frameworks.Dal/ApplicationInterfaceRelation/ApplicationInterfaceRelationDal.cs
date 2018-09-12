@@ -24,7 +24,7 @@ namespace InterfaceMonitor.Frameworks.Dal
             }
             else if (mode == ModifierType.Update)
             {
-                string sql = @"update applicationinterfacerelation set appId = '{0}',appname = '{1}',interfaceId = '{2}',interfacename = '{3}',updatetime = '{4}',,destinappid = '{6}',destinappname = '{7}'
+                string sql = @"update applicationinterfacerelation set appId = '{0}',appname = '{1}',interfaceId = '{2}',interfacename = '{3}',updatetime = '{4}',destinappid = '{6}',destinappname = '{7}'
                                where Id = '{5}'";
                 cmd.CommandText = string.Format(sql, info.appId, info.appname, info.interfaceId, info.interfacename, info.updatetime, info.Id, info.destinappid, info.destinappname);
             }

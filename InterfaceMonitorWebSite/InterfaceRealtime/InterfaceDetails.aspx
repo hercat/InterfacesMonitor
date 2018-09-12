@@ -32,12 +32,15 @@
                     <span class="basic_top_div_title">联系电话：</span><span class="basic_top_div_content" id="phone"></span>
                 </div>
                 <div class="basic_top_div">
-                    <span class="basic_top_div_title">接口详细信息：</span><span class="basic_top_div_content" id="description"></span>
+                    <span class="basic_top_div_title">关联系统名称：</span><span class="basic_top_div_content" id="destappname"></span>
                 </div>
                 <div class="basic_top_div">
+                    <span class="basic_top_div_title">接口详细信息：</span><span class="basic_top_div_content" id="description"></span>
+                </div>
+                <%--<div class="basic_top_div">
                     <span class="basic_top_div_title">帮助文档：</span><span class="basic_top_div_content" id="documents"></span>
                     <span class="basic_upload" id="btn_upload">上传附件</span>
-                </div>
+                </div>--%>
             </div>
         </div>
         <div id="content_list">
