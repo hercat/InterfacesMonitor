@@ -11,18 +11,28 @@ namespace InterfaceMonitor.Frameworks.Utility
 {
     public class Httphelper
     {
-        public static string HttpGet(string url)
+        public static bool HttpGet(string url)
         {
             try
             {
-                WebClient client = new WebClient();
-                client.Credentials = CredentialCache.DefaultCredentials;
-                byte[] data = client.DownloadData(url);
-                return Encoding.UTF8.GetString(data);
+                HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+                CookieContainer cookieContainer = new CookieContainer();
+                request.AllowAutoRedirect = true;
+                request.Method = "GET";
+                request.Timeout = 10000;
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:62.0) Gecko/20100101 Firefox/62.0";
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                HttpStatusCode code = response.StatusCode;
+                if (code == HttpStatusCode.OK)
+                    return true;
+                else
+                    return false;
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
-                throw ex;
+                return false;
             }
         }
         public static string httpPost(string url, string postData)
@@ -46,7 +56,7 @@ namespace InterfaceMonitor.Frameworks.Utility
                 outStream = request.GetRequestStream();
                 outStream.Write(data, 0, data.Length);
                 outStream.Close();
-                response = request.GetResponse() as HttpWebResponse;
+                response = request.GetResponse() as HttpWebResponse;                
                 inStream = response.GetResponseStream();
                 reader = new StreamReader(inStream, encoding);
                 return reader.ReadToEnd();
@@ -56,5 +66,31 @@ namespace InterfaceMonitor.Frameworks.Utility
                 throw ex;
             }
         }
+        /// <summary>
+        /// webservice状态监测
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static HttpStatusCode httpWebServiceRequest(string url)
+        {
+            try
+            {
+                HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+                CookieContainer cookieContainer = new CookieContainer();
+                request.AllowAutoRedirect = true;
+                request.Method = "GET";
+                request.Timeout = 10000;
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:62.0) Gecko/20100101 Firefox/62.0";
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                HttpStatusCode code = response.StatusCode;
+                return code;
+            }
+            catch (WebException ex)
+            {
+                throw ex;
+            }
+        }        
     }
 }

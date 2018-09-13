@@ -63,6 +63,7 @@
     <Compile Include="DatabaseOperation\DatabaseOperation.cs" />
     <Compile Include="DatabaseOperation\MySqlOperation.cs" />
     <Compile Include="DatabaseOperation\MongodbHelper.cs" />
+    <Compile Include="HttpHelper\Httphelper.cs" />
     <Compile Include="SettingBase\MongoSettings.cs" />
     <Compile Include="SettingBase\MySqlSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

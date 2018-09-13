@@ -14,6 +14,7 @@ using InterfaceMonitor.Frameworks.BizProcess;
 using MySql.Data.MySqlClient;
 using System.IO;
 using WindowsFormsTest.ServiceReference1;
+using System.Net;
 
 namespace WindowsFormsTest
 {
@@ -367,6 +368,19 @@ namespace WindowsFormsTest
         private void button21_Click(object sender, EventArgs e)
         {
             List<DataStatics> list = StaticsBizprocess.GetDataStaics();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            HttpStatusCode statusCode = Httphelper.httpWebServiceRequest("http://172.22.24.45:8088/InterfaceMonitor.asmx?op=UpdateInterfaceRealtimeInfoWithExceptionService");
+            int code = (int)statusCode;
+
+            HttpStatusCode statusCode2 = Httphelper.httpWebServiceRequest("http://aoc.juneyaoair.com/");
+            int code2 = (int)statusCode2;
+
+            bool b = Httphelper.HttpGet("http://172.22.24.45:8099");
+            //HttpStatusCode statusCode3 = Httphelper.httpWebServiceRequest("http://172.22.24.45:8099");
+            //int code3 = (int)statusCode3;
         }
     }
 }
